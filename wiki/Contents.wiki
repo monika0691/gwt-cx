@@ -1,13 +1,16 @@
 #summary gwt-cx Wiki Contents.
+#labels Featured
 
-= Introduction =
+=Contents=
 
-Add your content here.
+==Introduction==
+  * What is gwt-cx?
+  * How can I use gwt-cx?
+
+==Download==
 
 
-= Details =
+==Getting Started==
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+
+==Details==
