@@ -1,4 +1,4 @@
-#summary gwt-cx Wiki Contents.
+#summary Contents.
 #labels Featured
 
 =Contents=
