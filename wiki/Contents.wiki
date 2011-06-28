@@ -1,16 +1,16 @@
 #summary Contents.
 #labels Featured
 
-=Contents=
+Contents
 
-==Introduction==
+Introduction
   * What is gwt-cx?
   * How can I use gwt-cx?
 
-==Download==
+Download
 
 
-==Getting Started==
+Getting Started
 
 
-==Details==
+Details
