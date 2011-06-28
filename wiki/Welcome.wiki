@@ -1,6 +1,6 @@
 #summary Welcome to the gwt-cx Wiki
 
-= Introduction =
+= Welcome to the gwt-cx Wiki =
 
 Add your content here.
 
