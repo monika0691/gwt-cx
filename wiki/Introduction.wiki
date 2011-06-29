@@ -20,7 +20,7 @@ This additive development model accelerates your development and reduces the tim
 
 gwt-cx aims to be an alternative to developing bespoke applications from scratch with web application frameworks or implementing expensive 3rd-party CRM applications which are not fit for purpose.
 
-=How to use get-cx?=
+=How to use gwt-cx?=
 
 There are 3 main steps in using get-cx
   # set-up the core application 
