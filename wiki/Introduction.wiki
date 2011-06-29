@@ -1,12 +1,22 @@
-#summary One-sentence summary of this page.
-
-= Introduction =
+#summary Introduction to gwt-cx.
+#labels Phase-Requirements
 
 Purpose of this is 
 
 = What is gwt-cx? =
-x
+gwt-cx is an open-source Customer Experience (CX) framework, that provides you with the ability to quickly and cost-effectively create innovative customer experiences.
+
+gwt-cx provides:
+
+  *a core web-application* with rich feature set (including: authentication, multi-lingual, multi-page, data import/export)
+  *a range of plug-in modules* to add common customer relationship management functionality (including; contacts, accounts, calendar, reports)
+  *the ability to easily extend the framework* to add new modules to tailor unique customer experiences.
 
 
 = Why gwt-cx? =
-x
+gwt-cx is designed for business innovators who understand that unlocking opportunity is driven by delivering a compelling customer experience, rather than reactive management of the customer relationship through legacy CRM systems.
+
+
+
+
+This additive development model accelerates your development and reduces the time, cost and risk of your project.  gwt-cx is the alternative to developing bespoke applications from scratch with web application frameworks or implementing expensive 3rd-party CRM applications which are not fit for purpose.
