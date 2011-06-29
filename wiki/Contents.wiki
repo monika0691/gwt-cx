@@ -1,8 +1,9 @@
 #summary Contents.
 
-===[http://code.google.com/p/gwt-cx/wiki/Contents Contents]===
+[http://code.google.com/p/gwt-cx/wiki/Contents Contents]
 
-===[http://code.google.com/p/gwt-cx/wiki/Introduction Introduction]===
+
+[http://code.google.com/p/gwt-cx/wiki/Introduction Introduction]
   * [http://code.google.com/p/gwt-cx/wiki/Contents What is gwt-cx?]
   * How can I use gwt-cx?
 
@@ -17,11 +18,9 @@
 
 
 
-===[http://code.google.com/p/gwt-cx/downloads/list Download]===
+[Download Download]
 
 
-===[http://code.google.com/p/gwt-cx/wiki/GettingStarted Getting Started]===
+[GettingStarted Getting Started]
 
-===[http://code.google.com/p/gwt-cx/wiki/Documentation Documentation]===
-
-<wiki:toc max_depth="1" />
+[Documentation Documentation]
