@@ -31,7 +31,7 @@ There are 3 main steps in using get-cx
     #code new modules
 
 == Application Framework ==
-At its core gwt-cx is an exstensible web-application framework with a rich feature set. Current features include:
+At its core gwt-cx is an exstensible web-application framework. It has a rich feature set including:
 
   * authentication and authorization
   * localisation
