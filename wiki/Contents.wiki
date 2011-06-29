@@ -12,5 +12,5 @@
   * [GettingStarted Getting Started]
     * x
 
-  *[Documentation Documentation]
+  * [Documentation Documentation]
     *x
