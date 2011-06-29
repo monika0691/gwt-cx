@@ -12,3 +12,5 @@
 ===[http://code.google.com/p/gwt-cx/wiki/GettingStarted Getting Started]===
 
 ===[http://code.google.com/p/gwt-cx/wiki/Documentation Documentation]===
+
+<wiki:toc max_depth="1" />
