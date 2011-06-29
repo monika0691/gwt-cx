@@ -2,19 +2,12 @@
 
 [http://code.google.com/p/gwt-cx/wiki/Contents Contents]
 
-
-[http://code.google.com/p/gwt-cx/wiki/Introduction Introduction]
-  * [http://code.google.com/p/gwt-cx/wiki/Contents What is gwt-cx?]
-  * How can I use gwt-cx?
-
+  * [http://code.google.com/p/gwt-cx/wiki/Introduction Introduction]
+    * [http://code.google.com/p/gwt-cx/wiki/Contents What is gwt-cx?]
+    * How can I use gwt-cx?
   * [Contents Contents]
     * [ArticlesXSS Web security]
-    * [ArticlesDom DOM manipulation]
-    * [ArticlesStyle CSS and style]
-    * [ArticlesTips Tips and tricks]
-  * [DOMReference DOM reference]
-  * [HTMLElements HTML reference]
-  * [CSSReference CSS reference]
+
 
 
 
