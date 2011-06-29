@@ -1,8 +1,8 @@
 #summary Contents.
 
-Contents
+[http://code.google.com/p/gwt-cx/wiki/Contents Contents]
 
-Introduction
+[http://code.google.com/p/gwt-cx/wiki/Introduction Introduction]
   * What is gwt-cx?
   * How can I use gwt-cx?
 
