@@ -22,6 +22,12 @@ gwt-cx aims to be the alternative to developing bespoke applications from scratc
 
 =How to use get-cx?=
 
+There are 3 main steps in using get-cx
+  # set-up the core application 
+  # add modules for desired functionality
+  # extend
+
+
 == Application Framework ==
 At its core gwt-cx is a rich web-application framework.
 
@@ -39,11 +45,22 @@ Current features include:
   * themes
   * template layout
 
-
-== Sample Applications ==
-
+== Modules ==
 
 
 
 
 == Extending gwt-cx ==
+
+
+
+
+== Sample Applications ==
+To further accelerate the development, we have included some sample applications for common configuration types.
+
+Current sample applications include:
+  # Basic
+  # CRM
+
+
+
