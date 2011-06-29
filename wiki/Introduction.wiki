@@ -23,6 +23,27 @@ gwt-cx aims to be the alternative to developing bespoke applications from scratc
 =How to use get-cx?=
 
 == Application Framework ==
+At its core gwt-cx is a rich web-application framework.
+
+Current features include:
+  * authentication and authorization
+  * localisation
+  * multi-lingual
+  * multi-page
+  * file import/export
+  * user management
+  * signup/registration
+  * password recovery
+  * SSL switching
+  * URL rewriting
+  * themes
+  * template layout
+
 
 == Sample Applications ==
+
+
+
+
+
 == Extending gwt-cx ==
