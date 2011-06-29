@@ -13,4 +13,4 @@
     * x
 
   * [Documentation Documentation]
-    * [Modules Modules]
+    * [http://code.google.com/p/gwt-cx/wiki/Modules Modules]
