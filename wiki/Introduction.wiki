@@ -18,7 +18,7 @@ gwt-cx aims to provide 80% of the functionality of your web application.  You ch
 
 This additive development model accelerates your development and reduces the time, cost and risk of your project, while enabling the development of innovative, differentiating processes to suit the desired outcome for your organisation.
 
-gwt-cx aims to be the alternative to developing bespoke applications from scratch with web application frameworks or implementing expensive 3rd-party CRM applications which are not fit for purpose.
+gwt-cx aims to be an alternative to developing bespoke applications from scratch with web application frameworks or implementing expensive 3rd-party CRM applications which are not fit for purpose.
 
 =How to use get-cx?=
 
