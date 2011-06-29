@@ -5,15 +5,12 @@
   * [http://code.google.com/p/gwt-cx/wiki/Introduction Introduction]
     * [http://code.google.com/p/gwt-cx/wiki/Contents What is gwt-cx?]
     * How can I use gwt-cx?
-  * [Contents Contents]
-    * [ArticlesXSS Web security]
 
+  * [http://code.google.com/p/gwt-cx/downloads/list Download]
+    * x
 
+  * [GettingStarted Getting Started]
+    * x
 
-
-[http://code.google.com/p/gwt-cx/downloads/list Download]
-
-
-[GettingStarted Getting Started]
-
-[Documentation Documentation]
+  *[Documentation Documentation]
+    *x
