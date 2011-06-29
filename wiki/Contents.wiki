@@ -1,5 +1,7 @@
 #summary Contents.
 
+<wiki:toc max_depth="1" />
+
 ===[http://code.google.com/p/gwt-cx/wiki/Contents Contents]===
 
 ===[http://code.google.com/p/gwt-cx/wiki/Introduction Introduction]===
