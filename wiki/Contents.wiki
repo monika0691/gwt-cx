@@ -1,6 +1,6 @@
 #summary Contents.
 
-  * [Articles HOWTO articles]
+  * [http://code.google.com/p/gwt-cx/wiki/Contents Contents]
     * [ArticlesXSS Web security]
     * [ArticlesDom DOM manipulation]
     * [ArticlesStyle CSS and style]
