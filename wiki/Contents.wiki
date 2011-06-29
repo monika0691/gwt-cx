@@ -1,5 +1,11 @@
 #summary Contents.
 
+===[http://code.google.com/p/gwt-cx/wiki/Contents Contents]===
+
+===[http://code.google.com/p/gwt-cx/wiki/Introduction Introduction]===
+  * [http://code.google.com/p/gwt-cx/wiki/Contents What is gwt-cx?]
+  * How can I use gwt-cx?
+
   * [http://code.google.com/p/gwt-cx/wiki/Contents Contents]
     * [ArticlesXSS Web security]
     * [ArticlesDom DOM manipulation]
@@ -10,11 +16,9 @@
   * [CSSReference CSS reference]
 
 
-===[http://code.google.com/p/gwt-cx/wiki/Contents Contents]===
 
-===[http://code.google.com/p/gwt-cx/wiki/Introduction Introduction]===
-  * What is gwt-cx?
-  * How can I use gwt-cx?
+
+
 
 ===[http://code.google.com/p/gwt-cx/downloads/list Download]===
 
