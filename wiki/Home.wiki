@@ -1,6 +1,6 @@
 #summary gwt-cx Wiki Home
 #labels Featured
-#sidebar TableOfContents
+#sidebar Contents
 
 = Welcome to the gwt-cx Wiki =
 
