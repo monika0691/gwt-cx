@@ -3,7 +3,7 @@
 [http://code.google.com/p/gwt-cx/wiki/Home Home]
 
   * [http://code.google.com/p/gwt-cx/wiki/Introduction Introduction]
-    * [Introduction#What is gwt-cx?]
+    * [Introduction#What_is_gwt-cx?]
     * [HowcanIusegwt-cx? How can I use gwt-cx?]
 
   * [http://code.google.com/p/gwt-cx/downloads/list Download]
