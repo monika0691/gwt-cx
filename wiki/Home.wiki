@@ -10,6 +10,5 @@ We welcome any suggestions and feedback you have on the framework, project conte
 Please use the menu on the left to navigate around our wiki.
 
 
-Thanks,
 
 The gwt-cx team.
