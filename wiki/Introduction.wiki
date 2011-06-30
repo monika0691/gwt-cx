@@ -28,7 +28,7 @@ Businesses may wish to tailor customer experiences for a variety of reasons:
 
   * to meet the evolving requirements of customers and market changes
 
-Traditionally, businesses have a couple of options.
+To do this businesses have a couple of options:
 
   # implement a 3rd party application, such as a CRM system, and configure, customise or extend it.  This approach may be expensive and not allow for the necessary level of flexibility or the required differentiation.
 
