@@ -1,4 +1,4 @@
-#summary Introduction to gwt-cx.
+#summary Introduction to gwt-cx
 #labels Phase-Requirements
 
 = What is gwt-cx? =
