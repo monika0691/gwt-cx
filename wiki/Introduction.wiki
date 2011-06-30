@@ -1,5 +1,5 @@
 #summary Introduction to gwt-cx.
-#labels Featured,Phase-Requirements
+#labels Phase-Requirements
 
 = What is gwt-cx? =
 gwt-cx is an open-source Customer Experience (CX) framework, that provides you with the ability to quickly and cost-effectively create innovative customer experiences.
