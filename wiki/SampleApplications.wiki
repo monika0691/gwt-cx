@@ -1,4 +1,4 @@
-#summary Overview of the gwt-cx Sample Applications
+#summary gwt-cx Sample Applications
 
 == Sample Applications ==
 To further accelerate the development, we have included some sample applications for common configuration types and design patterns.
