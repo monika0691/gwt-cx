@@ -1,13 +1,8 @@
 #summary Overview of the gwt-cx Sample Applications
 
-= Introduction =
+== Sample Applications ==
+To further accelerate the development, we have included some sample applications for common configuration types and design patterns.
 
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Current sample applications include:
+  # Basic
+  # CRM
