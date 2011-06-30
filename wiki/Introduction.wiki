@@ -29,7 +29,7 @@ Businesses may wish to tailor customer experiences for a variety of reasons:
 To do this businesses have a couple of options:
 
   # implement a 3rd party application, such as a CRM system, and configure, customise or extend it.  This approach may be expensive and not allow for the necessary level of flexibility or the required differentiation.
-  # develop a bespoke application from scratch. This approach has the familiar drawbacks involving development time and risks.
+  # develop a bespoke application from scratch. This approach has the familiar drawbacks involving development time and risks. Consider the odds - approximately half of all projects are cancelled in development. Of the survivors, another half are late, over budget, and do not meet requirements. Of the remainder (less than 25% of all projects) that make it to production, the majority incur major costs through downtime, lost revenue, and maintenance costs.
 
 gwt-cx aims to be an alternative to these approaches by providing a state of the art web application and a range of plug in modules to provide 80% of the common functionality of your web application.  The other 20% is added by configuring, customising or developing other modules to deliver your innovative, tailored customer experience specific to your brand or industry.  This additive development model accelerates development time and reduces the cost and risk of your project.
 
