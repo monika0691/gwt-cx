@@ -12,11 +12,13 @@ gwt-cx provides:
 
 
 = Why gwt-cx? =
-gwt-cx is designed for innovative businesses who understand that unlocking opportunity is driven by delivering a compelling customer experience, rather than reactive management of the customer relationship through legacy CRM systems.
+gwt-cx is designed for businesses innovators who understand that unlocking opportunity is driven by delivering a compelling customer experience, rather than reactive management of the customer relationship through legacy CRM systems.
 
 Businesses may wish to tailor their customer experience to:
 
   * support a niche business within the broader enterprise (e.g. private bank business unit within a retail bank)
+
+  * tailor experiences based on customer segmentation (e.g. treat high value customers differently to low value customers)
 
   * differentiate their service offering from their competitors
 
