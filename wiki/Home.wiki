@@ -1,4 +1,4 @@
-#summary Wiki Home
+#summary gwt-cx Wiki Home
 #labels Featured
 
 = Welcome to the gwt-cx Wiki =
