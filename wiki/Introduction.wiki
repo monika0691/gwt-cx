@@ -14,11 +14,24 @@ gwt-cx provides:
 = Why gwt-cx? =
 gwt-cx is designed for innovative businesses who understand that unlocking opportunity is driven by delivering a compelling customer experience, rather than reactive management of the customer relationship through legacy CRM systems.
 
+Businesses may wish to tailor their customer experience to:
+
+  * support a niche business within the broader enterprise (e.g. private bank business unit within a retail bank)
+
+  * differentiate their service offering from their competitors
+
+
+
+Traditionally, 
+
+
+
 gwt-cx aims to provide 80% of the functionality of your web application; you choose what common functionality that suits your project by adding the appropriate modules.  The other 20% is added by configuring, customising or developing other modules to deliver an innovative, tailored customer experience specific to your brand or industry.
 
 This additive development model accelerates your development and reduces the time, cost and risk of your project, while enabling the development of innovative, differentiating processes to suit the desired outcome for your organisation.
 
-gwt-cx aims to be an alternative to developing bespoke applications from scratch with web application frameworks or implementing expensive 3rd-party CRM applications which are not fit for purpose.
+gwt-cx aims to be an alternative to developing bespoke applications from scratch with web application frameworks or implementing expensive CRM applications which do not enable the level of differentiation required for your business.
+
 
 =How to use gwt-cx?=
 
