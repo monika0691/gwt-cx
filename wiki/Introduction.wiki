@@ -40,39 +40,3 @@ gwt-cx aims to be an alternative to these approaches by providing a state of the
   # *set-up the application framework* - 
   # *add modules* - select from a range of modules which provide common functionality used in many applications such as contacts and accounts, product, calendar or reporting. Choose whatever meets the requirements and omit the functions you dont need, so no more bloated software.
   # *extend* - 
-    # configure
-    # customise
-    # code new modules
-
-== Application Framework ==
-At its core gwt-cx is an exstensible web-application framework. It has a rich feature set including:
-
-  * authentication and authorization
-  * localisation
-  * multi-lingual
-  * multi-page
-  * file import/export
-  * user management
-  * signup/registration
-  * password recovery
-  * SSL switching
-  * URL rewriting
-  * themes
-  * template layout
-
-== Modules ==
-gwt-cx provides a range of modules to provide common customer relationship functionality.
-
-
-
-== Extending gwt-cx ==
-
-
-
-
-== Sample Applications ==
-To further accelerate the development, we have included some sample applications for common configuration types.
-
-Current sample applications include:
-  # Basic
-  # CRM
