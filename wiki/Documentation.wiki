@@ -1,5 +1,25 @@
 #summary gwt-cx - under the hood
 
+== Overview ==
+
+
+== Architecture ==
+
+MVP
+
+
+== Technologies ==
+
+  * Presentation Tier
+    * GWT, SmartGWT, etc
+  * Business Logic Tier
+    * Spring, Hibernate, etc
+  * Data Tier
+    * mySQL, Skyway builder, etc
+  * Development Tools
+    * Apache Ant, Apache Maven, Eclipse, etc
+
+
 == Application Framework ==
 At its core gwt-cx is an extensible web-application framework. It has a rich feature set including:
 
