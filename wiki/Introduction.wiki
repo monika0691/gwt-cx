@@ -36,13 +36,13 @@ gwt-cx aims to be an alternative to these approaches by providing a state of the
 
 =How to use gwt-cx?=
 
-There are 3 main steps in using get-cx
-  # set-up the core application 
-  # add modules for desired functionality
-  # extend:
-    #configure
-    #customise
-    #code new modules
+3 steps in using get-cx:
+  # *set-up the application framework* - 
+  # *add modules* - select from a range of modules which provide common functionality used in many applications such as contacts and accounts, product, calendar or reporting. Choose whatever meets the requirements and omit the functions you dont need, so no more bloated software.
+  # *extend* - 
+    # configure
+    # customise
+    # code new modules
 
 == Application Framework ==
 At its core gwt-cx is an exstensible web-application framework. It has a rich feature set including:
