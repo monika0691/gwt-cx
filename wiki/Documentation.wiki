@@ -1,13 +1,24 @@
-#summary One-sentence summary of this page.
+#summary gwt-cx - under the hood
 
-= Introduction =
+== Application Framework ==
+At its core gwt-cx is an extensible web-application framework. It has a rich feature set including:
 
-Add your content here.
+  * authentication and authorization
+  * localisation
+  * multi-lingual
+  * multi-page
+  * file import/export
+  * user management
+  * signup/registration
+  * password recovery
+  * SSL switching
+  * URL rewriting
+  * themes
+  * template layout
+
+== Modules ==
+gwt-cx provides a range of modules to provide common customer relationship functionality.
 
 
-= Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+== Extending gwt-cx ==
