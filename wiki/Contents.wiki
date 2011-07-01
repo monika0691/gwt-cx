@@ -14,7 +14,3 @@
 
   * [Documentation Documentation]
     * x
-
-  * [Modules Modules]
-
-  * [SampleApplications Sample Applications]
