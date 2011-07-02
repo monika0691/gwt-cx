@@ -44,5 +44,6 @@ gwt-cx aims to be an alternative to these approaches by providing a state of the
 ==Modules==
 
   * Account & contact management
+  * Charting/Visualisations
   * Calendar
   * Reporting
