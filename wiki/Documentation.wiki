@@ -1,4 +1,4 @@
-#summary gwt-cx - under the hood
+#summary gwt-cx Documentation
 
 == Overview ==
 
