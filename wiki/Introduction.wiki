@@ -29,7 +29,7 @@ Traditionally there a couple of options to support a tailored customer experienc
   # *implement a 3rd party application, such as a CRM system*, and configure, customise or extend it.  This approach may be expensive and not allow for the necessary level of flexibility or the required differentiation.
   # *develop a bespoke application from scratch.* This approach has the familiar drawbacks involving high development time, costs, risks and project failure.
 
-gwt-cx aims to be an alternative to these approaches. It enables quick and cost-effectively create innovative customer experiences by providing the majority of the common functionality needed in a typical application.  The remainder is added by configuring, customising or developing new modules to support your desired customer experience.
+gwt-cx aims to be an alternative to these approaches. It enables quick and cost-effectively create innovative customer experiences by providing the majority of the common functionality needed in a typical application.  The remainder is added by configuring, customising or developing new modules to support the desired customer experience for your brand.
 
 This additive development model accelerates development time and reduces the cost and risk of your project.
 
