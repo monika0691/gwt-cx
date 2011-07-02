@@ -10,35 +10,12 @@ MVP
 
 == Technologies ==
 
-  * Presentation Tier
-    * GWT, SmartGWT, etc
-  * Business Logic Tier
-    * Spring, Hibernate, etc
-  * Data Tier
-    * mySQL, Skyway builder, etc
-  * Development Tools
-    * Apache Ant, Apache Maven, Eclipse, etc
-
 
 == Application Framework ==
 At its core gwt-cx is an extensible web-application framework. It has a rich feature set including:
 
-  * authentication and authorization
-  * localisation
-  * multi-lingual
-  * multi-page
-  * file import/export
-  * user management
-  * signup/registration
-  * password recovery
-  * SSL switching
-  * URL rewriting
-  * themes
-  * template layout
 
 == Modules ==
 gwt-cx provides a range of modules to provide common customer relationship functionality.
-
-
 
 == Extending gwt-cx ==
