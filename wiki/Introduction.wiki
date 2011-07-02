@@ -32,6 +32,7 @@ gwt-cx aims to be an alternative to these approaches by providing a state of the
 
 
 =gwt-cx Features=
+The current features of gwt-cx include:
 
 ==Application Framework==
 
@@ -47,3 +48,5 @@ gwt-cx aims to be an alternative to these approaches by providing a state of the
   * Charting/visualisations
   * Calendar
   * Reporting
+
+Please see the documentation section for more information.
