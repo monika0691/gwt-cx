@@ -5,7 +5,7 @@
 
 The goal of this wiki is to provide an overview of why and how to use gwt-cx in your next project.
 
-We welcome any suggestions and feedback you have on the framework, project content or anything else for that matter.
+We welcome any suggestions and feedback you have on the framework, or project content.
 
 Please use the menu on the left to navigate around our wiki.
 
