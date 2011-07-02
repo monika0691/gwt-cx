@@ -34,7 +34,7 @@ gwt-cx aims to be an alternative to these approaches by providing a state of the
 =gwt-cx Features=
 The current features of gwt-cx include:
 
-==Application Framework==
+==Framework==
 
   * authentication and authorization
   * localisation
