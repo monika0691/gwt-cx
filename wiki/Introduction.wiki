@@ -26,7 +26,7 @@ There are a variety of reasons why you may wish to tailor the customer experienc
 
 Traditionally there a couple of options to support a tailored customer experience:
 
-  # *implement a 3rd party application, such as a CRM system*, and configure, customise or extend it.  This approach may be expensive and not allow for the necessary level of flexibility or the required differentiation.
+  # *implement a 3rd party application*, such as a CRM system, and work within the constraints to configure or customise it.  This approach may be expensive and not flexible enough to enable the required differentiation.
   # *develop a bespoke application from scratch.* This approach has the familiar drawbacks involving high development time, costs, risks and project failure.
 
 gwt-cx aims to be an alternative to these approaches. It enables quick and cost-effectively create innovative customer experiences by providing the majority of the common functionality needed in a typical application.  The remainder is added by configuring, customising or developing new modules to support the desired customer experience for your brand.
