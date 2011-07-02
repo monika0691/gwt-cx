@@ -31,9 +31,18 @@ To do this businesses have a couple of options:
 gwt-cx aims to be an alternative to these approaches by providing a state of the art web application and a range of plug in modules to provide 80% of the common functionality of your web application.  The other 20% is added by configuring, customising or developing other modules to deliver your innovative, tailored customer experience specific to your brand or industry.  This additive development model accelerates development time and reduces the cost and risk of your project.
 
 
-=How to use gwt-cx?=
+=gwt-cx Features=
 
-3 steps in using get-cx:
-  # *set-up the application framework* - 
-  # *add modules* - select from a range of modules which provide common functionality used in many applications such as contacts and accounts, product, calendar or reporting. Choose whatever meets the requirements and omit the functions you dont need, so no more bloated software.
-  # *extend* - 
+==Application Framework==
+
+  * authentication and authorization
+  * localisation
+  * multi-lingual
+  * multi-page
+  * file import/export
+
+==Modules==
+
+  * Account & contact management
+  * calendar
+  * reporting
