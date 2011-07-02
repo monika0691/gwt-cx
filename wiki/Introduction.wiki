@@ -17,9 +17,9 @@ Businesses may wish to tailor customer experiences for a variety of reasons:
 
   * to support a niche business within the broader enterprise (e.g. private bank business unit within a retail bank)
 
-  * to differentiate their offering based on customer segmentation (e.g. treat high value customers differently to low value customers)
-
   * to support brand differentiation from competitors
+
+  * to support a differentiated service offering based on customer segmentation (e.g. treat high value customers differently to low value customers)
 
   * to meet the evolving requirements of customers and market changes
 
