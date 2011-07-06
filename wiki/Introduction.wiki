@@ -4,8 +4,6 @@
 = What is gwt-cx? =
 gwt-cx is an open-source Customer Experience (CX) management framework, which enables you to quickly and cost-effectively create bespoke customer experiences.
 
-gwt-cx is designed for innovators who understand that unlocking business opportunity is driven by delivering a compelling customer experience.
-
 To create a tailored customer experience:
 
   # Start with our base application
@@ -13,11 +11,12 @@ To create a tailored customer experience:
   # Extend to meet your specific requirements
 
 = Why gwt-cx? =
-gwt-cx is designed for innovators who understand that unlocking businesses opportunity is driven by delivering a compelling customer experience, rather than reactive management of the customer relationship through legacy CRM systems.
+== Why deliver innovative customer experiences? ==
+gwt-cx is designed for innovators who understand that unlocking business opportunity is driven by delivering a compelling customer experience, rather than reactive management of the customer relationship through legacy CRM systems.
 
 There are a variety of reasons why you may wish to tailor the customer experience:
 
-  * to innovate and create market opportunities to drive business value
+  * to innovate, create market opportunities and drive business value
 
   * to support a niche business within a broader enterprise (e.g. private bank business unit within a retail bank)
 
@@ -25,18 +24,22 @@ There are a variety of reasons why you may wish to tailor the customer experienc
 
   * to support a differentiated service offering based on customer segmentation (e.g. treat high value customers differently to low value customers)
 
-  * to meet the evolving requirements of customers and market changes
+  * to meet the evolving requirements of customers and the market
 
-
+== How to deliver innovative customer experiences? ==
 Traditionally there a couple of options to support a tailored customer experience:
 
-  # *implement a 3rd party application*, such as a CRM system, and work within the constraints to configure or customise it.  This approach may be expensive and not flexible enough to enable the required differentiation.
-  # *develop a bespoke application from scratch.* This approach has the familiar drawbacks involving high development time, costs, risks and project failure.
+  # *develop a bespoke application from scratch.* This approach has the familiar drawbacks involving long development time, high costs and the risks of project failure.
+  # *implement a 3rd party application*, such as a CRM system, and configure or customise within the system constraints.  This approach may be expensive and the solution not flexible enough to enable the required level of differentiation.
 
-gwt-cx aims to be an alternative to these approaches. It enables quick and cost-effectively create innovative customer experiences by providing the majority of the common functionality needed in a typical application.  The remainder is added by extending modules to support the desired customer experience for your brand.
+== Why innovate customer experiences with gwt-cx ==
+gwt-cx aims to be an alternative to these approaches. 
 
-This additive development model accelerates development time and reduces the cost and risk of your project.
+It eliminates the need to start from scratch by providing a fully-functional sample application to use as a base for your project.  Removing the need to develop core application functions like authentication and security.
 
+This can then be extended using a range of modules to add common features such as contact management, calendar and reporting. This should provide the majority of your applications core functionality and allows you to focus on the configuration and customisation to deliver the desired customer experience.
+
+This additive development model accelerates development time and reduces the cost and risk of your project to deliver innovative customer experiences.
 
 =gwt-cx Features=
 The current features of gwt-cx include:
