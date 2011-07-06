@@ -5,10 +5,12 @@
 
 The goal of this wiki is to provide an overview of why and how to use gwt-cx in your next project.
 
-We welcome any questions, comments or suggestions you may have on the framework. Please contact us on the [http://groups.google.com/group/gwt-cx gwt-cx  discussion group] or email us at gwt-cx@googlegroups.com
-
 Please use the menu on the left to navigate around our wiki.
 
+---
 
+We welcome any questions, comments or suggestions you may have on the framework. Please contact us on the [http://groups.google.com/group/gwt-cx gwt-cx  discussion group].
 
-The gwt-cx team.
+Thank you for your interest in gwt-cx.
+
+The gwt-cx team
