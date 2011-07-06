@@ -7,7 +7,7 @@ The goal of this wiki is to provide an overview of why and how to use gwt-cx in 
 
 Please use the menu on the left to navigate around our wiki.
 
----
+------
 
 We welcome any questions, comments or suggestions you may have on the framework. Please contact us on the [http://groups.google.com/group/gwt-cx gwt-cx  discussion group].
 
