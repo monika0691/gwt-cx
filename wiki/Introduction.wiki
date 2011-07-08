@@ -17,7 +17,7 @@ gwt-cx is designed for business innovators who understand that unlocking opportu
 
   * to meet the challenges of a rapidly changing marketplace
 
-  * to support a niche business within a broader enterprise (e.g. private bank business unit within a retail bank)
+  * to support a niche business requirements within a broader enterprise (e.g. private bank business unit within a retail bank)
 
 == How to create innovative customer experiences? ==
 Traditionally there a couple of options to create innovative customer experience:
