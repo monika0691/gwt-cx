@@ -11,13 +11,13 @@ gwt-cx is designed for business innovators who understand that unlocking opportu
 
   * to innovate, create opportunities and drive business value
 
-  * to support a niche business within a broader enterprise (e.g. private bank business unit within a retail bank)
-
   * to support brand differentiation from competitors
 
   * to support a differentiated service offering based on customer segmentation (e.g. treat high value customers differently to low value customers)
 
   * to meet the challenges of a rapidly changing marketplace
+
+  * to support a niche business within a broader enterprise (e.g. private bank business unit within a retail bank)
 
 == How to create innovative customer experiences? ==
 Traditionally there a couple of options to create innovative customer experience:
