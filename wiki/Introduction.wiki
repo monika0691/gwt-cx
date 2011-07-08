@@ -4,21 +4,12 @@
 = What is gwt-cx? =
 gwt-cx an open-source Customer Experience framework, which enables organisations to quickly create compelling customer experiences that drive business value.
 
-To create a compelling customer experience:
-
-  # Start with our base application
-  # Use our plug-in the modules to add your desired functionality
-  # Configure and extend to create a compelling customer experience
+gwt-cx is designed for business innovators who understand that unlocking opportunity in ultra-competitive and rapidly changing marketplace is driven by delivering a compelling customer experience.
 
 = Why gwt-cx? =
-== Why deliver innovative customer experiences? ==
+== Why customer experience innovation?==
 
-
-gwt-cx is designed for innovators who understand that unlocking business opportunity is driven by delivering a compelling customer experience, rather than reactive management of the customer relationship through legacy CRM systems.
-
-There are a variety of reasons why you may wish to tailor the customer experience:
-
-  * to innovate, create market opportunities and drive business value
+  * to innovate, create opportunities and drive business value
 
   * to support a niche business within a broader enterprise (e.g. private bank business unit within a retail bank)
 
