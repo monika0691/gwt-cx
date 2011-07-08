@@ -4,33 +4,32 @@
 = What is gwt-cx? =
 gwt-cx an open-source Customer Experience framework, which enables organisations to quickly create compelling customer experiences that drive business value.
 
-gwt-cx is designed for business innovators who understand that unlocking opportunity in ultra-competitive and rapidly changing marketplace is driven by delivering a compelling customer experience.
+gwt-cx is designed for business innovators who understand that unlocking opportunity in today's ultra-competitive and rapidly changing marketplace is driven by delivering a compelling customer experience.
 
-= Why gwt-cx? =
-== Why customer experience innovation?==
+= Why customer experience innovation?=
 
-  * to innovate, create opportunities and drive business value
+  * to create opportunities and drive business value
 
-  * to support brand differentiation from competitors
+  * to support brand differentiation
 
-  * to support a differentiated service offering based on customer segmentation (e.g. treat high value customers differently to low value customers)
+  * to support customer segmentation strategies and a differentiated service offering per segment
 
   * to meet the challenges of a rapidly changing marketplace
 
   * to support a niche business requirements within a broader enterprise (e.g. private bank business unit within a retail bank)
 
-== How to create innovative customer experiences? ==
-Traditionally there a couple of options to create innovative customer experience:
+== How to support customer experiences innovation? ==
+Traditionally, there are a  couple of options to support innovative customer experience:
 
   # *develop a bespoke application from scratch.* This approach has the familiar drawbacks involving long development time, high costs and the risks of project failure.
   # *implement a 3rd party application*, such as a CRM system, and configure or customise within the system constraints.  This approach may be expensive and the solution may not possess the required level of flexibility.
 
-== Why innovate customer experiences with gwt-cx? ==
-gwt-cx aims to be an alternative to these approaches. 
+= Why  gwt-cx? =
+gwt-cx aims to be an alternative to starting from scratch, or utilising bloated propitiatory solutions.
 
 It eliminates the need to start from scratch by providing a fully-functional sample application to use as a base for your project.  Removing the need to develop core application functions like authentication, multi-lingual and localisation.
 
-The sample application can then be extended using a range of modules to add common features, such as contact management, calendar and reporting. This aims to provide the majority of your applications core functionality and allows you to focus on delivering the desired customer experience through configuration, extension and integration.
+The sample application can then be extended using a range of modules to add common features, such as contact management, calendar and reporting. This aims to provide the majority of your applications core functionality and allows you to focus on delivering your desired customer experience vision through configuration, extension and integration.
 
 This additive development model accelerates development time and reduces the cost and risk of your project.
 
