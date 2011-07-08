@@ -17,20 +17,20 @@ gwt-cx is designed for business innovators who understand that unlocking opportu
 
   * to support a differentiated service offering based on customer segmentation (e.g. treat high value customers differently to low value customers)
 
-  * to meet the evolving requirements of customers and the market
+  * to meet the challenges of a rapidly changing marketplace
 
-== How to deliver innovative customer experiences? ==
-Traditionally there a couple of options to support a tailored customer experience:
+== How to create innovative customer experiences? ==
+Traditionally there a couple of options to create innovative customer experience:
 
   # *develop a bespoke application from scratch.* This approach has the familiar drawbacks involving long development time, high costs and the risks of project failure.
-  # *implement a 3rd party application*, such as a CRM system, and configure or customise within the system constraints.  This approach may be expensive and the solution not flexible enough to enable the required level of differentiation.
+  # *implement a 3rd party application*, such as a CRM system, and configure or customise within the system constraints.  This approach may be expensive and the solution may enable the required level of flexibility.
 
-== Why innovate customer experiences with gwt-cx ==
+== Why innovate customer experiences with gwt-cx? ==
 gwt-cx aims to be an alternative to these approaches. 
 
 It eliminates the need to start from scratch by providing a fully-functional sample application to use as a base for your project.  Removing the need to develop core application functions like authentication, multi-lingual and localisation.
 
-The base application can then be extended using a range of modules to add common features, such as contact management, calendar and reporting. This should provide the majority of your applications core functionality and allows you to focus on delivering the desired customer experience through configuration and customisation.
+The base application can then be extended using a range of modules to add common features, such as contact management, calendar and reporting. This should provide the majority of your applications core functionality and allows you to focus on delivering the desired customer experience through configuration, extension and integration.
 
 This additive development model accelerates development time and reduces the cost and risk of your project.
 
