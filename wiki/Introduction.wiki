@@ -29,9 +29,9 @@ gwt-cx aims to be an alternative to starting from scratch, or utilising expensiv
 
 Firstly, gwt-cx provides a fully-functional web application to use as a base for your project.  This removes the need to develop base application functions like authentication, multi-lingual and localisation support.
 
-The web application can then be extended using a range of modules to add common features, such as contact management, calendar and reporting. This should provide the majority of your applications core functionality.
+The web application can then be extended using a range of modules to add common features, such as contact management, calendar and reporting, which should provide the majority of the core functionality required.
 
-This allows the main effort of your project to be focused on delivering on your desired customer experience vision through configuration, extension and integration.
+This allows the main effort of your project to be focused on delivering your desired customer experience vision through configuration, extension and integration.
 
 This additive development model accelerates development time, reduces the cost and risk of your project, while providing the required flexibility and freedom to innovate.
 
