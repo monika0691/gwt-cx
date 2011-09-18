@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!--
+ *
+ * (C) Copyright 2010, 2011 upTick Pty Ltd
+ *
+ * Licensed under the terms of the GNU Lesser General Public License version 3
+ * as published by the Free Software Foundation. You may obtain a copy of the
+ * License at: http://www.gnu.org/copyleft/lesser.html
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ *
+-->
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+  <!--
+    The Persistence unit name must match the entry in BaseDao and ReportServlet.
+
+    See also: context.xml (<Resource name="jdbc/HSQLDB-TOMCAT7-CP") and
+              web.xml (for <resource-ref>)
+  -->
+
+  <!-- HSQLDB and TOMCAT7 -->
+  <persistence-unit name="HSQLDB-TOMCAT7-CP-PU" transaction-type="RESOURCE_LOCAL">
+  <provider>org.hibernate.ejb.HibernatePersistence</provider>
+  <non-jta-data-source>java:comp/env/jdbc/HSQLDB-TOMCAT7-CP</non-jta-data-source>
+    <class>com.gwtcx.server.domain.User</class>
+    <class>com.gwtcx.server.domain.Account</class>
+    <class>com.gwtcx.server.domain.Address</class>
+    <class>com.gwtcx.server.domain.Report</class>
+    <exclude-unlisted-classes/>
+    <properties>
+    <property name="javax.persistence.nonJtaDataSource" value="java:comp/env/jdbc/HSQLDB-TOMCAT7-CP" />
+    <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+    </properties>
+  </persistence-unit>
+
+  <!-- HSQLDB HOSTED MODE PU -->
+  <persistence-unit name="HSQLDB-HOSTED-MODE-PU" transaction-type="RESOURCE_LOCAL">
+  <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.gwtcx.server.domain.User</class>
+    <class>com.gwtcx.server.domain.Account</class>
+    <class>com.gwtcx.server.domain.Address</class>
+    <class>com.gwtcx.server.domain.Report</class>
+    <exclude-unlisted-classes/>
+    <properties>
+    <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+    <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver" />
+    <property name="hibernate.connection.url" value="jdbc:hsqldb:file:/tools/common/tomcat-7.0.16/webapps/serendipity/data/serendipitydb;ifexists=true" />
+    <property name="hibernate.connection.username" value="sa" />
+    <property name="hibernate.connection.password" value="" />
+    </properties>
+  </persistence-unit>
+
+  <!-- HSQLDB and C3PO -->
+  <!--
+  <persistence-unit name="HSQLDB-BONE-CP-PU" transaction-type="RESOURCE_LOCAL">
+  <provider>org.hibernate.ejb.HibernatePersistence</provider>
+  <non-jta-data-source>java:comp/env/jdbc/HSQLDB-BONE-CP</non-jta-data-source>
+    <class>com.gwtcx.server.domain.User</class>
+    <class>com.gwtcx.server.domain.Account</class>
+    <class>com.gwtcx.server.domain.Address</class>
+    <class>com.gwtcx.server.domain.Report</class>
+    <exclude-unlisted-classes/>
+    <properties>
+    <property name="javax.persistence.nonJtaDataSource" value="java:comp/env/jdbc/HSQLDB-BONE-CP" />
+    <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+    <property name="hibernate.connection.provider_class" value="com.jolbox.bonecp.provider.BoneCPConnectionProvider" />
+    </properties>
+  </persistence-unit>
+  -->
+
+  <!-- HSQLDB and C3PO -->
+  <!--
+  <persistence-unit name="HSQLDB-C3PO-CP-PU" transaction-type="RESOURCE_LOCAL">
+  <provider>org.hibernate.ejb.HibernatePersistence</provider>
+  <non-jta-data-source>java:comp/env/jdbc/HSQL-C3PO</non-jta-data-source>
+    <class>com.gwtcx.server.domain.User</class>
+    <class>com.gwtcx.server.domain.Account</class>
+    <class>com.gwtcx.server.domain.Address</class>
+    <class>com.gwtcx.server.domain.Report</class>
+    <exclude-unlisted-classes/>
+    <properties>
+    <property name="javax.persistence.nonJtaDataSource" value="java:comp/env/jdbc/HSQL-C3PO" />
+    <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+    <property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider" />
+    </properties>
+  </persistence-unit>
+  -->
+
+    <!--
+    <property name="hibernate.current_session_context_class" value="thread" />
+    <property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
+    <property name="hibernate.cache.region.factory_class" value="net.sf.ehcache.hibernate.EhCacheRegionFactory" />
+    -->
+
+  <!-- HSQLDB and DBCP -->
+  <!--
+  <persistence-unit name="HSQLDB-DB-CP-PU" transaction-type="RESOURCE_LOCAL">
+
+  <provider>org.hibernate.ejb.HibernatePersistence</provider>
+  <non-jta-data-source>java:comp/env/jdbc/HSQL-DBCP</non-jta-data-source>
+
+    <class>com.gwtcx.server.domain.User</class>
+    <class>com.gwtcx.server.domain.Account</class>
+    <class>com.gwtcx.server.domain.Address</class>
+    <class>com.gwtcx.server.domain.Report</class>
+
+    <exclude-unlisted-classes/>
+
+    <properties>
+    <property name="javax.persistence.nonJtaDataSource" value="java:comp/env/jdbc/HSQL-DBCP" />
+    <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+    </properties>
+  </persistence-unit>
+  -->
+
+      <!-- Drop and re-create the database schema on startup -->
+    <!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
+
+</persistence>

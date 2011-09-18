@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!--
+ *
+ * (C) Copyright 2010, 2011 upTick Pty Ltd
+ *
+ * Licensed under the terms of the GNU Lesser General Public License version 3
+ * as published by the Free Software Foundation. You may obtain a copy of the
+ * License at: http://www.gnu.org/copyleft/lesser.html
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ *
+-->
+
+<Context cachingAllowed="true"
+         cookies="true"
+         crossContext="false"
+         path="/serendipity"
+         docBase="serendipity"
+         privileged="false"
+         reloadable="false"
+         useHttpOnly="false"
+         swallowOutput="true"
+         useNaming="true" >
+
+  <!--
+    set swallowOutput="true" to redirecdt your console output to log "localhost.YYYY-MM-DD.log"
+    set useNaming="true" to enable JNDI names
+  -->
+
+  <!-- Default set of monitored resources -->
+  <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+  <!-- HSQLDB and TOMCAT7 CP -->
+  <Resource name="jdbc/HSQLDB-TOMCAT7-CP"
+              auth="Container"
+              type="javax.sql.DataSource"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              driverClassName="org.hsqldb.jdbcDriver"
+              username="sa" password=""
+              testWhileIdle="true"
+              testOnBorrow="true"
+              testOnReturn="false"
+              validationQuery="SELECT 1"
+              validationInterval="30000"
+              timeBetweenEvictionRunsMillis="30000"
+              maxActive="100"
+              minIdle="10"
+              maxWait="10000"
+              initialSize="10"
+              removeAbandonedTimeout="60"
+              removeAbandoned="true"
+              logAbandoned="true"
+              minEvictableIdleTimeMillis="30000"
+              jmxEnabled="true"
+              jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
+              url="jdbc:hsqldb:file:/tools/common/tomcat-7.0.16/webapps/serendipity/data/serendipitydb;ifexists=true" />
+			  <!--  url="jdbc:hsqldb:file:/opt/tomcat/webapps/serendipity/data/serendipitydb;ifexists=true" /> -->
+			  
+  <!-- HSQLDB and DB CP -->
+  <!--
+  <Resource name="jdbc/HSQLDB-DB-CP"
+            auth="Container"
+            type="javax.sql.DataSource"
+            user="sa" password=""
+            maxActive="20"
+            maxIdle="30"
+            maxWait="10000"
+            removeAbandoned="true"
+            removeAbandonedTimeout="300"
+            logAbandoned="false"
+            driverClassName="org.hsqldb.jdbcDriver"
+            url="jdbc:hsqldb:file:/tools/common/tomcat-7.0.16/webapps/serendipity/data/serendipitydb;ifexists=true" />
+   -->
+
+  <!-- HSQLDB and BONE CP -->
+  <!--
+  <Resource name="jdbc/HSQLDB-BONE-CP"
+            auth="Container"
+            type="javax.sql.DataSource"
+            factory="com.jolbox.bonecp.BoneCPDataSource"
+            driverClass="org.hsqldb.jdbcDriver"
+            user="sa" password=""
+            idleMaxAge="240"
+            idleConnectionTestPeriod="60"
+            partitionCount="3"
+            acquireIncrement="5"
+            maxConnectionsPerPartition="10"
+            minConnectionsPerPartition="5"
+            statementsCacheSize="50"
+            releaseHelperThreads="5"
+            jdbcUrl="jdbc:hsqldb:file:/tools/common/tomcat-7.0.16/webapps/serendipity/data/serendipitydb;ifexists=true" />
+  -->
+
+  <!-- HSQLDB and C3PO -->
+  <!--
+  <Resource name="jdbc/HSQLDB-C3PO-CP"
+            auth="Container"
+            type="com.mchange.v2.c3p0.ComboPooledDataSource"
+            factory="org.apache.naming.factory.BeanFactory"
+            driverClass="org.hsqldb.jdbcDriver"
+            user="sa" password=""
+            initialPoolSize="3"
+            minPoolSize="3"
+            maxPoolSize="30"
+            idleTestPeriod="0"
+            timeout="0"
+            maxStatements="0"
+            propertyCycle="300"
+            acquireIncrement="3"
+            testConnectionOnCheckout="false"
+            autoCommitOnClose="false"
+            forceIgnoreUnresolvedTransactions="false"
+            numHelperThreads= "3"
+            jdbcUrl="jdbc:hsqldb:file:/tools/common/tomcat-7.0.16/webapps/serendipity/data/serendipitydb;ifexists=true" />
+  -->
+
+</Context>
