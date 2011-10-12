@@ -1,21 +1,58 @@
-#summary gwt-cx Documentation
+#summary Getting started with gwt-cx
 
 = Under Construction =
 
+We're busy working on our documentation. In the meantime, please see our previous blog posts below, which outline the various aspects of the project.
 
-== Architecture ==
+*
+[http://www.uptick.com.au/content/getting-started-smartgwt  1. Getting started with smartGWT]
 
-MVP
+[http://www.uptick.com.au/content/create-gwt-project  2	Create a GWT Project]
 
+[http://www.uptick.com.au/content/design-application  3	Design the Application]
 
-== Technologies ==
+[http://www.uptick.com.au/content/layout-user-interface  4	Layout the User Interface]
 
+[http://www.uptick.com.au/content/build-user-interface  5	Build the User Interface]
 
-== Application Framework ==
-At its core gwt-cx is an extensible web-application framework. It has a rich feature set including:
+[http://www.uptick.com.au/content/manage-events  6	Manage Events]
 
+[http://www.uptick.com.au/content/add-additional-ui-elements-mycrm  7	Add additional UI elements to myCRM]
 
-== Modules ==
-gwt-cx provides a range of modules to provide common customer relationship functionality.
+[http://www.uptick.com.au/content/managing-multiple-host-pages  8	Managing Multiple Host Pages]
 
-== Extending gwt-cx ==
+[http://www.uptick.com.au/content/adding-support-other-languages  9	Adding support for other languages]
+
+[http://www.uptick.com.au/content/getting-started-subversion  10	Getting started with Subversion]
+
+[http://www.uptick.com.au/content/gwt-and-smartgwt-best-practices  11	GWT and smartGWT Best Practices]
+
+[http://www.uptick.com.au/content/getting-started-gwt-platform  12	Getting started with gwt-platform]
+
+[http://www.uptick.com.au/content/getting-started-gwt-platform-part-2  13	Getting started with gwt-platform - part 2]
+
+[http://www.uptick.com.au/content/serendipity-working-gwt-platform-and-smartgwt  14	Serendipity - working with gwt-platform and smartGWT]
+
+[http://www.uptick.com.au/content/working-gwt-platform-and-smartgwt-part-2  15	Working with gwt-platform and smartGWT - part 2]
+
+[http://www.uptick.com.au/content/working-gwt-jpa-hibernate-and-hsqldb  16	Working with GWT, JPA, Hibernate and HSQLDB]
+
+[http://www.uptick.com.au/content/transferring-jpa-objects-server-browser  17	Transferring JPA objects from the server to the browser]
+
+[http://www.uptick.com.au/content/working-gwt-platforms-mvp-and-uihandlers  18	Working with gwt-platform's MVP and UiHandlers]
+
+[http://www.uptick.com.au/content/crud-gwt-gwtp-smartgwt-and-jpa  19	CRUD with GWT, GWTP, smartGWT and JPA]
+
+[http://www.uptick.com.au/content/selection-and-pagination-gwt-gwtp-smartgwt-and-jpa  20	Selection and pagination with GWT, GWTP, smartGWT and JPA]
+
+[http://www.uptick.com.au/content/working-hsqldb-jasperreports-and-ireport  21	Working with HSQLDB, JasperReports and iReport]
+
+[http://www.uptick.com.au/content/taking-advantage-apache-fileupload-and-opencsv  22	Taking advantage of Apache FileUpload and opencsv]
+
+[http://www.uptick.com.au/content/gwt-login-security  23	GWT Login Security]
+
+[http://www.uptick.com.au/content/smartgwt-and-fusioncharts  24	SmartGWT and FusionCharts]
+
+[http://www.uptick.com.au/content/getting-started-gwt-maven-and-eclipse  25	Getting started with GWT, Maven and Eclipse]
+
+[http://www.uptick.com.au/content/gwt-cx-maven-multimodule-enterprise-project	26	gwt-cx: A Maven Multimodule Enterprise Project]*
