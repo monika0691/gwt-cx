@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:gwt="urn:import:com.google.gwt.user.client.ui"
+             xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+             xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+             xmlns:gwtcx="urn:import:com.gwtcx.extgwt.client.widgets" >
+
+  <gwt:HTMLPanel styleName="gwtcx-Masthead">
+    <gwt:FlowPanel ui:field="westLayout" styleName="gwtcx-Masthead-Container-West">
+      <gwt:Label ui:field="name" styleName="gwtcx-Masthead-Name" text="Serendipity" />
+    </gwt:FlowPanel>
+    <gwt:FlowPanel ui:field="eastLayout" styleName="gwtcx-Masthead-Container-East">
+      <gwt:HTML ui:field="signedInUser" styleName="gwtcx-Masthead-SignedInUser" />
+    </gwt:FlowPanel>
+  </gwt:HTMLPanel>
+
+</ui:UiBinder>

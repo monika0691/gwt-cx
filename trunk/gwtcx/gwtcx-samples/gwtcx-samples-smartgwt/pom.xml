@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.gwtcx</groupId>
+    <artifactId>gwtcx-samples</artifactId>
+    <version>1.0.0-dp1</version>
+  </parent>
+
+  <artifactId>gwtcx-samples-smartgwt</artifactId>
+  <packaging>pom</packaging>
+  <name>GWTCX smartGWT Samples</name>
+
+  <modules>
+    <module>gwtcx-samples-smartgwt-serendipity</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+
+    <!-- GWT Customer Experience dependencies -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-client</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-client-smartgwt</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-server</artifactId>
+     <version>${project.version}</version>
+    </dependency>
+
+    <!-- smartGWT dependencies -->
+    <dependency>
+      <groupId>com.smartgwt</groupId>
+      <artifactId>smartgwt</artifactId>
+      <version>${smartgwt.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- HSQLDB dependencies -->
+    <dependency>
+      <groupId>org.hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+      <version>${hsqldb.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jdbc</artifactId>
+      <version>${tomcat-jdbc.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- SpringSource / Apache Tomcat 7 JDBC Connection Pool Manager dependencies
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>com.springsource.org.apache.tomcat.jdbc</artifactId>
+      <version>${com.springsource.org.apache.tomcat.jdbc.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    -->
+    <!-- BoneCP JDBC Connection Pool Manager dependencies -->
+    <!--
+    <dependency>
+      <groupId>com.jolbox</groupId>
+      <artifactId>bonecp</artifactId>
+      <version>${bonecp.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.jolbox</groupId>
+      <artifactId>bonecp-provider</artifactId>
+      <version>${bonecp.version}</version>
+    </dependency>
+    -->
+    <!-- C3PO JDBC Connection Pool Manager dependencies -->
+    <!--
+    <dependency>
+      <groupId>c3p0</groupId>
+      <artifactId>c3p0</artifactId>
+      <version>${c3p0.version}</version>
+    </dependency>
+    -->
+
+      <!-- JPA/Hibernate dependencies -->
+      <dependency>
+        <groupId>org.hibernate.javax.persistence</groupId>
+        <artifactId>hibernate-jpa-2.0-api</artifactId>
+        <version>${javax.persistence.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-entitymanager</artifactId>
+        <version>${org.hibernate.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-validator</artifactId>  <!-- Required by GWT 2.3 for bean validation -->
+        <version>${org.hibernate-validator.version}</version>
+      </dependency>
+
+      <!-- JasperReports dependencies -->
+      <!--
+      Make your pom.xml dependency entry for JasperReports look like the following.
+      If you don't use the excludes directive you get the java.lang.NoSuchFieldError: reportUnusedDeclaredThrownExceptionIncludeDocCommentReference error.
+      -->
+      <dependency>
+      <groupId>net.sf.jasperreports</groupId>
+      <artifactId>jasperreports</artifactId>
+        <version>${jasperreports.version}</version>
+      <exclusions>
+          <exclusion>
+            <artifactId>jdtcore</artifactId>
+            <groupId>eclipse</groupId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <!-- Apache Commons Collections dependencies -->
+      <dependency>
+        <groupId>commons-collections</groupId>
+        <artifactId>commons-collections</artifactId>
+        <version>${commons-collections.version}</version>
+      </dependency>
+
+      <!-- Apache FileUpload dependencies -->
+      <dependency>
+        <groupId>commons-fileupload</groupId>
+        <artifactId>commons-fileupload</artifactId>
+        <version>${commons-fileupload.version}</version>
+      </dependency>
+      <!-- Apache Commons IO dependencies -->
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons-io.version}</version>
+      </dependency>
+
+      <!-- OpenCSV dependencies -->
+      <dependency>
+        <groupId>net.sf.opencsv</groupId>
+        <artifactId>opencsv</artifactId>
+        <version>${opencsv.version}</version>
+      </dependency>
+
+      <!-- Mail dependencies -->
+      <dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>mail</artifactId>
+        <version>${javax.mail.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!-- GWT HighCharts dependencies -->
+      <dependency>
+        <groupId>org.moxieapps</groupId>
+        <artifactId>gwt.highcharts</artifactId>
+        <version>${gwt.highcharts.version}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+</project>
