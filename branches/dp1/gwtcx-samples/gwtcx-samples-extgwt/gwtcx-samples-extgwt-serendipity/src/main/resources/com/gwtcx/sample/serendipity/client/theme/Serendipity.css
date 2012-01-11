@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+
+/**
+ * Copyright 2010, 2011 upTick Pty Ltd
+ *
+ * Licensed under the terms of the GNU General Public License version 3
+ * as published by the Free Software Foundation. You may obtain a copy of the
+ * License at: http://www.gnu.org/copyleft/gpl.html
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+/*
+ * Add css rules here for your application.
+ *
+ * Note: margin, border, padding, content (the box model)
+ *
+ */
+
+/** Example rules used by the template application (remove for your app) */
+
+.gwtcx-Masthead-Container-West {
+  background: url(images/logo.png) no-repeat 0px 0px;
+  padding-top: 32px;
+  padding-left: 120px;
+}
+
+.gwtcx-Masthead-Name {
+  color: #15428b;
+  font-family: Tahoma, Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  overflow: hidden;
+  text-align: left;
+  float: left;
+}
+
+.gwtcx-Dashboards-View {
+  overflow: auto;
+}
+
+.gwtcx-Dashboards-View-Container {
+  float: left;
+}
+
