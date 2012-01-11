@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="basic">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <dependent-module archiveName="gwtcx-core-shared-1.0.0-dp1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/gwtcx-core-shared/gwtcx-core-shared">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gwtcx-core-server-1.0.0-dp1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/gwtcx-core-server/gwtcx-core-server">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="gwtcx-samples-gwt-basic"/>
+        <property name="java-output-path" value="/gwtcx-samples-gwt-basic/target/gwtcx-samples-gwt-basic-1.0.0-dp1/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>

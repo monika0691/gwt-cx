@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.gwtcx</groupId>
+    <artifactId>gwtcx-samples</artifactId>
+    <version>1.0.0-dp1</version>
+  </parent>
+
+  <artifactId>gwtcx-samples-extgwt</artifactId>
+  <packaging>pom</packaging>
+  <name>GWTCX Ext GWT Samples</name>
+
+  <modules>
+    <!-- <module>gwtcx-samples-extgwt-basic</module> -->
+    <module>gwtcx-samples-extgwt-serendipity</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+
+      <!-- GWT Customer Experience dependencies -->
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-client</artifactId>
+        <version>${project.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-client-extgwt</artifactId>
+        <version>${project.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-server</artifactId>
+       <version>${project.version}</version>
+      </dependency>
+
+      <!-- Ext GWT dependencies -->
+      <dependency>
+        <groupId>com.sencha.gxt</groupId>
+        <artifactId>gxt</artifactId>
+        <version>${extgwt.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.sencha.gxt</groupId>
+        <artifactId>uibinder-bridge</artifactId>
+        <version>${gwt.version}-SNAPSHOT</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!-- GWT HighCharts dependencies -->
+      <dependency>
+        <groupId>org.moxieapps</groupId>
+        <artifactId>gwt.highcharts</artifactId>
+        <version>${gwt.highcharts.version}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+</project>
