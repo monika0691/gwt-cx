@@ -14,7 +14,6 @@
 
 package com.gwtcx.smartgwt.client.widgets.grid;
 
-
 public class ActivityData {
 
   private static ActivitiesRecord[] records;
