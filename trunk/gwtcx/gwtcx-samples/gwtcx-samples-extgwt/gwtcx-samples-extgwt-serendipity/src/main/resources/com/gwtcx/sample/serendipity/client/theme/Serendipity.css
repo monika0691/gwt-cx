@@ -25,9 +25,11 @@
 
 .gwtcx-Masthead-Container-West {
   background: url(images/logo.png) no-repeat 0px 0px;
-  padding-top: 32px;
-  padding-left: 120px;
+  /* padding-top: 32px;
+  padding-left: 120px; */
 }
+
+/*
 
 .gwtcx-Masthead-Name {
   color: #15428b;
@@ -38,6 +40,8 @@
   text-align: left;
   float: left;
 }
+
+*/
 
 .gwtcx-Dashboards-View {
   overflow: auto;
