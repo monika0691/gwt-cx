@@ -12,22 +12,27 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.theme;
+package com.gwtcx.client.resources;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.CssResource;
-import com.google.gwt.resources.client.CssResource.NotStrict;
+import com.google.gwt.resources.client.ImageResource;
 
 /**
- * AquaClientBundle client bundle.
+ * SalesIcons client bundle.
  */
-public interface AquaClientBundle extends ClientBundle {
+public interface SalesIcons extends ClientBundle {
 
-  public static final AquaClientBundle INSTANCE = GWT.create(AquaClientBundle.class);
+  public static final SalesIcons INSTANCE = GWT.create(SalesIcons.class);
 
-  @NotStrict
-  @Source("com/gwtcx/extgwt/client/theme/aqua.css")
-  public CssResource css();
+  // com\gwtcx\public\gwtcx\skins\aqua\images\icons\16
+
+  // @Source("com/gwtcx/skins/aqua/images/icons/16/activities.png")
+  @Source("com/gwtcx/public/gwtcx/skins/aqua/images/icons/16/activities.png")
+  ImageResource activities();
+
+  // @Source("com/gwtcx/skins/aqua/images/icons/16/calendar.png")
+  @Source("com/gwtcx/public/gwtcx/skins/aqua/images/icons/16/calendar.png")
+  ImageResource calendar();
 
 }

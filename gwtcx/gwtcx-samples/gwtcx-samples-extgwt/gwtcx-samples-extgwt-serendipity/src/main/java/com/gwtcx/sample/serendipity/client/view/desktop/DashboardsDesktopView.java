@@ -75,6 +75,28 @@ public class DashboardsDesktopView extends AbstractDashboardsView<DashboardsUiHa
 
         FlowPanel northLayout = new FlowPanel();
         northLayout.setStyleName("gwtcx-Dashboards-View-Container");
+        northLayout.setHeight("100%");
+        northLayout.setWidth("100%");
+
+        panel.add(northLayout);
+
+        final Chart chart1 = createDynamicSplineChart(); // createDynamicSplineChart createFunnelChart
+        chart1.setSize("960px", "420px");
+        final SimpleContainer chart1Container = new SimpleContainer();
+        chart1Container.setSize("960px", "420px");
+
+        northLayout.add(chart1Container);
+        chart1Container.add(chart1);
+    }
+  }
+
+  /*
+
+
+    if (GWT.isScript()) {
+
+        FlowPanel northLayout = new FlowPanel();
+        northLayout.setStyleName("gwtcx-Dashboards-View-Container");
         // northLayout.setHeight("50%");
         northLayout.setHeight("100%");
         northLayout.setWidth("100%");
@@ -87,11 +109,11 @@ public class DashboardsDesktopView extends AbstractDashboardsView<DashboardsUiHa
         panel.add(northLayout);
         // panel.add(southLayout);
 
-        final Chart chart1 = createFunnelChart();
+        final Chart chart1 = createDynamicSplineChart(); // createDynamicSplineChart createFunnelChart
         // chart1.setWidth100();
-        chart1.setSize("500px", "420px");
+        chart1.setSize("800px", "420px");
         final SimpleContainer chart1Container = new SimpleContainer();
-        chart1Container.setSize("500px", "420px");
+        chart1Container.setSize("800px", "420px");
 
         final Chart chart2 = createPyramidChart();
         // chart2.setWidth100();
@@ -107,9 +129,10 @@ public class DashboardsDesktopView extends AbstractDashboardsView<DashboardsUiHa
         // chart1Container.clear();
         // chart1Container.remove(chart1);
         // chart1Container.add(chart1);
-
     }
-  }
+
+
+  /*/
 
   @Override
   protected void bindCustomUiHandlers() {
