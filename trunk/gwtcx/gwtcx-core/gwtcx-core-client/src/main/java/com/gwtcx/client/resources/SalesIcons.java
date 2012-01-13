@@ -23,16 +23,35 @@ import com.google.gwt.resources.client.ImageResource;
  */
 public interface SalesIcons extends ClientBundle {
 
+  public static final String urlPrefix = "com/gwtcx/public/gwtcx/skins/aqua/images/icons/16/";
+
   public static final SalesIcons INSTANCE = GWT.create(SalesIcons.class);
 
-  // com\gwtcx\public\gwtcx\skins\aqua\images\icons\16
-
-  // @Source("com/gwtcx/skins/aqua/images/icons/16/activities.png")
-  @Source("com/gwtcx/public/gwtcx/skins/aqua/images/icons/16/activities.png")
+  @Source(urlPrefix + "activities.png")
   ImageResource activities();
 
-  // @Source("com/gwtcx/skins/aqua/images/icons/16/calendar.png")
-  @Source("com/gwtcx/public/gwtcx/skins/aqua/images/icons/16/calendar.png")
+  @Source(urlPrefix + "calendar.png")
   ImageResource calendar();
+
+  @Source(urlPrefix + "dashboards.png")
+  ImageResource dashboards();
+
+  @Source(urlPrefix + "imports.png")
+  ImageResource imports();
+
+  @Source(urlPrefix + "accounts.png")
+  ImageResource accounts();
+
+  @Source(urlPrefix + "contacts.png")
+  ImageResource contacts();
+
+  @Source(urlPrefix + "queues.png")
+  ImageResource queues();
+
+  @Source(urlPrefix + "reports.png")
+  ImageResource reports();
+
+  // leads
+  // opportunities
 
 }

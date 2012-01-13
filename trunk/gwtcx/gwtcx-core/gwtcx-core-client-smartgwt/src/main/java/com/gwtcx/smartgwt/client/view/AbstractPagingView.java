@@ -29,9 +29,9 @@ import com.smartgwt.client.widgets.grid.events.SelectionEvent;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 /**
- * PagingViewWithUiHandlers
+ * PagingView
  */
-public abstract class PagingView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   public static final String CONTEXT_AREA_STYLE_NAME = "gwtcx-ContextArea";
   public static final String CONTEXT_AREA_WIDTH = "*";
@@ -48,7 +48,7 @@ public abstract class PagingView<C extends UiHandlers> extends ViewWithUiHandler
   private VLayout panel;
 
   @Inject
-  public PagingView(ToolBar toolBar, ContextAreaListGrid listGrid, StatusBar statusBar) {
+  public AbstractPagingView(ToolBar toolBar, ContextAreaListGrid listGrid, StatusBar statusBar) {
     super();
 
     this.toolBar = toolBar;

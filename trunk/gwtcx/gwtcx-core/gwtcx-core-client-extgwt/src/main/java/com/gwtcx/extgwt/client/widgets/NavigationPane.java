@@ -39,11 +39,13 @@ public class NavigationPane extends AccordionLayoutContainer {
 
   public ContentPanel addSection(String sectionName) {
 
+    Log.debug("addSection() - " + sectionName);
+
     ContentPanel contentPanel = new ContentPanel(appearance);
     contentPanel.setAnimCollapse(false);
     contentPanel.setHeadingText(sectionName);
     this.add(contentPanel);
-    // this.setWidget(contentPanel);
+    this.setWidget(contentPanel);
 
     TreeStore<NavigationPaneSectionModel> store = new TreeStore<NavigationPaneSectionModel>(NavigationPaneSectionModel.KP);
 
@@ -71,7 +73,7 @@ public class NavigationPane extends AccordionLayoutContainer {
             return null;
           } else if ("activities".equalsIgnoreCase(model.getIcon())) {
             return SalesIcons.INSTANCE.activities();
-          } else if ("calendar" == model.getIcon()) {
+          } else if ("calendar".equalsIgnoreCase(model.getIcon())) {
             return SalesIcons.INSTANCE.calendar();
           } else {
             return SalesIcons.INSTANCE.activities();
@@ -79,25 +81,34 @@ public class NavigationPane extends AccordionLayoutContainer {
         }
       });
 
-    NavigationPaneSectionModel model = new NavigationPaneSectionModel(null, ExtGwtCx.getConstant().activitiesMenuItemName(), ExtGwtCx.getConstant().activitiesMenuItemName());
-
+    NavigationPaneSectionModel model = newItem(null,      // icon
+        ExtGwtCx.getConstant().activitiesMenuItemName(),  // name
+        ExtGwtCx.getConstant().activitiesMenuItemName()); // displayName
     store.add(model);
 
-    /*
-    store.add(new NavigationPaneSectionModel(null, ExtGwtCx.getConstant().calendarMenuItemName(), ExtGwtCx.getConstant().calendarMenuItemName()));
-    store.add(new NavigationPaneSectionModel(null, ExtGwtCx.getConstant().dashboardsMenuItemName(), ExtGwtCx.getConstant().dashboardsMenuItemName()));
-    store.add(new NavigationPaneSectionModel(null, ExtGwtCx.getConstant().importsMenuItemName(), ExtGwtCx.getConstant().importsMenuItemName()));
-    store.add(new NavigationPaneSectionModel(null, ExtGwtCx.getConstant().accountsMenuItemName(), ExtGwtCx.getConstant().accountsMenuItemName()));
-    store.add(new NavigationPaneSectionModel(null, ExtGwtCx.getConstant().contactsMenuItemName(), ExtGwtCx.getConstant().contactsMenuItemName()));
-    store.add(new NavigationPaneSectionModel(null, ExtGwtCx.getConstant().queuesMenuItemName(), ExtGwtCx.getConstant().queuesMenuItemName()));
-    store.add(new NavigationPaneSectionModel(null, ExtGwtCx.getConstant().reportsMenuItemName(), ExtGwtCx.getConstant().reportsMenuItemName()));
-    */
+    store.add(newItem(null, ExtGwtCx.getConstant().calendarMenuItemName(), ExtGwtCx.getConstant().calendarMenuItemName()));
+    store.add(newItem(null, ExtGwtCx.getConstant().dashboardsMenuItemName(), ExtGwtCx.getConstant().dashboardsMenuItemName()));
+    store.add(newItem(null, ExtGwtCx.getConstant().importsMenuItemName(), ExtGwtCx.getConstant().importsMenuItemName()));
+    store.add(newItem(null, ExtGwtCx.getConstant().accountsMenuItemName(), ExtGwtCx.getConstant().accountsMenuItemName()));
+    store.add(newItem(null, ExtGwtCx.getConstant().contactsMenuItemName(), ExtGwtCx.getConstant().contactsMenuItemName()));
+    store.add(newItem(null, ExtGwtCx.getConstant().queuesMenuItemName(), ExtGwtCx.getConstant().queuesMenuItemName()));
+    store.add(newItem(null, ExtGwtCx.getConstant().reportsMenuItemName(), ExtGwtCx.getConstant().reportsMenuItemName()));
 
     contentPanel.add(tree);
-
-    // List<NavigationPaneSectionModel> list = new ArrayList<NavigationPaneSectionModel>();
 
     return contentPanel;
   }
 
+  private NavigationPaneSectionModel newItem(String icon, String name, String displayName) {
+    return new NavigationPaneSectionModel(icon, name, displayName);
+  }
 }
+
+/*
+
+    // tree.setExpanded(model, true);
+
+    // store.add(model, newItem("activities", ExtGwtCx.getConstant().activitiesMenuItemName(), ExtGwtCx.getConstant().activitiesMenuItemName()));
+    // store.add(model, newItem("calendar", ExtGwtCx.getConstant().calendarMenuItemName(), ExtGwtCx.getConstant().calendarMenuItemName()));
+
+*/
