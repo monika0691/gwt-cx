@@ -33,7 +33,7 @@ import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.grid.events.RecordDoubleClickEvent;
 import com.smartgwt.client.widgets.grid.events.RecordDoubleClickHandler;
 
-public abstract class AbstractReportsView<C extends UiHandlers> extends PagingView<C> {
+public abstract class AbstractReportsView<C extends UiHandlers> extends AbstractPagingView<C> {
 
   @Inject
   public AbstractReportsView(ToolBar toolBar, ReportsContextAreaListGrid listGrid,

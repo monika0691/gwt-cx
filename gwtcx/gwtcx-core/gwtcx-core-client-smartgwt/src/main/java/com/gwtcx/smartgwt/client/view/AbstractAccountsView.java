@@ -35,7 +35,7 @@ import com.smartgwt.client.widgets.grid.ListGridRecord;
 import com.smartgwt.client.widgets.grid.events.RecordDoubleClickEvent;
 import com.smartgwt.client.widgets.grid.events.RecordDoubleClickHandler;
 
-public abstract class AbstractAccountsView<C extends UiHandlers> extends PagingView<C> {
+public abstract class AbstractAccountsView<C extends UiHandlers> extends AbstractPagingView<C> {
 
   protected String recordId;
 
