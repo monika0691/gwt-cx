@@ -19,6 +19,9 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+/**
+ * AbstractDashboardsView
+ */
 public abstract class AbstractDashboardsView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   public static final String CONTEXT_AREA_WIDTH = "100%";

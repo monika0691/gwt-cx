@@ -29,6 +29,9 @@ import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.Viewport;
 
+/**
+ * AbstractMainPageView
+ */
 public abstract class AbstractMainPageView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   // private final EventBus eventBus;

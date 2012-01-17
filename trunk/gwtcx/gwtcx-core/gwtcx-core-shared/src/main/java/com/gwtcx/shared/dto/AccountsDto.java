@@ -53,6 +53,10 @@ public class AccountsDto implements Serializable {
     this.accountId = accountId;
   }
 
+  // public void setAccountId(String accountId) {
+  //   this.accountId = Long.parseLong(accountId);
+  // }
+
   public String getAccountName() {
     return accountName;
   }

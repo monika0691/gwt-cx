@@ -35,6 +35,9 @@ import com.smartgwt.client.widgets.grid.ListGridRecord;
 import com.smartgwt.client.widgets.grid.events.RecordDoubleClickEvent;
 import com.smartgwt.client.widgets.grid.events.RecordDoubleClickHandler;
 
+/**
+ * AbstractAccountsView
+ */
 public abstract class AbstractAccountsView<C extends UiHandlers> extends AbstractPagingView<C> {
 
   protected String recordId;
@@ -55,7 +58,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
     initToolBar();
 
     // register the ListGird handlers
-    getListGrid().addRecordDoubleClickHandler(new RecordDoubleClickHandler() {
+    getGrid().addRecordDoubleClickHandler(new RecordDoubleClickHandler() {
       @Override
       public void onRecordDoubleClick(RecordDoubleClickEvent event) {
         Record record = event.getRecord();
@@ -75,7 +78,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
   public void setResultSet(List<AccountsDto> resultSet) {
     // resultSet == null when there are no items in the table
     if (resultSet != null) {
-      ((AccountsContextAreaListGrid) getListGrid()).setResultSet(resultSet);
+      ((AccountsContextAreaListGrid) getGrid()).setResultSet(resultSet);
     }
   }
 
@@ -123,7 +126,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
         if (getUiHandlers() != null) {
 
         @SuppressWarnings("deprecation")
-        ListGridRecord[] records = getListGrid().getSelection();
+        ListGridRecord[] records = getGrid().getSelection();
 
           if (records.length == 1) {
             String title = I18nUtil.getConstant().accountWindowTitle() +
@@ -142,7 +145,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
               }
             });
           } else {
-            getListGrid().deselectAllRecords();
+            getGrid().deselectAllRecords();
           }
             }
           }

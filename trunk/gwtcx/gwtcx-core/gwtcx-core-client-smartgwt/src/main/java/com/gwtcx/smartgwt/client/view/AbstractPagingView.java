@@ -37,7 +37,7 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
   public static final String CONTEXT_AREA_WIDTH = "*";
 
   private final ToolBar toolBar;
-  private final ContextAreaListGrid listGrid;
+  private final ContextAreaListGrid grid;
   private final StatusBar statusBar;
   // private final JumpBar jumpBar;
 
@@ -48,11 +48,11 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
   private VLayout panel;
 
   @Inject
-  public AbstractPagingView(ToolBar toolBar, ContextAreaListGrid listGrid, StatusBar statusBar) {
+  public AbstractPagingView(ToolBar toolBar, ContextAreaListGrid grid, StatusBar statusBar) {
     super();
 
     this.toolBar = toolBar;
-    this.listGrid = listGrid;
+    this.grid = grid;
     this.statusBar = statusBar;
 
     this.numberOfElements = AbstractPagingPresenter.DEFAULT_MAX_RESULTS;
@@ -67,7 +67,7 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
 
     // add the Tool Bar, List Grid, and Status Bar to the View's layout container
     panel.addMember(this.toolBar);
-    panel.addMember(this.listGrid);
+    panel.addMember(this.grid);
     panel.addMember(this.statusBar);
     // this.addMember(this.jumpBar);
 
@@ -77,7 +77,7 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
   protected void bindCustomUiHandlers() {
 
     // register the ListGird handlers
-    listGrid.addSelectionChangedHandler(new SelectionChangedHandler() {
+    grid.addSelectionChangedHandler(new SelectionChangedHandler() {
       @Override
       public void onSelectionChanged(SelectionEvent event) {
 
@@ -107,8 +107,8 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
     return toolBar;
   }
 
-  public ContextAreaListGrid getListGrid() {
-    return listGrid;
+  public ContextAreaListGrid getGrid() {
+    return grid;
   }
 
   public StatusBar getStatusBar() {
@@ -151,6 +151,6 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
   }
 
   public void removeSelectedData() {
-    listGrid.removeSelectedData();
+    grid.removeSelectedData();
   }
 }

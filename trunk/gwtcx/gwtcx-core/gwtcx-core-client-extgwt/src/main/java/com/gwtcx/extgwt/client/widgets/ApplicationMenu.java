@@ -29,6 +29,9 @@ import com.sencha.gxt.widget.core.client.menu.MenuBarItem;
 import com.sencha.gxt.widget.core.client.menu.MenuItem;
 import com.sencha.gxt.widget.core.client.menu.SeparatorMenuItem;
 
+/**
+ * ApplicationMenu
+ */
 public class ApplicationMenu implements IsWidget {
 
   private static final String SEPARATOR = "separator";

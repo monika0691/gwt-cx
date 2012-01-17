@@ -23,6 +23,9 @@ import com.smartgwt.client.widgets.grid.ListGridRecord;
 import com.smartgwt.client.widgets.grid.events.RecordClickHandler;
 import com.smartgwt.client.widgets.layout.SectionStackSection;
 
+/**
+ * NavigationPaneSection
+ */
 public class NavigationPaneSection extends SectionStackSection {
 
   private NavigationPaneSectionListGrid listGrid;

@@ -19,6 +19,9 @@ import com.gwtcx.client.i18n.GwtCxMessages;
 import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.extgwt.client.entrypoint.ExtGwtEntryPoint;
 
+/**
+ * ExtGwtCx
+ */
 public class ExtGwtCx {
 
   public static GwtCxConstants getConstant() {

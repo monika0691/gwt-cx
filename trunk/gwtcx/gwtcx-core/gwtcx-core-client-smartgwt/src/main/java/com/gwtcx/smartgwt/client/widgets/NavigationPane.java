@@ -23,6 +23,9 @@ import com.smartgwt.client.widgets.layout.SectionStackSection;
 import com.smartgwt.client.widgets.layout.VLayout;
 import com.smartgwt.client.widgets.layout.events.SectionHeaderClickHandler;
 
+/**
+ * NavigationPane
+ */
 public class NavigationPane extends VLayout {
 
   public static final String NAVIGATION_PANE_STYLE_NAME = "gwtcx-NavigationPane";

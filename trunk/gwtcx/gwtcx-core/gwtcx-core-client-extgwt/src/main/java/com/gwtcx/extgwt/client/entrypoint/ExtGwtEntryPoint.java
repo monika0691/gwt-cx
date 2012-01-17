@@ -19,6 +19,9 @@ import com.google.gwt.core.client.GWT;
 import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.extgwt.client.theme.AquaClientBundle;
 
+/**
+ * ExtGwtEntryPoint
+ */
 public class ExtGwtEntryPoint implements EntryPoint {
 
   public static final String AQUA_THEME = "aqua";

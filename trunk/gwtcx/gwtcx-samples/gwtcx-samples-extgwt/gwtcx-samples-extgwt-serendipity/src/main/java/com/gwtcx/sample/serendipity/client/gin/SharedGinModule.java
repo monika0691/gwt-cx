@@ -17,6 +17,12 @@ package com.gwtcx.sample.serendipity.client.gin;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.sample.serendipity.client.place.DefaultPlace;
 import com.gwtcx.sample.serendipity.client.place.SerendipityPlaceManager;
+import com.gwtcx.sample.serendipity.client.presenter.AccountsPresenter;
+import com.gwtcx.sample.serendipity.client.presenter.ActivitiesPresenter;
+import com.gwtcx.sample.serendipity.client.presenter.ErrorPagePresenter;
+import com.gwtcx.sample.serendipity.client.view.AccountsView;
+import com.gwtcx.sample.serendipity.client.view.ActivitiesView;
+import com.gwtcx.sample.serendipity.client.view.ErrorPageView;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
 
@@ -34,6 +40,12 @@ public class SharedGinModule extends AbstractPresenterModule {
     //
     // Resources
     //
+
+    // bind(SerendipityClientBundle.class).in(Singleton.class);
+    // bind(Resources.class).in(Singleton.class);
+
+    // bind(Translations.class).in(Singleton.class);
+    // bind(CurrentUser.class).asEagerSingleton();
 
     //
     // Singletons
@@ -56,11 +68,18 @@ public class SharedGinModule extends AbstractPresenterModule {
     // Presenters
     //
 
-    // bindPresenter(ResponsePagePresenter.class, ResponsePagePresenter.MyView.class,
-    //     ResponsePageView.class, ResponsePagePresenter.MyProxy.class);
+    // Main Pages
 
-    // bindSingletonPresenterWidget(ResponseDialogPresenterWidget.class,
-    //     ResponseDialogPresenterWidget.MyView.class, ResponseDialogView.class);
+    // Error Page
+    bindPresenter(ErrorPagePresenter.class, ErrorPagePresenter.MyView.class,
+        ErrorPageView.class, ErrorPagePresenter.MyProxy.class);
+
+    // Sales
+    bindPresenter(ActivitiesPresenter.class, ActivitiesPresenter.MyView.class,
+        ActivitiesView.class, ActivitiesPresenter.MyProxy.class);
+
+    bindPresenter(AccountsPresenter.class, AccountsPresenter.MyView.class,
+        AccountsView.class, AccountsPresenter.MyProxy.class);
 
   }
 }

@@ -25,6 +25,9 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * Masthead
+ */
 public class Masthead implements IsWidget {
 
   protected static final String DEFAULT_NAME_TEXT = "Serendipity";

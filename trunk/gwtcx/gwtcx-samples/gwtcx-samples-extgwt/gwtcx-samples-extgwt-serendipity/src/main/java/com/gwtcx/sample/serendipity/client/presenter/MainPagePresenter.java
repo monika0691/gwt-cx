@@ -75,7 +75,7 @@ public class MainPagePresenter extends
     Log.debug("prepareFromRequest()");
 
     // SerendipitySignInPagePresenter.REDIRECT
-    String nameToken = placeRequest.getParameter("redirect", NameTokens.dashboards);
+    String nameToken = placeRequest.getParameter("redirect", NameTokens.accounts);
 
     Log.debug("nameToken: " + nameToken);
 

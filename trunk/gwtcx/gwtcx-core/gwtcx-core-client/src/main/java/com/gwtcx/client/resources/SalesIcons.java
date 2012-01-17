@@ -27,6 +27,9 @@ public interface SalesIcons extends ClientBundle {
 
   public static final SalesIcons INSTANCE = GWT.create(SalesIcons.class);
 
+  @Source(urlPrefix + "placeholder.png")
+  ImageResource placeholder();
+
   @Source(urlPrefix + "activities.png")
   ImageResource activities();
 

@@ -15,12 +15,11 @@
 package com.gwtcx.sample.serendipity.client.view;
 
 import com.google.inject.Inject;
-import com.gwtcx.sample.serendipity.client.presenter.AccountsPresenter;
 import com.gwtcx.client.uihandlers.AccountsUiHandlers;
-import com.gwtcx.smartgwt.client.view.AbstractAccountsView;
-import com.gwtcx.smartgwt.client.widgets.grid.AccountsContextAreaListGrid;
-import com.gwtcx.smartgwt.client.widgets.toolbar.StatusBar;
-import com.gwtcx.smartgwt.client.widgets.toolbar.ToolBar;
+import com.gwtcx.extgwt.client.view.AbstractAccountsView;
+import com.gwtcx.extgwt.client.widgets.ToolBar;
+import com.gwtcx.extgwt.client.widgets.grid.AccountsContextAreaGrid;
+import com.gwtcx.sample.serendipity.client.presenter.AccountsPresenter;
 
 /**
  * AccountsView
@@ -29,9 +28,8 @@ public class AccountsView extends AbstractAccountsView<AccountsUiHandlers> imple
     AccountsPresenter.MyView {
 
   @Inject
-  public AccountsView(ToolBar toolBar, AccountsContextAreaListGrid listGrid,
-      StatusBar statusBar) {
-    super(toolBar, listGrid, statusBar);
+  public AccountsView(ToolBar toolBar, AccountsContextAreaGrid grid) {
+    super(toolBar, grid);
   }
 
   // @Override

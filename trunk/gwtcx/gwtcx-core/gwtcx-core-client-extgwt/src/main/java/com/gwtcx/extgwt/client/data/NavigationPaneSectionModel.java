@@ -14,9 +14,16 @@
 
 package com.gwtcx.extgwt.client.data;
 
+import java.io.Serializable;
+
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 
-public class NavigationPaneSectionModel {
+/**
+ * NavigationPaneSectionModel
+ */
+public class NavigationPaneSectionModel implements Serializable {
+
+  private static final long serialVersionUID = 3308992559832998314L;
 
   /*
 
