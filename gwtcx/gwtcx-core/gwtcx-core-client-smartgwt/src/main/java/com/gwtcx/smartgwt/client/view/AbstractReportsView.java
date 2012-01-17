@@ -48,7 +48,7 @@ public abstract class AbstractReportsView<C extends UiHandlers> extends Abstract
     initToolBar();
 
     // register the ListGird handlers
-    getListGrid().addRecordDoubleClickHandler(new RecordDoubleClickHandler() {
+    getGrid().addRecordDoubleClickHandler(new RecordDoubleClickHandler() {
       @Override
       public void onRecordDoubleClick(RecordDoubleClickEvent event) {
         Record record = event.getRecord();
@@ -69,7 +69,7 @@ public abstract class AbstractReportsView<C extends UiHandlers> extends Abstract
   public void setResultSet(List<ReportsDto> resultSet) {
     // resultSet == null when there are no items in table
     if (resultSet != null) {
-      ((ReportsContextAreaListGrid)getListGrid()).setResultSet(resultSet);
+      ((ReportsContextAreaListGrid)getGrid()).setResultSet(resultSet);
     }
   }
 

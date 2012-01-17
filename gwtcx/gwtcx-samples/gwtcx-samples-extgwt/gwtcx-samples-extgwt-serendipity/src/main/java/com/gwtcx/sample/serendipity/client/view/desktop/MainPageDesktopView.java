@@ -15,9 +15,14 @@
 package com.gwtcx.sample.serendipity.client.view.desktop;
 
 import com.allen_sauer.gwt.log.client.Log;
+
+import com.google.gwt.cell.client.ValueUpdater;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.text.shared.SimpleSafeHtmlRenderer;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.user.client.ui.Widget;
@@ -27,8 +32,10 @@ import com.gwtcx.extgwt.client.ExtGwtCx;
 import com.gwtcx.extgwt.client.view.AbstractMainPageView;
 import com.gwtcx.extgwt.client.widgets.ApplicationMenu;
 import com.gwtcx.extgwt.client.widgets.Masthead;
+import com.gwtcx.extgwt.client.widgets.NavigationPaneSection;
 import com.gwtcx.sample.serendipity.client.entrypoint.Serendipity;
 import com.gwtcx.sample.serendipity.client.presenter.MainPagePresenter;
+import com.sencha.gxt.cell.core.client.SimpleSafeHtmlCell;
 import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance;
@@ -126,13 +133,40 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
 
     Log.debug("initNavigationPane()");
 
-    getNavigationPane().addSection(ExtGwtCx.getConstant().salesStackSectionName()) ;
-        // SalesNpsDataSource.getInstance());
-    getNavigationPane().addSection(ExtGwtCx.getConstant().settingsStackSectionName());
-        // SettingsNpsDataSource.getInstance());
-    getNavigationPane().addSection(ExtGwtCx.getConstant().resourceCentreStackSectionName());
-        // ResourceCentreNpsDataSource.getInstance());
+    SimpleSafeHtmlCell<String> cell = new SimpleSafeHtmlCell<String>(SimpleSafeHtmlRenderer.getInstance(), "click") {
+      @Override
+      public void onBrowserEvent(Context context, Element parent, String value, NativeEvent event,
+          ValueUpdater<String> valueUpdater) {
 
+        super.onBrowserEvent(context, parent, value, event, valueUpdater);
+
+        if ("click".equals(event.getType())) {
+          // Info.display("Click", "You clicked \"" + value + "\"!");
+
+          navigationPaneSectionClicked(value);
+        }
+      }
+    };
+
+    // getNavigationPane().addRecordClickHandler(ExtGwtCx.getConstant().salesStackSectionName(), cell);
+
+    NavigationPaneSection section = getNavigationPane().addSection(ExtGwtCx.getConstant().salesStackSectionName()) ;
+        // SalesNpsDataSource.getInstance());
+    section.addRecordClickHandler(cell);
+
+    section = getNavigationPane().addSection(ExtGwtCx.getConstant().settingsStackSectionName());
+        // SettingsNpsDataSource.getInstance());
+    section.addRecordClickHandler(cell);
+
+    section = getNavigationPane().addSection(ExtGwtCx.getConstant().resourceCentreStackSectionName());
+        // ResourceCentreNpsDataSource.getInstance());
+    section.addRecordClickHandler(cell);
+  }
+
+  protected void navigationPaneSectionClicked(String place) {
+    if (getUiHandlers() != null) {
+      getUiHandlers().onNavigationPaneSectionClicked(place);
+    }
   }
 
   public class NewActivitySelectionHandler implements SelectionHandler<Item> {
@@ -145,7 +179,7 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
         Info.display("Action", "You selected: " + place);
 
         // if (getUiHandlers() != null) {
-        //     getUiHandlers().onNewRecordClicked(place);
+        //   getUiHandlers().onNewRecordClicked(place);
         // }
     }
   }

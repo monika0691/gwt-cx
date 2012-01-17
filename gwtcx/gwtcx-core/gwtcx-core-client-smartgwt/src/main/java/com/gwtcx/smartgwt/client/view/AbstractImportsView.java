@@ -42,7 +42,7 @@ public abstract class AbstractImportsView<C extends UiHandlers> extends Abstract
     initToolBar();
 
     // register the ListGird handlers
-    getListGrid().addRecordDoubleClickHandler(new RecordDoubleClickHandler() {
+    getGrid().addRecordDoubleClickHandler(new RecordDoubleClickHandler() {
       @Override
       public void onRecordDoubleClick(RecordDoubleClickEvent event) {
       }

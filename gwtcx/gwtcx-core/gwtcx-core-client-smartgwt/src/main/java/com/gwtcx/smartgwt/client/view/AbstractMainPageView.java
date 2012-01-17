@@ -26,6 +26,9 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
+/**
+ * AbstractMainPageView
+ */
 public abstract class AbstractMainPageView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   public static final int NORTH_HEIGHT = Masthead.MASTHEAD_HEIGHT +

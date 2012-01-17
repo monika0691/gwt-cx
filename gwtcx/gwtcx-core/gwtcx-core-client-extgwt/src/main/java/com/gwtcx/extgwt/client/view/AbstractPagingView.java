@@ -14,45 +14,66 @@
 
 package com.gwtcx.extgwt.client.view;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.gwtcx.extgwt.client.widgets.ToolBar;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 
 /**
- * PagingView
+ * AbstractPagingView
  */
-public class AbstractPagingView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   public static final String CONTEXT_AREA_WIDTH = "100%";
 
-  protected FlowPanel panel;
+  protected VerticalLayoutContainer panel;
 
-  final Grid<?> grid;
+  protected final Grid<?> grid;
+  protected final ToolBar toolBar;
 
   @Inject
-  // public AbstractPagingView(ToolBar toolBar, ContextAreaListGrid listGrid, StatusBar statusBar) {
-  public AbstractPagingView(Grid<?> grid) {
+  public AbstractPagingView(ToolBar toolBar, Grid<?> grid) {
     super();
 
     this.grid = grid;
+    this.toolBar = toolBar;
 
-    panel = new FlowPanel();
+    panel = new VerticalLayoutContainer();
+
     // panel.setStyleName(StyleTokens.contextArea);
     panel.setWidth(CONTEXT_AREA_WIDTH);
 
     // add the Tool Bar, Grid, and Status Bar to the View's layout container
-    panel.add(this.grid);
+    panel.add(this.toolBar, new VerticalLayoutData(1, -1));  // new Margins(4)
+    panel.add(this.grid, new VerticalLayoutData(1, -1));
 
     bindCustomUiHandlers();
   }
 
   protected void bindCustomUiHandlers() { }
 
+  protected void initToolBar() { }
+
+  protected void initStatusBar() { }
+
   @Override
   public Widget asWidget() {
     return panel;
   }
+
+  public ToolBar getToolBar() {
+    return toolBar;
+  }
+
+  public Grid<?> getGrid() {
+    return grid;
+  }
+
+  // public StatusBar getStatusBar() {
+  //   return statusBar;
+  // }
 }

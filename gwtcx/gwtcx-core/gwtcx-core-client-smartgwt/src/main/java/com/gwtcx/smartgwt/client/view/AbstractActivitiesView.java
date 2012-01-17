@@ -43,7 +43,7 @@ public abstract class AbstractActivitiesView<C extends UiHandlers> extends Abstr
     initToolBar();
 
     // register the ListGird handlers
-    getListGrid().addRecordDoubleClickHandler(new RecordDoubleClickHandler() {
+    getGrid().addRecordDoubleClickHandler(new RecordDoubleClickHandler() {
       @Override
       public void onRecordDoubleClick(RecordDoubleClickEvent event) {
       }

@@ -16,6 +16,7 @@ package com.gwtcx.sample.serendipity.client.place;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
+import com.gwtcx.client.NameTokens;
 import com.gwtplatform.mvp.client.proxy.PlaceManagerImpl;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.TokenFormatter;
@@ -46,11 +47,11 @@ public class SerendipityPlaceManager extends PlaceManagerImpl {
     revealPlace(placeRequest);
   }
 
+  */
+
   @Override
   public void revealErrorPlace(String invalidHistoryToken) {
     PlaceRequest placeRequest = new PlaceRequest(NameTokens.errorPage);
     revealPlace(placeRequest);
   }
-
-  */
 }

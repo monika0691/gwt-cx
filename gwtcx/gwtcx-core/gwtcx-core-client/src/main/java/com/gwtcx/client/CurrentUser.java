@@ -14,6 +14,9 @@
 
 package com.gwtcx.client;
 
+/**
+ * CurrentUser
+ */
 public class CurrentUser {
 
   private String login;

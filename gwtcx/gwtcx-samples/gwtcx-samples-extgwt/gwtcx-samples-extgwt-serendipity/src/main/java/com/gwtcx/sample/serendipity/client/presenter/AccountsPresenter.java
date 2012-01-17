@@ -133,6 +133,13 @@ public class AccountsPresenter extends
   }
 
   @Override
+  public void onNewButtonClicked() {
+
+    Log.debug("onNewButtonClicked()");
+    // newAccount();
+  }
+
+  @Override
   public void onDeleteButtonClicked(String accountId) {
 
     /*
