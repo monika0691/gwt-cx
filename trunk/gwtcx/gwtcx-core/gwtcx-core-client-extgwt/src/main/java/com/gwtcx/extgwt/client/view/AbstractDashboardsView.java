@@ -14,27 +14,26 @@
 
 package com.gwtcx.extgwt.client.view;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 
 /**
  * AbstractDashboardsView
  */
 public abstract class AbstractDashboardsView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
-  public static final String CONTEXT_AREA_WIDTH = "100%";
-
-  protected FlowPanel panel;
+  protected VerticalLayoutContainer panel;
 
   // @Inject
   public AbstractDashboardsView() {
     super();
 
-    panel = new FlowPanel();
+    panel = new VerticalLayoutContainer();
     // panel.setStyleName(StyleTokens.contextArea);
-    panel.setWidth(CONTEXT_AREA_WIDTH);
+    panel.setWidth(AbstractPagingView.CONTEXT_AREA_WIDTH);
+    panel.setHeight(AbstractPagingView.CONTEXT_AREA_HEIGHT);
 
     bindCustomUiHandlers();
   }

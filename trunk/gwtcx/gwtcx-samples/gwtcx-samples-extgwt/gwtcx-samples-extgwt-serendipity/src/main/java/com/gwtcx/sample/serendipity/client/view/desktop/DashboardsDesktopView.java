@@ -54,14 +54,17 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.gwtcx.client.uihandlers.DashboardsUiHandlers;
 import com.gwtcx.extgwt.client.view.AbstractDashboardsView;
 import com.gwtcx.sample.serendipity.client.presenter.DashboardsPresenter;
+import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 
 public class DashboardsDesktopView extends AbstractDashboardsView<DashboardsUiHandlers> implements
     DashboardsPresenter.MyView {
+
+  protected HorizontalLayoutContainer northLayout;
+  // protected HorizontalLayoutContainer southLayout;
 
   // @Inject
   public DashboardsDesktopView() {
@@ -70,6 +73,90 @@ public class DashboardsDesktopView extends AbstractDashboardsView<DashboardsUiHa
     Log.debug("DashboardsDesktopView()");
 
     panel.setStyleName("gwtcx-Dashboards-View");
+
+    if (GWT.isScript()) {
+
+      northLayout = new HorizontalLayoutContainer();
+      northLayout.setHeight("100%");
+      northLayout.setWidth("100%");
+
+      this.panel.add(northLayout) ;  // , new VerticalLayoutData(1, -1));
+
+      final Chart chart1 = createFunnelChart();
+      chart1.setSize("500px", "420px");
+      final SimpleContainer chart1Container = new SimpleContainer();
+      chart1Container.setSize("500px", "420px");
+
+      northLayout.add(chart1Container);  // , new HorizontalLayoutData(-1, 1));
+      chart1Container.add(chart1);
+
+
+      final Chart chart2 = createPyramidChart();
+      chart2.setSize("500px", "420px");
+      final SimpleContainer chart2Container = new SimpleContainer();
+      chart2Container.setSize("500px", "420px");
+
+      northLayout.add(chart2Container);  // , new HorizontalLayoutData(-1, 1));
+      chart2Container.add(chart2);
+
+
+
+
+      /*
+
+      southLayout = new HorizontalLayoutContainer();
+      southLayout.setHeight("50%");
+      southLayout.setWidth("100%");
+
+      panel.add(southLayout, new VerticalLayoutData(1, -1));
+
+      final Chart chart3 = createBasicPieChart();
+      chart3.setSize("500px", "420px");
+      final SimpleContainer chart3Container = new SimpleContainer();
+      chart3Container.setSize("500px", "420px");
+
+      southLayout.add(chart3Container);
+      chart3Container.add(chart3);
+
+      */
+    }
+  }
+
+  /*
+
+
+
+
+
+      final Chart chart2 = createPyramidChart();
+      chart2.setSize("500px", "420px");
+
+      northLayout.add(chart1, new HorizontalLayoutData(-1, 1));
+      northLayout.add(chart2, new HorizontalLayoutData(-1, 1));
+
+
+      southLayout = new HorizontalLayoutContainer();
+      southLayout.setHeight("50%");
+      southLayout.setWidth("100%");
+
+      panel.add(southLayout, new VerticalLayoutData(1, -1));
+
+      final Chart chart3 = createBasicPieChart();
+      chart3.setSize("500px", "420px");
+
+      final Chart chart4 = createDonutChart();
+      chart4.setSize("500px", "420px");
+
+      southLayout.add(chart3, new HorizontalLayoutData(-1, 1));
+      southLayout.add(chart4, new HorizontalLayoutData(-1, 1));
+
+
+
+
+
+
+
+
 
     if (GWT.isScript()) {
 
@@ -88,9 +175,6 @@ public class DashboardsDesktopView extends AbstractDashboardsView<DashboardsUiHa
         northLayout.add(chart1Container);
         chart1Container.add(chart1);
     }
-  }
-
-  /*
 
 
     if (GWT.isScript()) {

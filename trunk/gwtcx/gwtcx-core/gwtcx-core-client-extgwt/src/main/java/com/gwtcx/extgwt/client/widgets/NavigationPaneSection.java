@@ -38,15 +38,11 @@ public class NavigationPaneSection extends ContentPanel {
 
     this.grid = grid;
 
-    add(grid);
+    add(this.grid);
   }
 
   public NavigationPaneSection() {
-    super(appearance);
-
-    this.grid = new NavigationPaneSectionGrid(new NavigationPaneSectionModelListStore());
-
-    add(grid);
+    this(new NavigationPaneSectionGrid(new NavigationPaneSectionModelListStore()));
   }
 
   public Grid<?> getGrid() {
@@ -54,11 +50,11 @@ public class NavigationPaneSection extends ContentPanel {
   }
 
   public void addRowClickHandler(RowClickHandler handler) {
-    grid.addRowClickHandler(handler);
+    getGrid().addRowClickHandler(handler);
   }
 
   public void selectRecord(int rowIndex) {
-    grid.getView().focusRow(rowIndex);
+    getGrid().getSelectionModel().select(rowIndex, false);
   }
 }
 

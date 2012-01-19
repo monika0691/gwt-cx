@@ -50,6 +50,8 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
   private static MainPageUiBinder uiBinder = GWT.create(MainPageUiBinder.class);
 
   protected NavigationPaneSection salesSection;
+  protected NavigationPaneSection settingsSection;
+  protected NavigationPaneSection resourceSection;
 
   @Inject
   public MainPageDesktopView(final Viewport viewport, final Masthead masthead, final ApplicationMenu applicationMenu) {
@@ -110,13 +112,13 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
     Menu goToMenu = getApplicationMenu().addMenu(Serendipity.getConstant().goToMenuName());
     getApplicationMenu().addSubMenu(goToMenu, ExtGwtCx.getConstant().salesMenuItemName(),
         ExtGwtCx.getConstant().salesMenuItemNames(),
-      new NewActivitySelectionHandler());
+      new GoToSelectionHandler());
     getApplicationMenu().addSubMenu(goToMenu, ExtGwtCx.getConstant().settingsMenuItemName(),
         ExtGwtCx.getConstant().settingsMenuItemNames(),
-      new NewActivitySelectionHandler());
+      new GoToSelectionHandler());
     getApplicationMenu().addSubMenu(goToMenu, ExtGwtCx.getConstant().resourceCentreMenuItemName(),
         ExtGwtCx.getConstant().resourceCentreMenuItemNames(),
-      new NewActivitySelectionHandler());
+      new GoToSelectionHandler());
 
     getApplicationMenu().addMenu(Serendipity.getConstant().toolsMenuName(),
         ExtGwtCx.getConstant().toolsMenuItemNames(),
@@ -144,9 +146,9 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
       }
     });
 
-    getNavigationPane().addSection(ExtGwtCx.getConstant().settingsStackSectionName());
+    settingsSection = getNavigationPane().addSection(ExtGwtCx.getConstant().settingsStackSectionName());
 
-    getNavigationPane().addSection(ExtGwtCx.getConstant().resourceCentreStackSectionName());
+    resourceSection = getNavigationPane().addSection(ExtGwtCx.getConstant().resourceCentreStackSectionName());
   }
 
   protected void navigationPaneSectionClicked(String place) {
@@ -159,16 +161,32 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
     @Override
     public void onSelection(SelectionEvent<Item> event) {
 
-        MenuItem item = (MenuItem)event.getSelectedItem();
-        String place = item.getText().trim();
+      // TO DO: need to use name NOT displayName as per RowClickHandler()
+      MenuItem item = (MenuItem) event.getSelectedItem();
+      String place = item.getText().trim();
 
-        Info.display("Action", "You selected: " + place);
+      Info.display("Action", "You selected: " + place);
 
-        // if (getUiHandlers() != null) {
-        //   getUiHandlers().onNewRecordClicked(place);
-        // }
+      // if (getUiHandlers() != null) {
+      //   getUiHandlers().onNewRecordClicked(place);
+      // }
     }
   }
+
+  public class GoToSelectionHandler implements SelectionHandler<Item> {
+    @Override
+    public void onSelection(SelectionEvent<Item> event) {
+
+      // TO DO: need to use name NOT displayName as per RowClickHandler()
+      MenuItem item = (MenuItem) event.getSelectedItem();
+      String place = item.getText().trim();
+
+      if (getUiHandlers() != null) {
+        getUiHandlers().onGoToMenuItemClicked(place);
+      }
+    }
+  }
+
 }
 
 /*
