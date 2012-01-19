@@ -77,7 +77,7 @@ public class RetrieveReportsHandler implements
   }
 
   private ReportsDto createReportsDto(Report report) {
-    return new ReportsDto(report.getReportId(), report.getReportName(), report.getEntityName(), report.getReportFilename(),
+    return new ReportsDto(report.getReportIdAsString(), report.getReportName(), report.getEntityName(), report.getReportFilename(),
         report.getReportType(), report.getModifiedOn().toString(), report.getDescription());
   }
 

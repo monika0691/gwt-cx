@@ -14,20 +14,20 @@
 
 package com.gwtcx.extgwt.client.widgets.grid;
 
-import com.gwtcx.shared.dto.AccountsDto;
+import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 
-public class AccountsDtoListStore extends ListStore<AccountsDto> {
+public class NavigationPaneSectionModelListStore extends ListStore<NavigationPaneSectionModel> {
 
-  public static ModelKeyProvider<AccountsDto> KP = new ModelKeyProvider<AccountsDto>() {
+  public static ModelKeyProvider<NavigationPaneSectionModel> KP = new ModelKeyProvider<NavigationPaneSectionModel>() {
     @Override
-    public String getKey(AccountsDto item) {
-      return item.getAccountId();
+    public String getKey(NavigationPaneSectionModel item) {
+      return item.getName();
     }
   };
 
-  public AccountsDtoListStore() {
+  public NavigationPaneSectionModelListStore() {
     super(KP);
   }
 }

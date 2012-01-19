@@ -61,7 +61,7 @@ public class RetrieveAccountHandler implements
     Log.info("Retrieve Account: " + action.getId());
 
     try {
-      Account account = accountDao.retrieveAccount(action.getId());
+      Account account = accountDao.retrieveAccount(Long.parseLong(action.getId()));
 
       if (account != null) {
         result = new RetrieveAccountResult(createAccountDto(account));
@@ -78,7 +78,7 @@ public class RetrieveAccountHandler implements
 
   private AccountDto createAccountDto(Account account) {
 
-    AccountDto accountDto = new AccountDto(account.getAccountId());
+    AccountDto accountDto = new AccountDto(account.getAccountIdAsString());
 
     // General Information
     accountDto.setAccountName(account.getAccountName());
@@ -108,7 +108,7 @@ public class RetrieveAccountHandler implements
   }
 
   private AddressDto createAddressDto(Address address) {
-    return new AddressDto(address.getAddressId(), address.getAddressName(),
+    return new AddressDto(address.getAddressIdAsString(), address.getAddressName(),
         address.getAddressLine1(), address.getAddressLine2(), address.getAddressLine3(),
         address.getCity(), address.getState(), address.getPostalCode(),
         address.getCountry(), address.getAddressType());

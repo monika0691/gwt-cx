@@ -15,31 +15,28 @@
 package com.gwtcx.sample.serendipity.client.view.desktop;
 
 import com.allen_sauer.gwt.log.client.Log;
-
-import com.google.gwt.cell.client.ValueUpdater;
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
-import com.google.gwt.text.shared.SimpleSafeHtmlRenderer;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.MainPageUiHandlers;
 import com.gwtcx.extgwt.client.ExtGwtCx;
+import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
 import com.gwtcx.extgwt.client.view.AbstractMainPageView;
 import com.gwtcx.extgwt.client.widgets.ApplicationMenu;
 import com.gwtcx.extgwt.client.widgets.Masthead;
 import com.gwtcx.extgwt.client.widgets.NavigationPaneSection;
 import com.gwtcx.sample.serendipity.client.entrypoint.Serendipity;
 import com.gwtcx.sample.serendipity.client.presenter.MainPagePresenter;
-import com.sencha.gxt.cell.core.client.SimpleSafeHtmlCell;
 import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance;
 import com.sencha.gxt.widget.core.client.container.Viewport;
+import com.sencha.gxt.widget.core.client.event.RowClickEvent;
+import com.sencha.gxt.widget.core.client.event.RowClickEvent.RowClickHandler;
 import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.menu.Item;
 import com.sencha.gxt.widget.core.client.menu.Menu;
@@ -51,6 +48,8 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
   public interface MainPageUiBinder extends UiBinder<Component, MainPageDesktopView> { }
 
   private static MainPageUiBinder uiBinder = GWT.create(MainPageUiBinder.class);
+
+  protected NavigationPaneSection salesSection;
 
   @Inject
   public MainPageDesktopView(final Viewport viewport, final Masthead masthead, final ApplicationMenu applicationMenu) {
@@ -133,34 +132,21 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
 
     Log.debug("initNavigationPane()");
 
-    SimpleSafeHtmlCell<String> cell = new SimpleSafeHtmlCell<String>(SimpleSafeHtmlRenderer.getInstance(), "click") {
+    salesSection = getNavigationPane().addSection(ExtGwtCx.getConstant().salesStackSectionName()) ;
+    salesSection.addRowClickHandler(new RowClickHandler() {
       @Override
-      public void onBrowserEvent(Context context, Element parent, String value, NativeEvent event,
-          ValueUpdater<String> valueUpdater) {
+      public void onRowClick(RowClickEvent event) {
 
-        super.onBrowserEvent(context, parent, value, event, valueUpdater);
+        int rowIndex = event.getRowIndex();
 
-        if ("click".equals(event.getType())) {
-          // Info.display("Click", "You clicked \"" + value + "\"!");
-
-          navigationPaneSectionClicked(value);
-        }
+        NavigationPaneSectionModel model = (NavigationPaneSectionModel) salesSection.getGrid().getStore().get(rowIndex);
+        navigationPaneSectionClicked(model.getName());
       }
-    };
+    });
 
-    // getNavigationPane().addRecordClickHandler(ExtGwtCx.getConstant().salesStackSectionName(), cell);
+    getNavigationPane().addSection(ExtGwtCx.getConstant().settingsStackSectionName());
 
-    NavigationPaneSection section = getNavigationPane().addSection(ExtGwtCx.getConstant().salesStackSectionName()) ;
-        // SalesNpsDataSource.getInstance());
-    section.addRecordClickHandler(cell);
-
-    section = getNavigationPane().addSection(ExtGwtCx.getConstant().settingsStackSectionName());
-        // SettingsNpsDataSource.getInstance());
-    section.addRecordClickHandler(cell);
-
-    section = getNavigationPane().addSection(ExtGwtCx.getConstant().resourceCentreStackSectionName());
-        // ResourceCentreNpsDataSource.getInstance());
-    section.addRecordClickHandler(cell);
+    getNavigationPane().addSection(ExtGwtCx.getConstant().resourceCentreStackSectionName());
   }
 
   protected void navigationPaneSectionClicked(String place) {
@@ -186,6 +172,26 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
 }
 
 /*
+
+
+    SimpleSafeHtmlCell<String> cell = new SimpleSafeHtmlCell<String>(SimpleSafeHtmlRenderer.getInstance(), "click") {
+      @Override
+      public void onBrowserEvent(Context context, Element parent, String value, NativeEvent event,
+          ValueUpdater<String> valueUpdater) {
+
+        super.onBrowserEvent(context, parent, value, event, valueUpdater);
+
+        if ("click".equals(event.getType())) {
+          // Info.display("Click", "You clicked \"" + value + "\"!");
+
+          navigationPaneSectionClicked(value);
+        }
+      }
+    };
+
+    // getNavigationPane().addRecordClickHandler(ExtGwtCx.getConstant().salesStackSectionName(), cell);
+
+
 
   // @UiFactory
   // public Masthead createMasthead() {

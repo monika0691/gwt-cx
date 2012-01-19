@@ -50,11 +50,10 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
   public static final int EMAIL_PRIMARY_CONTACT_COLUMN_WIDTH = 180;  // 120
 
   public interface AccountsProperties extends PropertyAccess<AccountsDto> {
-    // @Path("accountId")
-    @Path("accountName")
+    @Path("accountId")
     ModelKeyProvider<AccountsDto> key();
 
-    // ValueProvider<AccountsDto, String> accountId();
+    ValueProvider<AccountsDto, String> accountId();
     ValueProvider<AccountsDto, String> accountName();
     ValueProvider<AccountsDto, String> mainPhone();
     ValueProvider<AccountsDto, String> location();
@@ -71,7 +70,7 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
 
   public static ColumnModel<AccountsDto> getColumModel() {
 
-    ColumnConfig<AccountsDto, String> rowIconColumnConfig = new ColumnConfig<AccountsDto, String>(property.accountName(),
+    ColumnConfig<AccountsDto, String> rowIconColumnConfig = new ColumnConfig<AccountsDto, String>(property.accountId(),
         SMALL_ICON_COLUMN_WIDTH, "");
     rowIconColumnConfig.setCell(new ImageCell() {
       @Override
@@ -130,12 +129,6 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
     return columnModel;
   }
 
-  /**
-   * Creates a new grid.
-   *
-   * @param store the data store
-   * @param cm the column model
-   */
   @Inject
   public AccountsContextAreaGrid(AccountsDtoListStore store) {
     super(store, getColumModel());
@@ -153,27 +146,12 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
 
     List<AccountsDto> accounts = new ArrayList<AccountsDto>();
 
-    accounts.add(new AccountsDto(1L, "Abacus Property Group", "(02) 9253 8600", "Level 34, 264-278 George Street Sydney NSW 2000", "Dr Frank Wolf", "enquiries@abacusproperty.com.au"));
-    accounts.add(new AccountsDto(1L, "Adelaide Brighton Limited", "(08) 8223 8000", "Level 1 157 Grenfell Street Adelaide SA 5000", "Mr Mark Chellew", "enquiries@adbri.com.au"));
-    accounts.add(new AccountsDto(1L, "AGL Energy Limited", "(02) 9921 2999", "Level 22 101 Miller Street North Sydney NSW 2065", "Mr Michael Fraser", "enquiries@agl.com.au"));
-    accounts.add(new AccountsDto(1L, "Alesco Corporation Limited", "(02) 9248 2000", "Level 24 207 Kent Street Sydney NSW 2000", "Mr Peter Boyd", "enquiries@alesco.com.au"));
-    accounts.add(new AccountsDto(1L, "Alumina Limited", "(03) 8699 2600", "Level 12 60 City Road Southbank VIC 3006", "Mr John Bevan", "enquiries@alumina.com.au"));
+    accounts.add(new AccountsDto("1", "Abacus Property Group", "(02) 9253 8600", "Level 34, 264-278 George Street Sydney NSW 2000", "Dr Frank Wolf", "enquiries@abacusproperty.com.au"));
+    accounts.add(new AccountsDto("2", "Adelaide Brighton Limited", "(08) 8223 8000", "Level 1 157 Grenfell Street Adelaide SA 5000", "Mr Mark Chellew", "enquiries@adbri.com.au"));
+    accounts.add(new AccountsDto("3", "AGL Energy Limited", "(02) 9921 2999", "Level 22 101 Miller Street North Sydney NSW 2065", "Mr Michael Fraser", "enquiries@agl.com.au"));
+    accounts.add(new AccountsDto("4", "Alesco Corporation Limited", "(02) 9248 2000", "Level 24 207 Kent Street Sydney NSW 2000", "Mr Peter Boyd", "enquiries@alesco.com.au"));
+    accounts.add(new AccountsDto("5", "Alumina Limited", "(03) 8699 2600", "Level 12 60 City Road Southbank VIC 3006", "Mr John Bevan", "enquiries@alumina.com.au"));
 
     return accounts;
   }
 }
-
-/*
-
-    ColumnConfig<AccountsDto, String> iconColumnConfig = new ColumnConfig<AccountsDto, String>(property.accountName(),
-        SMALL_ICON_COLUMN_WIDTH, "#");
-    iconColumnConfig.setCell(new AbstractCell<String>() {
-      @Override
-      public void render(Context context, String value, SafeHtmlBuilder sb) {
-        // sb.appendHtmlConstant("<span> " + ACCOUNTS_ICON.asString() + "</span>");
-        sb.appendHtmlConstant(ACCOUNTS_ICON.asString());
-        // Log.debug("sb: " + sb.toSafeHtml().asString());
-      }
-    });
-
-*/

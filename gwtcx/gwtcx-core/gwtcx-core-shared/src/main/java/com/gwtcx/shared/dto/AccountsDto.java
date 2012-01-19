@@ -20,7 +20,7 @@ public class AccountsDto implements Serializable {
 
   private static final long serialVersionUID = 7749630501976551263L;
 
-  private Long accountId;
+  private String accountId;
   private String accountName;
   private String mainPhone;
   private String location;
@@ -28,14 +28,14 @@ public class AccountsDto implements Serializable {
   private String emailPrimaryContact;
 
   public AccountsDto() {
-    this.accountId = -1L;
+    this.accountId = "-1";
   }
 
-  public AccountsDto(Long accountId) {
+  public AccountsDto(String accountId) {
     this.accountId = accountId;
   }
 
-  public AccountsDto(Long accountId, String accountName, String mainPhone,
+  public AccountsDto(String accountId, String accountName, String mainPhone,
       String location, String primaryContact, String emailPrimaryContact) {
     this.accountId = accountId;
     this.accountName = accountName;
@@ -45,11 +45,11 @@ public class AccountsDto implements Serializable {
     this.emailPrimaryContact = emailPrimaryContact;
   }
 
-  public Long getAccountId() {
+  public String getAccountId() {
     return accountId;
   }
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 

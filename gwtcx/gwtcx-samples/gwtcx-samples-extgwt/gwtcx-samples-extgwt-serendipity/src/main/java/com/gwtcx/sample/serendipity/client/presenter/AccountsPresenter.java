@@ -20,6 +20,7 @@ import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.presenter.AbstractAccountsPresenter;
 import com.gwtcx.client.uihandlers.AccountsUiHandlers;
+import com.gwtcx.extgwt.client.ExtGwtCx;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.View;
@@ -74,8 +75,8 @@ public class AccountsPresenter extends
 
     Log.debug("onReveal() - " + NameTokens.accounts);
 
-    // MainPagePresenter.getNavigationPaneHeader().setContextAreaHeaderLabelContents(SmartGwtCx.getConstant().accountsMenuItemName());
-    // MainPagePresenter.getNavigationPane().selectRecord(NameTokens.accounts);
+    MainPagePresenter.getNavigationPaneHeader().setHeadingText(ExtGwtCx.getConstant().accountsMenuItemName());
+    MainPagePresenter.getNavigationPane().selectRecord(NameTokens.accounts);
   }
 
   @Override

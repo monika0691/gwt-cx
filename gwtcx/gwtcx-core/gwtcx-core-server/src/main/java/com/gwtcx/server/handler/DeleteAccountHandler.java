@@ -54,7 +54,7 @@ ActionHandler<DeleteAccountAction, DeleteAccountResult> {
     Log.info("Delete Account: " + action.getId());
 
     try {
-      accountDao.deleteAccount(accountDao.retrieveAccount(action.getId()));
+      accountDao.deleteAccount(accountDao.retrieveAccount(Long.parseLong(action.getId())));
 
       result = new DeleteAccountResult();
     }

@@ -65,7 +65,7 @@ public class AccountInformationPresenter extends
 
   public interface MyView extends View, HasUiHandlers<AccountInformationUiHandlers> {
     void setResultSet(AccountDto account);
-    void setAccountId(Long accountId);
+    void setAccountId(String accountId);
   }
 
   @Inject
@@ -138,7 +138,7 @@ public class AccountInformationPresenter extends
 
   public void createOrUpdateAccount(AccountDto accountDto) {
 
-    if (accountDto.getAccountId() == -1) {
+    if (Long.parseLong(accountDto.getAccountId()) == -1) {
       createAccount(accountDto);
     } else {
       updateAccount(accountDto);
@@ -180,7 +180,7 @@ public class AccountInformationPresenter extends
 
   protected void retrieveAccount(Long accountId) {
 
-    dispatcher.execute(new RetrieveAccountAction(accountId),
+    dispatcher.execute(new RetrieveAccountAction(Long.toString(accountId)),
         new AsyncCallback<RetrieveAccountResult>() {
       @Override
       public void onFailure(Throwable caught) {

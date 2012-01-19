@@ -39,7 +39,7 @@ public class ImportsRecord extends ListGridRecord {
   public ImportsRecord() { }
 
   public ImportsRecord(String icon,
-    Long importId,
+    String importId,
     String importName) {
     setIcon(icon);
     setImportId(importId);
@@ -50,7 +50,7 @@ public class ImportsRecord extends ListGridRecord {
     setAttribute(ICON, attribute);
   }
 
-  public void setImportId(Long attribute) {
+  public void setImportId(String attribute) {
     setAttribute(IMPORT_ID, attribute);
   }
 

@@ -55,7 +55,8 @@ public class ImageCell extends AbstractSafeHtmlCell<String> {
       return;
     }
 
-    SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("float:left;cursor:hand;cursor:pointer;");
+    // SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("float:left;cursor:hand;cursor:pointer;");
+    SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("float:left;cursor:pointer;");
 
     SafeHtml rendered = template.cell("image-1", imageStyle, PLACEHOLDER);
     sb.append(rendered);

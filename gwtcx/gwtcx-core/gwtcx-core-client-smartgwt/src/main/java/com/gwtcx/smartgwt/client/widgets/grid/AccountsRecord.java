@@ -35,7 +35,7 @@ public class AccountsRecord extends ListGridRecord {
   }
 
   public AccountsRecord(String icon,
-      Long accountId,
+    String accountId,
     String accountName,
     String mainPhone,
     String location,
@@ -55,7 +55,7 @@ public class AccountsRecord extends ListGridRecord {
     setAttribute(ICON, attribute);
   }
 
-  public void setAccountId(Long attribute) {
+  public void setAccountId(String attribute) {
     setAttribute(ACCOUNT_ID, attribute);
   }
 

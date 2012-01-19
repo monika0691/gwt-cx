@@ -101,7 +101,7 @@ public class RetrieveAccountsHandler implements
   */
 
   private AccountsDto createAccountsDto(Account account) {
-    return new AccountsDto(account.getAccountId(), account.getAccountName(), account.getMainPhone(),
+    return new AccountsDto(account.getAccountIdAsString(), account.getAccountName(), account.getMainPhone(),
         account.getLocation(), account.getPrimaryContact(), account.getEmailPrimaryContact());
   }
 

@@ -21,6 +21,6 @@ import com.gwtplatform.dispatch.shared.ActionImpl;
 @GenDispatch(isSecure = true, serviceName = ActionImpl.DEFAULT_SERVICE_NAME)
 public class DeleteEmail {
 
-  @In(1) Long id;;
+  @In(1) String id;;
 
 }

@@ -14,7 +14,13 @@
 
 package com.gwtcx.extgwt.client.widgets;
 
+import java.util.Iterator;
+
 import com.allen_sauer.gwt.log.client.Log;
+import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.WidgetCollection;
+import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
+import com.gwtcx.extgwt.client.widgets.grid.NavigationPaneSectionModelListStore;
 import com.sencha.gxt.widget.core.client.container.AccordionLayoutContainer;
 
 /**
@@ -40,6 +46,66 @@ public class NavigationPane extends AccordionLayoutContainer {
 
     return section;
   }
+
+  public void selectRecord(String name) {
+
+    WidgetCollection children = this.getChildren();
+
+    Iterator<Widget> iterator = children.iterator();
+
+    while (iterator.hasNext()) {
+
+      Widget child = (Widget) iterator.next();
+
+      assert child instanceof NavigationPaneSection : "NavigationPane children must be NavigationPaneSections";
+
+      NavigationPaneSection section = (NavigationPaneSection) child;
+
+      Log.debug("sectionName: " + section.getText());
+
+      NavigationPaneSectionModelListStore store = (NavigationPaneSectionModelListStore) section.getGrid().getStore();
+      NavigationPaneSectionModel model = store.findModelWithKey(name);
+
+      if (model != null) {
+        int rowIndex = store.indexOf(model);
+
+        Log.debug("selectRecord(rowIndex): " + rowIndex);
+
+        section.selectRecord(rowIndex);
+        break;
+      }
+    }
+  }
+
+  /*
+
+  public void selectRecord(String name) {
+
+    Log.debug("selectRecord(place) - " + name);
+
+    SectionStackSection[] sections = sectionStack.getSections();
+
+    Log.debug("Number of sections: " + sections.length);
+
+    for (int i = 0; i < sections.length; i++) {
+      SectionStackSection sectionStackSection = sections[i];
+
+      // see if we match any records in this section's ListGrid
+      if (((NavigationPaneSection) sectionStackSection).getRecord(name) != -1) {
+
+        if (!sectionStack.sectionIsExpanded(i)) {
+          Log.debug("sectionStack.expandSection(i)");
+          sectionStack.expandSection(i);
+        }
+
+        ((NavigationPaneSection) sectionStackSection).selectRecord(name);
+        break;
+      }
+    }
+  }
+
+  */
+
 
   /*
 
@@ -68,6 +134,21 @@ public class NavigationPane extends AccordionLayoutContainer {
 }
 
 /*
+
+
+
+      // NavigationPaneSectionModel model = (NavigationPaneSectionModel) section.getGrid().getStore().findModelWithKey(name);
+
+      // int rowIndex = section.getGrid().getStore().indexOf(model);
+
+
+
+      //  NavigationPaneSectionModel model = (NavigationPaneSectionModel) salesSection.getGrid().getStore().get(rowIndex);
+      // navigationPaneSectionClicked(model.getName());
+
+
+    // NavigationPaneSectionModel model = (NavigationPaneSectionModel) section.getGrid().getStore().get(1);
+    // Log.debug("model.getName(): " + model.getName());
 
     // tree.setExpanded(model, true);
 

@@ -15,21 +15,55 @@
 package com.gwtcx.extgwt.client.widgets;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.resources.client.ImageResource;
-import com.gwtcx.client.resources.SalesIcons;
-import com.gwtcx.extgwt.client.ExtGwtCx;
-import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
-import com.sencha.gxt.cell.core.client.SimpleSafeHtmlCell;
-import com.sencha.gxt.core.client.ValueProvider;
-import com.sencha.gxt.data.shared.IconProvider;
-import com.sencha.gxt.data.shared.TreeStore;
+import com.google.inject.Inject;
+import com.gwtcx.extgwt.client.widgets.grid.NavigationPaneSectionGrid;
+import com.gwtcx.extgwt.client.widgets.grid.NavigationPaneSectionModelListStore;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.container.AccordionLayoutContainer.AccordionLayoutAppearance;
-import com.sencha.gxt.widget.core.client.tree.Tree;
+import com.sencha.gxt.widget.core.client.event.RowClickEvent.RowClickHandler;
+import com.sencha.gxt.widget.core.client.grid.Grid;
 
 /**
  * NavigationPaneSection
  */
+public class NavigationPaneSection extends ContentPanel {
+
+  private static AccordionLayoutAppearance appearance = GWT.<AccordionLayoutAppearance> create(AccordionLayoutAppearance.class);
+
+  protected final Grid<?> grid;
+
+  @Inject
+  public NavigationPaneSection(NavigationPaneSectionGrid grid) {
+    super(appearance);
+
+    this.grid = grid;
+
+    add(grid);
+  }
+
+  public NavigationPaneSection() {
+    super(appearance);
+
+    this.grid = new NavigationPaneSectionGrid(new NavigationPaneSectionModelListStore());
+
+    add(grid);
+  }
+
+  public Grid<?> getGrid() {
+    return grid;
+  }
+
+  public void addRowClickHandler(RowClickHandler handler) {
+    grid.addRowClickHandler(handler);
+  }
+
+  public void selectRecord(int rowIndex) {
+    grid.getView().focusRow(rowIndex);
+  }
+}
+
+/*
+
 public class NavigationPaneSection extends ContentPanel {
 
   private static AccordionLayoutAppearance appearance = GWT.<AccordionLayoutAppearance> create(AccordionLayoutAppearance.class);
@@ -98,3 +132,5 @@ public class NavigationPaneSection extends ContentPanel {
     tree.setCell(cell);
   }
 }
+
+*/

@@ -144,6 +144,10 @@ public class Account {
     return accountId;
   }
 
+  public String getAccountIdAsString() {
+    return Long.toString(accountId);
+  }
+
   public String getAccountName() {
     return accountName;
   }

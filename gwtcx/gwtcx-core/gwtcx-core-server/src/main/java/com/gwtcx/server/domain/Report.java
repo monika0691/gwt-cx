@@ -74,6 +74,10 @@ public class Report {
     return reportId;
   }
 
+  public String getReportIdAsString() {
+    return Long.toString(reportId);
+  }
+
   public String getReportName() {
     return reportName;
   }

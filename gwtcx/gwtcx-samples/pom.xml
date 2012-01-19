@@ -18,7 +18,7 @@
   <modules>
     <!-- <module>gwtcx-samples-gwt</module> -->
     <module>gwtcx-samples-extgwt</module>
-    <module>gwtcx-samples-smartgwt</module>
+    <!-- <module>gwtcx-samples-smartgwt</module> -->
   </modules>
 
   <build>
