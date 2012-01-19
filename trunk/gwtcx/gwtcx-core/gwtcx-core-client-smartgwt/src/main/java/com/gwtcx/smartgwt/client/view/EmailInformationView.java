@@ -143,7 +143,7 @@ public class EmailInformationView extends ViewWithUiHandlers<EmailInformationUiH
 
   public void setId(Long id) {
     if (dto != null) {
-      dto.setId(id);
+      dto.setId(Long.toString(id));
 
       // set Masthead Account Name label and the browser window's title
       // setMastheadAccountNameLabel(accountDto.getAccountName());

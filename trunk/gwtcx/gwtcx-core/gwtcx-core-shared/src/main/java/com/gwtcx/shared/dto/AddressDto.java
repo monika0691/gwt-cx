@@ -20,7 +20,7 @@ public class AddressDto implements Serializable {
 
   private static final long serialVersionUID = -3588894937775842992L;
 
-  protected Long addressId;
+  protected String addressId;
   protected String addressName;
   protected String addressLine1;
   protected String addressLine2;
@@ -32,10 +32,10 @@ public class AddressDto implements Serializable {
   protected String addressType;
 
   public AddressDto() {
-    this.addressId = -1L;
+    this.addressId = "-1";
   }
 
-  public AddressDto(Long addressId, String addressName,
+  public AddressDto(String addressId, String addressName,
       String addressLine1, String addressLine2, String addressLine3,
       String city, String state, String postalCode,
       String country, String addressType) {
@@ -51,11 +51,11 @@ public class AddressDto implements Serializable {
     this.addressType = addressType;
   }
 
-  public Long getAddressId() {
+  public String getAddressId() {
     return addressId;
   }
 
-  public void setAddressId(Long addressId) {
+  public void setAddressId(String addressId) {
     this.addressId = addressId;
   }
 

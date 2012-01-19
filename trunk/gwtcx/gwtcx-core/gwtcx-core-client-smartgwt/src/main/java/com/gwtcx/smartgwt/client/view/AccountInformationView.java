@@ -159,7 +159,7 @@ public class AccountInformationView extends ViewWithUiHandlers<AccountInformatio
     return panel;
   }
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(String accountId) {
 
     if (accountDto != null) {
       accountDto.setAccountId(accountId);

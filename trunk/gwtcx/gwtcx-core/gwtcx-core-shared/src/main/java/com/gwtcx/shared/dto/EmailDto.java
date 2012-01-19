@@ -20,7 +20,7 @@ public class EmailDto implements Serializable {
 
   private static final long serialVersionUID = -6853340818289177309L;
 
-  protected Long emailId;
+  protected String emailId;
   protected String from;
   protected String to;
   protected String cc;
@@ -34,26 +34,26 @@ public class EmailDto implements Serializable {
   // protected List<AttachmentDto> attachments;
 
   public EmailDto() {
-    this.emailId = -1L;
+    this.emailId = "-1";
   }
 
-  public EmailDto(Long id) {
+  public EmailDto(String id) {
     this.emailId = id;
   }
 
-  public Long getId() {
+  public String getId() {
     return emailId;
   }
 
-  public Long getEmailId() {
+  public String getEmailId() {
     return emailId;
   }
 
-  public void setId(Long id) {
+  public void setId(String id) {
     this.emailId = id;
   }
 
-  public void setEmailId(Long emailId) {
+  public void setEmailId(String emailId) {
     this.emailId = emailId;
   }
 

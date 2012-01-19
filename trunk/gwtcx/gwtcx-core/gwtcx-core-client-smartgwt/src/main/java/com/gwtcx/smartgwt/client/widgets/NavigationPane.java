@@ -102,8 +102,6 @@ public class NavigationPane extends VLayout {
 
   public void addRecordClickHandler(String sectionName, RecordClickHandler clickHandler) {
 
-    // logger.log(Level.INFO, "addRecordClickHandler(sectionName, clickHandler) - " + sectionName);
-
     SectionStackSection[] sections = sectionStack.getSections();
 
     for (int i = 0; i < sections.length; i++) {

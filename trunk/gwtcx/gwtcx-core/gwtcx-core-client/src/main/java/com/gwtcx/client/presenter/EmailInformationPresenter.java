@@ -104,7 +104,7 @@ public class EmailInformationPresenter extends
 
   public void createOrUpdateEmail(EmailDto dto) {
 
-    if (dto.getEmailId() == -1) {
+    if (Long.parseLong(dto.getEmailId()) == -1) {
       createEmail(dto);
     } else {
       updateEmail(dto);

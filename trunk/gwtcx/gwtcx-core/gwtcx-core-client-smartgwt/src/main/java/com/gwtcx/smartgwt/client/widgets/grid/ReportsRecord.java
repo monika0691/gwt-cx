@@ -34,7 +34,7 @@ public class ReportsRecord extends ListGridRecord {
   public ReportsRecord() { }
 
   public ReportsRecord(String icon,
-      Long reportId,
+      String reportId,
       String reportName,
       String entityName,
       String reportFilename,
@@ -54,7 +54,7 @@ public class ReportsRecord extends ListGridRecord {
     setAttribute(ICON, attribute);
   }
 
-  public void setReportId(Long attribute) {
+  public void setReportId(String attribute) {
     setAttribute(REPORT_ID, attribute);
   }
 

@@ -20,6 +20,7 @@ import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.presenter.AbstractDashboardsPresenter;
 import com.gwtcx.client.uihandlers.DashboardsUiHandlers;
+import com.gwtcx.extgwt.client.ExtGwtCx;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
@@ -77,8 +78,8 @@ public class DashboardsPresenter extends
 
     Log.debug("onReveal() - " + NameTokens.dashboards);
 
-    // SerendipityMainPagePresenter.getNavigationPaneHeader().setContextAreaHeaderLabelContents(SmartGwtCx.getConstant().dashboardsMenuItemName());
-    // SerendipityMainPagePresenter.getNavigationPane().selectRecord(NameTokens.dashboards);
+    MainPagePresenter.getNavigationPaneHeader().setHeadingText(ExtGwtCx.getConstant().dashboardsMenuItemName());
+    MainPagePresenter.getNavigationPane().selectRecord(NameTokens.dashboards);
 
     // getView().setResultSet();
   }

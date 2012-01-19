@@ -20,7 +20,7 @@ public class ReportsDto implements Serializable {
 
   private static final long serialVersionUID = -9050049510672663966L;
 
-  protected Long reportId;
+  protected String reportId;
   protected String reportName;
   protected String entityName;
   protected String reportFilename;
@@ -29,14 +29,14 @@ public class ReportsDto implements Serializable {
   protected String description;
 
   public ReportsDto() {
-    this.reportId = -1L;
+    this.reportId = "-1";
   }
 
-  public ReportsDto(Long reportId) {
+  public ReportsDto(String reportId) {
     this.reportId = reportId;
   }
 
-  public ReportsDto(Long reportId, String reportName, String entityName, String reportFilename,
+  public ReportsDto(String reportId, String reportName, String entityName, String reportFilename,
       String reportType, String modifiedOn, String description) {
     this.reportId = reportId;
     this.reportName = reportName;
@@ -47,11 +47,11 @@ public class ReportsDto implements Serializable {
     this.description = description;
   }
 
-  public Long getReportId() {
+  public String getReportId() {
     return reportId;
   }
 
-  public void setReportId(Long reportId) {
+  public void setReportId(String reportId) {
     this.reportId = reportId;
   }
 

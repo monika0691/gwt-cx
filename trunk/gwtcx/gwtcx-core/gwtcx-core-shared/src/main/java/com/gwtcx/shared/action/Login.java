@@ -22,8 +22,8 @@ import com.gwtplatform.dispatch.shared.UnsecuredActionImpl;
 @GenDispatch(isSecure = false, serviceName = UnsecuredActionImpl.DEFAULT_SERVICE_NAME)
 public class Login {
 
-  @In(1) String login;
-  @In(2) String password;
+  @In(1)  String login;
+  @In(2)  String password;
   @Out(1) String sessionKey;
 
 }

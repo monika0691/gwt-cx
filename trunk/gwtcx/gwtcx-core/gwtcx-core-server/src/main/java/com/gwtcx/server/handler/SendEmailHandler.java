@@ -92,7 +92,7 @@ public class SendEmailHandler implements
 
         Transport.send(msg);
 
-        result = new SendEmailResult(1L);
+        result = new SendEmailResult("1");
 
         Log.info("Email message sent");
 

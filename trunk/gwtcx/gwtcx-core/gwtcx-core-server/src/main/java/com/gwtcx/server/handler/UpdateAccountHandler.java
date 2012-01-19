@@ -61,7 +61,7 @@ public class UpdateAccountHandler implements
     Log.info("Update Account");
 
     try {
-      Account account = accountDao.retrieveAccount(action.getDto().getAccountId());
+      Account account = accountDao.retrieveAccount(Long.parseLong(action.getDto().getAccountId()));
 
       updateAccount(account, action.getDto());
 

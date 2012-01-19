@@ -65,7 +65,7 @@ public class CreateAccountHandler implements
 
       Log.info("Created Account: " + accountId);
 
-      result = new CreateAccountResult(accountId);
+      result = new CreateAccountResult(Long.toString(accountId));
     }
     catch (Exception e) {
       Log.warn("Unable to create Account", e);

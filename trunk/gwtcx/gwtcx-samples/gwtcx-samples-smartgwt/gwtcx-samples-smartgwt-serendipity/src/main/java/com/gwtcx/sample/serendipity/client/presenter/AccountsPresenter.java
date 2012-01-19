@@ -152,7 +152,7 @@ public class AccountsPresenter extends
       return;
     }
 
-    getDispatcher().execute(new DeleteAccountAction(id),
+    getDispatcher().execute(new DeleteAccountAction(Long.toString(id)),
         new AsyncCallback<DeleteAccountResult>() {
       @Override
       public void onFailure(Throwable caught) {

@@ -21,7 +21,7 @@ public class AccountDto implements Serializable {
 
   private static final long serialVersionUID = 3434148714982575460L;
 
-  protected Long accountId;
+  protected String accountId;
   protected String accountName;
   protected String accountNumber;
   protected String parentAccount;
@@ -40,18 +40,18 @@ public class AccountDto implements Serializable {
   protected String email;
 
   public AccountDto() {
-    this.accountId = -1L;
+    this.accountId = "-1";
   }
 
-  public AccountDto(Long id) {
+  public AccountDto(String id) {
     this.accountId = id;
   }
 
-  public Long getAccountId() {
+  public String getAccountId() {
     return accountId;
   }
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 

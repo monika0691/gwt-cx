@@ -115,4 +115,8 @@ public abstract class AbstractMainPageView<C extends UiHandlers> extends ViewWit
   public ContentPanel getCenterLayoutContainer() {
     return centerLayout;
   }
+
+  public ContentPanel getNavigationPaneHeader() {
+    return getCenterLayoutContainer();
+  }
 }

@@ -21,6 +21,7 @@ import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.presenter.AbstractMainPagePresenter;
 import com.gwtcx.client.uihandlers.MainPageUiHandlers;
+import com.gwtcx.extgwt.client.widgets.NavigationPane;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
@@ -31,10 +32,14 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
+import com.sencha.gxt.widget.core.client.ContentPanel;
 
 public class MainPagePresenter extends
     AbstractMainPagePresenter<MainPagePresenter.MyView, MainPagePresenter.MyProxy> implements
   MainPageUiHandlers {
+
+  public static ContentPanel navigationPaneHeader = null;
+  public static NavigationPane navigationPane = null;
 
   //
   // don't forget to update your Ginjector & GinModule
@@ -47,8 +52,8 @@ public class MainPagePresenter extends
   }
 
   public interface MyView extends View, HasUiHandlers<MainPageUiHandlers> {
-    // NavigationPaneHeader getNavigationPaneHeader();
-    // NavigationPane getNavigationPane();
+    ContentPanel getNavigationPaneHeader();
+    NavigationPane getNavigationPane();
   }
 
   // Use this in leaf presenters, inside their {@link #revealInParent} method.
@@ -64,8 +69,8 @@ public class MainPagePresenter extends
 
     getView().setUiHandlers(this);
 
-    // SerendipityMainPagePresenter.navigationPaneHeader = getView().getNavigationPaneHeader();
-    // SerendipityMainPagePresenter.navigationPane = getView().getNavigationPane();
+    MainPagePresenter.navigationPaneHeader = getView().getNavigationPaneHeader();
+    MainPagePresenter.navigationPane = getView().getNavigationPane();
   }
 
   @Override
@@ -81,10 +86,19 @@ public class MainPagePresenter extends
 
     // expand the first Navigation Pane section
     // getView().getNavigationPane().expandSection(I18nUtil.getConstant().salesStackSectionName());
+    //   getNavigationPane().setWidget(getNavigationPane().getWidget(0));
 
     // reveal the nested Presenter
     PlaceRequest nestedPlaceRequest = new PlaceRequest(nameToken);
     getPlaceManager().revealPlace(nestedPlaceRequest);
+  }
+
+  public static ContentPanel getNavigationPaneHeader() {
+    return navigationPaneHeader;
+  }
+
+  public static NavigationPane getNavigationPane() {
+    return navigationPane;
   }
 }
 

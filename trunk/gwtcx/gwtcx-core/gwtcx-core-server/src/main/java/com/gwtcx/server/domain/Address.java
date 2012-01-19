@@ -89,6 +89,10 @@ public class Address {
     return addressId;
   }
 
+  public String getAddressIdAsString() {
+    return Long.toString(addressId);
+  }
+
   public String getAddressName() {
     return addressName;
   }

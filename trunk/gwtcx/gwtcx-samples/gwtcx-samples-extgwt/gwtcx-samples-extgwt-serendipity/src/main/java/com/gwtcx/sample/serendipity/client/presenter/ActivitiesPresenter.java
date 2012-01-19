@@ -14,11 +14,13 @@
 
 package com.gwtcx.sample.serendipity.client.presenter;
 
+import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.presenter.AbstractActivitiesPresenter;
 import com.gwtcx.client.uihandlers.ActivitiesUiHandlers;
+import com.gwtcx.extgwt.client.ExtGwtCx;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.View;
@@ -67,8 +69,10 @@ public class ActivitiesPresenter extends
   protected void onReveal() {
     super.onReveal();
 
-    // MainPagePresenter.getNavigationPaneHeader().setContextAreaHeaderLabelContents(SmartGwtCx.getConstant().activitiesMenuItemName());
-    // MainPagePresenter.getNavigationPane().selectRecord(NameTokens.activities);
+    Log.debug("onReveal() - " + NameTokens.activities);
+
+    MainPagePresenter.getNavigationPaneHeader().setHeadingText(ExtGwtCx.getConstant().activitiesMenuItemName());
+    MainPagePresenter.getNavigationPane().selectRecord(NameTokens.activities);
   }
 
   @Override
