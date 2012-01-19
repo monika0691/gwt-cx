@@ -29,6 +29,7 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   public static final String CONTEXT_AREA_WIDTH = "100%";
+  public static final String CONTEXT_AREA_HEIGHT = "100%";
 
   protected VerticalLayoutContainer panel;
 
@@ -42,14 +43,15 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
     this.grid = grid;
     this.toolBar = toolBar;
 
-    panel = new VerticalLayoutContainer();
+    this.panel = new VerticalLayoutContainer();
 
     // panel.setStyleName(StyleTokens.contextArea);
-    panel.setWidth(CONTEXT_AREA_WIDTH);
+    this.panel.setWidth(CONTEXT_AREA_WIDTH);
+    this.panel.setHeight(CONTEXT_AREA_HEIGHT);
 
     // add the Tool Bar, Grid, and Status Bar to the View's layout container
-    panel.add(this.toolBar, new VerticalLayoutData(1, -1));  // new Margins(4)
-    panel.add(this.grid, new VerticalLayoutData(1, -1));
+    this.panel.add(this.toolBar, new VerticalLayoutData(1, -1));  // new Margins(4)
+    this.panel.add(this.grid, new VerticalLayoutData(1, -1));
 
     bindCustomUiHandlers();
   }

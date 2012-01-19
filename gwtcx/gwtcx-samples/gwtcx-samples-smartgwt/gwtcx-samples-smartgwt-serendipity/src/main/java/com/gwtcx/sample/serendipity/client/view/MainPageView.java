@@ -171,7 +171,7 @@ public class MainPageView extends AbstractMainPageView<MainPageUiHandlers> imple
 
       if (getUiHandlers() != null) {
          getUiHandlers().onNewActivityClicked(place);
-       }
+      }
     }
   }
 
@@ -183,7 +183,7 @@ public class MainPageView extends AbstractMainPageView<MainPageUiHandlers> imple
 
       if (getUiHandlers() != null) {
          getUiHandlers().onNewRecordClicked(place);
-       }
+      }
     }
   }
 
@@ -194,8 +194,8 @@ public class MainPageView extends AbstractMainPageView<MainPageUiHandlers> imple
       String place = event.getItem().getTitle().trim();
 
       if (getUiHandlers() != null) {
-         getUiHandlers().onGoToMenuItemClicked(place);
-       }
+        getUiHandlers().onGoToMenuItemClicked(place);
+      }
     }
   }
 
