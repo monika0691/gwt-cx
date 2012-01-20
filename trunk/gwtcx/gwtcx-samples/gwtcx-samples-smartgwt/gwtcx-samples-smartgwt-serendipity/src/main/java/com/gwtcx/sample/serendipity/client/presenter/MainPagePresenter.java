@@ -98,22 +98,3 @@ public class MainPagePresenter extends
     return navigationPane;
   }
 }
-
-
-/*
-
-@Override
-protected void onBind() {
-  super.onBind();
-
-  Log.debug("onBind()");
-
-  // expand the first Navigation Pane section
-  getView().getNavigationPane().expandSection(I18nUtil.getConstant().salesStackSectionName());
-
-  // reveal a nested Presenter
-  PlaceRequest placeRequest = new PlaceRequest(NameTokens.dashboards);
-  getPlaceManager().revealPlace(placeRequest);
-}
-
-*/

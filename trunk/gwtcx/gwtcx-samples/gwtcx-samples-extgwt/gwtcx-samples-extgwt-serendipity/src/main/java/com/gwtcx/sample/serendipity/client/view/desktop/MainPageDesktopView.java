@@ -59,6 +59,7 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
 
     Log.debug("MainPageDesktopView()");
 
+    // expand the first Navigation Pane section
     getNavigationPane().setWidget(getNavigationPane().getWidget(0));
   }
 

@@ -18,6 +18,7 @@ import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
+import com.gwtcx.client.event.NavigationPaneUpdateEvent;
 import com.gwtcx.client.presenter.AbstractAccountsPresenter;
 import com.gwtcx.client.uihandlers.AccountsUiHandlers;
 import com.gwtcx.extgwt.client.ExtGwtCx;
@@ -75,8 +76,7 @@ public class AccountsPresenter extends
 
     Log.debug("onReveal() - " + NameTokens.accounts);
 
-    MainPagePresenter.getNavigationPaneHeader().setHeadingText(ExtGwtCx.getConstant().accountsMenuItemName());
-    MainPagePresenter.getNavigationPane().selectRecord(NameTokens.accounts);
+    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.accounts, ExtGwtCx.getConstant().accountsMenuItemName());
   }
 
   @Override
