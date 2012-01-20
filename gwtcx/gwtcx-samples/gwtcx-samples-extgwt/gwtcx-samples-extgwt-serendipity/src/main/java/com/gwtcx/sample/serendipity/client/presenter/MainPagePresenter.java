@@ -19,6 +19,8 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
+import com.gwtcx.client.event.NavigationPaneUpdateEvent;
+import com.gwtcx.client.event.NavigationPaneUpdateEventHandler;
 import com.gwtcx.client.presenter.AbstractMainPagePresenter;
 import com.gwtcx.client.uihandlers.MainPageUiHandlers;
 import com.gwtcx.extgwt.client.widgets.NavigationPane;
@@ -71,6 +73,15 @@ public class MainPagePresenter extends
 
     MainPagePresenter.navigationPaneHeader = getView().getNavigationPaneHeader();
     MainPagePresenter.navigationPane = getView().getNavigationPane();
+
+    // TO DO: move event handler to NavigationPane
+    getEventBus().addHandler(NavigationPaneUpdateEvent.getType(), new NavigationPaneUpdateEventHandler() {
+      @Override
+      public void onUpdateNavigationPane(NavigationPaneUpdateEvent event) {
+        getNavigationPane().selectRecord(event.getName());
+        getNavigationPaneHeader().setHeadingText(event.getDisplayName());
+      }
+    });
   }
 
   @Override
@@ -86,7 +97,7 @@ public class MainPagePresenter extends
 
     // expand the first Navigation Pane section
     // getView().getNavigationPane().expandSection(I18nUtil.getConstant().salesStackSectionName());
-    //   getNavigationPane().setWidget(getNavigationPane().getWidget(0));
+    // getNavigationPane().setWidget(getNavigationPane().getWidget(0));
 
     // reveal the nested Presenter
     PlaceRequest nestedPlaceRequest = new PlaceRequest(nameToken);

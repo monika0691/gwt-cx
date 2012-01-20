@@ -18,6 +18,7 @@ import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
+import com.gwtcx.client.event.NavigationPaneUpdateEvent;
 import com.gwtcx.client.presenter.AbstractActivitiesPresenter;
 import com.gwtcx.client.uihandlers.ActivitiesUiHandlers;
 import com.gwtcx.extgwt.client.ExtGwtCx;
@@ -71,8 +72,7 @@ public class ActivitiesPresenter extends
 
     Log.debug("onReveal() - " + NameTokens.activities);
 
-    MainPagePresenter.getNavigationPaneHeader().setHeadingText(ExtGwtCx.getConstant().activitiesMenuItemName());
-    MainPagePresenter.getNavigationPane().selectRecord(NameTokens.activities);
+    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.activities, ExtGwtCx.getConstant().activitiesMenuItemName());
   }
 
   @Override

@@ -180,5 +180,17 @@
       <artifactId>gwt.highcharts</artifactId>
     </dependency>
 
+    <!-- GWT Cal dependencies -->
+    <dependency>
+      <groupId>com.bradrydzewski</groupId>
+      <artifactId>gwt-cal</artifactId>
+    </dependency>
+
+    <!-- GWT DnD dependencies -->
+    <dependency>
+      <groupId>com.allen-sauer.gwt.dnd</groupId>
+      <artifactId>gwt-dnd</artifactId>
+    </dependency>
+
   </dependencies>
 </project>

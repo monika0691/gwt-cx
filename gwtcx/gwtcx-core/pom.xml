@@ -17,7 +17,7 @@
 
   <modules>
     <module>gwtcx-core-client</module>
-  <module>gwtcx-core-client-extgwt</module>
+    <module>gwtcx-core-client-extgwt</module>
     <module>gwtcx-core-client-smartgwt</module>
     <module>gwtcx-core-shared</module>
     <module>gwtcx-core-server</module>
@@ -264,12 +264,14 @@
         <scope>provided</scope>
       </dependency>
 
-      <!-- GWT HighCharts dependencies -->
+      <!-- GWT HighCharts dependencies
       <dependency>
         <groupId>org.moxieapps</groupId>
         <artifactId>gwt.highcharts</artifactId>
         <version>${gwt.highcharts.version}</version>
+        <scope>provided</scope>
       </dependency>
+      -->
 
     </dependencies>
   </dependencyManagement>
