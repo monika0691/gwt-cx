@@ -28,21 +28,19 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 /**
  * AbstractPagingView
  */
-public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractReportsView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   public static final String CONTEXT_AREA_WIDTH = "100%";
   public static final String CONTEXT_AREA_HEIGHT = "100%";
 
   protected VerticalLayoutContainer panel;
 
-  protected final com.gwtcx.extgwt.client.widgets.ToolBar toolBar;
   protected final Grid<?> grid;
 
   @Inject
-  public AbstractPagingView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Grid<?> grid) {
+  public AbstractReportsView(final Grid<?> grid) {
     super();
 
-    this.toolBar = toolBar;
     this.grid = grid;
 
     // panel.setStyleName(StyleTokens.contextArea);
@@ -50,7 +48,6 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
     this.panel.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
 
     // add the Tool Bar, Grid, and Status Bar to the View's layout container
-    this.panel.add(this.toolBar, new VerticalLayoutData(1, -1));  // new Margins(4)
     this.panel.add(this.grid, new VerticalLayoutData(1, -1));
 
     this.panel.addResizeHandler(new ResizeHandler() {
@@ -62,9 +59,9 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
 
         Log.debug("ResizeHandler() - width: " + width + " height: " + height);
 
-        toolBar.setWidth(width + "px");
+        // toolBar.setWidth(width + "px");
         grid.setWidth(width + "px");
-        grid.setHeight(height - 32 + "px");
+        grid.setHeight(height + "px");
       }
     });
 
@@ -82,15 +79,7 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
     return panel;
   }
 
-  public com.gwtcx.extgwt.client.widgets.ToolBar getToolBar() {
-    return toolBar;
-  }
-
   public Grid<?> getGrid() {
     return grid;
   }
-
-  // public StatusBar getStatusBar() {
-  //   return statusBar;
-  // }
 }

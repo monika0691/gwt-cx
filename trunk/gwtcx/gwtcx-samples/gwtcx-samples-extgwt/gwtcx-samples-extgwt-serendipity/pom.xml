@@ -121,7 +121,16 @@
       <groupId>com.sencha.gxt</groupId>
       <artifactId>uibinder-bridge</artifactId>
     </dependency>
-
+    <!-- GWT Cal dependencies -->
+    <dependency>
+      <groupId>com.bradrydzewski</groupId>
+      <artifactId>gwt-cal</artifactId>
+    </dependency>
+    <!-- GWT DnD dependencies -->
+    <dependency>
+      <groupId>com.allen-sauer.gwt.dnd</groupId>
+      <artifactId>gwt-dnd</artifactId>
+    </dependency>
     <!-- Google Web Toolkit dependencies -->
     <dependency>
       <groupId>com.google.gwt</groupId>
@@ -178,18 +187,6 @@
     <dependency>
       <groupId>org.moxieapps</groupId>
       <artifactId>gwt.highcharts</artifactId>
-    </dependency>
-
-    <!-- GWT Cal dependencies -->
-    <dependency>
-      <groupId>com.bradrydzewski</groupId>
-      <artifactId>gwt-cal</artifactId>
-    </dependency>
-
-    <!-- GWT DnD dependencies -->
-    <dependency>
-      <groupId>com.allen-sauer.gwt.dnd</groupId>
-      <artifactId>gwt-dnd</artifactId>
     </dependency>
 
   </dependencies>

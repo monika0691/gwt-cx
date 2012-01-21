@@ -35,7 +35,7 @@ public class DashboardsPresenter extends
   DashboardsUiHandlers {
 
   //
-  // don't forget to update your Ginjector & ClientModule
+  // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
   @NameToken(NameTokens.dashboards)

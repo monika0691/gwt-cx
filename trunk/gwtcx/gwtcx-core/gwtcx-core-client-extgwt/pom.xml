@@ -68,6 +68,20 @@
       <version>${gwt.version}-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
+    <!-- GWT Cal dependencies -->
+    <dependency>
+      <groupId>com.bradrydzewski</groupId>
+      <artifactId>gwt-cal</artifactId>
+      <version>${gwt-cal.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- GWT DnD dependencies -->
+    <dependency>
+      <groupId>com.allen-sauer.gwt.dnd</groupId>
+      <artifactId>gwt-dnd</artifactId>
+      <version>${gwt-dnd.version}</version>
+      <scope>provided</scope>
+    </dependency>
 
     <!-- Google Web Toolkit dependencies -->
     <dependency>

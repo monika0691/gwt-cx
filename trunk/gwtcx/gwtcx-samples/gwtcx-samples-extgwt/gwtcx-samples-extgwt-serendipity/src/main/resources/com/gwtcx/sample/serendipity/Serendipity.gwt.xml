@@ -27,8 +27,18 @@
   <inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
   <!-- <inherits name="com.allen_sauer.gwt.log.gwt-log-OFF" /> -->
 
+
+
+
+  <inherits name="com.bradrydzewski.gwt.calendar.Calendar" />
+  <inherits name="com.bradrydzewski.gwt.calendar.theme.google.Google" />
+<!--
+  <inherits name="com.allen_sauer.gwt.dnd.gwt-dnd" />
+ -->
+
+
   <!-- The entry point class -->
-  <entry-point class='com.gwtcx.sample.serendipity.client.entrypoint.Serendipity'/>
+  <entry-point class="com.gwtcx.sample.serendipity.client.entrypoint.Serendipity" />
 
   <!-- Device dependent settings -->
   <replace-with class="com.gwtcx.sample.serendipity.client.gin.DesktopGinjectorProvider">

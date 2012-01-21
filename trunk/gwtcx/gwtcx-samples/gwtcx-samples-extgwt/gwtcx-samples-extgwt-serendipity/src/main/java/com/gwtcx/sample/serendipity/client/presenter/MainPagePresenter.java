@@ -44,7 +44,7 @@ public class MainPagePresenter extends
   public static NavigationPane navigationPane = null;
 
   //
-  // don't forget to update your Ginjector & GinModule
+  // don't forget to update your Ginjector & SharedGinModule
   //
   // @ProxyCodeSplit
   @ProxyStandard
