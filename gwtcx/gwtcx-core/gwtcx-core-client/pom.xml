@@ -91,12 +91,5 @@
       <artifactId>gwt-log</artifactId>
     </dependency>
 
-    <!-- GWT HighCharts dependencies
-    <dependency>
-      <groupId>org.moxieapps</groupId>
-      <artifactId>gwt.highcharts</artifactId>
-    </dependency>
-    -->
-
   </dependencies>
 </project>

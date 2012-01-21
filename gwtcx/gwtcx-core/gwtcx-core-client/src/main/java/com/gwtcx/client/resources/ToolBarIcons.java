@@ -83,4 +83,14 @@ public interface ToolBarIcons extends ClientBundle {
 
   @Source(urlPrefix + "help.png")
   ImageResource help();
+
+
+  @Source(urlPrefix + "day.png")
+  ImageResource day();
+
+  @Source(urlPrefix + "week.png")
+  ImageResource week();
+
+  @Source(urlPrefix + "month.png")
+  ImageResource month();
 }

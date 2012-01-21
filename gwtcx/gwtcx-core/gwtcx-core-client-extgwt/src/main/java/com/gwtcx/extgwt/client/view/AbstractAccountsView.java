@@ -20,7 +20,6 @@ import com.google.inject.Inject;
 import com.gwtcx.client.resources.ToolBarIcons;
 import com.gwtcx.client.uihandlers.AccountsUiHandlers;
 import com.gwtcx.client.util.I18nUtil;
-import com.gwtcx.extgwt.client.widgets.ToolBar;
 import com.gwtcx.shared.dto.AccountsDto;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
@@ -36,7 +35,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
   // protected String recordId;
 
   @Inject
-  public AbstractAccountsView(ToolBar toolBar, Grid<?> grid) {
+  public AbstractAccountsView(com.gwtcx.extgwt.client.widgets.ToolBar toolBar, Grid<?> grid) {
     super(toolBar, grid);
 
     // recordId = new String("-1");
@@ -48,24 +47,6 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
 
     // initialise the ToolBar and register its handlers
     initToolBar();
-
-    // register the ListGird handlers
-    /*
-
-    getListGrid().addRecordDoubleClickHandler(new RecordDoubleClickHandler() {
-      @Override
-      public void onRecordDoubleClick(RecordDoubleClickEvent event) {
-        Record record = event.getRecord();
-        recordId = record.getAttributeAsString(AccountsRecord.ACCOUNT_ID);
-
-        if (getUiHandlers() != null) {
-          // getUiHandlers().onRecordDoubleClicked(recordId);
-          ((AccountsUiHandlers) getUiHandlers()).onRecordDoubleClicked(recordId);
-        }
-      }
-    });
-
-    */
 
     // initialise the StatusBar and register its handlers
     initStatusBar();
@@ -86,7 +67,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
     config.setBodyHtml("Create a new Account");
     config.setTrackMouse(true);
 
-    getToolBar().addButton(ToolBarIcons.INSTANCE.newAccount(), I18nUtil.getConstant().newButton(), config, new SelectHandler() {
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.newAccount(), I18nUtil.getConstant().newButton(), config, new SelectHandler() {
     @Override
       public void onSelect(SelectEvent event) {
         // Info.display("Click", ((TextButton) event.getSource()).getText() + " clicked");
@@ -99,21 +80,21 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
 
     getToolBar().addSeparator();
 
-    getToolBar().addButton(ToolBarIcons.INSTANCE.printPreview(), null, null);
-    getToolBar().addButton(ToolBarIcons.INSTANCE.export(), null, null);
-    getToolBar().addButton(ToolBarIcons.INSTANCE.mailMerge(), null, null);
-    getToolBar().addButton(ToolBarIcons.INSTANCE.reports(), null, null);
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.printPreview(), null, null);
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.export(), null, null);
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.mailMerge(), null, null);
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.reports(), null, null);
 
     getToolBar().addSeparator();
 
-    getToolBar().addButton(ToolBarIcons.INSTANCE.assign(), null, null);
-    getToolBar().addButton(ToolBarIcons.INSTANCE.delete(), null, null);
-    getToolBar().addButton(ToolBarIcons.INSTANCE.sendEmail(), null, null);
-    getToolBar().addButton(ToolBarIcons.INSTANCE.workflow(), null, null);
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.assign(), null, null);
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.delete(), null, null);
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.sendEmail(), null, null);
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.workflow(), null, null);
 
     getToolBar().addSeparator();
 
-    getToolBar().addButton(ToolBarIcons.INSTANCE.refresh(), null, null);
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.refresh(), null, null);
 
     getToolBar().addFill();
   }

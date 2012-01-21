@@ -264,15 +264,6 @@
         <scope>provided</scope>
       </dependency>
 
-      <!-- GWT HighCharts dependencies
-      <dependency>
-        <groupId>org.moxieapps</groupId>
-        <artifactId>gwt.highcharts</artifactId>
-        <version>${gwt.highcharts.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      -->
-
     </dependencies>
   </dependencyManagement>
 

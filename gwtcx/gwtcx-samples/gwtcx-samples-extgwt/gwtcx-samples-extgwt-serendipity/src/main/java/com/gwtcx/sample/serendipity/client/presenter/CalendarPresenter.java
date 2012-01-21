@@ -14,48 +14,56 @@
 
 package com.gwtcx.sample.serendipity.client.presenter;
 
+import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
-import com.gwtcx.client.presenter.AbstractErrorPagePresenter;
-import com.gwtcx.client.uihandlers.ErrorPageUiHandlers;
-import com.gwtplatform.mvp.client.HasUiHandlers;
+import com.gwtcx.client.event.NavigationPaneUpdateEvent;
+import com.gwtcx.client.presenter.AbstractCalendarPresenter;
+import com.gwtcx.extgwt.client.ExtGwtCx;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
-import com.gwtplatform.mvp.client.annotations.NoGatekeeper;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.Place;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
-import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.Proxy;
+import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
-public class ErrorPagePresenter extends
-    AbstractErrorPagePresenter<ErrorPagePresenter.MyView, ErrorPagePresenter.MyProxy> implements
-  ErrorPageUiHandlers {
+public class CalendarPresenter extends
+    AbstractCalendarPresenter<CalendarPresenter.MyView, CalendarPresenter.MyProxy> {
+  // implements CalendarUiHandlers {
 
   //
   // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
-  @NameToken(NameTokens.errorPage)
-  @NoGatekeeper
-  public interface MyProxy extends Proxy<ErrorPagePresenter>, Place {
+  @NameToken(NameTokens.calendar)
+  // @UseGatekeeper(LoggedInGatekeeper.class)
+  public interface MyProxy extends Proxy<CalendarPresenter>, Place {
   }
 
-  public interface MyView extends View, HasUiHandlers<ErrorPageUiHandlers> {
+  public interface MyView extends View {
   }
 
   @Inject
-  public ErrorPagePresenter(EventBus eventBus, MyView view,
-        MyProxy proxy, PlaceManager placeManager) {
+  public CalendarPresenter(EventBus eventBus, MyView view, MyProxy proxy,
+      PlaceManager placeManager) {
     super(eventBus, view, proxy, placeManager);
 
-    getView().setUiHandlers(this);
+    // getView().setUiHandlers(this);
   }
 
   @Override
-  public void onOkButtonClicked() {
-    PlaceRequest placeRequest = new PlaceRequest(NameTokens.mainPage);
-    getPlaceManager().revealPlace(placeRequest);
+  protected void revealInParent() {
+    RevealContentEvent.fire(this, MainPagePresenter.TYPE_SetContextAreaContent, this);
+  }
+
+  @Override
+  protected void onReveal() {
+    super.onReveal();
+
+    Log.debug("onReveal() - " + NameTokens.calendar);
+
+    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.calendar, ExtGwtCx.getConstant().calendarMenuItemName());
   }
 }

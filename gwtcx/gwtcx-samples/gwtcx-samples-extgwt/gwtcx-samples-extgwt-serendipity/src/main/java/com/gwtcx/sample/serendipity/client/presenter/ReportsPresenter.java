@@ -14,13 +14,12 @@
 
 package com.gwtcx.sample.serendipity.client.presenter;
 
-import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.event.NavigationPaneUpdateEvent;
-import com.gwtcx.client.presenter.AbstractActivitiesPresenter;
-import com.gwtcx.client.uihandlers.ActivitiesUiHandlers;
+import com.gwtcx.client.presenter.AbstractReportsPresenter;
+import com.gwtcx.client.uihandlers.ReportsUiHandlers;
 import com.gwtcx.extgwt.client.ExtGwtCx;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.HasUiHandlers;
@@ -32,29 +31,29 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
-public class ActivitiesPresenter extends
-    AbstractActivitiesPresenter<ActivitiesPresenter.MyView, ActivitiesPresenter.MyProxy> implements
-  ActivitiesUiHandlers {
+public class ReportsPresenter extends
+    AbstractReportsPresenter<ReportsPresenter.MyView, ReportsPresenter.MyProxy> implements
+    ReportsUiHandlers {
 
   //
-  // don't forget to update your Ginjector & SharedGinModule
+  // don't forget to update your Ginjector & ClientModule
   //
   @ProxyCodeSplit
-  @NameToken(NameTokens.activities)
+  @NameToken(NameTokens.reports)
   // @UseGatekeeper(LoggedInGatekeeper.class)
-  public interface MyProxy extends Proxy<ActivitiesPresenter>, Place {
+  public interface MyProxy extends Proxy<ReportsPresenter>, Place {
   }
 
-  public interface MyView extends View, HasUiHandlers<ActivitiesUiHandlers> {
+  public interface MyView extends View, HasUiHandlers<ReportsUiHandlers> {
     // StatusBar getStatusBar();
     // void refreshStatusBar();
     // void setNumberOfElements(int numberOfElements);
     // void setPageNumber(int pageNumber);
-    // void setResultSet(List<ActivitiesDto> resultSet);
+    // void setResultSet(List<ReportsDto> resultSet);
   }
 
   @Inject
-  public ActivitiesPresenter(EventBus eventBus, MyView view, MyProxy proxy,
+  public ReportsPresenter(EventBus eventBus, MyView view, MyProxy proxy,
       DispatchAsync dispatcher, PlaceManager placeManager) {
     super(eventBus, view, proxy, dispatcher, placeManager);
 
@@ -70,13 +69,50 @@ public class ActivitiesPresenter extends
   protected void onReveal() {
     super.onReveal();
 
-    Log.debug("onReveal() - " + NameTokens.activities);
-
-    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.activities, ExtGwtCx.getConstant().activitiesMenuItemName());
+    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.reports, ExtGwtCx.getConstant().reportsMenuItemName());
   }
 
-  @Override
   protected void retrieveResultSet() {
+
+    /*
+
+    getDispatcher().execute(new RetrieveReportsAction(getMaxResults(), getFirstResult()),
+        new AsyncCallback<RetrieveReportsResult>() {
+      @Override
+      public void onFailure(Throwable caught) {
+        Log.debug("onFailure() - " + caught.getLocalizedMessage());
+      }
+
+      @Override
+      public void onSuccess(RetrieveReportsResult result) {
+
+        setNumberOfElements(result.getReportDtos().size());
+
+        // update Selected label e.g "0 of 50 selected"
+        getView().setNumberOfElements(getNumberOfElements());
+        getView().setPageNumber(getPageNumber());
+        getView().refreshStatusBar();
+
+        // enable/disable the pagination widgets
+        if (getPageNumber() == 1) {
+          getView().getStatusBar().getResultSetFirstButton().disable();
+          getView().getStatusBar().getResultSetPreviousButton().disable();
+        }
+
+        // enable/disable the pagination widgets
+        if (getNumberOfElements() < getMaxResults()) {
+          getView().getStatusBar().getResultSetNextButton().disable();
+        }
+        else {
+          getView().getStatusBar().getResultSetNextButton().enable();
+        }
+
+        // pass the result set to the View
+        getView().setResultSet(result.getReportDtos());
+      }
+    });
+
+    */
   }
 
   @Override
@@ -84,11 +120,6 @@ public class ActivitiesPresenter extends
     super.resultSetFirstButtonClicked();
 
     // getView().getStatusBar().getResultSetFirstButton().disable();
-  }
-
-  @Override
-  public void onResultSetPreviousButtonClicked() {
-    super.resultSetPreviousButtonClicked();
   }
 
   @Override

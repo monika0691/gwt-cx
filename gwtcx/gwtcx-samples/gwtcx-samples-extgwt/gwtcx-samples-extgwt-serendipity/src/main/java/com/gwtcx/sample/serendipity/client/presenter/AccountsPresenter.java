@@ -37,7 +37,7 @@ public class AccountsPresenter extends
   AccountsUiHandlers {
 
   //
-  // don't forget to update your Ginjector & ClientModule
+  // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
   @NameToken(NameTokens.accounts)
@@ -65,7 +65,7 @@ public class AccountsPresenter extends
   @Override
   protected void revealInParent() {
 
-    Log.debug("revealInParent()");
+    Log.debug("revealInParent() - " + NameTokens.accounts);
 
     RevealContentEvent.fire(this, MainPagePresenter.TYPE_SetContextAreaContent, this);
   }
@@ -83,7 +83,7 @@ public class AccountsPresenter extends
   protected void onReset() {
     super.onReset();
 
-    Log.debug("onReset()");
+    Log.debug("onReset() - " + NameTokens.accounts);
   }
 
   @Override
