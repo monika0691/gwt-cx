@@ -79,11 +79,21 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
   @Override
   public void setInSlot(Object slot, Widget content) {
 
-    Log.debug("setInSlot()");
+    Log.debug("setInSlot() - getCenterLayoutContainer().add(content)");
 
     if (slot == MainPagePresenter.TYPE_SetContextAreaContent) {
       if (content != null) {
+
+        Log.debug("content: " + content.getClass().getName()) ;
+
         getCenterLayoutContainer().add(content);
+
+        if (content instanceof com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer) {
+
+          Log.debug("content.forceLayout()") ;
+
+          ((com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer) content).forceLayout();
+        }
       }
     } else {
       super.setInSlot(slot, content);

@@ -57,8 +57,6 @@ public class NavigationPaneSectionGrid extends Grid<NavigationPaneSectionModel>{
 
   private static ColumnConfig<NavigationPaneSectionModel, String> displayNameColumnConfig;
 
-  // private static final SafeHtml ACTIVITIES_ICON = ImageCell.makeImage(SalesIcons.INSTANCE.activities());
-
   public static ColumnModel<NavigationPaneSectionModel> getColumModel() {
 
     ColumnConfig<NavigationPaneSectionModel, String> iconColumnConfig = new ColumnConfig<NavigationPaneSectionModel, String>(property.icon(),
@@ -93,6 +91,11 @@ public class NavigationPaneSectionGrid extends Grid<NavigationPaneSectionModel>{
   @Inject
   public NavigationPaneSectionGrid(NavigationPaneSectionModelListStore store) {
     super(store, getColumModel());
+
+    // this.setStyleName(StyleTokens.contextGrid);
+    // Widgets that are implemented using <table> or <frame> elements do not automatically fill the space provided by the layout.
+    // In order to fix this, you will need to explicitly set these widgets width and height to 100%.
+    this.setSize("100%", "100%");
 
     this.getView().setAutoExpandColumn(displayNameColumnConfig);
     this.setBorders(false);

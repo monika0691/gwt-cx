@@ -34,6 +34,8 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
+import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
+import com.gwtplatform.mvp.client.proxy.RevealRootLayoutContentEvent;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 
 public class MainPagePresenter extends
@@ -102,6 +104,15 @@ public class MainPagePresenter extends
     // reveal the nested Presenter
     PlaceRequest nestedPlaceRequest = new PlaceRequest(nameToken);
     getPlaceManager().revealPlace(nestedPlaceRequest);
+  }
+
+  @Override
+  protected void revealInParent() {
+
+    Log.debug("revealInParent() - RevealRootLayoutContentEvent.fire(this, this)");
+
+    // RevealRootContentEvent.fire(this, this);
+    RevealRootLayoutContentEvent.fire(this, this);
   }
 
   public static ContentPanel getNavigationPaneHeader() {

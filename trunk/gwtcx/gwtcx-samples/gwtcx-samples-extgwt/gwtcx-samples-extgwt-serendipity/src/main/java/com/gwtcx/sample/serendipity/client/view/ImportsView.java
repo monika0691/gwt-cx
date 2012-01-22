@@ -12,13 +12,16 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.view;
+package com.gwtcx.sample.serendipity.client.view;
 
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
+import com.gwtcx.client.uihandlers.ImportsUiHandlers;
+import com.gwtcx.extgwt.client.view.PlaceholderView;
+import com.gwtcx.sample.serendipity.client.presenter.ImportsPresenter;
 
-public class PlaceholderView extends ViewImpl {
+/**
+ * ActivitiesView
+ */
+public class ImportsView extends PlaceholderView implements ImportsPresenter.MyView {
 
   private final String html = "<div>\n"
     + "<table align=\"center\">\n"
@@ -28,7 +31,7 @@ public class PlaceholderView extends ViewImpl {
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "  <tr>\n"
-    + "    <td style=\"font-weight:bold;\">Placeholder view</td>\n"
+    + "    <td style=\"font-weight:bold;\">Placeholder Imports view</td>\n"
     + "  </tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
@@ -38,18 +41,12 @@ public class PlaceholderView extends ViewImpl {
     + "</table>\n"
     + "</div>\n";
 
-  private final HTMLPanel panel;
-
-  public PlaceholderView() {
-
-    panel = new HTMLPanel(getPanelHtml());
+  @Override
+  public void setUiHandlers(ImportsUiHandlers uiHandlers) {
+    // TODO Auto-generated method stub
   }
 
   @Override
-  public Widget asWidget() {
-    return panel;
-  }
-
   protected String getPanelHtml() {
     return html;
   }
