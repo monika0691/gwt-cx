@@ -14,9 +14,6 @@
 
 package com.gwtcx.extgwt.client.view;
 
-import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.event.logical.shared.ResizeEvent;
-import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.UiHandlers;
@@ -53,6 +50,10 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
     this.panel.add(this.toolBar, new VerticalLayoutData(1, -1));  // new Margins(4)
     this.panel.add(this.grid, new VerticalLayoutData(1, -1));
 
+    // this.panel.forceLayout();
+
+    /*
+
     this.panel.addResizeHandler(new ResizeHandler() {
       @Override
       public void onResize(ResizeEvent event) {
@@ -67,6 +68,8 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
         grid.setHeight(height - 32 + "px");
       }
     });
+
+    */
 
     bindCustomUiHandlers();
   }

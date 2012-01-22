@@ -14,72 +14,126 @@
 
 package com.gwtcx.extgwt.client.view;
 
-import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.event.logical.shared.ResizeEvent;
-import com.google.gwt.event.logical.shared.ResizeHandler;
-import com.google.gwt.user.client.ui.Widget;
+import java.util.List;
+
 import com.google.inject.Inject;
+import com.gwtcx.client.resources.ToolBarIcons;
+import com.gwtcx.client.uihandlers.ReportsUiHandlers;
+import com.gwtcx.client.util.I18nUtil;
+import com.gwtcx.shared.dto.AccountsDto;
 import com.gwtplatform.mvp.client.UiHandlers;
-import com.gwtplatform.mvp.client.ViewWithUiHandlers;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
+import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 import com.sencha.gxt.widget.core.client.grid.Grid;
+import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
 
 /**
- * AbstractPagingView
+ * AbstractReportsView
  */
-public abstract class AbstractReportsView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractReportsView<C extends UiHandlers> extends AbstractPagingView<C> {
 
-  public static final String CONTEXT_AREA_WIDTH = "100%";
-  public static final String CONTEXT_AREA_HEIGHT = "100%";
-
-  protected VerticalLayoutContainer panel;
-
-  protected final Grid<?> grid;
+  // protected String recordId;
 
   @Inject
-  public AbstractReportsView(final Grid<?> grid) {
-    super();
+  public AbstractReportsView(com.gwtcx.extgwt.client.widgets.ToolBar toolBar, Grid<?> grid) {
+    super(toolBar, grid);
 
-    this.grid = grid;
+    // recordId = new String("-1");
+  }
 
-    // panel.setStyleName(StyleTokens.contextArea);
-    this.panel = new VerticalLayoutContainer();
-    this.panel.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+  @Override
+  protected void bindCustomUiHandlers() {
+    super.bindCustomUiHandlers();
 
-    // add the Tool Bar, Grid, and Status Bar to the View's layout container
-    this.panel.add(this.grid, new VerticalLayoutData(1, -1));
+    // initialise the ToolBar and register its handlers
+    initToolBar();
 
-    this.panel.addResizeHandler(new ResizeHandler() {
-      @Override
-      public void onResize(ResizeEvent event) {
+    // initialise the StatusBar and register its handlers
+    initStatusBar();
+  }
 
-        int width = event.getWidth();
-        int height = event.getHeight();
+  public void setResultSet(List<AccountsDto> resultSet) {
+    // resultSet == null when there are no items in the table
+    // if (resultSet != null) {
+    //   ((AccountsContextAreaListGrid) getListGrid()).setResultSet(resultSet);
+    // }
+  }
 
-        Log.debug("ResizeHandler() - width: " + width + " height: " + height);
+  @Override
+  protected void initToolBar() {
 
-        // toolBar.setWidth(width + "px");
-        grid.setWidth(width + "px");
-        grid.setHeight(height + "px");
+    ToolTipConfig config = new ToolTipConfig();
+    config.setTitleHtml(I18nUtil.getConstant().newButton());
+    config.setBodyHtml("Create a new Report");
+    config.setTrackMouse(true);
+
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.newAccount(), I18nUtil.getConstant().newButton(), config, new SelectHandler() {
+    @Override
+      public void onSelect(SelectEvent event) {
+        // Info.display("Click", ((TextButton) event.getSource()).getText() + " clicked");
+        if (getUiHandlers() != null) {
+          ((ReportsUiHandlers) getUiHandlers()).onNewButtonClicked();
+        }
       }
     });
 
-    bindCustomUiHandlers();
+    getToolBar().addSeparator();
+
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.printPreview(), null, null);
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.export(), null, null);
+
+    getToolBar().addSeparator();
+
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.assign(), null, null);
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.delete(), null, null);
+
+    getToolBar().addSeparator();
+
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.refresh(), null, null);
+
+    getToolBar().addFill();
   }
-
-  protected void bindCustomUiHandlers() { }
-
-  protected void initToolBar() { }
-
-  protected void initStatusBar() { }
 
   @Override
-  public Widget asWidget() {
-    return panel;
-  }
+  protected void initStatusBar() {
 
-  public Grid<?> getGrid() {
-    return grid;
+    /*
+
+    // "0 of 50 selected"
+    // statusBar.getSelectedLabel().setContents(I18nUtil.getConstant().selectedLabel());
+
+    getStatusBar().getResultSetFirstButton().addClickHandler(new ClickHandler() {
+      public void onClick(ClickEvent event) {
+        if (getUiHandlers() != null) {
+          // getUiHandlers().onResultSetFirstButtonClicked();
+          ((AccountsUiHandlers) getUiHandlers()).onResultSetFirstButtonClicked();
+        }
+      }
+    });
+
+    getStatusBar().getResultSetPreviousButton().addClickHandler(new ClickHandler() {
+      public void onClick(ClickEvent event) {
+        if (getUiHandlers() != null) {
+          // getUiHandlers().onResultSetPreviousButtonClicked();
+          ((AccountsUiHandlers) getUiHandlers()).onResultSetPreviousButtonClicked();
+        }
+      }
+    });
+
+    // "Page 1"
+    // statusBar.getPageNumberLabel().setContents(I18nUtil.getConstant().pageNumberLabel());
+
+    getStatusBar().getResultSetNextButton().addClickHandler(new ClickHandler() {
+      public void onClick(ClickEvent event) {
+        if (getUiHandlers() != null) {
+          ((AccountsUiHandlers) getUiHandlers()).onResultSetNextButtonClicked();
+        }
+      }
+    });
+
+    */
   }
 }
+
+
+

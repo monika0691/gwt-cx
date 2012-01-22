@@ -14,21 +14,59 @@
 
 package com.gwtcx.sample.serendipity.client.view;
 
-import com.google.inject.Inject;
-import com.gwtcx.sample.serendipity.client.presenter.ReportsPresenter;
 import com.gwtcx.client.uihandlers.ReportsUiHandlers;
-import com.gwtcx.extgwt.client.view.AbstractReportsView;
-import com.gwtcx.extgwt.client.widgets.grid.AccountsContextAreaGrid;
+import com.gwtcx.extgwt.client.view.PlaceholderView;
+import com.gwtcx.sample.serendipity.client.presenter.ReportsPresenter;
 
 /**
  * ReportsView
  */
+public class ReportsView extends PlaceholderView implements ReportsPresenter.MyView {
+
+  private final String html = "<div>\n"
+    + "<table align=\"center\">\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n"
+    + "    <td style=\"font-weight:bold;\">Placeholder Reports view</td>\n"
+    + "  </tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "</table>\n"
+    + "</div>\n";
+
+  @Override
+  public void setUiHandlers(ReportsUiHandlers uiHandlers) {
+    // TODO Auto-generated method stub
+  }
+
+  @Override
+  protected String getPanelHtml() {
+    return html;
+  }
+}
+
+/*
+
+import com.google.inject.Inject;
+import com.gwtcx.sample.serendipity.client.presenter.ReportsPresenter;
+import com.gwtcx.client.uihandlers.ReportsUiHandlers;
+import com.gwtcx.extgwt.client.view.AbstractReportsView;
+import com.gwtcx.extgwt.client.widgets.ToolBar;
+import com.gwtcx.extgwt.client.widgets.grid.AccountsContextAreaGrid;
+
 public class ReportsView extends AbstractReportsView<ReportsUiHandlers> implements
     ReportsPresenter.MyView {
 
   @Inject
-  public ReportsView(AccountsContextAreaGrid grid) {
-    super(grid);
+  public ReportsView(ToolBar toolBar, AccountsContextAreaGrid grid) {
+    super(toolBar, grid);
 
   }
 
@@ -39,3 +77,4 @@ public class ReportsView extends AbstractReportsView<ReportsUiHandlers> implemen
   // protected void initStatusBar() { }
 }
 
+*/

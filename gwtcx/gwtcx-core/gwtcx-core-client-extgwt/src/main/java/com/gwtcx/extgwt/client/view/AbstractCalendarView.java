@@ -51,9 +51,6 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
   protected ToggleButton weekButton;
   protected ToggleButton dayButton;
 
-  // private int width = -1;
-  // private int height = -1;
-
   @Inject
   public AbstractCalendarView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Calendar calendar) {
     super();
@@ -64,24 +61,22 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
     // panel.setStyleName(StyleTokens.contextArea);
     this.panel = new VerticalLayoutContainer();
     this.panel.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
-    // this.panel.setWidth(CONTEXT_AREA_WIDTH);
-    // this.panel.setHeight(CONTEXT_AREA_HEIGHT);
 
     this.settings = new CalendarSettings();
-
-    // change hour offset to false to facilitate Google style
-    this.settings.setOffsetHourLabels(false);
+    this.settings.setOffsetHourLabels(false);  // change hour offset to false to facilitate Google style
     this.settings.setEnableDragDrop(true);
     this.settings.setEnableDragDropCreation(true);
     this.settings.setTimeBlockClickNumber(Click.None);
 
     this.calendar.setSettings(settings);
     this.calendar.setView(CalendarViews.DAY, 7);
-    // this.calendar.setWidth("100%");
-    // this.calendar.setHeight("100%");
+    this.calendar.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    // this.calendar.scrollToHour(8);  // not implemented :-)
 
     this.panel.add(this.toolBar);   // , new VerticalLayoutData(1, -1));
     this.panel.add(this.calendar);  // , new VerticalLayoutData(1, -1));
+
+    // this.panel.forceLayout();
 
     this.panel.addResizeHandler(new ResizeHandler() {
       @Override
@@ -94,7 +89,7 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
 
         toolBar.setWidth(width + "px");
         calendar.setWidth(width + "px");
-        calendar.setHeight(height - 32 + "px");
+        calendar.setHeight(height - 30 + "px");
       }
     });
 
