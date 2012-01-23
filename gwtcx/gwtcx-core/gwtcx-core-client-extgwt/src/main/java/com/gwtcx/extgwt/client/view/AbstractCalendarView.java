@@ -14,6 +14,8 @@
 
 package com.gwtcx.extgwt.client.view;
 
+import java.util.Date;
+
 import com.allen_sauer.gwt.log.client.Log;
 import com.bradrydzewski.gwt.calendar.client.Calendar;
 import com.bradrydzewski.gwt.calendar.client.CalendarSettings;
@@ -21,11 +23,16 @@ import com.bradrydzewski.gwt.calendar.client.CalendarSettings.Click;
 import com.bradrydzewski.gwt.calendar.client.CalendarViews;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
+import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.i18n.client.DateTimeFormat.PredefinedFormat;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtcx.client.resources.ToolBarIcons;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.ibm.icu.text.DateFormat;
+import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.button.ToggleButton;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
@@ -47,9 +54,14 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
 
   protected CalendarSettings settings;
 
+  protected TextButton todayButton;
+  protected TextButton previousButton;
+  protected TextButton nextButton;
   protected ToggleButton monthButton;
   protected ToggleButton weekButton;
   protected ToggleButton dayButton;
+
+  protected Label periodLabel;
 
   @Inject
   public AbstractCalendarView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Calendar calendar) {
@@ -109,12 +121,76 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
 
   protected void initToolBar() {
 
-    // getToolBar().setPack(BoxLayoutPack.END);
+    todayButton = getToolBar().addTextButton(ToolBarIcons.INSTANCE.date(), "Today", null, new SelectHandler() {
+      @Override
+      public void onSelect(SelectEvent event) {
 
-    ToolTipConfig config = new ToolTipConfig();
-    config.setTitleHtml("Day");
-    config.setBodyHtml("Switch to day view");
-    config.setTrackMouse(true);
+        Date today = new Date();
+        calendar.setDate(today);
+
+        if (dayButton.getValue()) {
+          updatePeriodLabel(1, today);
+        } else if (weekButton.getValue()) {
+          updatePeriodLabel(7, today);
+        } else if (monthButton.getValue()) {
+          updatePeriodLabel(30, today);
+        }
+      }
+    });
+
+    previousButton = getToolBar().addTextButton(ToolBarIcons.INSTANCE.previous(), null, new SelectHandler() {
+      @SuppressWarnings("deprecation")
+      @Override
+      public void onSelect(SelectEvent event) {
+
+        // 1 or 7 or 3 ???
+        int days = calendar.getView().getDisplayedDays();
+
+        if (days == 3) {
+          days = 30;
+        }
+
+        Date currentDate = calendar.getDate();
+        Date newDate = new Date(currentDate.getYear(), currentDate.getMonth(), currentDate.getDate() - days);
+
+        calendar.setDate(newDate);
+
+        Log.debug("Date: " + currentDate.toString() + " - days: " + days);
+
+        updatePeriodLabel(days, newDate);
+      }
+    });
+
+    nextButton = getToolBar().addTextButton(ToolBarIcons.INSTANCE.next(), null, new SelectHandler() {
+      @SuppressWarnings("deprecation")
+      @Override
+      public void onSelect(SelectEvent event) {
+
+        // 1 or 7 or 3 ???
+        int days = calendar.getView().getDisplayedDays();
+
+        if (days == 3) {
+          days = 30;
+        }
+
+        Date currentDate = calendar.getDate();
+        Date newDate = new Date(currentDate.getYear(), currentDate.getMonth(), currentDate.getDate() + days);
+
+        calendar.setDate(newDate);
+
+        Log.debug("Date: " + currentDate.toString() + " + days: " + days);
+
+        updatePeriodLabel(days, newDate);
+      }
+    });
+
+    // default is "week"
+    periodLabel = getToolBar().addLabel("");
+    updatePeriodLabel(7, calendar.getDate());
+
+    getToolBar().addFill();
+
+    ToolTipConfig config = getToolBar().createToolTipConfig("Day", "Switch to day view");
 
     dayButton = getToolBar().addToggleButton(ToolBarIcons.INSTANCE.day(), "Day", config, new SelectHandler() {
     @Override
@@ -123,15 +199,11 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
         weekButton.setValue(false);
         dayButton.setValue(true);
         calendar.setView(CalendarViews.DAY, 1);
+        updatePeriodLabel(1, calendar.getDate());
       }
     });
 
-    // getToolBar().addSeparator();
-
-    config = new ToolTipConfig();
-    config.setTitleHtml("Week");
-    config.setBodyHtml("Switch to week view");
-    config.setTrackMouse(true);
+    config = getToolBar().createToolTipConfig("Week", "Switch to week view");
 
     weekButton = getToolBar().addToggleButton(ToolBarIcons.INSTANCE.week(), "Week", config, new SelectHandler() {
     @Override
@@ -140,15 +212,11 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
         weekButton.setValue(true);
         dayButton.setValue(false);
         calendar.setView(CalendarViews.DAY, 7);
+        updatePeriodLabel(7, calendar.getDate());
       }
     });
 
-    // getToolBar().addSeparator();
-
-    config = new ToolTipConfig();
-    config.setTitleHtml("Month");
-    config.setBodyHtml("Switch to month view");
-    config.setTrackMouse(true);
+    config = getToolBar().createToolTipConfig("Month", "Switch to month view");
 
     monthButton = getToolBar().addToggleButton(ToolBarIcons.INSTANCE.month(), "Month", config, new SelectHandler() {
     @Override
@@ -157,11 +225,11 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
         weekButton.setValue(false);
         dayButton.setValue(false);
         calendar.setView(CalendarViews.MONTH);
+        updatePeriodLabel(30, calendar.getDate());
       }
     });
 
-    getToolBar().addFill();
-
+    // default is "week"
     monthButton.setValue(false);
     weekButton.setValue(true);
     dayButton.setValue(false);
@@ -178,11 +246,44 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
   public com.gwtcx.extgwt.client.widgets.ToolBar getToolBar() {
     return toolBar;
   }
-}
 
+  @SuppressWarnings("deprecation")
+  private void updatePeriodLabel(int days, Date newDate) {
+    DateTimeFormat dateTimeFormat;
+
+    if (days == 1) {
+      // e.g. Monday, January 23, 2012 in the default locale
+      dateTimeFormat = DateTimeFormat.getFormat("EEEE, MMMM dd, yyyy");
+      periodLabel.setText(dateTimeFormat.format(newDate));
+    } else if (days == 7) {
+      dateTimeFormat = DateTimeFormat.getFormat("MMM dd");
+      String text = dateTimeFormat.format(newDate) + " - " ;
+
+      Date toDate = new Date(newDate.getYear(), newDate.getMonth(), newDate.getDate() + 7);
+
+      if (toDate.getMonth() != newDate.getMonth()) {
+        dateTimeFormat = DateTimeFormat.getFormat("MMM dd, yyyy");
+      }
+      else {
+        dateTimeFormat = DateTimeFormat.getFormat("dd, yyyy");
+      }
+
+      text += dateTimeFormat.format(toDate);
+      periodLabel.setText(text);
+    } else if (days == 30) {
+      dateTimeFormat = DateTimeFormat.getFormat("MMMM yyyy");
+      periodLabel.setText(dateTimeFormat.format(newDate));
+    }
+  }
+}
 
 /*
 
+    // config = getToolBar().createToolTipConfig("Next period", "Jump to the next period");
+    // ToolTipConfig config = getToolBar().createToolTipConfig("Previous period", "Jump to the previous period");
+
+    // getToolBar().setPack(BoxLayoutPack.END);
+    // getToolBar().addSeparator();
 
     // this.toolBar.setSpacing(4);
 
