@@ -84,6 +84,20 @@ public interface ToolBarIcons extends ClientBundle {
   @Source(urlPrefix + "help.png")
   ImageResource help();
 
+  @Source(urlPrefix + "date.png")
+  ImageResource date();
+
+  @Source(urlPrefix + "previous.png")
+  ImageResource previous();
+
+  @Source(urlPrefix + "next.png")
+  ImageResource next();
+
+  @Source(urlPrefix + "date_next.png")
+  ImageResource dateNext();
+
+  @Source(urlPrefix + "date_previous.png")
+  ImageResource datePrevious();
 
   @Source(urlPrefix + "day.png")
   ImageResource day();
@@ -93,4 +107,6 @@ public interface ToolBarIcons extends ClientBundle {
 
   @Source(urlPrefix + "month.png")
   ImageResource month();
+
+
 }

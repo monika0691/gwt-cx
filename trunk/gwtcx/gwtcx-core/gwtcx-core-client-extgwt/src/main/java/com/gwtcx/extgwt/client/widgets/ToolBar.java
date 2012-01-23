@@ -20,6 +20,7 @@ import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.sencha.gxt.widget.core.client.button.TextButton;
@@ -59,6 +60,16 @@ public class ToolBar implements IsWidget {
   @Override
   public Widget asWidget() {
     return widget;
+  }
+
+  public ToolTipConfig createToolTipConfig(String title, String body) {
+    ToolTipConfig config = new ToolTipConfig();
+    config.setTitleHtml(title);
+    config.setBodyHtml(body);
+    // config.setMouseOffset(new int[] {0, 0});
+    // config.setAnchor(Side.TOP);
+    config.setTrackMouse(true);
+    return config;
   }
 
   public TextButton addTextButton(String text, ToolTipConfig config, SelectHandler handler) {
@@ -137,6 +148,15 @@ public class ToolBar implements IsWidget {
     toolBar.add(button);
 
     return button;
+  }
+
+  public Label addLabel(String text) {
+
+    Label label = new Label(text);
+
+    toolBar.add(label);
+
+    return label;
   }
 
   public void addSeparator() {

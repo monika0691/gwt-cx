@@ -35,7 +35,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
   // protected String recordId;
 
   @Inject
-  public AbstractAccountsView(com.gwtcx.extgwt.client.widgets.ToolBar toolBar, Grid<?> grid) {
+  public AbstractAccountsView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Grid<?> grid) {
     super(toolBar, grid);
 
     // recordId = new String("-1");
@@ -62,10 +62,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
   @Override
   protected void initToolBar() {
 
-    ToolTipConfig config = new ToolTipConfig();
-    config.setTitleHtml(I18nUtil.getConstant().newButton());
-    config.setBodyHtml("Create a new Account");
-    config.setTrackMouse(true);
+    ToolTipConfig config = getToolBar().createToolTipConfig(I18nUtil.getConstant().newButton(), "Create a new Account");
 
     getToolBar().addTextButton(ToolBarIcons.INSTANCE.newAccount(), I18nUtil.getConstant().newButton(), config, new SelectHandler() {
     @Override
