@@ -31,7 +31,6 @@ import com.gwtcx.extgwt.client.widgets.Masthead;
 import com.gwtcx.extgwt.client.widgets.NavigationPaneSection;
 import com.gwtcx.sample.serendipity.client.entrypoint.Serendipity;
 import com.gwtcx.sample.serendipity.client.presenter.MainPagePresenter;
-import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance;
 import com.sencha.gxt.widget.core.client.container.Viewport;
@@ -45,7 +44,7 @@ import com.sencha.gxt.widget.core.client.menu.MenuItem;
 public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers> implements
     MainPagePresenter.MyView {
 
-  public interface MainPageUiBinder extends UiBinder<Component, MainPageDesktopView> { }
+  public interface MainPageUiBinder extends UiBinder<Viewport, MainPageDesktopView> { }
 
   private static MainPageUiBinder uiBinder = GWT.create(MainPageUiBinder.class);
 
@@ -54,8 +53,8 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
   protected NavigationPaneSection resourceSection;
 
   @Inject
-  public MainPageDesktopView(final Viewport viewport, final Masthead masthead, final ApplicationMenu applicationMenu) {
-    super(viewport, masthead, applicationMenu);
+  public MainPageDesktopView(final Masthead masthead, final ApplicationMenu applicationMenu) {
+    super(masthead, applicationMenu);
 
     Log.debug("MainPageDesktopView()");
 
@@ -68,7 +67,7 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
 
     Log.debug("createAndBindUi()");
 
-    widget = uiBinder.createAndBindUi(this);
+    setViewport(uiBinder.createAndBindUi(this));
   }
 
   @UiFactory
@@ -86,13 +85,13 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
 
         Log.debug("content: " + content.getClass().getName()) ;
 
-        getCenterLayoutContainer().add(content);
+        getCenterPanel().add(content);
 
         if (content instanceof com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer) {
 
-          Log.debug("content.forceLayout()") ;
+          Log.debug("panel.onResize()") ;
 
-          ((com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer) content).forceLayout();
+          ((com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer) content).onResize();
         }
       }
     } else {
@@ -201,6 +200,19 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
 }
 
 /*
+
+
+        // getCenterPanel().setWidget(content);
+
+        if (content instanceof com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer) {
+
+          Log.debug("content.forceLayout()") ;
+
+          ((com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer) content).forceLayout();
+        }
+
+
+
 
 
     SimpleSafeHtmlCell<String> cell = new SimpleSafeHtmlCell<String>(SimpleSafeHtmlRenderer.getInstance(), "click") {

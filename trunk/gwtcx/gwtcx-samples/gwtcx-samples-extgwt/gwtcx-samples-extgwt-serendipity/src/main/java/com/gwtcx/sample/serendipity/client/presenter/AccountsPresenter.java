@@ -46,6 +46,9 @@ public class AccountsPresenter extends
   }
 
   public interface MyView extends View, HasUiHandlers<AccountsUiHandlers> {
+
+    void resetAndFocus();
+
     // StatusBar getStatusBar();
     // void refreshStatusBar();
     // void setNumberOfElements(int numberOfElements);
@@ -84,6 +87,8 @@ public class AccountsPresenter extends
     super.onReset();
 
     Log.debug("onReset() - " + NameTokens.accounts);
+
+    // getView().resetAndFocus();
   }
 
   @Override

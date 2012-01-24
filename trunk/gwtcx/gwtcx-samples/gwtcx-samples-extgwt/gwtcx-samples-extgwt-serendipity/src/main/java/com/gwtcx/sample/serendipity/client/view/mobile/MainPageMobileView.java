@@ -28,7 +28,6 @@ import com.gwtcx.extgwt.client.view.AbstractMainPageView;
 import com.gwtcx.extgwt.client.widgets.ApplicationMenu;
 import com.gwtcx.extgwt.client.widgets.Masthead;
 import com.gwtcx.sample.serendipity.client.presenter.MainPagePresenter;
-import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance;
 import com.sencha.gxt.widget.core.client.container.Viewport;
@@ -39,13 +38,13 @@ import com.sencha.gxt.widget.core.client.menu.MenuItem;
 public class MainPageMobileView extends AbstractMainPageView<MainPageUiHandlers> implements
     MainPagePresenter.MyView {
 
-  public interface MainPageUiBinder extends UiBinder<Component, MainPageMobileView> { }
+  public interface MainPageUiBinder extends UiBinder<Viewport, MainPageMobileView> { }
 
   private static MainPageUiBinder uiBinder = GWT.create(MainPageUiBinder.class);
 
   @Inject
-  public MainPageMobileView(final Viewport viewport, final Masthead masthead, final ApplicationMenu applicationMenu) {
-    super(viewport, masthead, applicationMenu);
+  public MainPageMobileView(final Masthead masthead, final ApplicationMenu applicationMenu) {
+    super(masthead, applicationMenu);
 
     Log.debug("MainPageMobileView()");
 
@@ -57,7 +56,7 @@ public class MainPageMobileView extends AbstractMainPageView<MainPageUiHandlers>
 
     Log.debug("createAndBindUi()");
 
-    widget = uiBinder.createAndBindUi(this);
+    viewport = uiBinder.createAndBindUi(this);
   }
 
   @UiFactory

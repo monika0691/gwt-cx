@@ -55,6 +55,9 @@ public class CalendarPresenter extends
 
   @Override
   protected void revealInParent() {
+
+    Log.debug("onReveal() - " + NameTokens.calendar);
+
     RevealContentEvent.fire(this, MainPagePresenter.TYPE_SetContextAreaContent, this);
   }
 
@@ -66,4 +69,12 @@ public class CalendarPresenter extends
 
     NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.calendar, ExtGwtCx.getConstant().calendarMenuItemName());
   }
+
+  @Override
+  protected void onReset() {
+    super.onReset();
+
+    Log.debug("onReset() - " + NameTokens.calendar);
+  }
+
 }

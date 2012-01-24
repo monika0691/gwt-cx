@@ -63,8 +63,12 @@ import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 public class DashboardsDesktopView extends AbstractDashboardsView<DashboardsUiHandlers> implements
     DashboardsPresenter.MyView {
 
+  public static final String CONTEXT_AREA_WIDTH = "100%";
+  public static final String CHART_WIDTH = "500px";
+  public static final String CHART_HEIGHT = "420px";
+
   protected HorizontalLayoutContainer northLayout;
-  // protected HorizontalLayoutContainer southLayout;
+  protected HorizontalLayoutContainer southLayout;
 
   // @Inject
   public DashboardsDesktopView() {
@@ -75,6 +79,64 @@ public class DashboardsDesktopView extends AbstractDashboardsView<DashboardsUiHa
     panel.setStyleName("gwtcx-Dashboards-View");
 
     if (GWT.isScript()) {
+
+      // North Layout
+
+      northLayout = new HorizontalLayoutContainer();
+      northLayout.setSize(CONTEXT_AREA_WIDTH, CHART_HEIGHT);
+
+      this.panel.add(northLayout);  // , new VerticalLayoutData(1, 0.5));
+
+      // Chart 1
+
+      final Chart chart1 = createFunnelChart();
+      chart1.setSize(CHART_WIDTH, CHART_HEIGHT);
+      final SimpleContainer chart1Container = new SimpleContainer();
+      chart1Container.setSize(CHART_WIDTH, CHART_HEIGHT);
+
+      northLayout.add(chart1Container);
+      chart1Container.add(chart1);
+
+      // Chart 2
+
+      final Chart chart2 = createPyramidChart();
+      chart2.setSize(CHART_WIDTH, CHART_HEIGHT);
+      final SimpleContainer chart2Container = new SimpleContainer();
+      chart2Container.setSize(CHART_WIDTH, CHART_HEIGHT);
+
+      northLayout.add(chart2Container);
+      chart2Container.add(chart2);
+
+      // South Layout
+
+      southLayout = new HorizontalLayoutContainer();
+      northLayout.setSize(CONTEXT_AREA_WIDTH, CHART_HEIGHT);
+
+      this.panel.add(southLayout);  // , new VerticalLayoutData(1, 0.5));
+
+      // Chart 3
+
+      final Chart chart3 = createBasicPieChart();
+      chart3.setSize(CHART_WIDTH, CHART_HEIGHT);
+      final SimpleContainer chart3Container = new SimpleContainer();
+      chart3Container.setSize(CHART_WIDTH, CHART_HEIGHT);
+
+      southLayout.add(chart3Container);
+      chart3Container.add(chart3);
+
+      // Chart 4
+
+      final Chart chart4 = createDonutChart();
+      chart4.setSize(CHART_WIDTH, CHART_HEIGHT);
+      final SimpleContainer chart4Container = new SimpleContainer();
+      chart4Container.setSize(CHART_WIDTH, CHART_HEIGHT);
+
+      southLayout.add(chart4Container);
+      chart4Container.add(chart4);
+    }
+  }
+
+  /*
 
       northLayout = new HorizontalLayoutContainer();
       northLayout.setHeight("100%");
@@ -99,10 +161,14 @@ public class DashboardsDesktopView extends AbstractDashboardsView<DashboardsUiHa
       northLayout.add(chart2Container);  // , new HorizontalLayoutData(-1, 1));
       chart2Container.add(chart2);
 
+  */
 
 
 
-      /*
+  /*
+
+
+
 
       southLayout = new HorizontalLayoutContainer();
       southLayout.setHeight("50%");
@@ -117,12 +183,6 @@ public class DashboardsDesktopView extends AbstractDashboardsView<DashboardsUiHa
 
       southLayout.add(chart3Container);
       chart3Container.add(chart3);
-
-      */
-    }
-  }
-
-  /*
 
 
 

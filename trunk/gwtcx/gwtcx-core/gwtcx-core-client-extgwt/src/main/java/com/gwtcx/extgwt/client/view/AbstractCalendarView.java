@@ -24,20 +24,20 @@ import com.bradrydzewski.gwt.calendar.client.CalendarViews;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.i18n.client.DateTimeFormat.PredefinedFormat;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtcx.client.resources.ToolBarIcons;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
-import com.ibm.icu.text.DateFormat;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.button.ToggleButton;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
+import com.sencha.gxt.widget.core.client.toolbar.LabelToolItem;
 
 /**
  * AbstractCalendarView
@@ -46,6 +46,12 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
 
   public static final String CONTEXT_AREA_WIDTH = "100%";
   public static final String CONTEXT_AREA_HEIGHT = "100%";
+  // public static final String TOOLBAR_WIDTH = "100%";
+  public static final String TOOLBAR_HEIGHT = "26px";
+
+  public static final int DAY = 1;
+  public static final int WEEK = 7;
+  public static final int MONTH = 30;
 
   protected VerticalLayoutContainer panel;
 
@@ -61,7 +67,7 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
   protected ToggleButton weekButton;
   protected ToggleButton dayButton;
 
-  protected Label periodLabel;
+  protected LabelToolItem periodLabel;
 
   @Inject
   public AbstractCalendarView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Calendar calendar) {
@@ -73,6 +79,8 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
     // panel.setStyleName(StyleTokens.contextArea);
     this.panel = new VerticalLayoutContainer();
     this.panel.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    this.toolBar.setSize(CONTEXT_AREA_WIDTH, TOOLBAR_HEIGHT);
+    this.calendar.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
 
     this.settings = new CalendarSettings();
     this.settings.setOffsetHourLabels(false);  // change hour offset to false to facilitate Google style
@@ -81,14 +89,31 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
     this.settings.setTimeBlockClickNumber(Click.None);
 
     this.calendar.setSettings(settings);
-    this.calendar.setView(CalendarViews.DAY, 7);
-    this.calendar.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    // this.calendar.setView(CalendarViews.DAY, WEEK);
     // this.calendar.scrollToHour(8);  // not implemented :-)
 
-    this.panel.add(this.toolBar);   // , new VerticalLayoutData(1, -1));
-    this.panel.add(this.calendar);  // , new VerticalLayoutData(1, -1));
+    this.panel.add(this.toolBar, new VerticalLayoutData(1, -1));
+    this.panel.add(this.calendar);
+    // this.panel.add(this.calendar, new VerticalLayoutData(1, 1));
 
-    // this.panel.forceLayout();
+    // TO DO: there seems to be a sizing bug related to ToolBar.addFill()
+    // so we need to use a ResizeHandler rather than a ScheduledCommand.
+
+    /*
+
+    Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+      public void execute() {
+
+        Log.debug("execute()");
+
+        resize();
+      }
+    });
+
+    */
+
+
+    // /*
 
     this.panel.addResizeHandler(new ResizeHandler() {
       @Override
@@ -99,13 +124,27 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
 
         Log.debug("ResizeHandler() - width: " + width + " height: " + height);
 
+        panel.setSize(width + "px", height + "px");
         toolBar.setWidth(width + "px");
         calendar.setWidth(width + "px");
-        calendar.setHeight(height - 30 + "px");
+        calendar.setHeight(height - 26 + "px");
       }
     });
 
+    // */
+
     bindCustomUiHandlers();
+  }
+
+  public void resize() {
+
+    int width = Window.getClientWidth();
+    int height = Window.getClientHeight();
+
+    Log.debug("resize() - width: " + width + " height: " + height);
+
+    panel.setSize(width + "px", height + "px");
+    panel.onResize();
   }
 
   protected void bindCustomUiHandlers() {
@@ -129,11 +168,11 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
         calendar.setDate(today);
 
         if (dayButton.getValue()) {
-          updatePeriodLabel(1, today);
+          updatePeriodLabel(DAY, today);
         } else if (weekButton.getValue()) {
-          updatePeriodLabel(7, today);
+          updatePeriodLabel(WEEK, today);
         } else if (monthButton.getValue()) {
-          updatePeriodLabel(30, today);
+          updatePeriodLabel(MONTH, today);
         }
       }
     });
@@ -147,7 +186,7 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
         int days = calendar.getView().getDisplayedDays();
 
         if (days == 3) {
-          days = 30;
+          days = MONTH;
         }
 
         Date currentDate = calendar.getDate();
@@ -170,7 +209,7 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
         int days = calendar.getView().getDisplayedDays();
 
         if (days == 3) {
-          days = 30;
+          days = MONTH;
         }
 
         Date currentDate = calendar.getDate();
@@ -184,9 +223,9 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
       }
     });
 
-    // default is "week"
-    periodLabel = getToolBar().addLabel("");
-    updatePeriodLabel(7, calendar.getDate());
+    // default is "Day"
+    periodLabel = getToolBar().addLabel("&nbsp");
+    updatePeriodLabel(1, calendar.getDate());
 
     getToolBar().addFill();
 
@@ -195,10 +234,10 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
     dayButton = getToolBar().addToggleButton(ToolBarIcons.INSTANCE.day(), "Day", config, new SelectHandler() {
     @Override
       public void onSelect(SelectEvent event) {
-        monthButton.setValue(false);
-        weekButton.setValue(false);
         dayButton.setValue(true);
-        calendar.setView(CalendarViews.DAY, 1);
+        weekButton.setValue(false);
+        monthButton.setValue(false);
+        calendar.setView(CalendarViews.DAY, DAY);
         updatePeriodLabel(1, calendar.getDate());
       }
     });
@@ -208,10 +247,10 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
     weekButton = getToolBar().addToggleButton(ToolBarIcons.INSTANCE.week(), "Week", config, new SelectHandler() {
     @Override
       public void onSelect(SelectEvent event) {
-        monthButton.setValue(false);
-        weekButton.setValue(true);
         dayButton.setValue(false);
-        calendar.setView(CalendarViews.DAY, 7);
+        weekButton.setValue(true);
+        monthButton.setValue(false);
+        calendar.setView(CalendarViews.DAY, WEEK);
         updatePeriodLabel(7, calendar.getDate());
       }
     });
@@ -221,19 +260,19 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
     monthButton = getToolBar().addToggleButton(ToolBarIcons.INSTANCE.month(), "Month", config, new SelectHandler() {
     @Override
       public void onSelect(SelectEvent event) {
-        monthButton.setValue(true);
-        weekButton.setValue(false);
         dayButton.setValue(false);
+        weekButton.setValue(false);
+        monthButton.setValue(true);
         calendar.setView(CalendarViews.MONTH);
-        updatePeriodLabel(30, calendar.getDate());
+        updatePeriodLabel(MONTH, calendar.getDate());
       }
     });
 
-    // default is "week"
+    // default is "Day"
+    dayButton.setValue(true);
+    weekButton.setValue(false);
     monthButton.setValue(false);
-    weekButton.setValue(true);
-    dayButton.setValue(false);
-    calendar.setView(CalendarViews.DAY, 7);
+    calendar.setView(CalendarViews.DAY, DAY);
   }
 
   protected void initStatusBar() { }
@@ -251,15 +290,15 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
   private void updatePeriodLabel(int days, Date newDate) {
     DateTimeFormat dateTimeFormat;
 
-    if (days == 1) {
+    if (days == DAY) {
       // e.g. Monday, January 23, 2012 in the default locale
       dateTimeFormat = DateTimeFormat.getFormat("EEEE, MMMM dd, yyyy");
-      periodLabel.setText(dateTimeFormat.format(newDate));
-    } else if (days == 7) {
+      periodLabel.setLabel(dateTimeFormat.format(newDate));
+    } else if (days == WEEK) {
       dateTimeFormat = DateTimeFormat.getFormat("MMM dd");
       String text = dateTimeFormat.format(newDate) + " - " ;
 
-      Date toDate = new Date(newDate.getYear(), newDate.getMonth(), newDate.getDate() + 7);
+      Date toDate = new Date(newDate.getYear(), newDate.getMonth(), newDate.getDate() + WEEK);
 
       if (toDate.getMonth() != newDate.getMonth()) {
         dateTimeFormat = DateTimeFormat.getFormat("MMM dd, yyyy");
@@ -269,10 +308,10 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
       }
 
       text += dateTimeFormat.format(toDate);
-      periodLabel.setText(text);
-    } else if (days == 30) {
+      periodLabel.setLabel(text);
+    } else if (days == MONTH) {
       dateTimeFormat = DateTimeFormat.getFormat("MMMM yyyy");
-      periodLabel.setText(dateTimeFormat.format(newDate));
+      periodLabel.setLabel(dateTimeFormat.format(newDate));
     }
   }
 }
@@ -287,7 +326,17 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
 
     // this.toolBar.setSpacing(4);
 
-      // resizeTimer.schedule(2000);
+
+
+
+
+
+    this.panel.addResizeHandler(new ResizeHandler() {
+      @Override
+      public void onResize(ResizeEvent event) {
+        resizeTimer.schedule(2000);
+      }
+    });
 
   private Timer resizeTimer = new Timer() {
     @Override
