@@ -35,50 +35,47 @@ import com.sencha.gxt.widget.core.client.container.Viewport;
 public abstract class AbstractMainPageView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   // private final EventBus eventBus;
-  protected final Viewport viewport;
-  protected Widget widget;
+  protected Viewport viewport;
   protected final Masthead masthead;
   protected final ApplicationMenu applicationMenu;
 
   @UiField public BorderLayoutContainer borderLayoutContainer;
 
-  @UiField public FlowPanel northLayout;
+  @UiField public FlowPanel northPanel;
 
-  @UiField public ContentPanel westLayout;
+  @UiField public ContentPanel westPanel;
 
-  @UiField public ContentPanel centerLayout;
+  @UiField public ContentPanel centerPanel;
 
   @UiField public NavigationPane navigationPane;
 
   @Inject
-  public AbstractMainPageView(final Viewport viewport, final Masthead masthead, final ApplicationMenu applicationMenu) {
+  public AbstractMainPageView(final Masthead masthead, final ApplicationMenu applicationMenu) {
     super();
 
     Log.debug("AbstractMainPageView()");
 
     // this.eventBus= eventBus;
-    this.viewport = viewport;
     this.masthead = masthead;
     this.applicationMenu = applicationMenu;
 
-    // get rid of scroll bars, and clear out the window's built-in margin,
-    // because we want to take advantage of the entire client area
-    this.viewport.setEnableScroll(false);
-    // Window.enableScrolling(false);
-    Window.setMargin("0px");
-
     createAndBindUi();
 
-    this.northLayout.add(this.masthead);
-    this.northLayout.add(this.applicationMenu);
+    // get rid of scroll bars, and clear out the window's built-in margin,
+    // because we want to take advantage of the entire client area
+    this.viewport.setEnableScroll(false);  // calls Window.enableScrolling(false);
+    Window.setMargin("0px");
 
-    this.viewport.add(this.widget);
+    this.northPanel.add(this.masthead);
+    this.northPanel.add(this.applicationMenu);
 
     bindCustomUiHandlers();
   }
 
   protected void createAndBindUi() {
+
     Log.warn("Don't forget to @Override createAndBindUi()");
+    // e.g. setViewport(uiBinder.createAndBindUi(this));
   }
 
   // Ext GWT Event and GWT Handler Mapping should be done here.
@@ -89,6 +86,14 @@ public abstract class AbstractMainPageView<C extends UiHandlers> extends ViewWit
 
     // initialise the NavigationPane and register its handlers
     initNavigationPane();
+  }
+
+  public Viewport getViewport() {
+    return viewport;
+  }
+
+  public void setViewport(Viewport viewport) {
+    this.viewport = viewport;
   }
 
   @Override
@@ -108,15 +113,15 @@ public abstract class AbstractMainPageView<C extends UiHandlers> extends ViewWit
     return navigationPane;
   }
 
-  public ContentPanel getWestLayoutContainer() {
-    return westLayout;
+  public ContentPanel getWestPanel() {
+    return westPanel;
   }
 
-  public ContentPanel getCenterLayoutContainer() {
-    return centerLayout;
+  public ContentPanel getCenterPanel() {
+    return centerPanel;
   }
 
   public ContentPanel getNavigationPaneHeader() {
-    return getCenterLayoutContainer();
+    return getCenterPanel();
   }
 }

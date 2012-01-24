@@ -16,6 +16,7 @@ package com.gwtcx.extgwt.client.view;
 
 import java.util.List;
 
+import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
 import com.gwtcx.client.resources.ToolBarIcons;
 import com.gwtcx.client.uihandlers.AccountsUiHandlers;
@@ -39,6 +40,13 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
     super(toolBar, grid);
 
     // recordId = new String("-1");
+  }
+
+  public void resetAndFocus() {
+
+    Log.debug("resetAndFocus()");
+
+    // panel.onResize();
   }
 
   @Override

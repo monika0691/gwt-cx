@@ -29,17 +29,17 @@
 
   <ui:with type="com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance" field="contentPanelAppearance" />
 
-  <container:SimpleContainer>
+  <container:Viewport>
     <container:child>
       <container:BorderLayoutContainer ui:field="borderLayoutContainer" borders="true">
         <container:north layoutData="{northData}">
 
-          <gwt:FlowPanel ui:field="northLayout" styleName="gwtcx-MainPage-North-Layout" />
+          <gwt:FlowPanel ui:field="northPanel" styleName="gwtcx-MainPage-North-Layout" />
 
         </container:north>
         <container:west layoutData="{westData}">
 
-          <gxt:ContentPanel ui:field="westLayout" appearance="{contentPanelAppearance}" headingText="Workplace" bodyBorder="false">
+          <gxt:ContentPanel ui:field="westPanel" appearance="{contentPanelAppearance}" headingText="Workplace" bodyBorder="false">
 
             <gwtcx:NavigationPane ui:field="navigationPane" fill="true" />
 
@@ -48,11 +48,11 @@
         </container:west>
         <container:center layoutData="{centerData}">
 
-          <gxt:ContentPanel ui:field="centerLayout" appearance="{contentPanelAppearance}" headingText="Dashboards" />
+          <gxt:ContentPanel ui:field="centerPanel" appearance="{contentPanelAppearance}" headingText="Dashboards" />
 
         </container:center>
       </container:BorderLayoutContainer>
     </container:child>
-  </container:SimpleContainer>
+  </container:Viewport>
 
 </ui:UiBinder>

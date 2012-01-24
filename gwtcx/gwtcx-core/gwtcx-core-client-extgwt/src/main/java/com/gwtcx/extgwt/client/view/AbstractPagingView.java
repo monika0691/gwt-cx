@@ -14,6 +14,9 @@
 
 package com.gwtcx.extgwt.client.view;
 
+import com.allen_sauer.gwt.log.client.Log;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.UiHandlers;
@@ -29,6 +32,8 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
 
   public static final String CONTEXT_AREA_WIDTH = "100%";
   public static final String CONTEXT_AREA_HEIGHT = "100%";
+  // public static final String TOOLBAR_WIDTH = "100%";
+  public static final String TOOLBAR_HEIGHT = "26px";
 
   protected VerticalLayoutContainer panel;
 
@@ -39,39 +44,42 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
   public AbstractPagingView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Grid<?> grid) {
     super();
 
+    Log.debug("AbstractPagingView()");
+
     this.toolBar = toolBar;
     this.grid = grid;
 
     // panel.setStyleName(StyleTokens.contextArea);
     this.panel = new VerticalLayoutContainer();
     this.panel.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    this.toolBar.setSize(CONTEXT_AREA_WIDTH, TOOLBAR_HEIGHT);
+    this.grid.setSize(CONTEXT_AREA_WIDTH, TOOLBAR_HEIGHT);
 
     // add the Tool Bar, Grid, and Status Bar to the View's layout container
-    this.panel.add(this.toolBar, new VerticalLayoutData(1, -1));  // new Margins(4)
-    this.panel.add(this.grid, new VerticalLayoutData(1, -1));
+    this.panel.add(this.toolBar, new VerticalLayoutData(1, -1));
+    this.panel.add(this.grid, new VerticalLayoutData(1, 1));
 
-    // this.panel.forceLayout();
+    Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+      public void execute() {
 
-    /*
+        Log.debug("execute()");
 
-    this.panel.addResizeHandler(new ResizeHandler() {
-      @Override
-      public void onResize(ResizeEvent event) {
-
-        int width = event.getWidth();
-        int height = event.getHeight();
-
-        Log.debug("ResizeHandler() - width: " + width + " height: " + height);
-
-        toolBar.setWidth(width + "px");
-        grid.setWidth(width + "px");
-        grid.setHeight(height - 32 + "px");
+        resize();
       }
     });
 
-    */
-
     bindCustomUiHandlers();
+  }
+
+  public void resize() {
+
+    int width = Window.getClientWidth();
+    int height = Window.getClientHeight();
+
+    Log.debug("resize() - width: " + width + " height: " + height);
+
+    panel.setSize(width + "px", height + "px");
+    panel.onResize();
   }
 
   protected void bindCustomUiHandlers() { }
@@ -97,3 +105,69 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
   //   return statusBar;
   // }
 }
+
+/*
+
+this.panel.addResizeHandler(new ResizeHandler() {
+  @Override
+  public void onResize(ResizeEvent event) {
+
+    int width = event.getWidth();
+    int height = event.getHeight();
+
+    Log.debug("ResizeHandler() - width: " + width + " height: " + height);
+
+    toolBar.setWidth(width + "px");
+    grid.setWidth(width + "px");
+    grid.setHeight(height - 26 + "px");
+  }
+});
+
+*/
+
+
+
+/*
+
+
+
+
+    toolBar.setWidth(width + "px");
+    grid.setWidth(width + "px");
+    grid.setHeight(height - 26 + "px");
+
+
+    // panel.forceLayout();
+
+
+
+
+
+    Size s = panel.getElement().getStyleSize();
+    // Size s = XElement.as(panel.getElement().getParentElement()).getSize(true);
+
+    this.panel.addResizeHandler(new ResizeHandler() {
+      @Override
+      public void onResize(ResizeEvent event) {
+        resizeTimer.schedule(2000);
+      }
+    });
+
+
+  private Timer resizeTimer = new Timer() {
+    @Override
+    public void run() {
+
+      Log.debug("run()");
+
+      toolBar.setWidth(width + "px");
+
+      calendar.setWidth(width + "px");
+      calendar.setHeight(height - 36 + "px");
+      calendar.doSizing();
+      calendar.doLayout();
+    }
+  };
+
+
+*/

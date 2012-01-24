@@ -20,7 +20,6 @@ import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.sencha.gxt.widget.core.client.button.TextButton;
@@ -29,6 +28,7 @@ import com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutP
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
 import com.sencha.gxt.widget.core.client.toolbar.FillToolItem;
+import com.sencha.gxt.widget.core.client.toolbar.LabelToolItem;
 import com.sencha.gxt.widget.core.client.toolbar.SeparatorToolItem;
 
 /**
@@ -150,6 +150,17 @@ public class ToolBar implements IsWidget {
     return button;
   }
 
+  public LabelToolItem addLabel(String text) {
+
+    LabelToolItem label = new LabelToolItem(text);
+
+    toolBar.add(label);
+
+    return label;
+  }
+
+  /*
+
   public Label addLabel(String text) {
 
     Label label = new Label(text);
@@ -158,6 +169,8 @@ public class ToolBar implements IsWidget {
 
     return label;
   }
+
+  */
 
   public void addSeparator() {
     toolBar.add(new SeparatorToolItem());
@@ -175,9 +188,16 @@ public class ToolBar implements IsWidget {
     toolBar.setSpacing(spacing);
   }
 
+  public void setSize(String width, String height) {
+    toolBar.setSize(width, height);
+  }
+
   public void setWidth(String width) {
     toolBar.setWidth(width);
-    // toolBar.forceLayout();
+  }
+
+  public void setHeight(String height) {
+    toolBar.setWidth(height);
   }
 }
 
