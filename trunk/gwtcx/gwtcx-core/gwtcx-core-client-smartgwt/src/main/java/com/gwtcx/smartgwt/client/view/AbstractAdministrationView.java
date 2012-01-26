@@ -39,14 +39,14 @@ public abstract class AbstractAdministrationView<C extends UiHandlers> extends V
 
     this.listGrid = listGrid;
 
-    panel = new VLayout();
+    this.panel = new VLayout();
 
     // initialise the View's layout container
-    panel.setStyleName(CONTEXT_AREA_STYLE_NAME);
-    panel.setWidth(CONTEXT_AREA_WIDTH);
+    this.panel.setStyleName(CONTEXT_AREA_STYLE_NAME);
+    this.panel.setWidth(CONTEXT_AREA_WIDTH);
 
     // add the List Grid to the View's layout container
-    panel.addMember(this.listGrid);
+    this.panel.addMember(this.listGrid);
 
     bindCustomUiHandlers();
   }
@@ -72,7 +72,8 @@ public abstract class AbstractAdministrationView<C extends UiHandlers> extends V
         String place = record.getAttribute(columnName);
 
         if (getUiHandlers() != null) {
-          ((AdministrationUiHandlers) getUiHandlers()).onCellDoubleClicked(place);
+          assert getUiHandlers() instanceof AdministrationUiHandlers;
+          ((AdministrationUiHandlers) getUiHandlers()).onRowDoubleClicked(place);
         }
       }
     });

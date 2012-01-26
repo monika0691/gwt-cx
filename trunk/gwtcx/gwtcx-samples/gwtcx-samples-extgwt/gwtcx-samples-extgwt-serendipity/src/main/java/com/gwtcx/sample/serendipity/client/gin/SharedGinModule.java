@@ -19,12 +19,14 @@ import com.gwtcx.sample.serendipity.client.place.DefaultPlace;
 import com.gwtcx.sample.serendipity.client.place.SerendipityPlaceManager;
 import com.gwtcx.sample.serendipity.client.presenter.AccountsPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.ActivitiesPresenter;
+import com.gwtcx.sample.serendipity.client.presenter.AdministrationPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.CalendarPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.ErrorPagePresenter;
 import com.gwtcx.sample.serendipity.client.presenter.ImportsPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.ReportsPresenter;
 import com.gwtcx.sample.serendipity.client.view.AccountsView;
 import com.gwtcx.sample.serendipity.client.view.ActivitiesView;
+import com.gwtcx.sample.serendipity.client.view.AdministrationView;
 import com.gwtcx.sample.serendipity.client.view.CalendarView;
 import com.gwtcx.sample.serendipity.client.view.ErrorPageView;
 import com.gwtcx.sample.serendipity.client.view.ImportsView;
@@ -92,5 +94,10 @@ public class SharedGinModule extends AbstractPresenterModule {
 
     bindPresenter(ReportsPresenter.class, ReportsPresenter.MyView.class,
        ReportsView.class, ReportsPresenter.MyProxy.class);
+
+    // Settings
+    bindPresenter(AdministrationPresenter.class, AdministrationPresenter.MyView.class,
+       AdministrationView.class, AdministrationPresenter.MyProxy.class);
+
   }
 }

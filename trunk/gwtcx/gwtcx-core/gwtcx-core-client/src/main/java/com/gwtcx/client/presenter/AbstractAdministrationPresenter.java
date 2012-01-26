@@ -51,7 +51,7 @@ public abstract class AbstractAdministrationPresenter<V extends View, Proxy_ ext
     // RevealContentEvent.fire(this, MainPagePresenter.TYPE_SetContextAreaContent, this);
   }
 
-  public void onCellDoubleClicked(String place) {
+  public void onRowDoubleClicked(String place) {
     if (place.length() != 0) {
       PlaceRequest placeRequest = new PlaceRequest(place);
       getPlaceManager().revealPlace(placeRequest);

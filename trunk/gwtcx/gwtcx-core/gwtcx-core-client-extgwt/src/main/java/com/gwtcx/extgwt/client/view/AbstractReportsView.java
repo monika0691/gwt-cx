@@ -55,7 +55,8 @@ public abstract class AbstractReportsView<C extends UiHandlers> extends Abstract
   public void setResultSet(List<AccountsDto> resultSet) {
     // resultSet == null when there are no items in the table
     // if (resultSet != null) {
-    //   ((AccountsContextAreaListGrid) getListGrid()).setResultSet(resultSet);
+    //   assert getGrid() instanceof AccountsContextAreaListGrid;
+    //   ((AccountsContextAreaGrid) getGrid()).setResultSet(resultSet);
     // }
   }
 
@@ -67,8 +68,8 @@ public abstract class AbstractReportsView<C extends UiHandlers> extends Abstract
     getToolBar().addTextButton(ToolBarIcons.INSTANCE.newAccount(), I18nUtil.getConstant().newButton(), config, new SelectHandler() {
     @Override
       public void onSelect(SelectEvent event) {
-        // Info.display("Click", ((TextButton) event.getSource()).getText() + " clicked");
         if (getUiHandlers() != null) {
+          assert getUiHandlers() instanceof ReportsUiHandlers;
           ((ReportsUiHandlers) getUiHandlers()).onNewButtonClicked();
         }
       }
@@ -94,43 +95,8 @@ public abstract class AbstractReportsView<C extends UiHandlers> extends Abstract
   @Override
   protected void initStatusBar() {
 
-    /*
-
-    // "0 of 50 selected"
-    // statusBar.getSelectedLabel().setContents(I18nUtil.getConstant().selectedLabel());
-
-    getStatusBar().getResultSetFirstButton().addClickHandler(new ClickHandler() {
-      public void onClick(ClickEvent event) {
-        if (getUiHandlers() != null) {
-          // getUiHandlers().onResultSetFirstButtonClicked();
-          ((AccountsUiHandlers) getUiHandlers()).onResultSetFirstButtonClicked();
-        }
-      }
-    });
-
-    getStatusBar().getResultSetPreviousButton().addClickHandler(new ClickHandler() {
-      public void onClick(ClickEvent event) {
-        if (getUiHandlers() != null) {
-          // getUiHandlers().onResultSetPreviousButtonClicked();
-          ((AccountsUiHandlers) getUiHandlers()).onResultSetPreviousButtonClicked();
-        }
-      }
-    });
-
-    // "Page 1"
-    // statusBar.getPageNumberLabel().setContents(I18nUtil.getConstant().pageNumberLabel());
-
-    getStatusBar().getResultSetNextButton().addClickHandler(new ClickHandler() {
-      public void onClick(ClickEvent event) {
-        if (getUiHandlers() != null) {
-          ((AccountsUiHandlers) getUiHandlers()).onResultSetNextButtonClicked();
-        }
-      }
-    });
-
-    */
   }
 }
 
-
+// Info.display("Click", ((TextButton) event.getSource()).getText() + " clicked");
 

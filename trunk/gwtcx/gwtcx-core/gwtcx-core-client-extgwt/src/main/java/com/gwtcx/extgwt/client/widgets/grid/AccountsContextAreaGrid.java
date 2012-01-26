@@ -88,7 +88,7 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
     });
 
     ColumnConfig<AccountsDto, String> accountIconColumnConfig = new ColumnConfig<AccountsDto, String>(property.accountName(),
-        SMALL_ICON_COLUMN_WIDTH + 4, "#");
+        SMALL_ICON_COLUMN_WIDTH + 4, "");  // "#"
     accountIconColumnConfig.setCell(new ImageCell() {
       @Override
       protected void render(Context context, SafeHtml data, SafeHtmlBuilder sb) {
@@ -147,10 +147,10 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
     List<AccountsDto> accounts = new ArrayList<AccountsDto>();
 
     accounts.add(new AccountsDto("1", "Abacus Property Group", "(02) 9253 8600", "Level 34, 264-278 George Street Sydney NSW 2000", "Dr Frank Wolf", "enquiries@abacusproperty.com.au"));
-    accounts.add(new AccountsDto("2", "Adelaide Brighton Limited", "(08) 8223 8000", "Level 1 157 Grenfell Street Adelaide SA 5000", "Mr Mark Chellew", "enquiries@adbri.com.au"));
-    accounts.add(new AccountsDto("3", "AGL Energy Limited", "(02) 9921 2999", "Level 22 101 Miller Street North Sydney NSW 2065", "Mr Michael Fraser", "enquiries@agl.com.au"));
-    accounts.add(new AccountsDto("4", "Alesco Corporation Limited", "(02) 9248 2000", "Level 24 207 Kent Street Sydney NSW 2000", "Mr Peter Boyd", "enquiries@alesco.com.au"));
-    accounts.add(new AccountsDto("5", "Alumina Limited", "(03) 8699 2600", "Level 12 60 City Road Southbank VIC 3006", "Mr John Bevan", "enquiries@alumina.com.au"));
+    accounts.add(new AccountsDto("2", "Adelaide Brighton Limited", "(08) 8223 8000", "Level 1, 157 Grenfell Street Adelaide SA 5000", "Mr Mark Chellew", "enquiries@adbri.com.au"));
+    accounts.add(new AccountsDto("3", "AGL Energy Limited", "(02) 9921 2999", "Level 22, 101 Miller Street North Sydney NSW 2065", "Mr Michael Fraser", "enquiries@agl.com.au"));
+    accounts.add(new AccountsDto("4", "Alesco Corporation Limited", "(02) 9248 2000", "Level 24, 207 Kent Street Sydney NSW 2000", "Mr Peter Boyd", "enquiries@alesco.com.au"));
+    accounts.add(new AccountsDto("5", "Alumina Limited", "(03) 8699 2600", "Level 12, 60 City Road Southbank VIC 3006", "Mr John Bevan", "enquiries@alumina.com.au"));
 
     return accounts;
   }

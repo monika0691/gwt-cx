@@ -12,10 +12,23 @@
  * under the License.
  */
 
-package com.gwtcx.client.uihandlers;
+package com.gwtcx.sample.serendipity.client.view;
 
-import com.gwtplatform.mvp.client.UiHandlers;
+import com.google.inject.Inject;
+import com.gwtcx.client.uihandlers.AdministrationUiHandlers;
+import com.gwtcx.extgwt.client.view.AbstractAdministrationView;
+import com.gwtcx.sample.serendipity.client.presenter.AdministrationPresenter;
 
-public interface AdministrationUiHandlers extends UiHandlers {
-  void onRowDoubleClicked(String name);
+public class AdministrationView extends AbstractAdministrationView<AdministrationUiHandlers>
+    implements AdministrationPresenter.MyView {
+
+  @Inject
+  public AdministrationView() {
+    super();
+  }
+
+  @Override
+  protected void bindCustomUiHandlers() {
+    super.bindCustomUiHandlers();
+  }
 }
