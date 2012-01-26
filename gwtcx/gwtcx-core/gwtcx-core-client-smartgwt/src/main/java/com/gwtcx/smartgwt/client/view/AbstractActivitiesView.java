@@ -60,6 +60,7 @@ public abstract class AbstractActivitiesView<C extends UiHandlers> extends Abstr
         I18nUtil.getConstant().newButtonTooltip(), new ClickHandler() {
     public void onClick(ClickEvent event) {
       if (getUiHandlers() != null) {
+        assert getUiHandlers() instanceof ActivitiesUiHandlers;
         ((ActivitiesUiHandlers) getUiHandlers()).onNewButtonClicked();
       }
       }}
@@ -85,6 +86,7 @@ public abstract class AbstractActivitiesView<C extends UiHandlers> extends Abstr
         I18nUtil.getConstant().deleteButtonTooltip(), new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
+          assert getUiHandlers() instanceof ActivitiesUiHandlers;
           // getUiHandlers().onDeleteButtonClicked();
         }
       }}
@@ -99,6 +101,7 @@ public abstract class AbstractActivitiesView<C extends UiHandlers> extends Abstr
         I18nUtil.getConstant().refreshButtonTooltip(), new ClickHandler() {
       public void onClick(ClickEvent event) {
       if (getUiHandlers() != null) {
+        assert getUiHandlers() instanceof ActivitiesUiHandlers;
         // getUiHandlers().onRefreshButtonClicked();
       }
       }}
@@ -111,6 +114,7 @@ public abstract class AbstractActivitiesView<C extends UiHandlers> extends Abstr
     getStatusBar().getResultSetFirstButton().addClickHandler(new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
+          assert getUiHandlers() instanceof ActivitiesUiHandlers;
           ((ActivitiesUiHandlers) getUiHandlers()).onResultSetFirstButtonClicked();
         }
       }
@@ -119,6 +123,7 @@ public abstract class AbstractActivitiesView<C extends UiHandlers> extends Abstr
     getStatusBar().getResultSetPreviousButton().addClickHandler(new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
+          assert getUiHandlers() instanceof ActivitiesUiHandlers;
           ((ActivitiesUiHandlers) getUiHandlers()).onResultSetPreviousButtonClicked();
         }
       }
@@ -127,6 +132,7 @@ public abstract class AbstractActivitiesView<C extends UiHandlers> extends Abstr
     getStatusBar().getResultSetNextButton().addClickHandler(new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
+          assert getUiHandlers() instanceof ActivitiesUiHandlers;
           ((ActivitiesUiHandlers) getUiHandlers()).onResultSetNextButtonClicked();
         }
       }

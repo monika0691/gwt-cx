@@ -24,6 +24,7 @@ import com.google.gwt.safecss.shared.SafeStylesUtils;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.inject.Inject;
+import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.resources.ImageCell;
 import com.gwtcx.client.resources.SalesIcons;
 import com.gwtcx.extgwt.client.ExtGwtCx;
@@ -40,9 +41,11 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
  */
 public class NavigationPaneSectionGrid extends Grid<NavigationPaneSectionModel>{
 
-  public static final int SMALL_ICON_COLUMN_WIDTH = 24;
+  public static final String CONTEXT_AREA_WIDTH = "100%";
+  public static final String CONTEXT_AREA_HEIGHT = "100%";
 
-  public static final int NAME_COLUMN_WIDTH = 180;
+  public static final int SMALL_ICON_COLUMN_WIDTH = 24;
+  public static final int DISPLAY_NAME_COLUMN_WIDTH = 180;
 
   public interface NavigationPaneSectionProperties extends PropertyAccess<NavigationPaneSectionModel> {
     @Path("name")
@@ -77,7 +80,7 @@ public class NavigationPaneSectionGrid extends Grid<NavigationPaneSectionModel>{
     });
 
     displayNameColumnConfig = new ColumnConfig<NavigationPaneSectionModel, String>(property.displayName(),
-        NAME_COLUMN_WIDTH, "");
+        DISPLAY_NAME_COLUMN_WIDTH, "");
 
     List<ColumnConfig<NavigationPaneSectionModel, ?>> columnConfigList = new ArrayList<ColumnConfig<NavigationPaneSectionModel, ?>>();
     columnConfigList.add(iconColumnConfig);
@@ -95,7 +98,7 @@ public class NavigationPaneSectionGrid extends Grid<NavigationPaneSectionModel>{
     // this.setStyleName(StyleTokens.contextGrid);
     // Widgets that are implemented using <table> or <frame> elements do not automatically fill the space provided by the layout.
     // In order to fix this, you will need to explicitly set these widgets width and height to 100%.
-    this.setSize("100%", "100%");
+    this.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
 
     this.getView().setAutoExpandColumn(displayNameColumnConfig);
     this.setBorders(false);
@@ -109,18 +112,18 @@ public class NavigationPaneSectionGrid extends Grid<NavigationPaneSectionModel>{
 
   public static List<NavigationPaneSectionModel> getPlaces() {
 
-    List<NavigationPaneSectionModel> accounts = new ArrayList<NavigationPaneSectionModel>();
+    List<NavigationPaneSectionModel> sales = new ArrayList<NavigationPaneSectionModel>();
 
-    accounts.add(new NavigationPaneSectionModel("activities", ExtGwtCx.getConstant().activitiesMenuItemName(), ExtGwtCx.getConstant().activitiesMenuItemName()));
-    accounts.add(new NavigationPaneSectionModel("calendar", ExtGwtCx.getConstant().calendarMenuItemName(), ExtGwtCx.getConstant().calendarMenuItemName()));
-    accounts.add(new NavigationPaneSectionModel("dashboards", ExtGwtCx.getConstant().dashboardsMenuItemName(), ExtGwtCx.getConstant().dashboardsMenuItemName()));
-    accounts.add(new NavigationPaneSectionModel("imports", ExtGwtCx.getConstant().importsMenuItemName(), ExtGwtCx.getConstant().importsMenuItemName()));
-    accounts.add(new NavigationPaneSectionModel("accounts", ExtGwtCx.getConstant().accountsMenuItemName(), ExtGwtCx.getConstant().accountsMenuItemName()));
-    accounts.add(new NavigationPaneSectionModel("contacts", ExtGwtCx.getConstant().contactsMenuItemName(), ExtGwtCx.getConstant().contactsMenuItemName()));
-    accounts.add(new NavigationPaneSectionModel("queues", ExtGwtCx.getConstant().queuesMenuItemName(), ExtGwtCx.getConstant().queuesMenuItemName()));
-    accounts.add(new NavigationPaneSectionModel("reports", ExtGwtCx.getConstant().reportsMenuItemName(), ExtGwtCx.getConstant().reportsMenuItemName()));
+    sales.add(new NavigationPaneSectionModel("activities", NameTokens.activities, ExtGwtCx.getConstant().activitiesMenuItemName()));
+    sales.add(new NavigationPaneSectionModel("calendar", NameTokens.calendar, ExtGwtCx.getConstant().calendarMenuItemName()));
+    sales.add(new NavigationPaneSectionModel("dashboards", NameTokens.dashboards, ExtGwtCx.getConstant().dashboardsMenuItemName()));
+    sales.add(new NavigationPaneSectionModel("imports", NameTokens.imports, ExtGwtCx.getConstant().importsMenuItemName()));
+    sales.add(new NavigationPaneSectionModel("accounts", NameTokens.accounts, ExtGwtCx.getConstant().accountsMenuItemName()));
+    sales.add(new NavigationPaneSectionModel("contacts", NameTokens.contacts, ExtGwtCx.getConstant().contactsMenuItemName()));
+    sales.add(new NavigationPaneSectionModel("queues", NameTokens.queues, ExtGwtCx.getConstant().queuesMenuItemName()));
+    sales.add(new NavigationPaneSectionModel("reports", NameTokens.reports, ExtGwtCx.getConstant().reportsMenuItemName()));
 
-    return accounts;
+    return sales;
   }
 
   private static SafeHtml getIcon(String data) {

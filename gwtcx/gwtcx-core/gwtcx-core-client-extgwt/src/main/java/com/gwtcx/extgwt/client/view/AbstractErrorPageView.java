@@ -67,6 +67,7 @@ public abstract class AbstractErrorPageView<C extends UiHandlers> extends ViewWi
         @Override
         public void onSelect(SelectEvent event) {
           if (getUiHandlers() != null) {
+            assert getUiHandlers() instanceof ErrorPageUiHandlers;
             ((ErrorPageUiHandlers) getUiHandlers()).onOkButtonClicked();
           }
         }

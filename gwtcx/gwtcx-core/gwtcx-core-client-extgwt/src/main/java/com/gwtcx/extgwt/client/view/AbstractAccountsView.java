@@ -45,8 +45,6 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
   public void resetAndFocus() {
 
     Log.debug("resetAndFocus()");
-
-    // panel.onResize();
   }
 
   @Override
@@ -75,9 +73,8 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
     getToolBar().addTextButton(ToolBarIcons.INSTANCE.newAccount(), I18nUtil.getConstant().newButton(), config, new SelectHandler() {
     @Override
       public void onSelect(SelectEvent event) {
-        // Info.display("Click", ((TextButton) event.getSource()).getText() + " clicked");
         if (getUiHandlers() != null) {
-          // getUiHandlers().onNewButtonClicked();
+          assert getUiHandlers() instanceof AccountsUiHandlers;
           ((AccountsUiHandlers) getUiHandlers()).onNewButtonClicked();
         }
       }
@@ -115,7 +112,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
     getStatusBar().getResultSetFirstButton().addClickHandler(new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
-          // getUiHandlers().onResultSetFirstButtonClicked();
+          assert getUiHandlers() instanceof AccountsUiHandlers;
           ((AccountsUiHandlers) getUiHandlers()).onResultSetFirstButtonClicked();
         }
       }
@@ -124,7 +121,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
     getStatusBar().getResultSetPreviousButton().addClickHandler(new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
-          // getUiHandlers().onResultSetPreviousButtonClicked();
+          assert getUiHandlers() instanceof AccountsUiHandlers;
           ((AccountsUiHandlers) getUiHandlers()).onResultSetPreviousButtonClicked();
         }
       }
@@ -136,6 +133,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
     getStatusBar().getResultSetNextButton().addClickHandler(new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
+          assert getUiHandlers() instanceof AccountsUiHandlers;
           ((AccountsUiHandlers) getUiHandlers()).onResultSetNextButtonClicked();
         }
       }
@@ -145,5 +143,5 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
   }
 }
 
-
+// Info.display("Click", ((TextButton) event.getSource()).getText() + " clicked");
 

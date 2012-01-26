@@ -149,9 +149,9 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
       @Override
       public void onRowClick(RowClickEvent event) {
 
-        int rowIndex = event.getRowIndex();
+        // int rowIndex = event.getRowIndex();
 
-        NavigationPaneSectionModel model = (NavigationPaneSectionModel) salesSection.getGrid().getStore().get(rowIndex);
+        NavigationPaneSectionModel model = (NavigationPaneSectionModel) salesSection.getGrid().getStore().get(event.getRowIndex());
         navigationPaneSectionClicked(model.getName());
       }
     });

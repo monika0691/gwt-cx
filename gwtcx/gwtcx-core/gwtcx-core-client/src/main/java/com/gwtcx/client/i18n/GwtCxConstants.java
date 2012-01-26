@@ -67,6 +67,28 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   String settingsMenuItemNames();
   @DefaultStringValue("Administration")
   String administrationMenuItemName();
+  @DefaultStringValue("Announcements")
+  String announcementsMenuItemName();
+  @DefaultStringValue("Auto-Numbering")
+  String autoNumberingMenuItemName();
+  @DefaultStringValue("Business Units")
+  String businessUnitsMenuItemName();
+  @DefaultStringValue("System Settings")
+  String systemSettingsMenuItemName();
+  @DefaultStringValue("Users")
+  String usersMenuItemName();
+  @DefaultStringValue("Teams")
+  String teamsMenuItemName();
+  @DefaultStringValue("Privacy Preferences")
+  String privacyPreferencesMenuItemName();
+  @DefaultStringValue("Product Updates")
+  String productUpdatesMenuItemName();
+
+  @DefaultStringValue("Templates")
+  String templatesMenuItemName();
+
+  @DefaultStringValue("Data Management")
+  String dataManagementMenuItemName();
 
   @DefaultStringValue("Resource Centre")
   String resourceCentreMenuItemName();

@@ -65,7 +65,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
         recordId = record.getAttributeAsString(AccountsRecord.ACCOUNT_ID);
 
         if (getUiHandlers() != null) {
-          // getUiHandlers().onRecordDoubleClicked(recordId);
+          assert getUiHandlers() instanceof AccountsUiHandlers;
           ((AccountsUiHandlers) getUiHandlers()).onRecordDoubleClicked(recordId);
         }
       }
@@ -78,6 +78,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
   public void setResultSet(List<AccountsDto> resultSet) {
     // resultSet == null when there are no items in the table
     if (resultSet != null) {
+      assert getGrid() instanceof AccountsContextAreaListGrid;
       ((AccountsContextAreaListGrid) getGrid()).setResultSet(resultSet);
     }
   }
@@ -89,7 +90,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
         I18nUtil.getConstant().newButtonTooltip(), new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
-          // getUiHandlers().onNewButtonClicked();
+          assert getUiHandlers() instanceof AccountsUiHandlers;
           ((AccountsUiHandlers) getUiHandlers()).onNewButtonClicked();
         }
       }
@@ -104,7 +105,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
         I18nUtil.getConstant().exportButtonTooltip(), new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
-          // getUiHandlers().onExportButtonClicked();
+          assert getUiHandlers() instanceof AccountsUiHandlers;
           ((AccountsUiHandlers) getUiHandlers()).onExportButtonClicked();
         }
       }
@@ -139,7 +140,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
               @Override
               public void execute(Boolean value) {
                 if (value != null && value) { // Yes
-                  // getUiHandlers().onDeleteButtonClicked(recordId);
+                  assert getUiHandlers() instanceof AccountsUiHandlers;
                   ((AccountsUiHandlers) getUiHandlers()).onDeleteButtonClicked(recordId);
                 }
               }
@@ -159,6 +160,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
         I18nUtil.getConstant().workflowButtonTooltip(), new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
+          assert getUiHandlers() instanceof AccountsUiHandlers;
           // getUiHandlers().onWorkflowButtonClicked();
         }
       }
@@ -170,7 +172,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
         I18nUtil.getConstant().refreshButtonTooltip(), new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
-          // getUiHandlers().onRefreshButtonClicked();
+          assert getUiHandlers() instanceof AccountsUiHandlers;
           ((AccountsUiHandlers) getUiHandlers()).onRefreshButtonClicked();
         }
       }
@@ -186,7 +188,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
     getStatusBar().getResultSetFirstButton().addClickHandler(new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
-          // getUiHandlers().onResultSetFirstButtonClicked();
+           assert getUiHandlers() instanceof AccountsUiHandlers;
           ((AccountsUiHandlers) getUiHandlers()).onResultSetFirstButtonClicked();
         }
       }
@@ -195,7 +197,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
     getStatusBar().getResultSetPreviousButton().addClickHandler(new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
-          // getUiHandlers().onResultSetPreviousButtonClicked();
+          assert getUiHandlers() instanceof AccountsUiHandlers;
           ((AccountsUiHandlers) getUiHandlers()).onResultSetPreviousButtonClicked();
         }
       }
@@ -207,6 +209,7 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
     getStatusBar().getResultSetNextButton().addClickHandler(new ClickHandler() {
       public void onClick(ClickEvent event) {
         if (getUiHandlers() != null) {
+          assert getUiHandlers() instanceof AccountsUiHandlers;
           ((AccountsUiHandlers) getUiHandlers()).onResultSetNextButtonClicked();
         }
       }

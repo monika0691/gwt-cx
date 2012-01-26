@@ -18,6 +18,9 @@ import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 
+/**
+ * NavigationPaneSectionModelListStore
+ */
 public class NavigationPaneSectionModelListStore extends ListStore<NavigationPaneSectionModel> {
 
   public static ModelKeyProvider<NavigationPaneSectionModel> KP = new ModelKeyProvider<NavigationPaneSectionModel>() {

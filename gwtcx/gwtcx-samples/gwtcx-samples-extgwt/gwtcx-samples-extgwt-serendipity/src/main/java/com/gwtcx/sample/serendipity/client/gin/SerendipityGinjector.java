@@ -20,6 +20,7 @@ import com.google.gwt.inject.client.Ginjector;
 import com.google.inject.Provider;
 import com.gwtcx.sample.serendipity.client.presenter.AccountsPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.ActivitiesPresenter;
+import com.gwtcx.sample.serendipity.client.presenter.AdministrationPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.CalendarPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.DashboardsPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.ErrorPagePresenter;
@@ -50,4 +51,7 @@ public interface SerendipityGinjector extends Ginjector {
   AsyncProvider<AccountsPresenter> getAccountsPresenter();
 
   AsyncProvider<ReportsPresenter> getReportsPresenter();
+
+  AsyncProvider<AdministrationPresenter> getAdministrationPresenter();
+
 }

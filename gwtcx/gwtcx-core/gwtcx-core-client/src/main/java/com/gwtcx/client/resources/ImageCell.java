@@ -35,9 +35,9 @@ public class ImageCell extends AbstractSafeHtmlCell<String> {
     SafeHtml cell(String name, SafeStyles styles, SafeHtml value);
   }
 
-  protected static final SafeHtml PLACEHOLDER = makeImage(SalesIcons.INSTANCE.placeholder());
-
   protected static Template template = GWT.create(Template.class);
+
+  protected static final SafeHtml PLACEHOLDER = makeImage(SalesIcons.INSTANCE.placeholder());
 
   public ImageCell() {
     super(SimpleSafeHtmlRenderer.getInstance());
@@ -55,8 +55,7 @@ public class ImageCell extends AbstractSafeHtmlCell<String> {
       return;
     }
 
-    // SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("float:left;cursor:hand;cursor:pointer;");
-    SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("float:left;cursor:pointer;");
+    SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("float:left; cursor:pointer;");
 
     SafeHtml rendered = template.cell("image-1", imageStyle, PLACEHOLDER);
     sb.append(rendered);
@@ -70,6 +69,10 @@ public class ImageCell extends AbstractSafeHtmlCell<String> {
 
 /*
 
+
+
+    // SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("float:left;cursor:hand;cursor:pointer;");
+    // SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("width:48px; height:48px; float:left; cursor:pointer;");
 
     @Override
     public void onBrowserEvent(com.google.gwt.cell.client.Cell.Context context,

@@ -39,6 +39,7 @@ public class NameTokens {
   public static final String opportunities = "Opportunities";
   public static final String accounts = "Accounts";
   public static final String contacts = "Contacts";
+  public static final String queues = "Queues";
   public static final String reports = "Reports";
 
   public static final String accountInformation = "AccountInformation";
@@ -46,7 +47,18 @@ public class NameTokens {
 
   // Settings nested presenters and views
   public static final String administration = "Administration";
+
+  public static final String announcements = "Announcements";
+  public static final String autoNumbering = "Auto-Numbering";
+  public static final String businessUnits = "Business Units";
+  public static final String systemSettings = "System Settings";
+  public static final String users = "Users";
+  public static final String teams = "Teams";
+  public static final String privacyPreferences = "Privacy Preferences";
+  public static final String productUpdates = "Product Updates";
+
   public static final String templates = "Templates";
+
   public static final String datamanagement = "Data Management";
 
   // Resource Centre nested presenters and views
