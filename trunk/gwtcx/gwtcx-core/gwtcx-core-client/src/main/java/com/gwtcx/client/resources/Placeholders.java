@@ -19,17 +19,24 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 
 /**
- * GridIcons client bundle.
+ * Placeholders client bundle.
  */
-public interface GridIcons extends ClientBundle {
+public interface Placeholders extends ClientBundle {
 
-  public static final String urlPrefix = "com/gwtcx/public/gwtcx/skins/aqua/images/grid/";
+  public static final String urlPrefix = "com/gwtcx/public/gwtcx/skins/aqua/images/placeholders/";
 
-  public static final GridIcons INSTANCE = GWT.create(GridIcons.class);
+  public static final Placeholders INSTANCE = GWT.create(Placeholders.class);
 
-  @Source(urlPrefix + "row_collapsed.png")
-  ImageResource rowCollapsed();
+  @Source(urlPrefix + "placeholder_16.png")
+  ImageResource placeholder16();
 
-  @Source(urlPrefix + "row_expanded.png")
-  ImageResource rowExpanded();
+  @Source(urlPrefix + "placeholder_24.png")
+  ImageResource placeholder24();
+
+  @Source(urlPrefix + "placeholder_32.png")
+  ImageResource placeholder32();
+
+  @Source(urlPrefix + "placeholder_48.png")
+  ImageResource placeholder48();
+
 }

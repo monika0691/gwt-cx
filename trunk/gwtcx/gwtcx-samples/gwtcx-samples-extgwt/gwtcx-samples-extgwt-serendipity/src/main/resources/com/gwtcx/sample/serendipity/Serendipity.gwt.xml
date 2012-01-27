@@ -28,6 +28,8 @@
   <inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
   <!-- <inherits name="com.allen_sauer.gwt.log.gwt-log-OFF" /> -->
 
+  <!-- <set-configuration-property name="UiBinder.useLazyWidgetBuilders" value="true" /> -->
+
   <!-- The entry point class -->
   <entry-point class="com.gwtcx.sample.serendipity.client.entrypoint.Serendipity" />
 

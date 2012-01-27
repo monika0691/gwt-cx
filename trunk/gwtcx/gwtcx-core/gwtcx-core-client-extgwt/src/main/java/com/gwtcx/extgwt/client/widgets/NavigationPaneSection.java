@@ -16,8 +16,8 @@ package com.gwtcx.extgwt.client.widgets;
 
 import com.google.gwt.core.client.GWT;
 import com.google.inject.Inject;
+import com.gwtcx.extgwt.client.data.NavigationPaneSectionModelListStore;
 import com.gwtcx.extgwt.client.widgets.grid.NavigationPaneSectionGrid;
-import com.gwtcx.extgwt.client.widgets.grid.NavigationPaneSectionModelListStore;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.container.AccordionLayoutContainer.AccordionLayoutAppearance;
 import com.sencha.gxt.widget.core.client.event.RowClickEvent.RowClickHandler;

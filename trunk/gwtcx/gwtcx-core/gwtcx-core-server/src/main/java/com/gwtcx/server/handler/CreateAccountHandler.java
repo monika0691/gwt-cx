@@ -94,7 +94,7 @@ public class CreateAccountHandler implements
       List<Address> addresses = new ArrayList<Address>(addressDtos.size());
 
       for (AddressDto addressDto : addressDtos) {
-        addresses.add(createAddress(addressDto));
+        addresses.add(fromDto(addressDto));
       }
 
       account.setAddresses(addresses);
@@ -106,7 +106,7 @@ public class CreateAccountHandler implements
     return account;
   }
 
-  private Address createAddress(AddressDto addressDto) {
+  private Address fromDto(AddressDto addressDto) {
     return new Address(addressDto.getAddressName(),
         addressDto.getAddressLine1(), addressDto.getAddressLine2(), addressDto.getAddressLine3(),
         addressDto.getCity(), addressDto.getState(), addressDto.getPostalCode(),

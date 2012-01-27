@@ -140,6 +140,10 @@
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-servlet</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-servlet-deps</artifactId> <!-- required for AutoBean support -->
+    </dependency>
 
     <!-- DI dependencies -->
     <dependency>

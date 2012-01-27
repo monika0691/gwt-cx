@@ -37,7 +37,7 @@ public class ImageCell extends AbstractSafeHtmlCell<String> {
 
   protected static Template template = GWT.create(Template.class);
 
-  protected static final SafeHtml PLACEHOLDER = makeImage(SalesIcons.INSTANCE.placeholder());
+  protected static final SafeHtml PLACEHOLDER = makeImage(Placeholders.INSTANCE.placeholder16());
 
   public ImageCell() {
     super(SimpleSafeHtmlRenderer.getInstance());

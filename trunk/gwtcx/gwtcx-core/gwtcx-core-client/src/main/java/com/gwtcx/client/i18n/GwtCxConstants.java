@@ -356,6 +356,9 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   @DefaultStringValue("Cancel")
   String cancel();
 
+  @DefaultStringValue("No items to show.")
+  String gridEmptyText();
+
   // SignInPageView
 
   @DefaultStringValue("Sign in")

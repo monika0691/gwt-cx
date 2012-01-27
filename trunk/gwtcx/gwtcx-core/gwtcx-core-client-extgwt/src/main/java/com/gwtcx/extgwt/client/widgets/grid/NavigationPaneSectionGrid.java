@@ -26,9 +26,11 @@ import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.resources.ImageCell;
+import com.gwtcx.client.resources.Placeholders;
 import com.gwtcx.client.resources.SalesIcons;
 import com.gwtcx.extgwt.client.ExtGwtCx;
 import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
+import com.gwtcx.extgwt.client.data.NavigationPaneSectionModelListStore;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
@@ -144,7 +146,7 @@ public class NavigationPaneSectionGrid extends Grid<NavigationPaneSectionModel>{
     } else if ("reports".equalsIgnoreCase(data)) {
         return ImageCell.makeImage(SalesIcons.INSTANCE.reports());
     } else {
-      return ImageCell.makeImage(SalesIcons.INSTANCE.placeholder());
+      return ImageCell.makeImage(Placeholders.INSTANCE.placeholder16());
     }
   }
 }
