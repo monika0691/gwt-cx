@@ -12,25 +12,22 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.widgets.grid;
+package com.gwtcx.extgwt.client.data;
 
-import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
+import com.gwtcx.shared.dto.AccountsDto;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 
-/**
- * NavigationPaneSectionModelListStore
- */
-public class NavigationPaneSectionModelListStore extends ListStore<NavigationPaneSectionModel> {
+public class AccountsDtoListStore extends ListStore<AccountsDto> {
 
-  public static ModelKeyProvider<NavigationPaneSectionModel> KP = new ModelKeyProvider<NavigationPaneSectionModel>() {
+  public static ModelKeyProvider<AccountsDto> KP = new ModelKeyProvider<AccountsDto>() {
     @Override
-    public String getKey(NavigationPaneSectionModel item) {
-      return item.getName();
+    public String getKey(AccountsDto item) {
+      return item.getAccountId();
     }
   };
 
-  public NavigationPaneSectionModelListStore() {
+  public AccountsDtoListStore() {
     super(KP);
   }
 }

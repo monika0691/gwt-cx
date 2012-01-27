@@ -27,9 +27,6 @@ public interface SettingsIcons extends ClientBundle {
 
   public static final SettingsIcons INSTANCE = GWT.create(SettingsIcons.class);
 
-  @Source(urlPrefix + "placeholder.png")
-  ImageResource placeholder();
-
   @Source(urlPrefix + "announcements.png")
   ImageResource announcements();
 

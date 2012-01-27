@@ -61,7 +61,7 @@ public class RetrieveReportsHandler implements
         List<ReportsDto> reportsDtos = new ArrayList<ReportsDto>(reports.size());
 
         for (Report report : reports) {
-          reportsDtos.add(createReportsDto(report));
+          reportsDtos.add(toDto(report));
         }
 
         result = new RetrieveReportsResult(reportsDtos);
@@ -76,7 +76,7 @@ public class RetrieveReportsHandler implements
     return result;
   }
 
-  private ReportsDto createReportsDto(Report report) {
+  private ReportsDto toDto(Report report) {
     return new ReportsDto(report.getReportIdAsString(), report.getReportName(), report.getEntityName(), report.getReportFilename(),
         report.getReportType(), report.getModifiedOn().toString(), report.getDescription());
   }

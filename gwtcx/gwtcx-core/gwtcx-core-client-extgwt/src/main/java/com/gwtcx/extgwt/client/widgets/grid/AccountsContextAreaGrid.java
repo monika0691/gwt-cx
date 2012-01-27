@@ -28,6 +28,7 @@ import com.gwtcx.client.resources.GridIcons;
 import com.gwtcx.client.resources.ImageCell;
 import com.gwtcx.client.resources.SalesIcons;
 import com.gwtcx.client.util.I18nUtil;
+import com.gwtcx.extgwt.client.data.AccountsDtoListStore;
 import com.gwtcx.shared.dto.AccountsDto;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;

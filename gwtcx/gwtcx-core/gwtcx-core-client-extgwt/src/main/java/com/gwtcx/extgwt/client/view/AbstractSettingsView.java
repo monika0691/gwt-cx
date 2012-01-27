@@ -15,12 +15,13 @@
 package com.gwtcx.extgwt.client.view;
 
 import com.allen_sauer.gwt.log.client.Log;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.gwtcx.extgwt.client.widgets.grid.ContextAreaGrid;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.grid.Grid;
 
 /**
  * AbstractSettingsView
@@ -31,8 +32,7 @@ public abstract class AbstractSettingsView<C extends UiHandlers> extends ViewWit
   public static final String CONTEXT_AREA_HEIGHT = "100%";
 
   protected VerticalLayoutContainer panel;
-
-  protected Grid<?> grid;
+  protected ContextAreaGrid<?> grid;
 
   @Inject
   public AbstractSettingsView() {
@@ -41,33 +41,65 @@ public abstract class AbstractSettingsView<C extends UiHandlers> extends ViewWit
     Log.debug("AbstractPagingView()");
 
     // panel.setStyleName(StyleTokens.contextArea);
-    this.panel = new VerticalLayoutContainer();
-    this.panel.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
-
-    // bindCustomUiHandlers();
+    setPanel(new VerticalLayoutContainer());
+    getPanel().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
   }
 
   protected void bindCustomUiHandlers() { }
-
-  // protected void initToolBar() { }
-
-  // protected void initStatusBar() { }
 
   @Override
   public Widget asWidget() {
     return panel;
   }
 
-  public Grid<?> getGrid() {
+  public void resize() {
+    panel.setSize(Window.getClientWidth() + "px", Window.getClientHeight() + "px");
+    panel.onResize();
+  }
+
+  public VerticalLayoutContainer getPanel() {
+    return panel;
+  }
+
+  public void setPanel(VerticalLayoutContainer panel) {
+    this.panel = panel;;
+  }
+
+  public ContextAreaGrid<?> getGrid() {
     return grid;
   }
 
-  public void setGrid(Grid<?> grid) {
+  public void setGrid(ContextAreaGrid<?> grid) {
     this.grid = grid;;
   }
 }
 
 /*
+
+
+  public ContextAreaModelListStore getStore() {
+    return store;
+  }
+
+  public void setStore(ContextAreaModelListStore store) {
+    this.store = store;;
+  }
+
+    // int width = Window.getClientWidth();
+    // int height = Window.getClientHeight();
+    // Log.debug("resize() - width: " + width + " height: " + height);
+    // panel.setSize(width + "px", height + "px");
+
+  // protected void initToolBar() { }
+
+  // protected void initStatusBar() { }
+
+  // protected Grid<?> grid;
+
+  // public void setGrid(Grid<?> grid) {
+  //   this.grid = grid;;
+  // }
+
 
 public abstract class AbstractSettingsView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 

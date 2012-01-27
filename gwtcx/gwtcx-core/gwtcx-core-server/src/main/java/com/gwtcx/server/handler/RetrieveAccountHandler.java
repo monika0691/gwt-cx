@@ -95,7 +95,7 @@ public class RetrieveAccountHandler implements
       List<AddressDto> addressDtos = new ArrayList<AddressDto>(addresses.size());
 
       for (Address address : addresses) {
-        addressDtos.add(createAddressDto(address));
+        addressDtos.add(toDto(address));
       }
 
       accountDto.setAddresses(addressDtos);
@@ -107,7 +107,7 @@ public class RetrieveAccountHandler implements
     return accountDto;
   }
 
-  private AddressDto createAddressDto(Address address) {
+  private AddressDto toDto(Address address) {
     return new AddressDto(address.getAddressIdAsString(), address.getAddressName(),
         address.getAddressLine1(), address.getAddressLine2(), address.getAddressLine3(),
         address.getCity(), address.getState(), address.getPostalCode(),

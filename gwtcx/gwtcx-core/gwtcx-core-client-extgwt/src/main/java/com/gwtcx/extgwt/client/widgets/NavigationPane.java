@@ -20,7 +20,7 @@ import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.WidgetCollection;
 import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
-import com.gwtcx.extgwt.client.widgets.grid.NavigationPaneSectionModelListStore;
+import com.gwtcx.extgwt.client.data.NavigationPaneSectionModelListStore;
 import com.sencha.gxt.widget.core.client.container.AccordionLayoutContainer;
 
 /**
