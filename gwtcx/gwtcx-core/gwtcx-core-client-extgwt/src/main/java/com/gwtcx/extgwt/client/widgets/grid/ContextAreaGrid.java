@@ -16,15 +16,15 @@ package com.gwtcx.extgwt.client.widgets.grid;
 
 import com.google.inject.Inject;
 import com.gwtcx.client.util.I18nUtil;
+import com.gwtcx.extgwt.client.data.ContextAreaModel;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 
 /**
  * ContextAreaGrid
- * @param <M>
  */
-public class ContextAreaGrid<M> extends Grid<M>{
+public class ContextAreaGrid extends Grid<ContextAreaModel>{
 
   public static final String CONTEXT_AREA_WIDTH = "100%";
   public static final String CONTEXT_AREA_HEIGHT = "100%";
@@ -37,7 +37,8 @@ public class ContextAreaGrid<M> extends Grid<M>{
   public static final int DISPLAY_NAME_COLUMN_WIDTH = 420;
 
   @Inject
-  public ContextAreaGrid(ListStore<M> store, ColumnModel<M> cm) {
+  // public ContextAreaGrid(ListStore<M> store, ColumnModel<M> cm) {
+  public ContextAreaGrid(ListStore<ContextAreaModel> store, ColumnModel<ContextAreaModel> cm) {
     super(store, cm);
 
     // this.setStyleName(StyleTokens.contextGrid);
@@ -56,93 +57,4 @@ public class ContextAreaGrid<M> extends Grid<M>{
 
     // this.setSelectionModel(new CellSelectionModel<ContextAreaModel>());
   }
-
 }
-
-/*
-
-
-  // @Inject
-  // public ContextAreaGrid(ContextAreaModelListStore store) {
-  //   this(store, getColumModel());
-  // }
-
-
-
-  private static final ContextAreaProperties property = GWT.create(ContextAreaProperties.class);
-
-  // private static ColumnConfig<ContextAreaModel, String> column1DisplayNameColumnConfig;
-  // private static ColumnConfig<ContextAreaModel, String> column2DisplayNameColumnConfig;
-
-  public static ColumnModel<ContextAreaModel> getColumModel() {
-
-    // Column 1
-
-    ColumnConfig<ContextAreaModel, String> column1IconColumnConfig = new ColumnConfig<ContextAreaModel, String>(property.column1Icon(),
-        LARGE_ICON_COLUMN_WIDTH + 4, "");
-    column1IconColumnConfig.setCell(new ImageCell() {
-      @Override
-      protected void render(Context context, SafeHtml data, SafeHtmlBuilder sb) {
-
-        if (data == null) {
-          return;
-        }
-
-        SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("float:center;cursor:hand;cursor:pointer;");
-
-        SafeHtml rendered = template.cell("image-1", imageStyle, getIcon(data.asString()));
-        sb.append(rendered);
-      }
-    });
-
-    ColumnConfig<ContextAreaModel, String> column1DisplayNameColumnConfig = new ColumnConfig<ContextAreaModel, String>(property.column1DisplayName(),
-        DISPLAY_NAME_COLUMN_WIDTH, "");
-    column1DisplayNameColumnConfig.setCell(new AbstractSafeHtmlCell<String>(SimpleSafeHtmlRenderer.getInstance()) {
-      @Override
-      protected void render(Context context, SafeHtml data, SafeHtmlBuilder sb) {
-
-        if (data == null) {
-          return;
-        }
-
-        Log.debug("context.getKey()" + context.getKey());
-
-        sb.appendHtmlConstant("<span>" + data.asString() + "</span>");
-
-      }
-    });
-
-    // Column 2
-
-    ColumnConfig<ContextAreaModel, String> column2IconColumnConfig = new ColumnConfig<ContextAreaModel, String>(property.column2Icon(),
-        LARGE_ICON_COLUMN_WIDTH + 4, "");
-    column2IconColumnConfig.setCell(new ImageCell() {
-      @Override
-      protected void render(Context context, SafeHtml data, SafeHtmlBuilder sb) {
-
-        if (data == null) {
-          return;
-        }
-
-        SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("float:center;cursor:hand;cursor:pointer;");
-
-        SafeHtml rendered = template.cell("image-2", imageStyle, getIcon(data.asString()));
-        sb.append(rendered);
-      }
-    });
-
-    ColumnConfig<ContextAreaModel, String> column2DisplayNameColumnConfig = new ColumnConfig<ContextAreaModel, String>(property.column2DisplayName(),
-        DISPLAY_NAME_COLUMN_WIDTH, "");
-
-    List<ColumnConfig<ContextAreaModel, ?>> columnConfigList = new ArrayList<ColumnConfig<ContextAreaModel, ?>>();
-    columnConfigList.add(column1IconColumnConfig);
-    columnConfigList.add(column1DisplayNameColumnConfig);
-    columnConfigList.add(column2IconColumnConfig);
-    columnConfigList.add(column2DisplayNameColumnConfig);
-
-    ColumnModel<ContextAreaModel> columnModel = new ColumnModel<ContextAreaModel>(columnConfigList);
-
-    return columnModel;
-  }
-
-*/

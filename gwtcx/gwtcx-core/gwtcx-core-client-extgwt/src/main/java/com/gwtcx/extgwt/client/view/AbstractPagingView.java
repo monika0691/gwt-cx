@@ -60,6 +60,7 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
     this.panel.add(this.grid, new VerticalLayoutData(1, 1));
 
     Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+      @Override
       public void execute() {
 
         Log.debug("execute()");

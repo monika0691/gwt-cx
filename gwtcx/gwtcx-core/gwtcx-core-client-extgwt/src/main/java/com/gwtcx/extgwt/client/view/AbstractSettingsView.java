@@ -20,6 +20,7 @@ import java.util.List;
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.cell.client.AbstractSafeHtmlCell;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.safecss.shared.SafeStyles;
@@ -37,6 +38,7 @@ import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.resources.ImageCell;
 import com.gwtcx.client.resources.PlaceholderIcons;
 import com.gwtcx.client.uihandlers.AdministrationUiHandlers;
+import com.gwtcx.extgwt.client.data.ContextAreaModel;
 import com.gwtcx.extgwt.client.widgets.grid.ContextAreaGrid;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
@@ -44,11 +46,15 @@ import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.client.loader.HttpProxy;
 import com.sencha.gxt.data.client.loader.XmlReader;
 import com.sencha.gxt.data.shared.ListStore;
+import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.data.shared.loader.ListLoadConfig;
 import com.sencha.gxt.data.shared.loader.ListLoadResult;
+import com.sencha.gxt.data.shared.loader.ListLoadResultBean;
 import com.sencha.gxt.data.shared.loader.ListLoader;
+import com.sencha.gxt.data.shared.loader.LoadResultListStoreBinding;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.event.RowDoubleClickEvent;
 import com.sencha.gxt.widget.core.client.event.RowDoubleClickEvent.RowDoubleClickHandler;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
@@ -62,18 +68,21 @@ public abstract class AbstractSettingsView<C extends UiHandlers> extends ViewWit
   public static final String CONTEXT_AREA_WIDTH = "100%";
   public static final String CONTEXT_AREA_HEIGHT = "100%";
 
-  public static final String URL_PREFIX = "/data/";
-  // public static final String URL_PREFIX = GWT.getModuleName() + "/gwtcx/extgwt/" + "datasource/data/";
+  // public static final String URL_PREFIX = "/data/";
+  public static final String URL_PREFIX = GWT.getModuleName() + "/gwtcx/extgwt/" + "data/";
   public static final String FILENAME_EXTENSION = ".xml";
 
   protected VerticalLayoutContainer panel;
-  protected ContextAreaGrid<?> grid;
+  protected ContextAreaGrid grid;
 
   protected RequestBuilder builder;
   protected HttpProxy<ListLoadConfig> proxy;
   protected ListLoader<ListLoadConfig, ListLoadResult<ContextAreaModel>> loader ;
   protected XmlReader<ListLoadResult<ContextAreaModel>, ContextAreaModelCollection> reader;
   protected ListStore<ContextAreaModel> store;
+
+  protected final String filename;
+  protected String dataUrl;
 
   protected static final ContextAreaProperties property = GWT.create(ContextAreaProperties.class);
 
@@ -83,33 +92,6 @@ public abstract class AbstractSettingsView<C extends UiHandlers> extends ViewWit
 
     AutoBean<ContextAreaModelCollection> items();
     AutoBean<ListLoadConfig> loadConfig();
-  }
-
-  public interface ContextAreaModel {
-
-    @PropertyName("column1Icon")
-    String getColumn1Icon();
-
-    @PropertyName("column1Name")
-    String getColumn1Name();
-
-    @PropertyName("column1DisplayName")
-    String getColumn1DisplayName();
-
-    @PropertyName("column1Description")
-    String getColumn1Description();
-
-    @PropertyName("column2Icon")
-    String getColumn2Icon();
-
-    @PropertyName("column2Name")
-    String getColumn2Name();
-
-    @PropertyName("column2DisplayName")
-    String getColumn2DisplayName();
-
-    @PropertyName("column2Description")
-    String getColumn2Description();
   }
 
   public interface ContextAreaModelCollection {
@@ -128,20 +110,61 @@ public abstract class AbstractSettingsView<C extends UiHandlers> extends ViewWit
     ValueProvider<ContextAreaModel, String> column2Description();
   }
 
-  protected String dataUrl;
-
   @Inject
-  public AbstractSettingsView() {
+  public AbstractSettingsView(final String filename) {
     super();
 
     Log.debug("AbstractPagingView()");
 
+    this.filename = filename;
+
     // panel.setStyleName(StyleTokens.contextArea);
     setPanel(new VerticalLayoutContainer());
     getPanel().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
-  }
 
-  // protected void bindCustomUiHandlers() { }
+    this.builder = new RequestBuilder(RequestBuilder.GET, setDataUrl(URL_PREFIX + getFilename(), FILENAME_EXTENSION));
+
+    this.proxy = new HttpProxy<ListLoadConfig>(builder);
+
+    this.reader = new XmlReader<ListLoadResult<ContextAreaModel>, ContextAreaModelCollection>(XmlAutoBeanFactory.instance, ContextAreaModelCollection.class) {
+        protected com.sencha.gxt.data.shared.loader.ListLoadResult<ContextAreaModel> createReturnData(Object loadConfig,
+            ContextAreaModelCollection records) {
+          return new ListLoadResultBean<ContextAreaModel>(records.getValues());
+        };
+    };
+
+    this.store = new ListStore<ContextAreaModel>(new ModelKeyProvider<ContextAreaModel>() {
+        @Override
+        public String getKey(ContextAreaModel item) {
+          return item.getColumn1DisplayName();  // return item.getColumn1Name();
+        }
+    });
+
+    this.loader = new ListLoader<ListLoadConfig, ListLoadResult<ContextAreaModel>>(this.proxy, this.reader);
+    this.loader.useLoadConfig(XmlAutoBeanFactory.instance.create(ListLoadConfig.class).as());
+    this.loader.addLoadHandler(new LoadResultListStoreBinding<ListLoadConfig, ContextAreaModel, ListLoadResult<ContextAreaModel>>(this.store));
+
+    setGrid(new ContextAreaGrid(store, getContextAreaColumModel()));
+    getGrid().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+
+    getGrid().setLoadMask(true);
+    getGrid().setLoader(getLoader());
+
+    getLoader().load();
+
+    // add the Grid to the View's layout container
+    getPanel().add(getGrid(), new VerticalLayoutData(1, 1));
+
+    Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+      @Override
+      public void execute() {
+        Log.debug("execute()");
+        resize();
+      }
+    });
+
+    bindCustomUiHandlers();
+  }
 
   protected void bindCustomUiHandlers() {
 
@@ -198,12 +221,56 @@ public abstract class AbstractSettingsView<C extends UiHandlers> extends ViewWit
     this.panel = panel;;
   }
 
-  public ContextAreaGrid<?> getGrid() {
+  public ContextAreaGrid getGrid() {
     return grid;
   }
 
-  public void setGrid(ContextAreaGrid<?> grid) {
+  public void setGrid(ContextAreaGrid grid) {
     this.grid = grid;;
+  }
+
+  protected String getFilename() {
+    return filename;
+  }
+
+  public RequestBuilder getBuilder() {
+    return builder;
+  }
+
+  public void setBuilder(RequestBuilder builder) {
+    this.builder = builder;
+  }
+
+  public HttpProxy<ListLoadConfig> getProxy() {
+    return proxy;
+  }
+
+  public void setProxy(HttpProxy<ListLoadConfig> proxy) {
+    this.proxy = proxy;
+  }
+
+  public ListLoader<ListLoadConfig, ListLoadResult<ContextAreaModel>> getLoader() {
+    return loader;
+  }
+
+  public void setLoader(ListLoader<ListLoadConfig, ListLoadResult<ContextAreaModel>> loader) {
+    this.loader = loader;
+  }
+
+  public XmlReader<ListLoadResult<ContextAreaModel>, ContextAreaModelCollection> getReader() {
+    return reader;
+  }
+
+  public void setReader(XmlReader<ListLoadResult<ContextAreaModel>, ContextAreaModelCollection> reader) {
+    this.reader = reader;
+  }
+
+  public ListStore<ContextAreaModel> getStore() {
+    return store;
+  }
+
+  public void setStore(ListStore<ContextAreaModel> store) {
+    this.store = store;
   }
 
   public String getDataUrl() {
