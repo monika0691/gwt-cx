@@ -26,7 +26,7 @@ import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.inject.Inject;
 import com.gwtcx.client.resources.GridIcons;
 import com.gwtcx.client.resources.ImageCell;
-import com.gwtcx.client.resources.SalesIcons;
+import com.gwtcx.client.resources.NavigationPaneIcons;
 import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.extgwt.client.data.AccountsDtoListStore;
 import com.gwtcx.shared.dto.AccountsDto;
@@ -67,7 +67,7 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
   private static ColumnConfig<AccountsDto, String> emailPrimaryContactColumnConfig;
 
   private static final SafeHtml ROW_ICON = ImageCell.makeImage(GridIcons.INSTANCE.rowCollapsed());
-  private static final SafeHtml ACCOUNT_ICON = ImageCell.makeImage(SalesIcons.INSTANCE.accounts());
+  private static final SafeHtml ACCOUNT_ICON = ImageCell.makeImage(NavigationPaneIcons.INSTANCE.accounts());
 
   public static ColumnModel<AccountsDto> getColumModel() {
 

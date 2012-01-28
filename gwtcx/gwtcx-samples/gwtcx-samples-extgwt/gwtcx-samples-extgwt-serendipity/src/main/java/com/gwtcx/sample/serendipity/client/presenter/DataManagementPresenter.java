@@ -40,8 +40,7 @@ public class DataManagementPresenter extends
   // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
-  // @NameToken(NameTokens.dataManagement)
-  @NameToken(NameTokens.contacts)
+  @NameToken(NameTokens.dataManagement)
   // @UseGatekeeper(LoggedInGatekeeper.class)
   // @UseGatekeeper(AdminGatekeeper.class)
   public interface MyProxy extends Proxy<DataManagementPresenter>, Place {
@@ -72,8 +71,7 @@ public class DataManagementPresenter extends
 
     Log.debug("onReveal() - " + NameTokens.dataManagement);
 
-    // NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.dataManagement, ExtGwtCx.getConstant().dataManagementMenuItemName());
-    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.contacts, ExtGwtCx.getConstant().dataManagementMenuItemName());
+    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.dataManagement, ExtGwtCx.getConstant().dataManagementMenuItemName());
   }
 
   @Override

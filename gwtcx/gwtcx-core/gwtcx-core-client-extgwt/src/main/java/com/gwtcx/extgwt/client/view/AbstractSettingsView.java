@@ -84,7 +84,7 @@ public abstract class AbstractSettingsView<C extends UiHandlers> extends ViewWit
   protected final String filename;
   protected String dataUrl;
 
-  protected static final ContextAreaProperties property = GWT.create(ContextAreaProperties.class);
+  protected static final ContextAreaModelProperties property = GWT.create(ContextAreaModelProperties.class);
 
   public interface XmlAutoBeanFactory extends AutoBeanFactory {
 
@@ -99,7 +99,7 @@ public abstract class AbstractSettingsView<C extends UiHandlers> extends ViewWit
     List<ContextAreaModel> getValues();
   }
 
-  public interface ContextAreaProperties extends PropertyAccess<ContextAreaModel> {
+  public interface ContextAreaModelProperties extends PropertyAccess<ContextAreaModel> {
     ValueProvider<ContextAreaModel, String> column1Icon();
     ValueProvider<ContextAreaModel, String> column1Name();
     ValueProvider<ContextAreaModel, String> column1DisplayName();

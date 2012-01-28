@@ -21,11 +21,11 @@ import com.google.gwt.resources.client.ImageResource;
 /**
  * SalesIcons client bundle.
  */
-public interface SettingsIcons extends ClientBundle {
+public interface ContextAreaIcons extends ClientBundle {
 
   public static final String urlPrefix = "com/gwtcx/public/gwtcx/skins/aqua/images/icons/48/";
 
-  public static final SettingsIcons INSTANCE = GWT.create(SettingsIcons.class);
+  public static final ContextAreaIcons INSTANCE = GWT.create(ContextAreaIcons.class);
 
   // Administration
 

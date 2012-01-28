@@ -28,7 +28,11 @@ import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
 import com.gwtcx.extgwt.client.view.AbstractMainPageView;
 import com.gwtcx.extgwt.client.widgets.ApplicationMenu;
 import com.gwtcx.extgwt.client.widgets.Masthead;
+import com.gwtcx.extgwt.client.widgets.NavigationPane;
 import com.gwtcx.extgwt.client.widgets.NavigationPaneSection;
+import com.gwtcx.extgwt.client.widgets.ResourceCentreNavigationPaneSection;
+import com.gwtcx.extgwt.client.widgets.SalesNavigationPaneSection;
+import com.gwtcx.extgwt.client.widgets.SettingsNavigationPaneSection;
 import com.gwtcx.sample.serendipity.client.entrypoint.Serendipity;
 import com.gwtcx.sample.serendipity.client.presenter.MainPagePresenter;
 import com.sencha.gxt.widget.core.client.ContentPanel;
@@ -50,7 +54,7 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
 
   protected NavigationPaneSection salesSection;
   protected NavigationPaneSection settingsSection;
-  protected NavigationPaneSection resourceSection;
+  protected NavigationPaneSection resourceCentreSection;
 
   @Inject
   public MainPageDesktopView(final Masthead masthead, final ApplicationMenu applicationMenu) {
@@ -144,7 +148,7 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
 
     Log.debug("initNavigationPane()");
 
-    salesSection = getNavigationPane().addSection(ExtGwtCx.getConstant().salesStackSectionName()) ;
+    salesSection = getNavigationPane().addSection(new SalesNavigationPaneSection()) ;
     salesSection.addRowClickHandler(new RowClickHandler() {
       @Override
       public void onRowClick(RowClickEvent event) {
@@ -156,9 +160,23 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
       }
     });
 
-    settingsSection = getNavigationPane().addSection(ExtGwtCx.getConstant().settingsStackSectionName());
+    settingsSection = getNavigationPane().addSection(new SettingsNavigationPaneSection());
+    settingsSection.addRowClickHandler(new RowClickHandler() {
+      @Override
+      public void onRowClick(RowClickEvent event) {
+        NavigationPaneSectionModel model = (NavigationPaneSectionModel) settingsSection.getGrid().getStore().get(event.getRowIndex());
+        navigationPaneSectionClicked(model.getName());
+      }
+    });
 
-    resourceSection = getNavigationPane().addSection(ExtGwtCx.getConstant().resourceCentreStackSectionName());
+    resourceCentreSection = getNavigationPane().addSection(new ResourceCentreNavigationPaneSection());
+    resourceCentreSection.addRowClickHandler(new RowClickHandler() {
+      @Override
+      public void onRowClick(RowClickEvent event) {
+        NavigationPaneSectionModel model = (NavigationPaneSectionModel) resourceCentreSection.getGrid().getStore().get(event.getRowIndex());
+        navigationPaneSectionClicked(model.getName());
+      }
+    });
   }
 
   protected void navigationPaneSectionClicked(String place) {
