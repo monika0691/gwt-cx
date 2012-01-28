@@ -14,27 +14,42 @@
 
 package com.gwtcx.extgwt.client.data;
 
-import java.io.Serializable;
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
 
-import com.sencha.gxt.data.shared.ModelKeyProvider;
+public interface NavigationPaneSectionModel {
 
-/**
- * NavigationPaneSectionModel
- */
+  @PropertyName("icon")
+  String getIcon();
+
+  @PropertyName("name")
+  String getName();
+
+  @PropertyName("displayName")
+  String getDisplayName();
+}
+
+/*
+
+public class NavigationPaneSectionModelListStore extends ListStore<NavigationPaneSectionModel> {
+
+  public static ModelKeyProvider<NavigationPaneSectionModel> KP = new ModelKeyProvider<NavigationPaneSectionModel>() {
+    @Override
+    public String getKey(NavigationPaneSectionModel item) {
+      return item.getName();
+    }
+  };
+
+  public NavigationPaneSectionModelListStore() {
+    super(KP);
+  }
+}
+
+
+
+
 public class NavigationPaneSectionModel implements Serializable {
 
   private static final long serialVersionUID = 3308992559832998314L;
-
-  /*
-
-  public static final String ICON = "icon";
-  public static final String ICON_DISPLAY_NAME = "Icon";
-  public static final String NAME = "name";
-  public static final String NAME_DISPLAY_NAME = "Name";
-  public static final String DISPLAY_NAME = "displayName";
-  public static final String DISPLAY_NAME_DISPLAY_NAME = "Display Name";
-
-  */
 
   public static ModelKeyProvider<NavigationPaneSectionModel> KP = new ModelKeyProvider<NavigationPaneSectionModel>() {
     @Override
@@ -77,3 +92,5 @@ public class NavigationPaneSectionModel implements Serializable {
     this.displayName = displayName;
   }
 }
+
+*/

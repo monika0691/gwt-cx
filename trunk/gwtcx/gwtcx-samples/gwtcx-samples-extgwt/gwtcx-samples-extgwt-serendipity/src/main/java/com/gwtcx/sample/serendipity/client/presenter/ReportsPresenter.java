@@ -14,6 +14,8 @@
 
 package com.gwtcx.sample.serendipity.client.presenter;
 
+import com.allen_sauer.gwt.log.client.Log;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
@@ -69,7 +71,26 @@ public class ReportsPresenter extends
   protected void onReveal() {
     super.onReveal();
 
-    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.reports, ExtGwtCx.getConstant().reportsMenuItemName());
+    Log.debug("onReveal() - " + NameTokens.reports);
+
+    // NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.reports, ExtGwtCx.getConstant().reportsMenuItemName());
+  }
+
+  @Override
+  protected void onReset() {
+    super.onReset();
+
+    Log.debug("onReset() - " + NameTokens.reports);
+
+    // NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.reports, ExtGwtCx.getConstant().reportsMenuItemName());
+
+    Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+      @Override
+      public void execute() {
+        Log.debug("execute()");
+        NavigationPaneUpdateEvent.fire(getEventBus(), NameTokens.reports, ExtGwtCx.getConstant().reportsMenuItemName());
+      }
+    });
   }
 
   protected void retrieveResultSet() {

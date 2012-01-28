@@ -21,11 +21,13 @@ import com.google.gwt.resources.client.ImageResource;
 /**
  * SalesIcons client bundle.
  */
-public interface SalesIcons extends ClientBundle {
+public interface NavigationPaneIcons extends ClientBundle {
 
   public static final String urlPrefix = "com/gwtcx/public/gwtcx/skins/aqua/images/icons/16/";
 
-  public static final SalesIcons INSTANCE = GWT.create(SalesIcons.class);
+  public static final NavigationPaneIcons INSTANCE = GWT.create(NavigationPaneIcons.class);
+
+  // Sales
 
   @Source(urlPrefix + "activities.png")
   ImageResource activities();
@@ -53,5 +55,27 @@ public interface SalesIcons extends ClientBundle {
 
   // leads
   // opportunities
+
+  // Settings
+
+  @Source(urlPrefix + "administration.png")
+  ImageResource administration();
+
+  @Source(urlPrefix + "templates.png")
+  ImageResource templates();
+
+  @Source(urlPrefix + "datamanagement.png")
+  ImageResource dataManagement();
+
+  // Resource Centre
+
+  @Source(urlPrefix + "highlights.png")
+  ImageResource highlights();
+
+  @Source(urlPrefix + "sales.png")
+  ImageResource sales();
+
+  @Source(urlPrefix + "settings.png")
+  ImageResource settings();
 
 }

@@ -37,9 +37,8 @@ public class ContextAreaGrid extends Grid<ContextAreaModel>{
   public static final int DISPLAY_NAME_COLUMN_WIDTH = 420;
 
   @Inject
-  // public ContextAreaGrid(ListStore<M> store, ColumnModel<M> cm) {
-  public ContextAreaGrid(ListStore<ContextAreaModel> store, ColumnModel<ContextAreaModel> cm) {
-    super(store, cm);
+  public ContextAreaGrid(ListStore<ContextAreaModel> store, ColumnModel<ContextAreaModel> columnModel) {
+    super(store, columnModel);
 
     // this.setStyleName(StyleTokens.contextGrid);
     // Widgets that are implemented using <table> or <frame> elements do not automatically fill the space provided by the layout.

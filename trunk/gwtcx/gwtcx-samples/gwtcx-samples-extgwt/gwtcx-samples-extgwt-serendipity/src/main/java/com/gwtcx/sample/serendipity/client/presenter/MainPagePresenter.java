@@ -79,6 +79,9 @@ public class MainPagePresenter extends
     getEventBus().addHandler(NavigationPaneUpdateEvent.getType(), new NavigationPaneUpdateEventHandler() {
       @Override
       public void onUpdateNavigationPane(NavigationPaneUpdateEvent event) {
+
+        Log.debug("onUpdateNavigationPane(NavigationPaneUpdateEvent event)");
+
         getNavigationPane().selectRecord(event.getName());
         getNavigationPaneHeader().setHeadingText(event.getDisplayName());
       }

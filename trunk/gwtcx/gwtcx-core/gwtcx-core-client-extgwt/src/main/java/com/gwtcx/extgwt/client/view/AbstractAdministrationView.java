@@ -19,7 +19,7 @@ import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.inject.Inject;
 import com.gwtcx.client.resources.ImageCell;
 import com.gwtcx.client.resources.PlaceholderIcons;
-import com.gwtcx.client.resources.SettingsIcons;
+import com.gwtcx.client.resources.ContextAreaIcons;
 import com.gwtplatform.mvp.client.UiHandlers;
 
 /**
@@ -40,21 +40,21 @@ public abstract class AbstractAdministrationView<C extends UiHandlers> extends A
   public SafeHtml getIcon(String data) {
 
     if ("announcements".equalsIgnoreCase(data)) {
-      return ImageCell.makeImage(SettingsIcons.INSTANCE.announcements());
+      return ImageCell.makeImage(ContextAreaIcons.INSTANCE.announcements());
     } else if ("auto_numbering".equalsIgnoreCase(data)) {
-      return ImageCell.makeImage(SettingsIcons.INSTANCE.autoNumbering());
+      return ImageCell.makeImage(ContextAreaIcons.INSTANCE.autoNumbering());
     } else if ("business_units".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(SettingsIcons.INSTANCE.businessUnits());
+        return ImageCell.makeImage(ContextAreaIcons.INSTANCE.businessUnits());
     } else if ("system_settings".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(SettingsIcons.INSTANCE.systemSettings());
+        return ImageCell.makeImage(ContextAreaIcons.INSTANCE.systemSettings());
     } else if ("users".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(SettingsIcons.INSTANCE.users());
+        return ImageCell.makeImage(ContextAreaIcons.INSTANCE.users());
     } else if ("teams".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(SettingsIcons.INSTANCE.teams());
+        return ImageCell.makeImage(ContextAreaIcons.INSTANCE.teams());
     } else if ("privacy_preferences".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(SettingsIcons.INSTANCE.privacyPreferences());
+        return ImageCell.makeImage(ContextAreaIcons.INSTANCE.privacyPreferences());
     } else if ("product_updates".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(SettingsIcons.INSTANCE.productUpdates());
+        return ImageCell.makeImage(ContextAreaIcons.INSTANCE.productUpdates());
     } else {
       return ImageCell.makeImage(PlaceholderIcons.INSTANCE.placeholder48());
     }

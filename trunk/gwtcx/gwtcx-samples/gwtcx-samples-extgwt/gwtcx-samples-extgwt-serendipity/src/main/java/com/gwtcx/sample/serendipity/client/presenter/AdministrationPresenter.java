@@ -40,8 +40,7 @@ public class AdministrationPresenter extends
   // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
-  // @NameToken(NameTokens.administration)
-  @NameToken(NameTokens.queues)
+  @NameToken(NameTokens.administration)
   // @UseGatekeeper(LoggedInGatekeeper.class)
   // @UseGatekeeper(AdminGatekeeper.class)
   public interface MyProxy extends Proxy<AdministrationPresenter>, Place {
@@ -72,8 +71,7 @@ public class AdministrationPresenter extends
 
     Log.debug("onReveal() - " + NameTokens.administration);
 
-    // NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.administration, ExtGwtCx.getConstant().administrationMenuItemName());
-    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.queues, ExtGwtCx.getConstant().administrationMenuItemName());
+    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.administration, ExtGwtCx.getConstant().administrationMenuItemName());
   }
 
   @Override

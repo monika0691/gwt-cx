@@ -20,7 +20,7 @@ import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.WidgetCollection;
 import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
-import com.gwtcx.extgwt.client.data.NavigationPaneSectionModelListStore;
+import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.widget.core.client.container.AccordionLayoutContainer;
 
 /**
@@ -28,17 +28,31 @@ import com.sencha.gxt.widget.core.client.container.AccordionLayoutContainer;
  */
 public class NavigationPane extends AccordionLayoutContainer {
 
+  public static final String SALES_FILENAME = "Sales";
+  public static final String SETTINGS_FILENAME = "Settings";
+  public static final String RESOURCE_CENTRE_FILENAME = "ResourceCentre";
+
   NavigationPane() {
     super();
 
     Log.debug("NavigationPane()");
   }
 
-  public NavigationPaneSection addSection(String sectionName) {
+  public NavigationPaneSection addSection(NavigationPaneSection section) {
+
+    section.setAnimCollapse(false);
+    // section.setHeadingText(sectionName);
+    this.add(section);
+    this.setWidget(section);
+
+    return section;
+  }
+
+  public NavigationPaneSection addSection(String sectionName, String filename) {
 
     Log.debug("addSection() - " + sectionName);
 
-    NavigationPaneSection section = new NavigationPaneSection();
+    NavigationPaneSection section = new NavigationPaneSection(filename);
     section.setAnimCollapse(false);
     section.setHeadingText(sectionName);
     this.add(section);
@@ -49,6 +63,8 @@ public class NavigationPane extends AccordionLayoutContainer {
 
   public void selectRecord(String name) {
 
+    Log.debug("selectRecord(String name): [" + name + "]");
+
     WidgetCollection children = this.getChildren();
 
     Iterator<Widget> iterator = children.iterator();
@@ -57,13 +73,16 @@ public class NavigationPane extends AccordionLayoutContainer {
 
       Widget child = (Widget) iterator.next();
 
-      assert child instanceof NavigationPaneSection : "NavigationPane children must be NavigationPaneSections";
+      // assert child instanceof NavigationPaneSection : "NavigationPane children must be NavigationPaneSections";
 
       NavigationPaneSection section = (NavigationPaneSection) child;
 
       Log.debug("sectionName: " + section.getText());
 
-      NavigationPaneSectionModelListStore store = (NavigationPaneSectionModelListStore) section.getGrid().getStore();
+      ListStore<NavigationPaneSectionModel> store = section.getGrid().getStore();
+
+      Log.debug("store.size(): " + store.size());
+
       NavigationPaneSectionModel model = store.findModelWithKey(name);
 
       if (model != null) {
@@ -72,9 +91,11 @@ public class NavigationPane extends AccordionLayoutContainer {
         Log.debug("selectRecord(rowIndex): " + rowIndex);
 
         section.selectRecord(rowIndex);
-        break;
+        return;
       }
     }
+
+    Log.debug("selectRecord(String name): no match");
   }
 
   /*
