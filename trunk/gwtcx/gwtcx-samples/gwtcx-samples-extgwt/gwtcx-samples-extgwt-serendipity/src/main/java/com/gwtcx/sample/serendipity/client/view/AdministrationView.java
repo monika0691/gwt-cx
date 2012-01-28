@@ -24,7 +24,7 @@ public class AdministrationView extends AbstractAdministrationView<Administratio
 
   @Inject
   public AdministrationView() {
-    super();
+    super(FILENAME);
   }
 
   @Override
