@@ -36,17 +36,17 @@ import com.sencha.gxt.data.shared.loader.LoadResultListStoreBinding;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 
 /**
- * AbstractAdministrationView
+ * AbstractDataManagementView
  */
-public abstract class AbstractAdministrationView<C extends UiHandlers> extends AbstractSettingsView<C> {
+public abstract class AbstractDataManagementView<C extends UiHandlers> extends AbstractSettingsView<C> {
 
-  private static final String FILENAME = "Administration";
+  private static final String FILENAME = "DataManagement";
 
   @Inject
-  public AbstractAdministrationView() {
+  public AbstractDataManagementView() {
     super();
 
-    Log.debug("AbstractAdministrationView()");
+    Log.debug("AbstractDataManagementView()");
 
     builder = new RequestBuilder(RequestBuilder.GET, setDataUrl(URL_PREFIX + FILENAME, FILENAME_EXTENSION));
 
@@ -91,27 +91,23 @@ public abstract class AbstractAdministrationView<C extends UiHandlers> extends A
     bindCustomUiHandlers();
   }
 
+  /*
+
   @Override
   public SafeHtml getIcon(String data) {
 
-    if ("announcements".equalsIgnoreCase(data)) {
-      return ImageCell.makeImage(SettingsIcons.INSTANCE.announcements());
-    } else if ("auto_numbering".equalsIgnoreCase(data)) {
-      return ImageCell.makeImage(SettingsIcons.INSTANCE.autoNumbering());
-    } else if ("business_units".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(SettingsIcons.INSTANCE.businessUnits());
-    } else if ("system_settings".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(SettingsIcons.INSTANCE.systemSettings());
-    } else if ("users".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(SettingsIcons.INSTANCE.users());
-    } else if ("teams".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(SettingsIcons.INSTANCE.teams());
-    } else if ("privacy_preferences".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(SettingsIcons.INSTANCE.privacyPreferences());
-    } else if ("product_updates".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(SettingsIcons.INSTANCE.productUpdates());
+    if ("data_maps".equalsIgnoreCase(data)) {
+      return ImageCell.makeImage(SettingsIcons.INSTANCE.dataMaps());
+    } else if ("data_imports".equalsIgnoreCase(data)) {
+      return ImageCell.makeImage(SettingsIcons.INSTANCE.dataImports());
+    } else if ("data_import_templates".equalsIgnoreCase(data)) {
+        return ImageCell.makeImage(SettingsIcons.INSTANCE.dataImportTemplates());
+    } else if ("sample_data".equalsIgnoreCase(data)) {
+        return ImageCell.makeImage(SettingsIcons.INSTANCE.sampleData());
     } else {
       return ImageCell.makeImage(PlaceholderIcons.INSTANCE.placeholder48());
     }
   }
+
+  */
 }

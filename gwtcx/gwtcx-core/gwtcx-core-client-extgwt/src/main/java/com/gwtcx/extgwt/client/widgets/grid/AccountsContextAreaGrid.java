@@ -87,6 +87,9 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
         sb.append(rendered);
       }
     });
+    rowIconColumnConfig.setSortable(false);
+    rowIconColumnConfig.setResizable(false);
+    rowIconColumnConfig.setMenuDisabled(true);
 
     ColumnConfig<AccountsDto, String> accountIconColumnConfig = new ColumnConfig<AccountsDto, String>(property.accountName(),
         SMALL_ICON_COLUMN_WIDTH + 4, "");  // "#"
@@ -104,6 +107,9 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
         sb.append(rendered);
       }
     });
+    accountIconColumnConfig.setSortable(false);
+    accountIconColumnConfig.setResizable(false);
+    accountIconColumnConfig.setMenuDisabled(true);
 
     ColumnConfig<AccountsDto, String> accountNameColumnConfig = new ColumnConfig<AccountsDto, String>(property.accountName(),
         ACCOUNT_NAME_COLUMN_WIDTH, I18nUtil.getConstant().accountName());

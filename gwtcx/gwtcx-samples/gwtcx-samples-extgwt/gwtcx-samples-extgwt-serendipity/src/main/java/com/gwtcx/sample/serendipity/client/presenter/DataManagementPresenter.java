@@ -19,8 +19,8 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.event.NavigationPaneUpdateEvent;
-import com.gwtcx.client.presenter.AbstractAdministrationPresenter;
-import com.gwtcx.client.uihandlers.AdministrationUiHandlers;
+import com.gwtcx.client.presenter.AbstractDataManagementPresenter;
+import com.gwtcx.client.uihandlers.DataManagementUiHandlers;
 import com.gwtcx.extgwt.client.ExtGwtCx;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.HasUiHandlers;
@@ -32,26 +32,26 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
-public class AdministrationPresenter extends
-    AbstractAdministrationPresenter<AdministrationPresenter.MyView, AdministrationPresenter.MyProxy> implements
-  AdministrationUiHandlers {
+public class DataManagementPresenter extends
+    AbstractDataManagementPresenter<DataManagementPresenter.MyView, DataManagementPresenter.MyProxy> implements
+  DataManagementUiHandlers {
 
   //
   // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
-  // @NameToken(NameTokens.administration)
-  @NameToken(NameTokens.queues)
+  // @NameToken(NameTokens.dataManagement)
+  @NameToken(NameTokens.contacts)
   // @UseGatekeeper(LoggedInGatekeeper.class)
   // @UseGatekeeper(AdminGatekeeper.class)
-  public interface MyProxy extends Proxy<AdministrationPresenter>, Place {
+  public interface MyProxy extends Proxy<DataManagementPresenter>, Place {
   }
 
-  public interface MyView extends View, HasUiHandlers<AdministrationUiHandlers> {
+  public interface MyView extends View, HasUiHandlers<DataManagementUiHandlers> {
   }
 
   @Inject
-  public AdministrationPresenter(EventBus eventBus, MyView view, MyProxy proxy,
+  public DataManagementPresenter(EventBus eventBus, MyView view, MyProxy proxy,
       DispatchAsync dispatcher, PlaceManager placeManager) {
     super(eventBus, view, proxy, dispatcher, placeManager);
 
@@ -61,7 +61,7 @@ public class AdministrationPresenter extends
   @Override
   protected void revealInParent() {
 
-    Log.debug("revealInParent() - " + NameTokens.administration);
+    Log.debug("revealInParent() - " + NameTokens.dataManagement);
 
     RevealContentEvent.fire(this, MainPagePresenter.TYPE_SetContextAreaContent, this);
   }
@@ -70,10 +70,10 @@ public class AdministrationPresenter extends
   protected void onReveal() {
     super.onReveal();
 
-    Log.debug("onReveal() - " + NameTokens.administration);
+    Log.debug("onReveal() - " + NameTokens.dataManagement);
 
-    // NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.administration, ExtGwtCx.getConstant().administrationMenuItemName());
-    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.queues, ExtGwtCx.getConstant().administrationMenuItemName());
+    // NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.dataManagement, ExtGwtCx.getConstant().dataManagementMenuItemName());
+    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.contacts, ExtGwtCx.getConstant().dataManagementMenuItemName());
   }
 
   @Override

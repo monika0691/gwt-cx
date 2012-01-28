@@ -27,16 +27,18 @@ public interface SettingsIcons extends ClientBundle {
 
   public static final SettingsIcons INSTANCE = GWT.create(SettingsIcons.class);
 
+  // Administration
+
   @Source(urlPrefix + "announcements.png")
   ImageResource announcements();
 
-  @Source(urlPrefix + "autonumbering.png")
+  @Source(urlPrefix + "auto_numbering.png")
   ImageResource autoNumbering();
 
-  @Source(urlPrefix + "businessunits.png")
+  @Source(urlPrefix + "business_units.png")
   ImageResource businessUnits();
 
-  @Source(urlPrefix + "systemsettings.png")
+  @Source(urlPrefix + "system_settings.png")
   ImageResource systemSettings();
 
   @Source(urlPrefix + "users.png")
@@ -45,10 +47,27 @@ public interface SettingsIcons extends ClientBundle {
   @Source(urlPrefix + "teams.png")
   ImageResource teams();
 
-  @Source(urlPrefix + "privacypreferences.png")
+  @Source(urlPrefix + "privacy_preferences.png")
   ImageResource privacyPreferences();
 
-  @Source(urlPrefix + "productupdates.png")
+  @Source(urlPrefix + "product_updates.png")
   ImageResource productUpdates();
+
+  // Templates
+
+
+  // Data Management
+
+  @Source(urlPrefix + "data_maps.png")
+  ImageResource dataMaps();
+
+  @Source(urlPrefix + "data_imports.png")
+  ImageResource dataImports();
+
+  @Source(urlPrefix + "data_import_templates.png")
+  ImageResource dataImportTemplates();
+
+  @Source(urlPrefix + "sample_data.png")
+  ImageResource sampleData();
 
 }

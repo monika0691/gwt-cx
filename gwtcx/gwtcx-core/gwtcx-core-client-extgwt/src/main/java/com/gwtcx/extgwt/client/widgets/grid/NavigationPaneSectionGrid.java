@@ -26,7 +26,7 @@ import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.resources.ImageCell;
-import com.gwtcx.client.resources.Placeholders;
+import com.gwtcx.client.resources.PlaceholderIcons;
 import com.gwtcx.client.resources.SalesIcons;
 import com.gwtcx.extgwt.client.ExtGwtCx;
 import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
@@ -129,6 +129,7 @@ public class NavigationPaneSectionGrid extends Grid<NavigationPaneSectionModel>{
   }
 
   private static SafeHtml getIcon(String data) {
+
     if ("activities".equalsIgnoreCase(data)) {
       return ImageCell.makeImage(SalesIcons.INSTANCE.activities());
     } else if ("calendar".equalsIgnoreCase(data)) {
@@ -146,7 +147,7 @@ public class NavigationPaneSectionGrid extends Grid<NavigationPaneSectionModel>{
     } else if ("reports".equalsIgnoreCase(data)) {
         return ImageCell.makeImage(SalesIcons.INSTANCE.reports());
     } else {
-      return ImageCell.makeImage(Placeholders.INSTANCE.placeholder16());
+      return ImageCell.makeImage(PlaceholderIcons.INSTANCE.placeholder16());
     }
   }
 }

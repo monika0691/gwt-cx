@@ -59,7 +59,12 @@ public class NameTokens {
 
   public static final String templates = "Templates";
 
-  public static final String datamanagement = "Data Management";
+  public static final String dataManagement = "Data Management";
+
+  public static final String dataMaps = "Data Maps";
+  public static final String dataImports = "Imports";
+  public static final String templatesForDataImport = "Templates for Data Import";
+  public static final String sampleData = "Sample Data";
 
   // Resource Centre nested presenters and views
   public static final String highlights = "Highlights";
