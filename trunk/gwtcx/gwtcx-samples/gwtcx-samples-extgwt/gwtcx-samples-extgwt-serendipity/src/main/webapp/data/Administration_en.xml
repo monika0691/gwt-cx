@@ -7,18 +7,18 @@
     <column1Name>Accounts</column1Name>
     <column1DisplayName>Announcements</column1DisplayName>
     <column1Description>Create, edit and delete announcements.</column1Description>
-    <column2Icon>autonumbering</column2Icon>
+    <column2Icon>auto_numbering</column2Icon>
     <column2Name>Accounts</column2Name>
     <column2DisplayName>Auto-Numbering</column2DisplayName>
     <column2Description>Specify the prefix for quotes, orders and invoices.</column2Description>
   </record>
 
   <record>
-    <column1Icon>businessunits</column1Icon>
+    <column1Icon>business_units</column1Icon>
     <column1Name>Accounts</column1Name>
     <column1DisplayName>Business Units</column1DisplayName>
     <column1Description>Add new business units. Edit and deactivate business units. Change the parent business unit.</column1Description>
-    <column2Icon>systemsettings</column2Icon>
+    <column2Icon>system_settings</column2Icon>
     <column2Name>Accounts</column2Name>
     <column2DisplayName>System Settings</column2DisplayName>
     <column2Description>Set the format for various values, such as numbers, the calendar and currency.</column2Description>
@@ -28,19 +28,19 @@
     <column1Icon>users</column1Icon>
     <column1Name>Accounts</column1Name>
     <column1DisplayName>Users</column1DisplayName>
-    <column1Description>Add new users. Edit information about users and deactivate user records. Manage the teams and roles assigned to users.</column1Description>
+    <column1Description>Add new users. Edit information about users and deactivate user records. &lt;br /&gt; Manage the teams and roles assigned to users.</column1Description>
     <column2Icon>teams</column2Icon>
     <column2Name>Accounts</column2Name>
     <column2DisplayName>Teams</column2DisplayName>
-    <column2Description>Add new teams and new team members to existing teams. Modify the team description and delete members from teams.</column2Description>
+    <column2Description>Add new teams and new team members to existing teams. &lt;br /&gt; Modify the team description and delete members from teams.</column2Description>
   </record>
 
   <record>
-    <column1Icon>privacypreferences</column1Icon>
+    <column1Icon>privacy_preferences</column1Icon>
     <column1Name>Accounts</column1Name>
     <column1DisplayName>Privacy Preferences</column1DisplayName>
     <column1Description>Set the privacy preferences for the organisation.</column1Description>
-    <column2Icon>productupdates</column2Icon>
+    <column2Icon>product_updates</column2Icon>
     <column2Name>Accounts</column2Name>
     <column2DisplayName>Product Updates</column2DisplayName>
     <column2Description>Sign up to be notified of product updates.</column2Description>

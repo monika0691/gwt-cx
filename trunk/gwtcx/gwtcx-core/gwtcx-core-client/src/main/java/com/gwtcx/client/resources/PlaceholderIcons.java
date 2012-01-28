@@ -21,11 +21,11 @@ import com.google.gwt.resources.client.ImageResource;
 /**
  * Placeholders client bundle.
  */
-public interface Placeholders extends ClientBundle {
+public interface PlaceholderIcons extends ClientBundle {
 
   public static final String urlPrefix = "com/gwtcx/public/gwtcx/skins/aqua/images/placeholders/";
 
-  public static final Placeholders INSTANCE = GWT.create(Placeholders.class);
+  public static final PlaceholderIcons INSTANCE = GWT.create(PlaceholderIcons.class);
 
   @Source(urlPrefix + "placeholder_16.png")
   ImageResource placeholder16();

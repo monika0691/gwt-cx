@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<records>
+
+  <record>
+    <column1Icon>data_maps</column1Icon>
+    <column1Name>Accounts</column1Name>
+    <column1DisplayName>Data Maps</column1DisplayName>
+    <column1Description>Create, import and export data maps used during import.</column1Description>
+    <column2Icon>data_imports</column2Icon>
+    <column2Name>Accounts</column2Name>
+    <column2DisplayName>Imports</column2DisplayName>
+    <column2Description>Import data and view the status of imports in progress.</column2Description>
+  </record>
+
+  <record>
+    <column1Icon>data_import_templates</column1Icon>
+    <column1Name>Accounts</column1Name>
+    <column1DisplayName>Templates for Data Import</column1DisplayName>
+    <column1Description>Download a template for data import.</column1Description>
+    <column2Icon>sample_data</column2Icon>
+    <column2Name>Accounts</column2Name>
+    <column2DisplayName>Sample Data</column2DisplayName>
+    <column2Description>Add sample data to the system or delete existing sample data.</column2Description>
+  </record>
+
+</records>
