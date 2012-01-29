@@ -73,7 +73,7 @@ public class ReportsPresenter extends
 
     Log.debug("onReveal() - " + NameTokens.reports);
 
-    // NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.reports, ExtGwtCx.getConstant().reportsMenuItemName());
+    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.reports, ExtGwtCx.getConstant().reportsMenuItemName());
   }
 
   @Override
@@ -83,14 +83,6 @@ public class ReportsPresenter extends
     Log.debug("onReset() - " + NameTokens.reports);
 
     // NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.reports, ExtGwtCx.getConstant().reportsMenuItemName());
-
-    Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
-      @Override
-      public void execute() {
-        Log.debug("execute()");
-        NavigationPaneUpdateEvent.fire(getEventBus(), NameTokens.reports, ExtGwtCx.getConstant().reportsMenuItemName());
-      }
-    });
   }
 
   protected void retrieveResultSet() {

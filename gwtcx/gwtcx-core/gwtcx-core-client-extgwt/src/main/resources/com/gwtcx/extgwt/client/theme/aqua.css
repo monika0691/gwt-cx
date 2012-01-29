@@ -162,3 +162,22 @@ body, table td, select {
   background-image: APPLICATION_MENU_BUTTON_OVER_BACKGROUND_IMAGE;
   background-repeat: repeat-x;
 }
+
+
+/*
+ @eval CONTEXT_AREA_BACKGROUND_IMAGE com.gwtcx.smartgwt.client.theme.AquaCssConstants.getContextAreaBackgroundImage();
+  border-top: 1px solid #7598c7;
+  background-image: CONTEXT_AREA_BACKGROUND_IMAGE;
+  background-repeat: repeat-x
+  4px
+*/
+
+.gwtcx-ContextArea {
+  padding-top: 6px;
+  padding-left: 6px;
+  padding-bottom: 6px;
+  padding-right: 6px;
+}
+
+
+

@@ -17,8 +17,8 @@ package com.gwtcx.extgwt.client.widgets;
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.gwtcx.client.resources.ImageCell;
-import com.gwtcx.client.resources.PlaceholderIcons;
 import com.gwtcx.client.resources.NavigationPaneIcons;
+import com.gwtcx.client.resources.PlaceholderIcons;
 import com.gwtcx.client.util.I18nUtil;
 
 public class SalesNavigationPaneSection extends NavigationPaneSection {

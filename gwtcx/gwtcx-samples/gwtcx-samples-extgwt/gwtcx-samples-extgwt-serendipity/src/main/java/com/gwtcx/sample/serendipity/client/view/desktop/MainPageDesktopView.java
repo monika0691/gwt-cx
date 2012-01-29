@@ -22,13 +22,13 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.uihandlers.MainPageUiHandlers;
 import com.gwtcx.extgwt.client.ExtGwtCx;
 import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
 import com.gwtcx.extgwt.client.view.AbstractMainPageView;
 import com.gwtcx.extgwt.client.widgets.ApplicationMenu;
 import com.gwtcx.extgwt.client.widgets.Masthead;
-import com.gwtcx.extgwt.client.widgets.NavigationPane;
 import com.gwtcx.extgwt.client.widgets.NavigationPaneSection;
 import com.gwtcx.extgwt.client.widgets.ResourceCentreNavigationPaneSection;
 import com.gwtcx.extgwt.client.widgets.SalesNavigationPaneSection;
@@ -38,6 +38,8 @@ import com.gwtcx.sample.serendipity.client.presenter.MainPagePresenter;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance;
 import com.sencha.gxt.widget.core.client.container.Viewport;
+import com.sencha.gxt.widget.core.client.event.ExpandEvent;
+import com.sencha.gxt.widget.core.client.event.ExpandEvent.ExpandHandler;
 import com.sencha.gxt.widget.core.client.event.RowClickEvent;
 import com.sencha.gxt.widget.core.client.event.RowClickEvent.RowClickHandler;
 import com.sencha.gxt.widget.core.client.info.Info;
@@ -152,11 +154,14 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
     salesSection.addRowClickHandler(new RowClickHandler() {
       @Override
       public void onRowClick(RowClickEvent event) {
-
-        // int rowIndex = event.getRowIndex();
-
         NavigationPaneSectionModel model = (NavigationPaneSectionModel) salesSection.getGrid().getStore().get(event.getRowIndex());
         navigationPaneSectionClicked(model.getName());
+      }
+    });
+    salesSection.addExpandHandler(new ExpandHandler() {
+      @Override
+      public void onExpand(ExpandEvent event) {
+        navigationPaneSectionHeaderClicked(salesSection, NameTokens.activities);
       }
     });
 
@@ -168,6 +173,12 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
         navigationPaneSectionClicked(model.getName());
       }
     });
+    settingsSection.addExpandHandler(new ExpandHandler() {
+      @Override
+      public void onExpand(ExpandEvent event) {
+        navigationPaneSectionHeaderClicked(settingsSection, NameTokens.administration);
+      }
+    });
 
     resourceCentreSection = getNavigationPane().addSection(new ResourceCentreNavigationPaneSection());
     resourceCentreSection.addRowClickHandler(new RowClickHandler() {
@@ -177,11 +188,33 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
         navigationPaneSectionClicked(model.getName());
       }
     });
+    resourceCentreSection.addExpandHandler(new ExpandHandler() {
+      @Override
+      public void onExpand(ExpandEvent event) {
+        navigationPaneSectionHeaderClicked(resourceCentreSection, NameTokens.highlights);
+      }
+    });
   }
 
   protected void navigationPaneSectionClicked(String place) {
     if (getUiHandlers() != null) {
       getUiHandlers().onNavigationPaneSectionClicked(place);
+    }
+  }
+
+  protected void navigationPaneSectionHeaderClicked(NavigationPaneSection section, String name) {
+
+    Log.debug("navigationPaneSectionHeaderClicked()");
+
+    String place = name;
+    NavigationPaneSectionModel model = section.getSelectedRecord();
+
+    if (model != null) {
+      place = model.getName();
+    }
+
+    if (getUiHandlers() != null) {
+      getUiHandlers().onNavigationPaneSectionHeaderClicked(place);
     }
   }
 

@@ -15,7 +15,6 @@
 package com.gwtcx.sample.serendipity.client.presenter;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
@@ -80,7 +79,7 @@ public class AccountsPresenter extends
 
     Log.debug("onReveal() - " + NameTokens.accounts);
 
-    // NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.accounts, ExtGwtCx.getConstant().accountsMenuItemName());
+    NavigationPaneUpdateEvent.fire(getEventBus(), NameTokens.accounts, ExtGwtCx.getConstant().accountsMenuItemName());
   }
 
   @Override
@@ -89,15 +88,7 @@ public class AccountsPresenter extends
 
     Log.debug("onReset() - " + NameTokens.accounts);
 
-    // NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.accounts, ExtGwtCx.getConstant().accountsMenuItemName());
-
-    Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
-      @Override
-      public void execute() {
-        Log.debug("execute()");
-        NavigationPaneUpdateEvent.fire(getEventBus(), NameTokens.accounts, ExtGwtCx.getConstant().accountsMenuItemName());
-      }
-    });
+    // NavigationPaneUpdateEvent.fire(getEventBus(), NameTokens.accounts, ExtGwtCx.getConstant().accountsMenuItemName());
   }
 
   @Override

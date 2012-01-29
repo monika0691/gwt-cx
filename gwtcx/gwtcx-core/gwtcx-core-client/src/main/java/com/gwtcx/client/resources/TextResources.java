@@ -12,18 +12,21 @@
  * under the License.
  */
 
-package com.gwtcx.sample.serendipity.client.theme;
+package com.gwtcx.client.resources;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.CssResource;
-import com.google.gwt.resources.client.CssResource.NotStrict;
+import com.google.gwt.resources.client.TextResource;
 
-public interface SerendipityClientBundle extends ClientBundle {
+/**
+ * TextResources client bundle.
+ */
+public interface TextResources extends ClientBundle {
 
-  static final SerendipityClientBundle INSTANCE = GWT.create(SerendipityClientBundle.class);
+  public static final String urlPrefix = "com/gwtcx/public/gwtcx/textresources/";
 
-  @NotStrict
-  @Source("com/gwtcx/sample/serendipity/client/theme/Serendipity.css")
-  public CssResource css();
+  public static final TextResources INSTANCE = GWT.create(TextResources.class);
+
+  @Source(urlPrefix +  "Highlights.txt")
+  public TextResource getHighlightsHtml();
 }

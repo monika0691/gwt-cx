@@ -72,7 +72,7 @@ public class ActivitiesPresenter extends
 
     Log.debug("onReveal() - " + NameTokens.activities);
 
-    NavigationPaneUpdateEvent.fire(this.getEventBus(), NameTokens.activities, ExtGwtCx.getConstant().activitiesMenuItemName());
+    NavigationPaneUpdateEvent.fire(getEventBus(), NameTokens.activities, ExtGwtCx.getConstant().activitiesMenuItemName());
   }
 
   @Override

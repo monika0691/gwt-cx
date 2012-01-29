@@ -90,6 +90,10 @@ public class NavigationPane extends AccordionLayoutContainer {
 
         Log.debug("selectRecord(rowIndex): " + rowIndex);
 
+        if (! section.isExpanded()) {
+          section.expand();
+        }
+
         section.selectRecord(rowIndex);
         return;
       }
