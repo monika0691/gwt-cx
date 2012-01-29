@@ -12,18 +12,19 @@
  * under the License.
  */
 
-package com.gwtcx.sample.serendipity.client.theme;
+package com.gwtcx.sample.serendipity.client.view;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.CssResource;
-import com.google.gwt.resources.client.CssResource.NotStrict;
+import com.google.inject.Inject;
+import com.gwtcx.sample.serendipity.client.presenter.HighlightsPresenter;
+import com.gwtcx.client.uihandlers.HighlightsUiHandlers;
+import com.gwtcx.extgwt.client.view.AbstractHighlightsView;
 
-public interface SerendipityClientBundle extends ClientBundle {
+public class HighlightsView extends AbstractHighlightsView<HighlightsUiHandlers> implements
+    HighlightsPresenter.MyView {
 
-  static final SerendipityClientBundle INSTANCE = GWT.create(SerendipityClientBundle.class);
-
-  @NotStrict
-  @Source("com/gwtcx/sample/serendipity/client/theme/Serendipity.css")
-  public CssResource css();
+  @Inject
+  public HighlightsView() {
+    super();
+  }
 }
+

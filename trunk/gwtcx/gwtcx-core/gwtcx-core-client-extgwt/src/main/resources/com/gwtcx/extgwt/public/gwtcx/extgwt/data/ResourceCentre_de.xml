@@ -8,6 +8,8 @@
     <displayName>Höhepunkte</displayName>
   </record>
   
+<!--
+  
   <record>
     <icon>sales</icon>
     <name>Sales</name>    
@@ -19,5 +21,7 @@
     <name>Settings</name>    
     <displayName>Einstellungen</displayName>
   </record>
+  
+-->
   
 </records>

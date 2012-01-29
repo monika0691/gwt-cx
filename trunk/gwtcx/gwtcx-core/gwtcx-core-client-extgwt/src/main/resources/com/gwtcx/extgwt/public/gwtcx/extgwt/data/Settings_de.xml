@@ -8,11 +8,15 @@
     <displayName>Verwaltung</displayName>
   </record>
   
+<!--
+  
   <record>
     <icon>templates</icon>
     <name>Templates</name>    
     <displayName>Schablonen</displayName>
   </record>
+  
+-->
   
   <record>
     <icon>datamanagement</icon>

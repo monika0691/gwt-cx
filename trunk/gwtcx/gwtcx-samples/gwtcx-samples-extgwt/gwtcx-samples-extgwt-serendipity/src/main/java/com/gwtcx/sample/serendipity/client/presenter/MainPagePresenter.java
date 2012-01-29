@@ -17,6 +17,7 @@ package com.gwtcx.sample.serendipity.client.presenter;
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.gwt.user.client.Timer;
 import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.event.NavigationPaneUpdateEvent;
@@ -43,6 +44,8 @@ public class MainPagePresenter extends
 
   public static ContentPanel navigationPaneHeader = null;
   public static NavigationPane navigationPane = null;
+
+  protected static int delayMillis = 250;
 
   //
   // don't forget to update your Ginjector & SharedGinModule
@@ -82,11 +85,30 @@ public class MainPagePresenter extends
 
         Log.debug("onUpdateNavigationPane(NavigationPaneUpdateEvent event)");
 
-        getNavigationPane().selectRecord(event.getName());
-        getNavigationPaneHeader().setHeadingText(event.getDisplayName());
+        name= event.getName();
+        displayName = event.getDisplayName();
+
+        selectTimer.schedule(delayMillis);
+
+        // getNavigationPane().selectRecord(event.getName());
+        // getNavigationPaneHeader().setHeadingText(event.getDisplayName());
       }
     });
   }
+
+  protected String name = "name";
+  protected String displayName = "displayName";
+
+  protected Timer selectTimer = new Timer() {
+    @Override
+    public void run() {
+
+      Log.debug("run()");
+
+      getNavigationPane().selectRecord(name);
+      getNavigationPaneHeader().setHeadingText(displayName);
+    }
+  };
 
   @Override
   public void prepareFromRequest(PlaceRequest placeRequest) {

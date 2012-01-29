@@ -8,6 +8,8 @@
     <displayName>Highlights</displayName>
   </record>
   
+<!--
+  
   <record>
     <icon>sales</icon>
     <name>Sales</name>
@@ -20,4 +22,6 @@
     <displayName>Settings</displayName>    
   </record>
 
+-->
+  
 </records>

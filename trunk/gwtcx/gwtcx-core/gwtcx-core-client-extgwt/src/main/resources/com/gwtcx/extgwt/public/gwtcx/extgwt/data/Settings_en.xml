@@ -8,11 +8,15 @@
     <displayName>Administration</displayName>
   </record>
   
+<!--
+  
   <record>
     <icon>templates</icon>
     <name>Templates</name>
     <displayName>Templates</displayName>
   </record>
+  
+-->
   
   <record>
     <icon>datamanagement</icon>

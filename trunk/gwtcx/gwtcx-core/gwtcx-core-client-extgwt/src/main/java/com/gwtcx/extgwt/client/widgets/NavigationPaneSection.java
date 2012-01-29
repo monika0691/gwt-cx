@@ -144,6 +144,44 @@ public class NavigationPaneSection extends ContentPanel {
     getGrid().addRowClickHandler(handler);
   }
 
+  public NavigationPaneSectionModel getSelectedRecord() {
+     return getGrid().getSelectionModel().getSelectedItem();
+  }
+
+  /*
+
+  public String getSelectedRecord() {
+
+    String name = "";
+
+    NavigationPaneSectionModel model = getGrid().getSelectionModel().getSelectedItem();
+
+    if (model != null) {
+      name = model.getName();
+    }
+
+    return name;
+  }
+
+  */
+
+  /*
+
+  public int getSelectedRecord() {
+
+    int rowIndex = -1;
+
+    NavigationPaneSectionModel model = getGrid().getSelectionModel().getSelectedItem();
+
+    if (model != null) {
+      rowIndex = store.indexOf(model);
+    }
+
+    return rowIndex;
+  }
+
+  */
+
   public void selectRecord(int rowIndex) {
     getGrid().getSelectionModel().select(rowIndex, false);
   }
