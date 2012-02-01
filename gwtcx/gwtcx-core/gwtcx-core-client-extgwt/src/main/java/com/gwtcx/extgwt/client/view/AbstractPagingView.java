@@ -50,14 +50,14 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
     this.grid = grid;
 
     // panel.setStyleName(StyleTokens.contextArea);
-    this.panel = new VerticalLayoutContainer();
-    this.panel.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
-    this.toolBar.setSize(CONTEXT_AREA_WIDTH, TOOLBAR_HEIGHT);
-    this.grid.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    setPanel(new VerticalLayoutContainer());
+    getPanel().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    getToolBar().setSize(CONTEXT_AREA_WIDTH, TOOLBAR_HEIGHT);
+    getGrid().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
 
-    // add the Tool Bar, Grid, and Status Bar to the View's layout container
-    this.panel.add(this.toolBar, new VerticalLayoutData(1, -1));
-    this.panel.add(this.grid, new VerticalLayoutData(1, 1));
+    // add the Tool Bar, and the Grid to the View's layout container
+    getPanel().add(this.toolBar, new VerticalLayoutData(1, -1));
+    getPanel().add(this.grid, new VerticalLayoutData(1, 1));
 
     Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
       @Override
@@ -92,6 +92,14 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
   @Override
   public Widget asWidget() {
     return panel;
+  }
+
+  public VerticalLayoutContainer getPanel() {
+    return panel;
+  }
+
+  public void setPanel(VerticalLayoutContainer panel) {
+    this.panel = panel;;
   }
 
   public com.gwtcx.extgwt.client.widgets.ToolBar getToolBar() {
