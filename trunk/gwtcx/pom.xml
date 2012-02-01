@@ -113,7 +113,7 @@
     <jcip-annotations.version>1.0</jcip-annotations.version>
 
     <smartgwt.version>2.5</smartgwt.version>
-    <extgwt.version>3.0.0-beta1</extgwt.version>
+    <extgwt.version>3.0.0-beta2</extgwt.version>
 
     <gwt-log.version>3.1.6</gwt-log.version>
     <log4j.version>1.2.16</log4j.version>
