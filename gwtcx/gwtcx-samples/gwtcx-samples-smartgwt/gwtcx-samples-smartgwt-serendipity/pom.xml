@@ -211,6 +211,7 @@
         </executions>
       </plugin>
 
+      <!--
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>hibernate3-maven-plugin</artifactId>
@@ -240,7 +241,6 @@
           </execution>
         </executions>
         <dependencies>
-          <!-- HSQLDB dependencies -->
           <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
@@ -248,6 +248,7 @@
           </dependency>
         </dependencies>
       </plugin>
+      -->
 
     </plugins>
   </build>

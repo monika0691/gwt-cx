@@ -15,7 +15,8 @@
 package com.gwtcx.sample.serendipity.client.presenter;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.event.shared.EventBus;
+// import com.google.gwt.event.shared.EventBus;
+import com.google.web.bindery.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.gwt.user.client.Timer;
 import com.google.inject.Inject;
