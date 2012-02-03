@@ -17,7 +17,8 @@ package com.gwtcx.sample.serendipity.client.presenter;
 import java.util.List;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.event.shared.EventBus;
+// import com.google.gwt.event.shared.EventBus;
+import com.google.web.bindery.event.shared.EventBus;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.gwtcx.client.NameTokens;
