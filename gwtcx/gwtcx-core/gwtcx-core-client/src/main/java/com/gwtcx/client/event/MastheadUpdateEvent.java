@@ -14,7 +14,8 @@
 
 package com.gwtcx.client.event;
 
-import com.google.gwt.event.shared.EventBus;
+// import com.google.gwt.event.shared.EventBus;
+import com.google.web.bindery.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent;
 
 public class MastheadUpdateEvent extends GwtEvent<MastheadUpdateEventHandler> {
