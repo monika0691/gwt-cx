@@ -15,7 +15,8 @@
 package com.gwtcx.smartgwt.client.widgets;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.event.shared.EventBus;
+// import com.google.gwt.event.shared.EventBus;
+import com.google.web.bindery.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtcx.client.event.MastheadUpdateEvent;
 import com.gwtcx.client.event.MastheadUpdateEventHandler;

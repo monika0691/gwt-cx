@@ -16,7 +16,8 @@ package com.gwtcx.client.event;
 
 import com.gwtcx.client.CurrentUser;
 
-import com.google.gwt.event.shared.EventBus;
+// import com.google.gwt.event.shared.EventBus;
+import com.google.web.bindery.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent;
 
 public class LoginAuthenticatedEvent extends GwtEvent<LoginAuthenticatedEventHandler> {
