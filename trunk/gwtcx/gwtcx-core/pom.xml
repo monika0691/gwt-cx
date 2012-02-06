@@ -21,6 +21,7 @@
     <module>gwtcx-core-client-smartgwt</module>
     <module>gwtcx-core-shared</module>
     <module>gwtcx-core-server</module>
+    <module>gwtcx-core-server-gae</module>
   </modules>
 
   <build>
