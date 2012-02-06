@@ -302,10 +302,12 @@
       <groupId>com.google.inject.extensions</groupId>
       <artifactId>guice-assistedinject</artifactId>
     </dependency>
+    <!--
     <dependency>
       <groupId>aopalliance</groupId>
       <artifactId>aopalliance</artifactId>
     </dependency>
+    -->
 
     <!-- GWT-Platform dependencies -->
     <dependency>
