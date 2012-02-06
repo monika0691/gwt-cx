@@ -28,7 +28,7 @@ public interface NavigationPaneIcons extends ClientBundle {
   public static final NavigationPaneIcons INSTANCE = GWT.create(NavigationPaneIcons.class);
 
   // Sales
-
+  // @ImageOptions(preventInlining=true)
   @Source(urlPrefix + "activities.png")
   ImageResource activities();
 

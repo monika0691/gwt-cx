@@ -15,14 +15,10 @@
   <packaging>war</packaging>
   <name>GWTCX Ext GWT Samples - Serendipity</name>
 
-  <properties>
-    <generated-sources>target/generated-sources/apt</generated-sources>
-  </properties>
-
   <build>
 
-  <!-- Generate compiled stuff in the target folder -->
-  <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
+    <!-- Generate compiled stuff in the target folder -->
+    <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
 
     <plugins>
 
@@ -31,70 +27,41 @@
       <groupId>org.codehaus.mojo</groupId>
       <artifactId>gwt-maven-plugin</artifactId>
         <configuration>
-
+          <appEngineVersion>${gae.version}</appEngineVersion>
+          <appEngineHome>${gae.home}</appEngineHome>
           <logLevel>INFO</logLevel>
-          <style>PRETTY</style>
-          <gwtVersion>${gwt.version}</gwtVersion>
-
+          <style>${gwt.style}</style>
+          <server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>
+          <!-- Location of the develop-mode web application structure (gwt:run) -->
+          <hostedWebapp>${webappDirectory}</hostedWebapp>
+          <copyWebapp>false</copyWebapp>
+          <appEngineVersion>${gae.version}</appEngineVersion>
+          <appEngineHome>${gae.home}</appEngineHome>
           <!-- URL that should be automatically opened in the GWT shell (gwt:run) -->
-          <runTarget>Serendipity.html</runTarget>
+          <runTarget>index.html</runTarget>
           <module>com.gwtcx.sample.serendipity.Serendipity</module>
 
-          <!-- <server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server> -->
-          <!-- Location of the develop-mode web application structure (gwt:run) -->
-          <hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
-          <copyWebapp>false</copyWebapp>
-
+          <!-- <gwtVersion>${gwt.version}</gwtVersion> -->
         </configuration>
       </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <configuration>
-                    <useProjectReferences>false</useProjectReferences>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+          <useProjectReferences>false</useProjectReferences>
+          <additionalBuildcommands>
+            <buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
+          </additionalBuildcommands>
+          <additionalProjectnatures>
+            <projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature>
+            <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+          </additionalProjectnatures>
+        </configuration>
+      </plugin>
 
-                    <classpathContainers>
-                        <!-- <classpathContainer>com.google.appengine.eclipse.core.GAE_CONTAINER</classpathContainer> -->
-                        <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
-                        <classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
-                    </classpathContainers>
-
-                    <additionalBuildcommands>
-                        <buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
-                        <buildcommand>net.sf.eclipsecs.core.CheckstyleBuilder</buildcommand>
-                    </additionalBuildcommands>
-
-                    <additionalProjectnatures>
-                        <!-- <projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature> -->
-                        <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
-                        <projectnature>net.sf.eclipsecs.core.CheckstyleNature</projectnature>
-                    </additionalProjectnatures>
-
-                    <additionalConfig>
-                        <file>
-                            <name>.settings/com.google.gwt.eclipse.core.prefs</name>
-                            <content><![CDATA[
-                                    eclipse.preferences.version=1
-                                    entryPointModules=com.gwtcx.sample.basic.Basic
-                            ]]></content>
-                        </file>
-                        <file>
-                            <name>.checkstyle</name>
-                            <location>/gwtp-eclipse-checkstyle.xml</location>
-                        </file>
-                    </additionalConfig>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.gwtplatform</groupId>
-                        <artifactId>gwtp-build-tools</artifactId>
-                        <version>${gwtp.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
+    </plugins>
+  </build>
 
   <dependencies>
 
@@ -107,10 +74,12 @@
       <groupId>com.gwtcx</groupId>
       <artifactId>gwtcx-core-client-extgwt</artifactId>
     </dependency>
+    <!--
     <dependency>
       <groupId>com.gwtcx</groupId>
-      <artifactId>gwtcx-core-server</artifactId>
+      <artifactId>gwtcx-core-server-gae</artifactId>
     </dependency>
+    -->
 
     <!-- Ext GWT dependencies -->
     <dependency>
@@ -121,16 +90,15 @@
       <groupId>com.sencha.gxt</groupId>
       <artifactId>uibinder-bridge</artifactId>
     </dependency>
-    <!-- GWT Cal dependencies -->
     <dependency>
-      <groupId>com.bradrydzewski</groupId>
+      <groupId>com.bradrydzewski</groupId> <!-- GWT Cal dependencies -->
       <artifactId>gwt-cal</artifactId>
     </dependency>
-    <!-- GWT DnD dependencies -->
     <dependency>
-      <groupId>com.allen-sauer.gwt.dnd</groupId>
+      <groupId>com.allen-sauer.gwt.dnd</groupId> <!-- GWT DnD dependencies -->
       <artifactId>gwt-dnd</artifactId>
     </dependency>
+
     <!-- Google Web Toolkit dependencies -->
     <dependency>
       <groupId>com.google.gwt</groupId>
@@ -185,6 +153,12 @@
     <dependency>
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-processors</artifactId>
+    </dependency>
+
+    <!-- AppEngine dependencies -->
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-1.0-sdk</artifactId>
     </dependency>
 
     <!-- GWT HighCharts dependencies -->

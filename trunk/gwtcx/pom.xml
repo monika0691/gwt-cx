@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>5</version>
+  </parent>
+
   <groupId>com.gwtcx</groupId>
   <artifactId>gwtcx</artifactId>
   <version>1.0.0-dp1</version>
   <packaging>pom</packaging>
-  <name>The GWT Customer Experience framework</name>
+  <name>The GWT Customer Experience (CX) framework</name>
   <inceptionYear>2011</inceptionYear>
-  <description>gwt-cx is an open-source Customer Experience (CX) framework, that enables you to quickly and cost-effectively create innovative customer experiences.</description>
+  <description>GWT-CX is an open-source Customer Experience (CX) framework, that enables you to quickly and cost-effectively create innovative customer experiences.</description>
   <url>http://code.google.com/p/gwt-cx/</url>
 
   <licenses>
@@ -36,6 +43,7 @@
       <organization>upTick</organization>
       <organizationUrl>http://uptick.com.au</organizationUrl>
       <roles>
+        <role>Architect</role>
         <role>Software Engineer</role>
       </roles>
       <timezone>+10</timezone>
@@ -53,16 +61,16 @@
     </developer>
   </developers>
 
-  <issueManagement>
-    <system>Google Code</system>
-    <url>http://code.google.com/p/gwt-cx/issues/list</url>
-  </issueManagement>
-
   <scm>
     <connection>https://gwt-cx.googlecode.com/svn</connection>
     <developerConnection>svn checkout https://gwt-cx.googlecode.com/svn/trunk/ gwt-cx --username</developerConnection>
     <url>http://code.google.com/p/gwt-cx/source/browse/</url>
   </scm>
+
+  <issueManagement>
+    <system>Google Code</system>
+    <url>http://code.google.com/p/gwt-cx/issues/list</url>
+  </issueManagement>
 
   <ciManagement>
     <system>Jenkins</system>
@@ -93,75 +101,79 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+    <build-helper-maven-plugin.version>1.7</build-helper-maven-plugin.version>
     <gwt-maven-plugin.version>2.4.0</gwt-maven-plugin.version>
-    <maven-checkstyle-plugin.version>2.6</maven-checkstyle-plugin.version>
+    <hibernate3-maven-plugin.version>2.2</hibernate3-maven-plugin.version>
+    <lifecycle-mapping-plugin.version>1.0.0</lifecycle-mapping-plugin.version>
+    <maven-checkstyle-plugin.version>2.7</maven-checkstyle-plugin.version>
     <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
     <maven-deploy-plugin.version>2.5</maven-deploy-plugin.version>
     <maven-eclipse-plugin.version>2.8</maven-eclipse-plugin.version>
+    <maven-gae-plugin.version>0.9.1</maven-gae-plugin.version>
     <maven-javadoc-plugin.version>2.5</maven-javadoc-plugin.version> <!-- More recent versions fail -->
     <maven-processor-plugin.version>2.0.5</maven-processor-plugin.version>
-    <maven-release-plugin.version>2.1</maven-release-plugin.version>
     <maven-source-plugin.version>2.1.2</maven-source-plugin.version>
     <maven-surefire-plugin.version>2.6</maven-surefire-plugin.version>
 
-    <gwt.version>2.4.0</gwt.version>
-    <gwtp.version>0.7</gwtp.version>
-    <javax.inject.version>1</javax.inject.version>
+    <aopalliance.version>1.0</aopalliance.version>
+    <commons-collections.version>3.2.1</commons-collections.version>
+    <commons-fileupload.version>1.2.1</commons-fileupload.version>
+    <commons-lang.version>2.4</commons-lang.version>
+    <commons-io.version>1.4</commons-io.version>
+    <!-- <cglib.version>2.2</cglib.version> -->
+    <extgwt.version>3.0.0-beta2</extgwt.version>
+    <gae.version>1.6.1</gae.version>
     <gin.version>1.5.0</gin.version>
     <guice.version>3.0</guice.version>
-
-    <jcip-annotations.version>1.0</jcip-annotations.version>
-
-    <smartgwt.version>2.5</smartgwt.version>
-    <extgwt.version>3.0.0-beta2</extgwt.version>
-
-    <gwt-log.version>3.1.6</gwt-log.version>
-    <log4j.version>1.2.16</log4j.version>
-    <slf4j.version>1.6.1</slf4j.version>
-
-    <aopalliance.version>1.0</aopalliance.version>
-
-    <servlet-api.version>2.5</servlet-api.version>
-
-    <hibernate3-maven-plugin.version>2.2</hibernate3-maven-plugin.version>
-    <org.hibernate.version>3.6.0.Final</org.hibernate.version>
-    <org.hibernate-validator.version>4.1.0.Final</org.hibernate-validator.version>
-    <javax.persistence.version>1.0.0.Final</javax.persistence.version>
-
-    <hsqldb.version>2.0.1-rc1</hsqldb.version>
-    <tomcat-jdbc.version>7.0.21</tomcat-jdbc.version>
-
-    <jasperreports.version>4.0.0</jasperreports.version>
-    <commons-collections.version>3.2.1</commons-collections.version>
-    <commons-lang.version>2.4</commons-lang.version>
-
-    <commons-fileupload.version>1.2.1</commons-fileupload.version>
-    <commons-io.version>1.4</commons-io.version>
-    <opencsv.version>2.2</opencsv.version>
-
+    <gwt.version>2.4.0</gwt.version>
+    <gwtp.version>0.7</gwtp.version>
     <gwt.highcharts.version>1.1.3</gwt.highcharts.version>
-
     <gwt-cal.version>0.9.3</gwt-cal.version>
     <gwt-dnd.version>3.1.2</gwt-dnd.version>
-
+    <gwt-log.version>3.1.6</gwt-log.version>
+    <!-- <htmlunit.version>2.8</htmlunit.version> -->
+    <hsqldb.version>2.0.1-rc1</hsqldb.version>
+    <jasperreports.version>4.0.0</jasperreports.version>
     <javax.mail.version>1.4.4</javax.mail.version>
-
-    <junit.version>4.8.1</junit.version>
+    <javax.inject.version>1</javax.inject.version>
+    <javax.persistence.version>1.0.0.Final</javax.persistence.version>
+    <jcip-annotations.version>1.0</jcip-annotations.version>
+    <!-- <jukito.version>1.1</jukito.version> -->
+    <junit.version>4.9</junit.version>
+    <log4j.version>1.2.16</log4j.version>
+    <opencsv.version>2.2</opencsv.version>
+    <org.hibernate.version>3.6.0.Final</org.hibernate.version>
+    <org.hibernate-validator.version>4.1.0.Final</org.hibernate-validator.version>
+    <servlet-api.version>2.5</servlet-api.version>
+    <slf4j.version>1.6.1</slf4j.version>
+    <smartgwt.version>2.5</smartgwt.version>
+    <tomcat-jdbc.version>7.0.21</tomcat-jdbc.version>
 
   </properties>
 
-  <!-- To use JPA/Hibernate -->
-  <!--
   <repositories>
+    <!--
+    <repository>
+      <id>sonatype.snapshots</id>
+      <name>Sonatype snapshot repository</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    -->
+
+    <!-- To use JPA/Hibernate
     <repository>
       <id>JBoss</id>
       <url>http://repository.jboss.org/maven2/</url>
     </repository>
+    -->
   </repositories>
-   -->
 
+  <!-- To use Maven Processor Plugin
   <pluginRepositories>
-    <!-- To use Maven Processor Plugin -->
+
     <pluginRepository>
       <id>maven-annotation-plugin</id>
       <url>http://maven-annotation-plugin.googlecode.com/svn/trunk/mavenrepo</url>
@@ -172,11 +184,20 @@
         <enabled>true</enabled>
       </snapshots>
     </pluginRepository>
+
   </pluginRepositories>
+  -->
 
   <build>
     <pluginManagement>
       <plugins>
+
+        <!-- Maven Eclipse Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-eclipse-plugin</artifactId>
+          <version>${maven-eclipse-plugin.version}</version>
+        </plugin>
 
         <!-- Maven Compiler Plugin -->
         <plugin>
@@ -191,13 +212,11 @@
         </plugin>
 
         <!-- Maven Deploy Plugin -->
-        <!--
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>${maven-deploy-plugin.version}</version>
         </plugin>
-        -->
 
         <!-- Maven Processor Plugin -->
         <plugin>
@@ -206,25 +225,131 @@
           <version>${maven-processor-plugin.version}</version>
         </plugin>
 
-        <!-- Maven CheckStyle Plugin -->
+        <!-- Maven Checkstyle Plugin -->
+        <!-- Maven Source Plugin -->
 
-      <!-- Maven Source Plugin -->
-      <!--
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-source-plugin</artifactId>
-          <version>${maven-source-plugin.version}</version>
+        <!-- Maven GAE Plugin -->
+        <plugin>
+          <groupId>net.kindleit</groupId>
+          <artifactId>maven-gae-plugin</artifactId>
+          <version>${maven-gae-plugin.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>net.kindleit</groupId>
+              <artifactId>gae-runtime</artifactId>
+              <version>${gae.version}</version>
+              <type>pom</type>
+            </dependency>
+          </dependencies>
           <executions>
             <execution>
-              <id>attach-sources</id>
-              <phase>verify</phase>
+              <id />
+              <phase>validate</phase>
               <goals>
-                <goal>jar-no-fork</goal>
+                <goal>unpack</goal>
               </goals>
             </execution>
           </executions>
         </plugin>
-       -->
+
+        <!-- This plugin's configuration is used to store Eclipse
+             m2e settings only. It has no influence on the Maven build itself. -->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>${lifecycle-mapping-plugin.version}</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.datanucleus</groupId>
+                    <artifactId>maven-datanucleus-plugin</artifactId>
+                    <versionRange>[1.1.4,)</versionRange>
+                    <goals>
+                      <goal>enhance</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>net.kindleit</groupId>
+                    <artifactId>maven-gae-plugin</artifactId>
+                    <versionRange>[0.7.3,)</versionRange>
+                    <goals>
+                      <goal>unpack</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <execute />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.bsc.maven</groupId>
+                    <artifactId>maven-processor-plugin</artifactId>
+                    <versionRange>[2.0.5,)</versionRange>
+                    <goals>
+                      <goal>process</goal>
+                      <goal>process-test</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                  <!-- TO DO: This should be `execute` but it fails.
+                       The workaround is to manually run `mvn install`
+                       whenever the code generating files are changed. -->
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <versionRange>[1.0-beta-1,)</versionRange>
+                    <goals>
+                      <goal>enforce</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <versionRange>[2.0.0,)</versionRange>
+                    <goals>
+                      <goal>default-compile</goal>
+                      <goal>default-testCompile</goal>
+                    </goals>
+                    </pluginExecutionFilter>
+                    <action>
+                      <ignore />
+                    </action>
+                </pluginExecution>
+                <!-- TO DO: This disables checkstyle in Eclipse. It's a workaround
+                     for https://bugs.eclipse.org/bugs/show_bug.cgi?id=360491 -->
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <versionRange>[2.7,)</versionRange>
+                    <goals>
+                      <goal>checkstyle</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
 
       </plugins>
     </pluginManagement>
@@ -261,32 +386,7 @@
         </configuration>
       </plugin>
 
-      <!-- Maven Eclipse Plugin -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-eclipse-plugin</artifactId>
-        <version>${maven-eclipse-plugin.version}</version>
-        <configuration>
-          <downloadSources>true</downloadSources>
-          <downloadJavadocs>true</downloadJavadocs>
-          <wtpversion>2.0</wtpversion>
-        </configuration>
-      </plugin>
-
       <!-- Maven Release Plugin -->
-      <!--
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>${maven-release-plugin.version}</version>
-        <configuration>
-          <autoVersionSubmodules>true</autoVersionSubmodules>
-          <useReleaseProfile>false</useReleaseProfile>
-          <releaseProfiles>release</releaseProfiles>
-          <arguments>-Psonatype-oss-release -Prelease -Dgpg.passphrase=${gpg.passphrase}</arguments>
-       </configuration>
-      </plugin>
-      -->
 
     </plugins>
   </build>
@@ -294,12 +394,12 @@
   <dependencyManagement>
     <dependencies>
 
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
 
     </dependencies>
   </dependencyManagement>

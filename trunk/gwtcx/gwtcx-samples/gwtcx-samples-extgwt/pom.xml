@@ -26,20 +26,17 @@
       <!-- GWT Customer Experience dependencies -->
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>gwtcx-core-client</artifactId>
-        <version>${project.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
         <artifactId>gwtcx-core-client-extgwt</artifactId>
         <version>${project.version}</version>
         <scope>provided</scope>
       </dependency>
+
+      <!-- Google Web Toolkit dependencies -->
       <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>gwtcx-core-server</artifactId>
-        <version>${project.version}</version>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt-servlet-deps</artifactId> <!-- required for AutoBean support -->
+        <version>${gwt.version}</version>
+        <scope>runtime</scope>
       </dependency>
 
       <!-- Ext GWT dependencies -->
@@ -55,19 +52,24 @@
         <version>${gwt.version}-SNAPSHOT</version>
         <scope>provided</scope>
       </dependency>
-      <!-- GWT Cal dependencies -->
       <dependency>
-        <groupId>com.bradrydzewski</groupId>
+        <groupId>com.bradrydzewski</groupId> <!-- GWT Cal dependencies -->
         <artifactId>gwt-cal</artifactId>
         <version>${gwt-cal.version}</version>
         <scope>provided</scope>
       </dependency>
-      <!-- GWT DnD dependencies -->
       <dependency>
-        <groupId>com.allen-sauer.gwt.dnd</groupId>
+        <groupId>com.allen-sauer.gwt.dnd</groupId> <!-- GWT DnD dependencies -->
         <artifactId>gwt-dnd</artifactId>
         <version>${gwt-dnd.version}</version>
         <scope>provided</scope>
+      </dependency>
+
+      <!-- AppEngine dependencies -->
+      <dependency>
+        <groupId>com.google.appengine</groupId>
+        <artifactId>appengine-api-1.0-sdk</artifactId>
+        <version>${gae.version}</version>
       </dependency>
 
       <!-- GWT HighCharts dependencies -->
@@ -77,7 +79,6 @@
         <version>${gwt.highcharts.version}</version>
         <scope>provided</scope>
       </dependency>
-
 
     </dependencies>
   </dependencyManagement>

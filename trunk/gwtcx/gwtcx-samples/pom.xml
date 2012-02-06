@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -15,10 +16,17 @@
   <packaging>pom</packaging>
   <name>GWTCX Samples</name>
 
+  <properties>
+    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+    <gae.home>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
+    <generated-sources>target/generated-sources/apt</generated-sources>
+    <gwt.style>PRETTY</gwt.style>  <!-- OBFUSCATED -->
+  </properties>
+
   <modules>
     <!-- <module>gwtcx-samples-gwt</module> -->
     <module>gwtcx-samples-extgwt</module>
-    <module>gwtcx-samples-smartgwt</module>
+    <!-- <module>gwtcx-samples-smartgwt</module> -->
   </modules>
 
   <build>
@@ -31,6 +39,10 @@
           <artifactId>gwt-maven-plugin</artifactId>
           <version>${gwt-maven-plugin.version}</version>
           <configuration>
+            <!--
+            <appEngineVersion>${gae.version}</appEngineVersion>
+            <appEngineHome>${gae.home}</appEngineHome>
+            -->
             <skipTests>${skipTests}</skipTests>
             <testTimeOut>${testTimeOut}</testTimeOut>
           </configuration>
@@ -70,8 +82,14 @@
        </plugins>
     </pluginManagement>
 
-    <!--
     <plugins>
+
+      <!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
@@ -79,27 +97,27 @@
           <skip>true</skip>
         </configuration>
       </plugin>
+      -->
+
+      <plugin>
+        <groupId>net.kindleit</groupId>
+        <artifactId>maven-gae-plugin</artifactId>
+      </plugin>
+
     </plugins>
-    -->
 
   </build>
 
   <dependencyManagement>
     <dependencies>
 
-      <!-- GWT Customer Experience dependencies
+      <!-- GWT Customer Experience dependencies -->
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>gwtcx-core-client</artifactId>
         <version>${project.version}</version>
         <scope>provided</scope>
       </dependency>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>gwtcx-core-server</artifactId>
-       <version>${project.version}</version>
-      </dependency>
-      -->
 
       <!-- Google Web Toolkit dependencies -->
       <dependency>
@@ -117,12 +135,6 @@
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-servlet</artifactId>
-        <version>${gwt.version}</version>
-        <scope>runtime</scope>
-      </dependency>
-      <dependency>
-        <groupId>com.google.gwt</groupId>
-        <artifactId>gwt-servlet-deps</artifactId> <!-- required for AutoBean support -->
         <version>${gwt.version}</version>
         <scope>runtime</scope>
       </dependency>
@@ -149,11 +161,13 @@
         <artifactId>guice-assistedinject</artifactId>
         <version>${guice.version}</version>
       </dependency>
+      <!--
       <dependency>
         <groupId>aopalliance</groupId>
         <artifactId>aopalliance</artifactId>
         <version>${aopalliance.version}</version>
       </dependency>
+      -->
 
       <!-- GWT-Platform dependencies -->
       <!-- MVP component -->
@@ -189,25 +203,6 @@
         <groupId>com.allen-sauer.gwt.log</groupId>
         <artifactId>gwt-log</artifactId>
         <version>${gwt-log.version}</version>
-      </dependency>
-
-      <!-- Log4j dependencies -->
-      <dependency>
-        <groupId>log4j</groupId>
-        <artifactId>log4j</artifactId>
-        <version>${log4j.version}</version>
-      </dependency>
-
-      <!-- SLF4J dependencies -->
-      <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-log4j12</artifactId>
-        <version>${slf4j.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-api</artifactId>
-        <version>${slf4j.version}</version>
       </dependency>
 
     </dependencies>

@@ -22,77 +22,59 @@
   <dependencyManagement>
     <dependencies>
 
-    <!-- GWT Customer Experience dependencies -->
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>gwtcx-core-client</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>gwtcx-core-client-smartgwt</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>gwtcx-core-server</artifactId>
-     <version>${project.version}</version>
-    </dependency>
+      <!-- GWT Customer Experience dependencies -->
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-client-smartgwt</artifactId>
+        <version>${project.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-server</artifactId>
+       <version>${project.version}</version>
+      </dependency>
 
-    <!-- smartGWT dependencies -->
-    <dependency>
-      <groupId>com.smartgwt</groupId>
-      <artifactId>smartgwt</artifactId>
-      <version>${smartgwt.version}</version>
-      <scope>provided</scope>
-    </dependency>
+      <!-- smartGWT dependencies -->
+      <dependency>
+        <groupId>com.smartgwt</groupId>
+        <artifactId>smartgwt</artifactId>
+        <version>${smartgwt.version}</version>
+        <scope>provided</scope>
+      </dependency>
 
-    <!-- HSQLDB dependencies -->
-    <dependency>
-      <groupId>org.hsqldb</groupId>
-      <artifactId>hsqldb</artifactId>
-      <version>${hsqldb.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-jdbc</artifactId>
-      <version>${tomcat-jdbc.version}</version>
-      <scope>provided</scope>
-    </dependency>
+      <!-- Log4j dependencies -->
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>${log4j.version}</version>
+      </dependency>
 
-    <!-- SpringSource / Apache Tomcat 7 JDBC Connection Pool Manager dependencies
-    <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>com.springsource.org.apache.tomcat.jdbc</artifactId>
-      <version>${com.springsource.org.apache.tomcat.jdbc.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    -->
-    <!-- BoneCP JDBC Connection Pool Manager dependencies -->
-    <!--
-    <dependency>
-      <groupId>com.jolbox</groupId>
-      <artifactId>bonecp</artifactId>
-      <version>${bonecp.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.jolbox</groupId>
-      <artifactId>bonecp-provider</artifactId>
-      <version>${bonecp.version}</version>
-    </dependency>
-    -->
-    <!-- C3PO JDBC Connection Pool Manager dependencies -->
-    <!--
-    <dependency>
-      <groupId>c3p0</groupId>
-      <artifactId>c3p0</artifactId>
-      <version>${c3p0.version}</version>
-    </dependency>
-    -->
+      <!-- SLF4J dependencies -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+
+      <!-- HSQLDB dependencies -->
+      <dependency>
+        <groupId>org.hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <version>${hsqldb.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jdbc</artifactId>
+        <version>${tomcat-jdbc.version}</version>
+        <scope>provided</scope>
+      </dependency>
 
       <!-- JPA/Hibernate dependencies -->
       <dependency>
@@ -117,10 +99,10 @@
       If you don't use the excludes directive you get the java.lang.NoSuchFieldError: reportUnusedDeclaredThrownExceptionIncludeDocCommentReference error.
       -->
       <dependency>
-      <groupId>net.sf.jasperreports</groupId>
-      <artifactId>jasperreports</artifactId>
+        <groupId>net.sf.jasperreports</groupId>
+        <artifactId>jasperreports</artifactId>
         <version>${jasperreports.version}</version>
-      <exclusions>
+        <exclusions>
           <exclusion>
             <artifactId>jdtcore</artifactId>
             <groupId>eclipse</groupId>
