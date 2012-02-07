@@ -16,6 +16,9 @@ package com.gwtcx.extgwt.client.data;
 
 import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
 
+/**
+ * NavigationPaneSectionModel
+ */
 public interface NavigationPaneSectionModel {
 
   @PropertyName("icon")

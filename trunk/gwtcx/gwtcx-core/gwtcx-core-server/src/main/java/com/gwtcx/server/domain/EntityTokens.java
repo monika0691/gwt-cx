@@ -35,10 +35,10 @@ public class EntityTokens {
   public static final String ACCOUNT_NAME_COLUMN = "\"ACCOUNT_NAME\"";
   public static final String ACCOUNT_NUMBER_COLUMN = "\"ACCOUNT_NUMBER\"";
   public static final String PARENT_ACCOUNT_COLUMN = "\"PARENT_ACCOUNT\"";
-  
+
   public static final String PRIMARY_CONTACT_COLUMN = "\"PRIMARY_CONTACT\"";
   public static final String EMAIL_PRIMARY_CONTACT_COLUMN = "\"EMAIL_PRIMARY_CONTACT\"";
-  
+
   public static final String MAIN_PHONE_COLUMN = "\"MAIN_PHONE\"";
   public static final String OTHER_PHONE_COLUMN = "\"OTHER_PHONE\"";
   public static final String FAX_COLUMN = "\"FAX\"";
@@ -47,10 +47,10 @@ public class EntityTokens {
   public static final int ACCOUNT_NAME_COLUMN_LENGTH = 100;
   public static final int ACCOUNT_NUMBER_COLUMN_LENGTH = 50;
   public static final int PARENT_ACCOUNT_COLUMN_LENGTH = 100;
-  
+
   public static final int PRIMARY_CONTACT_COLUMN_LENGTH = 100;
   public static final int EMAIL_PRIMARY_CONTACT_COLUMN_LENGTH = 50;
-  
+
   public static final int MAIN_PHONE_COLUMN_LENGTH = 50;
   public static final int OTHER_PHONE_COLUMN_LENGTH = 50;
   public static final int FAX_COLUMN_LENGTH = 50;
@@ -118,13 +118,13 @@ public class EntityTokens {
   public static final String CORRESPONDENCE_COLUMN = "\"CORRESPONDENCE\"";
   public static final String JOB_TITLE_COLUMN = "\"JOB_TITLE\"";
   public static final String OCCUPATION_COLUMN = "\"OCCUPATION\"";
-  
+
   public static final String BUSINESS_PHONE_COLUMN = "\"BUSINESS_PHONE\"";
   // public static final String FAX_COLUMN = "\"FAX\"";
   public static final String MOBILE_PHONE_COLUMN = "\"MOBILE_PHONE\"";
   public static final String HOME_PHONE_COLUMN = "\"HOME_PHONE\"";
   public static final String EMAIL_COLUMN = "\"EMAIL\"";
-  
+
   // Contact column lengths
   public static final int GIVEN_NAME_COLUMN_LENGTH = 50;
   public static final int MIDDLE_NAME_COLUMN_LENGTH = 50;
@@ -133,7 +133,7 @@ public class EntityTokens {
   public static final int CORRESPONDENCE_COLUMN_LENGTH = 100;
   public static final int JOB_TITLE_COLUMN_LENGTH = 100;
   public static final int OCCUPATION_COLUMN_LENGTH = 100;
-  
+
   public static final int BUSINESS_PHONE_COLUMN_LENGTH = 50;
   public static final int MOBILE_PHONE_COLUMN_LENGTH = 50;
   public static final int HOME_PHONE_COLUMN_LENGTH = 50;
@@ -146,7 +146,7 @@ public class EntityTokens {
   public static final String PARTY_TABLE_DISCRIMINATOR_VALUE = "P";
   // Party column names
   public static final String PARTY_ID_COLUMN = "\"PARTY_ID\"";
-  public static final String PARTY_TYPE_COLUMN = "\"PARTY_TYPE_ID\"";  
+  public static final String PARTY_TYPE_COLUMN = "\"PARTY_TYPE\"";
 
   //
   // Report table
@@ -180,6 +180,6 @@ public class EntityTokens {
   // User column lengths
   public static final int LOGIN_COLUMN_LENGTH = 32;
   public static final int SALT_COLUMN_LENGTH = 32;
-  public static final int PASSWORD_COLUMN_LENGTH = 128;  
-  
+  public static final int PASSWORD_COLUMN_LENGTH = 128;
+
 }

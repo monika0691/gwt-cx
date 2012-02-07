@@ -16,6 +16,9 @@ package com.gwtcx.extgwt.client.data;
 
 import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
 
+/**
+ * ContextAreaModel
+ */
 public interface ContextAreaModel {
 
   @PropertyName("column1Icon")

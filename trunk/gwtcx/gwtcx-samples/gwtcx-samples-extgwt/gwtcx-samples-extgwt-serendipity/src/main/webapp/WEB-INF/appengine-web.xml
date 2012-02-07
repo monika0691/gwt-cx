@@ -23,5 +23,11 @@
   <application>serendipity-kiahu</application>
   <version>1</version>  <!-- SVN: use the repository revision number -->
 
+  <system-properties>
+    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties" />
+  </system-properties>
+
+  <sessions-enabled>true</sessions-enabled>
+
 </appengine-web-app>
 

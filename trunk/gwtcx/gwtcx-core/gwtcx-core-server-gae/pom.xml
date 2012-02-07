@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -15,25 +16,30 @@
   <packaging>jar</packaging>
   <name>GWTCX Core - Server GAE</name>
 
+  <build>
+    <plugins>
 
-  <!--
-   <plugin>
+      <plugin>
         <groupId>org.datanucleus</groupId>
         <artifactId>maven-datanucleus-plugin</artifactId>
         <version>3.0.1</version>
         <configuration>
-            <verbose>true</verbose>
+          <api>JPA</api>
+          <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
+          <verbose>true</verbose>
         </configuration>
         <executions>
-            <execution>
-                <phase>process-classes</phase>
-                <goals>
-                    <goal>enhance</goal>
-                </goals>
-            </execution>
+          <execution>
+          <phase>process-classes</phase>
+          <goals>
+            <goal>enhance</goal>
+          </goals>
+          </execution>
         </executions>
-    </plugin>
-  -->
+      </plugin>
+
+    </plugins>
+  </build>
 
   <dependencies>
 
@@ -43,11 +49,12 @@
       <artifactId>gwtcx-core-shared</artifactId>
     </dependency>
 
-    <!-- JCIP Annotations dependencies -->
+    <!-- JCIP Annotations dependencies
     <dependency>
       <groupId>net.jcip</groupId>
       <artifactId>jcip-annotations</artifactId>
     </dependency>
+    -->
 
     <!-- Google Web Toolkit dependencies -->
     <dependency>
@@ -70,34 +77,66 @@
       <scope>provided</scope>
     </dependency>
 
- <!--
-        <dependency>
-            <groupId>com.google.appengine.orm</groupId>
-            <artifactId>datanucleus-appengine</artifactId>
-            <version>2.0.0-final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-core</artifactId>
-            <version>[3.0, 3.1)</version>
-        </dependency>
-        <dependency>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-api-jpa</artifactId>
-            <version>[3.0, 3.1)</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jpa_2.0_spec</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.jdo</groupId>
-            <artifactId>jdo-api</artifactId>
-            <version>[3.0, 4.0)</version>
-        </dependency>
- -->
+    <!-- Google AppEngine dependencies -->
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-1.0-sdk</artifactId>
+      <version>${gae.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.appengine.orm</groupId>
+      <artifactId>datanucleus-appengine</artifactId>
+      <version>2.0.0-final</version>
+    </dependency>
+    <!-- DataNucleus dependencies -->
+    <dependency>
+      <groupId>org.datanucleus</groupId>
+      <artifactId>datanucleus-core</artifactId>
+      <version>[3.0, 3.1)</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-jpa_2.0_spec</artifactId>
+      <version>1.0</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.datanucleus</groupId>
+      <artifactId>datanucleus-api-jpa</artifactId>
+      <version>[3.0, 3.1)</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>javax.jdo</groupId>
+      <artifactId>jdo-api</artifactId>
+      <version>[3.0, 4.0)</version>
+    </dependency>
+    <dependency>
+      <groupId>org.datanucleus</groupId>
+      <artifactId>datanucleus-api-jdo</artifactId>
+      <version>[3.0, 3.1)</version>
+      <optional>true</optional>
+    </dependency>
 
+    <dependency>
+      <groupId>org.datanucleus</groupId>
+      <artifactId>datanucleus-enhancer</artifactId>
+      <version>[3.0, 3.1)</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-stubs</artifactId>
+      <version>1.5.5</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-testing</artifactId>
+      <version>1.5.5</version>
+      <scope>test</scope>
+    </dependency>
 
   </dependencies>
 </project>
