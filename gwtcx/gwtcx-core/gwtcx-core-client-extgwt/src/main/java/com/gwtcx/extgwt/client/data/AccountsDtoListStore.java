@@ -18,6 +18,9 @@ import com.gwtcx.shared.dto.AccountsDto;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 
+/**
+ * AccountsDtoListStore
+ */
 public class AccountsDtoListStore extends ListStore<AccountsDto> {
 
   public static ModelKeyProvider<AccountsDto> KP = new ModelKeyProvider<AccountsDto>() {

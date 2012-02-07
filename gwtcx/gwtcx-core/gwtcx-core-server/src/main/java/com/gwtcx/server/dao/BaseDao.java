@@ -53,9 +53,9 @@ public abstract class BaseDao {
   }
 
   public synchronized static void setPersistenceUnitName(String name) {
-    puName= name;
+    puName = name;
 
-    Log.debug("set Persistence Unit name = " + name);
+    Log.debug("set Persistence Unit name = " + puName);
   }
 
   public abstract Long createObject(Object object);

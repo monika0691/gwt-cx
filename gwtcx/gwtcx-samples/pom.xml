@@ -17,10 +17,9 @@
   <name>GWTCX Samples</name>
 
   <properties>
-    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-    <gae.home>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
     <generated-sources>target/generated-sources/apt</generated-sources>
     <gwt.style>PRETTY</gwt.style>  <!-- OBFUSCATED -->
+    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
   </properties>
 
   <modules>
@@ -39,10 +38,6 @@
           <artifactId>gwt-maven-plugin</artifactId>
           <version>${gwt-maven-plugin.version}</version>
           <configuration>
-            <!--
-            <appEngineVersion>${gae.version}</appEngineVersion>
-            <appEngineHome>${gae.home}</appEngineHome>
-            -->
             <skipTests>${skipTests}</skipTests>
             <testTimeOut>${testTimeOut}</testTimeOut>
           </configuration>
@@ -98,11 +93,6 @@
         </configuration>
       </plugin>
       -->
-
-      <plugin>
-        <groupId>net.kindleit</groupId>
-        <artifactId>maven-gae-plugin</artifactId>
-      </plugin>
 
     </plugins>
 

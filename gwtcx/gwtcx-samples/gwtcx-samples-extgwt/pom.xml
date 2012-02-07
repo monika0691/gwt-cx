@@ -20,6 +20,25 @@
     <module>gwtcx-samples-extgwt-serendipity</module>
   </modules>
 
+  <properties>
+    <gae.home>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
+  </properties>
+
+  <!--
+  <build>
+
+    <plugins>
+
+      <plugin>
+        <groupId>net.kindleit</groupId>
+        <artifactId>maven-gae-plugin</artifactId>
+      </plugin>
+
+    </plugins>
+
+  </build>
+  -->
+
   <dependencyManagement>
     <dependencies>
 
@@ -65,12 +84,13 @@
         <scope>provided</scope>
       </dependency>
 
-      <!-- AppEngine dependencies -->
+      <!-- AppEngine dependencies
       <dependency>
         <groupId>com.google.appengine</groupId>
         <artifactId>appengine-api-1.0-sdk</artifactId>
         <version>${gae.version}</version>
       </dependency>
+      -->
 
       <!-- GWT HighCharts dependencies -->
       <dependency>
