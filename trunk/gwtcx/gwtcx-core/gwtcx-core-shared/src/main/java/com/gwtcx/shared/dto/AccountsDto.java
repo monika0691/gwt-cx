@@ -22,8 +22,9 @@ public class AccountsDto implements Serializable {
 
   private String accountId;
   private String accountName;
+  // private String accountNumber;
   private String mainPhone;
-  private String location;
+  private String location;  // private String city;
   private String primaryContact;
   private String emailPrimaryContact;
 
@@ -37,6 +38,7 @@ public class AccountsDto implements Serializable {
 
   public AccountsDto(String accountId, String accountName, String mainPhone,
       String location, String primaryContact, String emailPrimaryContact) {
+
     this.accountId = accountId;
     this.accountName = accountName;
     this.mainPhone = mainPhone;

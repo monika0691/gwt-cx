@@ -265,25 +265,30 @@ public class Account {
       return "No Address details";
     }
 
-    StringBuilder sb = new StringBuilder();
-    String addressElement;
-
+    StringBuilder builder = new StringBuilder();
     Iterator<Address> it = addresses.iterator();
     Address address = it.next();
 
-    addressElement = address.getAddressLine1();
-    sb.append(addressElement).append(", ");
-    addressElement = address.getAddressLine2();
-    sb.append(addressElement).append(" ");
-    addressElement = address.getCity();
-    sb.append(addressElement).append(" ");
-    addressElement = address.getState();
-    sb.append(addressElement).append(" ");
-    addressElement = address.getPostalCode();
-    sb.append(addressElement);
+    if (address.getAddressLine1().isEmpty()) {
+      return "No Address details";
+    }
 
-    // e.g. "Level 111, 111 Kent Street Sydney NSW 2000"
-    return sb.toString();
+    builder.append(address.getAddressLine1());
+
+    if (! address.getAddressLine2().isEmpty())
+        builder.append(", " + address.getAddressLine2() + " ");
+
+    if (! address.getCity().isEmpty())
+        builder.append(address.getCity() + " ");
+
+    if (! address.getState().isEmpty())
+        builder.append(address.getState() + " ");
+
+    if (! address.getPostalCode().isEmpty())
+        builder.append(address.getPostalCode());
+
+    // e.g. "Level 111, 222 Kent Street Sydney NSW 2000"
+    return builder.toString();
   }
 
   @Override

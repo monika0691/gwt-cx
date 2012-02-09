@@ -15,29 +15,30 @@
 package com.gwtcx.server.gae.dao;
 
 import java.util.List;
-// import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.gwtcx.server.gae.domain.Contact;
 
+/**
+ * ContactDao: methods to create, retrieve, update and delete (CRUD) Contacts.
+ */
 public class ContactDao extends AbstractBaseDao {
 
-  // private static Logger logger = Logger.getLogger(ContactDao.class.getName());
-
-  public Long createContact(Contact contact) {
+  public Key createContact(Contact contact) {
 
     // For an application-managed entity manager its best practice to create a
     // new entity manager inside a method and close it before the method is finished.
-
     // When using transactions outside an enterprise application server you need to
     // close (commit or rollback) the transaction in the same way you do for EntityManagers.
     // Note: In order for the resources (both EntityManager and Transaction) to be closed
     // you need to use an additional level of nesting.
 
-    Long id = -1L;
+    Key key;
     EntityManager em = createEntityManager();
 
     try {
@@ -46,12 +47,9 @@ public class ContactDao extends AbstractBaseDao {
       try {
         tx.begin();
         em.persist(contact);
-        id = contact.getPartyId();
+        key = contact.getPartyKey();
         tx.commit();
       }
-      // catch (Throwable t) {
-      //   t.printStackTrace();
-      // }
       finally {
         if (tx.isActive()) tx.rollback();
       }
@@ -60,18 +58,17 @@ public class ContactDao extends AbstractBaseDao {
       em.close();
     }
 
-    return id;
+    return key;
   }
 
-
-  public Contact retrieveContact(Long id) {
+  public Contact retrieveContact(Key key) {
 
     Contact contact = null;
     EntityManager em = createEntityManager();
 
     try {
-      TypedQuery<Contact> query = em.createQuery("select a from Contact a where a.partyId = ?1", Contact.class);
-      query.setParameter(1, id);
+      TypedQuery<Contact> query = em.createQuery("select a from Contact a where a.partyKey = ?1", Contact.class);
+      query.setParameter(1, KeyFactory.keyToString(key));
       contact = query.getSingleResult();
     }
     finally {
@@ -112,9 +109,6 @@ public class ContactDao extends AbstractBaseDao {
         contact2 = em.merge(contact);
         tx.commit();
       }
-      // catch (Throwable t) {
-      //   t.printStackTrace();
-      // }
       finally {
         if (tx.isActive()) tx.rollback();
       }
@@ -138,9 +132,6 @@ public class ContactDao extends AbstractBaseDao {
         em.remove(em.merge(contact));
         tx.commit();
       }
-      // catch (Throwable t) {
-      //   t.printStackTrace();
-      // }
       finally {
         if (tx.isActive()) tx.rollback();
       }
@@ -149,5 +140,4 @@ public class ContactDao extends AbstractBaseDao {
       em.close();
     }
   }
-
 }

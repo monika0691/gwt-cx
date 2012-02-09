@@ -63,4 +63,17 @@ public class Contact extends AbstractParty {
     this.familyName = familyName;
   }
 
+  public String getFullName() {
+    StringBuilder builder = new StringBuilder();
+    builder.append(givenName);
+
+    if (! middleName.isEmpty())
+      builder.append(" " + middleName);
+
+    if (! familyName.isEmpty())
+        builder.append(" " + familyName);
+
+    return builder.toString();
+  }
+
 }

@@ -26,11 +26,12 @@ import javax.persistence.Persistence;
 public abstract class AbstractBaseDao {
 
   private static EntityManagerFactory emf;
-  private static String puName; // e.g. "transactions-optional"
+  // private static String puName; // e.g. "transactions-optional"
+  private static String puName = "transactions-optional";
 
   private static Logger logger = Logger.getLogger(AbstractBaseDao.class.getName());
 
-  // lazy initialisation
+  // lazy initialisation (not @ThreadSafe)
   public static EntityManager createEntityManager() {
 
     logger.info("createEntityManager()");

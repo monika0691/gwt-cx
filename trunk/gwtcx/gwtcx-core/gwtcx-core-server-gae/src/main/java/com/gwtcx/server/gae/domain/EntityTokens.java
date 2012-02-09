@@ -20,7 +20,7 @@ public class EntityTokens {
   // Party entity
   //
 
-  public static final String PARTY_ID_COLUMN = "PARTY_ID";
+  // public static final String PARTY_ID_COLUMN = "PARTY_ID";
   public static final String PARTY_KEY_COLUMN = "PARTY_KEY";
   public static final String PARTY_TYPE_COLUMN = "PARTY_TYPE";
 
