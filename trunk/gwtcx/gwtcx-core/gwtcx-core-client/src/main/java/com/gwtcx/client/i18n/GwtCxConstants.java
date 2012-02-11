@@ -298,7 +298,7 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   String attachmentsTab();
 
 
-  // ActivitiesRecord
+  // Activities Context Area Grid - Header Labels
   @DefaultStringValue("Activity Type")
   String activityType();
   @DefaultStringValue("Subject")
@@ -312,7 +312,7 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   @DefaultStringValue("Due Date")
   String dueDate();
 
-  // AccountsRecord
+  // Accounts Context Area Grid - Header Labels
   @DefaultStringValue("Account Name")
   String accountName();
   @DefaultStringValue("Main Phone")
@@ -324,7 +324,23 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   @DefaultStringValue("Email (Primary Contact)")
   String emailPrimaryContact();
 
-  // ReportsRecord
+  // Contacts Context Area Grid - Header Labels
+  @DefaultStringValue("Full Name")
+  String fullName();
+  @DefaultStringValue("Parent Customer")
+  String parentCustomer();
+  @DefaultStringValue("City")
+  String city();
+  @DefaultStringValue("Phone")
+  String phone();
+  // @DefaultStringValue("Location")
+  // String location();
+  @DefaultStringValue("Business Phone")
+  String businessPhone();
+  @DefaultStringValue("Email")
+  String email();
+
+  // Reports Context Area Grid - Header Labels
   @DefaultStringValue("Report Name")
   String reportName();
   @DefaultStringValue("Report Type")
@@ -334,7 +350,7 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   @DefaultStringValue("Description")
   String description();
 
-  // ImportsRecord
+  // Imports Context Area Grid - Header Labels
   @DefaultStringValue("Import Name")
   String importName();
   @DefaultStringValue("Status")

@@ -26,16 +26,16 @@ import javax.persistence.Entity;
  * Contact (Individual)
  */
 @Entity
-public class Contact extends AbstractParty {
+public class Contact extends Party {
 
   @Column(name = EntityTokens.GIVEN_NAME_COLUMN)
-  protected String givenName;
+  private String givenName;
 
   @Column(name = EntityTokens.MIDDLE_NAME_COLUMN)
-  protected String middleName;
+  private String middleName;
 
   @Column(name = EntityTokens.FAMILY_NAME_COLUMN)
-  protected String familyName;
+  private String familyName;
 
   private static Logger logger = Logger.getLogger(Contact.class.getName());
 

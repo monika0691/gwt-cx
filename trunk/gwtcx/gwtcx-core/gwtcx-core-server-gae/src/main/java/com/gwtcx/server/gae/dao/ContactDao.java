@@ -47,7 +47,7 @@ public class ContactDao extends AbstractBaseDao {
       try {
         tx.begin();
         em.persist(contact);
-        key = contact.getPartyKey();
+        key = contact.getKey();
         tx.commit();
       }
       finally {

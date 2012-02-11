@@ -45,16 +45,18 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
   public static final int SMALL_ICON_COLUMN_WIDTH = 24;
 
   public static final int ACCOUNT_NAME_COLUMN_WIDTH = 180;
+  //   public static final int ACCOUNT_NUMBER_COLUMN_WIDTH = 90;
+  //   public static final int CITY_COLUMN_WIDTH = 90;
   public static final int MAIN_PHONE_COLUMN_WIDTH = 90;
   public static final int LOCATION_COLUMN_WIDTH = 280; // 220
   public static final int PRIMARY_CONTACT_COLUMN_WIDTH = 130; // 100
   public static final int EMAIL_PRIMARY_CONTACT_COLUMN_WIDTH = 180;  // 120
 
   public interface AccountsProperties extends PropertyAccess<AccountsDto> {
-    @Path("accountId")
+    @Path("id")
     ModelKeyProvider<AccountsDto> key();
 
-    ValueProvider<AccountsDto, String> accountId();
+    ValueProvider<AccountsDto, String> id();
     ValueProvider<AccountsDto, String> accountName();
     ValueProvider<AccountsDto, String> mainPhone();
     ValueProvider<AccountsDto, String> location();
@@ -64,14 +66,12 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
 
   private static final AccountsProperties property = GWT.create(AccountsProperties.class);
 
-  private static ColumnConfig<AccountsDto, String> emailPrimaryContactColumnConfig;
-
   private static final SafeHtml ROW_ICON = ImageCell.makeImage(GridIcons.INSTANCE.rowCollapsed());
-  private static final SafeHtml ACCOUNT_ICON = ImageCell.makeImage(NavigationPaneIcons.INSTANCE.accounts());
+  private static final SafeHtml ENTITY_ICON = ImageCell.makeImage(NavigationPaneIcons.INSTANCE.accounts());
 
-  public static ColumnModel<AccountsDto> getColumModel() {
+  public static ColumnModel<AccountsDto> getColumConfig() {
 
-    ColumnConfig<AccountsDto, String> rowIconColumnConfig = new ColumnConfig<AccountsDto, String>(property.accountId(),
+    ColumnConfig<AccountsDto, String> rowIconColumnConfig = new ColumnConfig<AccountsDto, String>(property.id(),
         SMALL_ICON_COLUMN_WIDTH, "");
     rowIconColumnConfig.setCell(new ImageCell() {
       @Override
@@ -83,7 +83,7 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
 
         SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("float:left;cursor:hand;cursor:pointer;");
 
-        SafeHtml rendered = template.cell("image-1", imageStyle, ROW_ICON);
+        SafeHtml rendered = template.cell("row-icon", imageStyle, ROW_ICON);
         sb.append(rendered);
       }
     });
@@ -91,7 +91,7 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
     rowIconColumnConfig.setResizable(false);
     rowIconColumnConfig.setMenuDisabled(true);
 
-    ColumnConfig<AccountsDto, String> accountIconColumnConfig = new ColumnConfig<AccountsDto, String>(property.accountName(),
+    ColumnConfig<AccountsDto, String> accountIconColumnConfig = new ColumnConfig<AccountsDto, String>(property.id(),
         SMALL_ICON_COLUMN_WIDTH + 4, "");  // "#"
     accountIconColumnConfig.setCell(new ImageCell() {
       @Override
@@ -103,7 +103,7 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
 
         SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("float:left;cursor:hand;cursor:pointer;");
 
-        SafeHtml rendered = template.cell("image-2", imageStyle, ACCOUNT_ICON);
+        SafeHtml rendered = template.cell("entity-icon", imageStyle, ENTITY_ICON);
         sb.append(rendered);
       }
     });
@@ -119,7 +119,7 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
         LOCATION_COLUMN_WIDTH, I18nUtil.getConstant().location());
     ColumnConfig<AccountsDto, String> primaryContactColumnConfig = new ColumnConfig<AccountsDto, String>(property.primaryContact(),
         PRIMARY_CONTACT_COLUMN_WIDTH, I18nUtil.getConstant().primaryContact());
-    emailPrimaryContactColumnConfig = new ColumnConfig<AccountsDto, String>(property.emailPrimaryContact(),
+    ColumnConfig<AccountsDto, String> emailPrimaryContactColumnConfig = new ColumnConfig<AccountsDto, String>(property.emailPrimaryContact(),
         EMAIL_PRIMARY_CONTACT_COLUMN_WIDTH, I18nUtil.getConstant().emailPrimaryContact());
 
     List<ColumnConfig<AccountsDto, ?>> columnConfigList = new ArrayList<ColumnConfig<AccountsDto, ?>>();
@@ -138,9 +138,10 @@ public class AccountsContextAreaGrid extends Grid<AccountsDto> {
 
   @Inject
   public AccountsContextAreaGrid(AccountsDtoListStore store) {
-    super(store, getColumModel());
+    super(store, getColumConfig());
 
-    this.getView().setAutoExpandColumn(emailPrimaryContactColumnConfig);
+    // Auto expand the last column (e.g. the Email Primary Contact column)
+    this.getView().setAutoExpandColumn(this.getColumnModel().getColumn(this.getColumnModel().getColumnCount() - 1));
     this.setBorders(false);
     this.setStripeRows(true);
     this.setColumnLines(false);

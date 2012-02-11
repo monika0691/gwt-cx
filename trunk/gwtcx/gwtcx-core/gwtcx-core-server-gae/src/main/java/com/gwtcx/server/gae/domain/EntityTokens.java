@@ -17,12 +17,21 @@ package com.gwtcx.server.gae.domain;
 public class EntityTokens {
 
   //
-  // Party entity
+  // Datastore entity (a MappedSuperclass)
   //
 
-  // public static final String PARTY_ID_COLUMN = "PARTY_ID";
-  public static final String PARTY_KEY_COLUMN = "PARTY_KEY";
-  public static final String PARTY_TYPE_COLUMN = "PARTY_TYPE";
+  public static final String DATASTORE_ENTITY_KEY_COLUMN = "KEY";
+  public static final String DATASTORE_ENTITY_TYPE_COLUMN = "TYPE";
+
+  //
+  // Versioned entity (a MappedSuperclass)
+  //
+
+  public static final String VERSION_COLUMN = "VERSION";
+  public static final String CREATED_BY_COLUMN = "CREATED_BY";
+  public static final String CREATED_TIMESTAMP_COLUMN = "CREATED_TIMESTAMP";
+  public static final String UPDATED_BY_COLUMN = "UPDATED_BY";
+  public static final String UPDATED_TIMESTAMP_COLUMN = "UPDATED_BY_TIMESTAMP";
 
   //
   // Contact entity

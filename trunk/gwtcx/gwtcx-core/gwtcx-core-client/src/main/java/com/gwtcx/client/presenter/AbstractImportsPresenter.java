@@ -29,22 +29,25 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 public abstract class AbstractImportsPresenter<V extends View, Proxy_ extends Proxy<?>> extends
     AbstractPagingPresenter<V, Proxy_> implements ImportsUiHandlers {
 
+  private static final String HOST_FILENAME = "FileUpload.html";
+  private static final String FEATURES = "width=360, height=280, location=no";
+
   @Inject
   public AbstractImportsPresenter(EventBus eventBus, V view, Proxy_ proxy,
       DispatchAsync dispatcher, PlaceManager placeManager) {
     super(eventBus, view, proxy, dispatcher, placeManager);
 
-    // getView().setUiHandlers(this);
+    Log.warn("AbstractImportsPresenter()");
   }
+
+  /*
 
   @Override
   protected void revealInParent() {
-
     Log.warn("Don't forget to @Override revealInParent()");
-
-    // For example:
-    // RevealContentEvent.fire(this, MainPagePresenter.TYPE_SetContextAreaContent, this);
   }
+
+  */
 
   @Override
   protected void retrieveResultSet() { }
@@ -61,11 +64,6 @@ public abstract class AbstractImportsPresenter<V extends View, Proxy_ extends Pr
     super.resultSetNextButtonClicked();
   }
 
-  private static final String HOST_FILENAME = "FileUpload.html";
-  private static final String NAME = "_blank";
-  // private static final String FEATURES = "width=360, height=280, location=no, resizable=no";
-  private static final String FEATURES = "width=360, height=280, location=no";
-
   public void onNewButtonClicked() {
     StringBuilder url = new StringBuilder();
     url.append(HOST_FILENAME);
@@ -73,13 +71,13 @@ public abstract class AbstractImportsPresenter<V extends View, Proxy_ extends Pr
     Window.open(GwtCxEntryPoint.getRelativeURL(url.toString()), NAME, FEATURES);
   }
 
+  public void onRecordDoubleClicked(String reportFilename) {
+  }
+
   public void onDeleteButtonClicked(String accountId) {
   }
 
   public void onRefreshButtonClicked() {
     super.refreshButtonClicked();
-  }
-
-  public void onRecordDoubleClicked(String reportFilename) {
   }
 }

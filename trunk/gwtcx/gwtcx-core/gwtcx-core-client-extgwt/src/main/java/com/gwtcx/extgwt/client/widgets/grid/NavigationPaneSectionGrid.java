@@ -29,7 +29,7 @@ public class NavigationPaneSectionGrid extends Grid<NavigationPaneSectionModel>{
   public static final String NAVIGATION_PANE_WIDTH = "100%";
   public static final String NAVIGATION_PANE_HEIGHT = "100%";
 
-  public static final int COLUMN_NAME_INDEX = 1;
+  // public static final int NAME_COLUMN_INDEX = 1;
 
   public static final int SMALL_ICON_COLUMN_WIDTH = 24;
   public static final int DISPLAY_NAME_COLUMN_WIDTH = 180;
@@ -49,7 +49,9 @@ public class NavigationPaneSectionGrid extends Grid<NavigationPaneSectionModel>{
     this.setHideHeaders(true);
     this.setStripeRows(false);
 
-    this.getView().setAutoExpandColumn(this.getColumnModel().getColumn(COLUMN_NAME_INDEX));
+    // Auto expand the last column (e.g. the Display Name column)
+    this.getView().setAutoExpandColumn(this.getColumnModel().getColumn(this.getColumnModel().getColumnCount() - 1));
+    // this.getView().setAutoExpandColumn(this.getColumnModel().getColumn(NAME_COLUMN_INDEX));
     this.getView().setEmptyText(I18nUtil.getConstant().gridEmptyText());
 
     // this.setSelectionModel(new CellSelectionModel<NavigationPaneSectionModel>());
