@@ -32,7 +32,6 @@
   <!-- <inherits name="com.allen_sauer.gwt.log.gwt-log-OFF" /> -->
 
   <!-- The entry point class -->
-  <!-- <entry-point class="org.gwtmultipage.client.EntrypointDispatcher" /> -->
   <entry-point class="com.gwtcx.sample.serendipity.client.entrypoint.EntryPointDispatcher" />
 
   <!-- Device dependent settings -->

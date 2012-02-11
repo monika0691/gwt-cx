@@ -17,7 +17,7 @@ package com.gwtcx.sample.serendipity.client.entrypoint;
 import com.allen_sauer.gwt.log.client.Log;
 import com.gwtcx.client.NameTokens;
 
-public class Serendipity extends MultiPageEntryPoint {
+public class MainPageEntryPoint extends MultiPageEntryPoint {
 
   @Override
   protected void revealCurrentPlace(String page) {
@@ -29,7 +29,6 @@ public class Serendipity extends MultiPageEntryPoint {
     }
   }
 }
-
 
 /*
 

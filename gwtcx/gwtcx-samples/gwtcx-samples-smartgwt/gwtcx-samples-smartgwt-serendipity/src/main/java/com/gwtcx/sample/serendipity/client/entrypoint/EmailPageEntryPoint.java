@@ -18,7 +18,7 @@ import com.allen_sauer.gwt.log.client.Log;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtcx.client.NameTokens;
 
-public class EmailEntryPoint extends MultiPageEntryPoint {
+public class EmailPageEntryPoint extends MultiPageEntryPoint {
 
   @Override
   protected void revealCurrentPlace(String page) {

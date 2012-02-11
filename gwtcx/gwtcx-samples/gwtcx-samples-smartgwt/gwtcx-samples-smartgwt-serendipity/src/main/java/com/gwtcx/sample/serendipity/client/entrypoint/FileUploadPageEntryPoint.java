@@ -15,16 +15,16 @@
 package com.gwtcx.sample.serendipity.client.entrypoint;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.gwtcx.client.NameTokens;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
+import com.gwtcx.client.NameTokens;
 
-public class AccountEntryPoint extends MultiPageEntryPoint {
+public class FileUploadPageEntryPoint extends MultiPageEntryPoint {
 
   @Override
   protected void revealCurrentPlace(String page) {
 
-    if (page.equals(NameTokens.accountPage)) {
-      PlaceRequest placeRequest = new PlaceRequest(NameTokens.accountPage);
+    if (page.equals(NameTokens.fileUploadPage)) {
+      PlaceRequest placeRequest = new PlaceRequest(NameTokens.fileUploadPage);
       getSerendipityGinjector().getPlaceManager().revealPlace(placeRequest);
     } else {
       Log.debug("Page name token: " + page);
