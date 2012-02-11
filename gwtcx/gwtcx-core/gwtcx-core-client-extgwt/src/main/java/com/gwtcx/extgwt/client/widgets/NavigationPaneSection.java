@@ -55,21 +55,18 @@ import com.sencha.gxt.widget.core.client.grid.ColumnModel;
  */
 public class NavigationPaneSection extends ContentPanel {
 
-  // public static final String NAVIGATION_PANE_WIDTH = "100%";
-  // public static final String NAVIGATION_PANE_HEIGHT = "100%";
-
   public static final String URL_PREFIX = GWT.getModuleName() + "/gwtcx/extgwt/" + "data/";
   public static final String FILENAME_EXTENSION = ".xml";
 
-  protected NavigationPaneSectionGrid grid;
+  protected final String filename;
 
+  protected NavigationPaneSectionGrid grid;
   protected RequestBuilder builder;
   protected HttpProxy<ListLoadConfig> proxy;
   protected ListLoader<ListLoadConfig, ListLoadResult<NavigationPaneSectionModel>> loader ;
   protected XmlReader<ListLoadResult<NavigationPaneSectionModel>, NavigationPaneSectionModelCollection> reader;
   protected ListStore<NavigationPaneSectionModel> store;
 
-  protected final String filename;
   protected String dataUrl;
 
   protected static final NavigationPaneSectionModelProperties property = GWT.create(NavigationPaneSectionModelProperties.class);
@@ -101,28 +98,26 @@ public class NavigationPaneSection extends ContentPanel {
 
     this.filename = filename;
 
-    this.builder = new RequestBuilder(RequestBuilder.GET, setDataUrl(URL_PREFIX + getFilename(), FILENAME_EXTENSION));
-
-    this.proxy = new HttpProxy<ListLoadConfig>(builder);
-
-    this.reader = new XmlReader<ListLoadResult<NavigationPaneSectionModel>, NavigationPaneSectionModelCollection>(XmlAutoBeanFactory.instance, NavigationPaneSectionModelCollection.class) {
+    setBuilder(new RequestBuilder(RequestBuilder.GET, setDataUrl(URL_PREFIX + getFilename(), FILENAME_EXTENSION)));
+    setProxy(new HttpProxy<ListLoadConfig>(builder));
+    setReader(new XmlReader<ListLoadResult<NavigationPaneSectionModel>, NavigationPaneSectionModelCollection>(XmlAutoBeanFactory.instance, NavigationPaneSectionModelCollection.class) {
         protected com.sencha.gxt.data.shared.loader.ListLoadResult<NavigationPaneSectionModel> createReturnData(Object loadConfig,
                 NavigationPaneSectionModelCollection records) {
           return new ListLoadResultBean<NavigationPaneSectionModel>(records.getValues());
         };
-    };
+    });
 
-    this.store = new ListStore<NavigationPaneSectionModel>(new ModelKeyProvider<NavigationPaneSectionModel>() {
+    setStore(new ListStore<NavigationPaneSectionModel>(new ModelKeyProvider<NavigationPaneSectionModel>() {
         @Override
         public String getKey(NavigationPaneSectionModel item) {
           // Log.debug("getKey(NavigationPaneSectionModel item): " + item.getName());
           return item.getName();
         }
-    });
+    }));
 
-    this.loader = new ListLoader<ListLoadConfig, ListLoadResult<NavigationPaneSectionModel>>(this.proxy, this.reader);
-    this.loader.useLoadConfig(XmlAutoBeanFactory.instance.create(ListLoadConfig.class).as());
-    this.loader.addLoadHandler(new LoadResultListStoreBinding<ListLoadConfig, NavigationPaneSectionModel, ListLoadResult<NavigationPaneSectionModel>>(this.store));
+    setLoader(new ListLoader<ListLoadConfig, ListLoadResult<NavigationPaneSectionModel>>(getProxy(), getReader()));
+    getLoader().useLoadConfig(XmlAutoBeanFactory.instance.create(ListLoadConfig.class).as());
+    getLoader().addLoadHandler(new LoadResultListStoreBinding<ListLoadConfig, NavigationPaneSectionModel, ListLoadResult<NavigationPaneSectionModel>>(getStore()));
 
     setGrid(new NavigationPaneSectionGrid(store, getColumModel()));
     // getGrid().setSize(NAVIGATION_PANE_WIDTH, NAVIGATION_PANE_HEIGHT);
@@ -148,44 +143,9 @@ public class NavigationPaneSection extends ContentPanel {
      return getGrid().getSelectionModel().getSelectedItem();
   }
 
-  /*
-
-  public String getSelectedRecord() {
-
-    String name = "";
-
-    NavigationPaneSectionModel model = getGrid().getSelectionModel().getSelectedItem();
-
-    if (model != null) {
-      name = model.getName();
-    }
-
-    return name;
-  }
-
-  */
-
-  /*
-
-  public int getSelectedRecord() {
-
-    int rowIndex = -1;
-
-    NavigationPaneSectionModel model = getGrid().getSelectionModel().getSelectedItem();
-
-    if (model != null) {
-      rowIndex = store.indexOf(model);
-    }
-
-    return rowIndex;
-  }
-
-  */
-
   public void selectRecord(int rowIndex) {
     getGrid().getSelectionModel().select(rowIndex, false);
   }
-
 
   public void setGrid(NavigationPaneSectionGrid grid) {
     this.grid = grid;;
@@ -294,6 +254,44 @@ public class NavigationPaneSection extends ContentPanel {
     return ImageCell.makeImage(PlaceholderIcons.INSTANCE.placeholder16());
   }
 }
+
+/*
+
+
+  // public static final String NAVIGATION_PANE_WIDTH = "100%";
+  // public static final String NAVIGATION_PANE_HEIGHT = "100%";
+
+public String getSelectedRecord() {
+
+  String name = "";
+
+  NavigationPaneSectionModel model = getGrid().getSelectionModel().getSelectedItem();
+
+  if (model != null) {
+    name = model.getName();
+  }
+
+  return name;
+}
+
+*/
+
+/*
+
+public int getSelectedRecord() {
+
+  int rowIndex = -1;
+
+  NavigationPaneSectionModel model = getGrid().getSelectionModel().getSelectedItem();
+
+  if (model != null) {
+    rowIndex = store.indexOf(model);
+  }
+
+  return rowIndex;
+}
+
+*/
 
 /*
 

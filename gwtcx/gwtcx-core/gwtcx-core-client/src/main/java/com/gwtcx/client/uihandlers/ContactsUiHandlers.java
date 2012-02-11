@@ -17,5 +17,12 @@ package com.gwtcx.client.uihandlers;
 import com.gwtplatform.mvp.client.UiHandlers;
 
 public interface ContactsUiHandlers extends UiHandlers {
-  // void onRefreshButtonClicked();
+  void onNewButtonClicked();
+  void onExportButtonClicked();
+  void onDeleteButtonClicked(String recordId);
+  void onRefreshButtonClicked();
+  void onResultSetNextButtonClicked();
+  void onResultSetFirstButtonClicked();
+  void onResultSetPreviousButtonClicked();
+  void onRecordDoubleClicked(String recordId);
 }

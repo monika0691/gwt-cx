@@ -30,25 +30,28 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 public abstract class AbstractReportsPresenter<V extends View, Proxy_ extends Proxy<?>> extends
     AbstractPagingPresenter<V, Proxy_> implements ReportsUiHandlers {
 
-  // ReportsRecord.REPORT_FILENAME
+  public static final String DEFAULT_REPORTS_SERVICE_PATH = "reports/";
   public static final String REPORT_FILENAME = "reportFilename";
+
+  private static final String HOST_FILENAME = "reports.html";
+  private static final String FEATURES = "width=760, height=480, location=no";
 
   @Inject
   public AbstractReportsPresenter(EventBus eventBus, V view, Proxy_ proxy,
       DispatchAsync dispatcher, PlaceManager placeManager) {
     super(eventBus, view, proxy, dispatcher, placeManager);
 
-    // getView().setUiHandlers(this);
+    Log.warn("AbstractReportsPresenter()");
   }
+
+  /*
 
   @Override
   protected void revealInParent() {
-
     Log.warn("Don't forget to @Override revealInParent()");
-
-    // For example:
-    // RevealContentEvent.fire(this, MainPagePresenter.TYPE_SetContextAreaContent, this);
   }
+
+  */
 
   @Override
   protected void retrieveResultSet() { }
@@ -75,11 +78,6 @@ public abstract class AbstractReportsPresenter<V extends View, Proxy_ extends Pr
     super.refreshButtonClicked();
   }
 
-  public static final String DEFAULT_REPORTS_SERVICE_PATH = "reports/";
-  private static final String HOST_FILENAME = "Reports.html";
-  private static final String NAME = "_blank";
-  private static final String FEATURES = "width=760, height=480, location=no";
-
   public void onRecordDoubleClicked(String reportFilename) {
 
     StringBuilder url = new StringBuilder();
@@ -90,9 +88,7 @@ public abstract class AbstractReportsPresenter<V extends View, Proxy_ extends Pr
     url.append("=");
     String arg0Value = URL.encodeQueryString(reportFilename);
     url.append(arg0Value);
-    // url.append(encodeBase64(arg0Value));
 
-    // Log.debug("Window.open() RelativeURL: " + Serendipity.getRelativeURL(url.toString()));
     Window.open(GwtCxEntryPoint.getRelativeURL(url.toString()), NAME, FEATURES);
   }
 }

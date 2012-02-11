@@ -20,40 +20,42 @@ public class ContactsDto  implements Serializable {
 
   private static final long serialVersionUID = -239301601506762909L;
 
-  private String contactId;
+  private String id;
   private String fullName;
   private String parentCustomer;
-  private String location;  // private String city;
+  private String city;
+  private String location;
   private String phone;
   private String businessPhone;
   private String email;
 
   public ContactsDto() {
-    this.contactId = "-1";
+    this.id = "-1";
   }
 
-  public ContactsDto(String contactId) {
-    this.contactId = contactId;
+  public ContactsDto(String id) {
+    this.id = id;
   }
 
-  public ContactsDto(String contactId, String fullName, String parentCustomer,
+  public ContactsDto(String id, String fullName, String parentCustomer, String city,
       String location, String phone, String businessPhone, String email) {
 
-    this.contactId = contactId;
+    this.id = id;
     this.fullName = fullName;
     this.parentCustomer = parentCustomer;
+    this.city = city;
     this.location = location;
     this.phone = phone;
     this.businessPhone = businessPhone;
     this.email = email;
   }
 
-  public String getContactId() {
-    return contactId;
+  public String getId() {
+    return id;
   }
 
-  public void setContactId(String contactId) {
-    this.contactId = contactId;
+  public void setId(String id) {
+    this.id = id;
   }
 
   public String getFullName() {
@@ -70,6 +72,14 @@ public class ContactsDto  implements Serializable {
 
   public void setParentCustomer(String parentCustomer) {
     this.parentCustomer = parentCustomer;
+  }
+
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
   }
 
   public String getLocation() {
@@ -107,12 +117,14 @@ public class ContactsDto  implements Serializable {
   @Override
   public String toString() {
     StringBuilder builder = new StringBuilder();
-    builder.append("ContactsDto [contactId=");
-    builder.append(contactId);
+    builder.append("ContactsDto [id=");
+    builder.append(id);
     builder.append(", fullName=");
     builder.append(fullName);
     builder.append(", parentCustomer=");
     builder.append(parentCustomer);
+    builder.append(", city=");
+    builder.append(city);
     builder.append(", location=");
     builder.append(location);
     builder.append(", phone=");
@@ -129,7 +141,7 @@ public class ContactsDto  implements Serializable {
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
+    result = prime * result + ((id == null) ? 0 : id.hashCode());
     return result;
   }
 
@@ -147,10 +159,10 @@ public class ContactsDto  implements Serializable {
             return false;
     } else if (!businessPhone.equals(other.businessPhone))
         return false;
-    if (contactId == null) {
-        if (other.contactId != null)
+    if (city == null) {
+        if (other.city != null)
             return false;
-    } else if (!contactId.equals(other.contactId))
+    } else if (!city.equals(other.city))
         return false;
     if (email == null) {
         if (other.email != null)
@@ -161,6 +173,11 @@ public class ContactsDto  implements Serializable {
         if (other.fullName != null)
             return false;
     } else if (!fullName.equals(other.fullName))
+        return false;
+    if (id == null) {
+        if (other.id != null)
+            return false;
+    } else if (!id.equals(other.id))
         return false;
     if (location == null) {
         if (other.location != null)

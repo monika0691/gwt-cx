@@ -14,19 +14,11 @@
 
 package com.gwtcx.server.gae.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-import com.google.appengine.api.datastore.Key;
-
 /**
- * AbstractParty
+ * Party
  *
  * JPA defines entities called "mapped superclasses" for the situation where you
  * don't persist an actual object of a superclass type but that all subclasses of
@@ -38,7 +30,7 @@ import com.google.appengine.api.datastore.Key;
  */
 @Entity
 @MappedSuperclass
-public abstract class AbstractParty {
+public class Party extends DatastoreEntity {
 
   // @DiscriminatorColumn(name = EntityTokens.PARTY_TYPE_COLUMN, discriminatorType = DiscriminatorType.STRING, length = 1)
   // @DiscriminatorValue(value = EntityTokens.PARTY_TABLE_DISCRIMINATOR_VALUE)
@@ -53,31 +45,6 @@ public abstract class AbstractParty {
      private String abbreviation;
   }
 
-  @Id
-  @Column(name = EntityTokens.PARTY_KEY_COLUMN)
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  protected Key partyKey;
-
-  @Column(name = EntityTokens.PARTY_TYPE_COLUMN)
-  @Enumerated(EnumType.STRING)
-  protected String partyType;
-
-
-  public Key getPartyKey() {
-    return partyKey;
-  }
-
-  public void setPartyKey(Key partyKey) {
-    this.partyKey = partyKey;
-  }
-
-  public String getPartyType() {
-    return partyType;
-  }
-
-  public void setPartyType(String partyType) {
-    this.partyType = partyType;
-  }
 }
 
 /*

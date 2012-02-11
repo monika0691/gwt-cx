@@ -14,23 +14,23 @@
 
 package com.gwtcx.extgwt.client.data;
 
-import com.gwtcx.shared.dto.AccountsDto;
+import com.gwtcx.shared.dto.ContactsDto;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 
 /**
- * AccountsDtoListStore
+ * ContactsDtoListStore
  */
-public class AccountsDtoListStore extends ListStore<AccountsDto> {
+public class ContactsDtoListStore extends ListStore<ContactsDto> {
 
-  public static ModelKeyProvider<AccountsDto> KP = new ModelKeyProvider<AccountsDto>() {
+  public static ModelKeyProvider<ContactsDto> KP = new ModelKeyProvider<ContactsDto>() {
     @Override
-    public String getKey(AccountsDto item) {
+    public String getKey(ContactsDto item) {
       return item.getId();
     }
   };
 
-  public AccountsDtoListStore() {
+  public ContactsDtoListStore() {
     super(KP);
   }
 }

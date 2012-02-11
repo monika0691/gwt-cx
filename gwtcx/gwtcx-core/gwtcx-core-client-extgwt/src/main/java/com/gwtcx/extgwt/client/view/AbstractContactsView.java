@@ -19,13 +19,13 @@ import java.util.List;
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
 import com.gwtcx.client.resources.ToolBarIcons;
-import com.gwtcx.client.uihandlers.AccountsUiHandlers;
+import com.gwtcx.client.uihandlers.ContactsUiHandlers;
 import com.gwtcx.client.util.I18nUtil;
-import com.gwtcx.shared.dto.AccountsDto;
+import com.gwtcx.shared.dto.ContactsDto;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.sencha.gxt.widget.core.client.event.RowDoubleClickEvent;
-import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.RowDoubleClickEvent.RowDoubleClickHandler;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
@@ -33,20 +33,13 @@ import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
 /**
  * AbstractAccountsView
  */
-public abstract class AbstractAccountsView<C extends UiHandlers> extends AbstractPagingView<C> {
-
-  // protected String id;
+public abstract class AbstractContactsView<C extends UiHandlers> extends AbstractPagingView<C> {
 
   @Inject
-  public AbstractAccountsView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Grid<?> grid) {
+  public AbstractContactsView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Grid<?> grid) {
     super(toolBar, grid);
 
-    // id = new String("-1");
-  }
-
-  public void resetAndFocus() {
-
-    Log.debug("resetAndFocus()");
+    Log.debug("AbstractContactsView()");
   }
 
   @Override
@@ -60,12 +53,12 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
       @Override
       public void onRowDoubleClick(RowDoubleClickEvent event) {
 
-        AccountsDto dto = (AccountsDto) getGrid().getStore().get(event.getRowIndex());
+        ContactsDto dto = (ContactsDto) getGrid().getStore().get(event.getRowIndex());
         assert dto != null;
 
         if (getUiHandlers() != null) {
-          assert getUiHandlers() instanceof AccountsUiHandlers;
-          ((AccountsUiHandlers) getUiHandlers()).onRecordDoubleClicked(dto.getId());
+          assert getUiHandlers() instanceof ContactsUiHandlers;
+          ((ContactsUiHandlers) getUiHandlers()).onRecordDoubleClicked(dto.getId());
         }
 
         Log.debug("id = " + dto.getId());
@@ -76,24 +69,24 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
     initStatusBar();
   }
 
-  public void setResultSet(List<AccountsDto> resultSet) {
+  public void setResultSet(List<ContactsDto> resultSet) {
     // resultSet == null when there are no items in the table
     // if (resultSet != null) {
-    //   ((AccountsContextAreaListGrid) getListGrid()).setResultSet(resultSet);
+    //   ((ContactsContextAreaGrid) getGrid()).setResultSet(resultSet);
     // }
   }
 
   @Override
   protected void initToolBar() {
 
-    ToolTipConfig config = getToolBar().createToolTipConfig(I18nUtil.getConstant().newButton(), "Create a new Account");
+    ToolTipConfig config = getToolBar().createToolTipConfig(I18nUtil.getConstant().newButton(), "Create a new Contact");
 
     getToolBar().addTextButton(ToolBarIcons.INSTANCE.newAccount(), I18nUtil.getConstant().newButton(), config, new SelectHandler() {
     @Override
       public void onSelect(SelectEvent event) {
         if (getUiHandlers() != null) {
-          assert getUiHandlers() instanceof AccountsUiHandlers;
-          ((AccountsUiHandlers) getUiHandlers()).onNewButtonClicked();
+          assert getUiHandlers() instanceof ContactsUiHandlers;
+          ((ContactsUiHandlers) getUiHandlers()).onNewButtonClicked();
         }
       }
     });
@@ -122,44 +115,5 @@ public abstract class AbstractAccountsView<C extends UiHandlers> extends Abstrac
   @Override
   protected void initStatusBar() {
 
-    /*
-
-    // "0 of 50 selected"
-    // statusBar.getSelectedLabel().setContents(I18nUtil.getConstant().selectedLabel());
-
-    getStatusBar().getResultSetFirstButton().addClickHandler(new ClickHandler() {
-      public void onClick(ClickEvent event) {
-        if (getUiHandlers() != null) {
-          assert getUiHandlers() instanceof AccountsUiHandlers;
-          ((AccountsUiHandlers) getUiHandlers()).onResultSetFirstButtonClicked();
-        }
-      }
-    });
-
-    getStatusBar().getResultSetPreviousButton().addClickHandler(new ClickHandler() {
-      public void onClick(ClickEvent event) {
-        if (getUiHandlers() != null) {
-          assert getUiHandlers() instanceof AccountsUiHandlers;
-          ((AccountsUiHandlers) getUiHandlers()).onResultSetPreviousButtonClicked();
-        }
-      }
-    });
-
-    // "Page 1"
-    // statusBar.getPageNumberLabel().setContents(I18nUtil.getConstant().pageNumberLabel());
-
-    getStatusBar().getResultSetNextButton().addClickHandler(new ClickHandler() {
-      public void onClick(ClickEvent event) {
-        if (getUiHandlers() != null) {
-          assert getUiHandlers() instanceof AccountsUiHandlers;
-          ((AccountsUiHandlers) getUiHandlers()).onResultSetNextButtonClicked();
-        }
-      }
-    });
-
-    */
   }
 }
-
-// Info.display("Click", ((TextButton) event.getSource()).getText() + " clicked");
-

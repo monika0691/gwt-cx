@@ -23,6 +23,7 @@ import com.gwtcx.sample.serendipity.client.presenter.AccountsPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.ActivitiesPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.AdministrationPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.CalendarPresenter;
+import com.gwtcx.sample.serendipity.client.presenter.ContactsPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.DashboardsPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.DataManagementPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.ErrorPagePresenter;
@@ -52,6 +53,7 @@ public interface SerendipityGinjector extends Ginjector {
   AsyncProvider<DashboardsPresenter> getDashboardsPresenter();
   AsyncProvider<ImportsPresenter> getImportsPresenter();
   AsyncProvider<AccountsPresenter> getAccountsPresenter();
+  AsyncProvider<ContactsPresenter> getContactsPresenter();
 
   AsyncProvider<ReportsPresenter> getReportsPresenter();
 

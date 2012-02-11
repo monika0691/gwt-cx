@@ -20,7 +20,7 @@ public class AccountsDto implements Serializable {
 
   private static final long serialVersionUID = 7749630501976551263L;
 
-  private String accountId;
+  private String id;
   private String accountName;
   // private String accountNumber;
   private String mainPhone;
@@ -29,17 +29,17 @@ public class AccountsDto implements Serializable {
   private String emailPrimaryContact;
 
   public AccountsDto() {
-    this.accountId = "-1";
+    this.id = "-1";
   }
 
-  public AccountsDto(String accountId) {
-    this.accountId = accountId;
+  public AccountsDto(String id) {
+    this.id = id;
   }
 
-  public AccountsDto(String accountId, String accountName, String mainPhone,
+  public AccountsDto(String id, String accountName, String mainPhone,
       String location, String primaryContact, String emailPrimaryContact) {
 
-    this.accountId = accountId;
+    this.id = id;
     this.accountName = accountName;
     this.mainPhone = mainPhone;
     this.location = location;
@@ -47,12 +47,12 @@ public class AccountsDto implements Serializable {
     this.emailPrimaryContact = emailPrimaryContact;
   }
 
-  public String getAccountId() {
-    return accountId;
+  public String getId() {
+    return id;
   }
 
-  public void setAccountId(String accountId) {
-    this.accountId = accountId;
+  public void setId(String id) {
+    this.id = id;
   }
 
   // public void setAccountId(String accountId) {
@@ -103,7 +103,7 @@ public class AccountsDto implements Serializable {
   public String toString() {
     StringBuilder builder = new StringBuilder();
     builder.append("AccountsDto [accountId=");
-    builder.append(accountId);
+    builder.append(id);
     builder.append(", accountName=");
     builder.append(accountName);
     builder.append(", mainPhone=");
@@ -135,10 +135,10 @@ public class AccountsDto implements Serializable {
     if (!(obj instanceof AccountsDto))
       return false;
     AccountsDto other = (AccountsDto) obj;
-    if (accountId == null) {
-      if (other.accountId != null)
+    if (id == null) {
+      if (other.id != null)
         return false;
-    } else if (!accountId.equals(other.accountId))
+    } else if (!id.equals(other.id))
       return false;
     if (accountName == null) {
       if (other.accountName != null)

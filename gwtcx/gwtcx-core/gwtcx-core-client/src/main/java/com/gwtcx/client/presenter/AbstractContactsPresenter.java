@@ -17,24 +17,24 @@ package com.gwtcx.client.presenter;
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtcx.client.uihandlers.ActivitiesUiHandlers;
+import com.gwtcx.client.uihandlers.AccountsUiHandlers;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 
-public abstract class AbstractActivitiesPresenter<V extends View, Proxy_ extends Proxy<?>> extends
-    AbstractPagingPresenter<V, Proxy_> implements ActivitiesUiHandlers {
+public abstract class AbstractContactsPresenter<V extends View, Proxy_ extends Proxy<?>> extends
+    AbstractPagingPresenter<V, Proxy_> implements AccountsUiHandlers {
 
   private static final String HOST_FILENAME = "contact.html";
   // private static final String FEATURES = "width=880, height=540, location=no";
 
   @Inject
-  public AbstractActivitiesPresenter(EventBus eventBus, V view, Proxy_ proxy,
+  public AbstractContactsPresenter(EventBus eventBus, V view, Proxy_ proxy,
       DispatchAsync dispatcher, PlaceManager placeManager) {
     super(eventBus, view, proxy, dispatcher, placeManager);
 
-    Log.warn("AbstractActivitiesPresenter()");
+    Log.warn("AbstractContactsPresenter()");
   }
 
   /*
@@ -59,10 +59,6 @@ public abstract class AbstractActivitiesPresenter<V extends View, Proxy_ extends
 
   public void onResultSetNextButtonClicked() {
     super.resultSetNextButtonClicked();
-  }
-
-  public static void newActivity() {
-    // openHostFile(HOST_FILENAME, NEW, "0", FEATURES);
   }
 
   public void onNewButtonClicked() {

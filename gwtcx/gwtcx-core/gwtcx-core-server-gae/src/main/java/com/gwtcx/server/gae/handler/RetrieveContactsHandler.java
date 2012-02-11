@@ -77,9 +77,9 @@ public class RetrieveContactsHandler implements
    */
   private ContactsDto toDto(Contact contact) {
 
-    String key = KeyFactory.keyToString(contact.getPartyKey());
+    String key = KeyFactory.keyToString(contact.getKey());
 
-    return new ContactsDto(key, contact.getFullName(), "parentCustomer", "location", "phone", "businessPhone", "email");
+    return new ContactsDto(key, contact.getFullName(), "parentCustomer", "city", "location", "phone", "businessPhone", "email");
   }
 
   @Override

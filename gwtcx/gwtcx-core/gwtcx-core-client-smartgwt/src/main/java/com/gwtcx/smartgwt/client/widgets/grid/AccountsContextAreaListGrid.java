@@ -83,7 +83,7 @@ public class AccountsContextAreaListGrid extends ContextAreaListGrid {
   }
 
   private AccountsRecord createAccountsRecord(AccountsDto accountsDto) {
-    return new AccountsRecord(ACCOUNT_ICON, accountsDto.getAccountId(), accountsDto.getAccountName(), accountsDto.getMainPhone(),
+    return new AccountsRecord(ACCOUNT_ICON, accountsDto.getId(), accountsDto.getAccountName(), accountsDto.getMainPhone(),
         accountsDto.getLocation(), accountsDto.getPrimaryContact(), accountsDto.getEmailPrimaryContact());
   }
 }
