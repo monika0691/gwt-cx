@@ -26,6 +26,7 @@ public class NameTokens {
   public static final String errorPage = "ErrorPage";
 
   public static final String accountPage = "AccountPage";
+  public static final String contactPage = "ContactPage";
   public static final String fileUploadPage = "FileUploadPage";
   public static final String taskPage = "TaskPage";
   public static final String emailPage = "EmailPage";

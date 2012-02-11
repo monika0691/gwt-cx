@@ -33,7 +33,7 @@ import com.gwtcx.extgwt.client.widgets.NavigationPaneSection;
 import com.gwtcx.extgwt.client.widgets.ResourceCentreNavigationPaneSection;
 import com.gwtcx.extgwt.client.widgets.SalesNavigationPaneSection;
 import com.gwtcx.extgwt.client.widgets.SettingsNavigationPaneSection;
-import com.gwtcx.sample.serendipity.client.entrypoint.Serendipity;
+import com.gwtcx.sample.serendipity.client.entrypoint.MainPageEntryPoint;
 import com.gwtcx.sample.serendipity.client.presenter.MainPagePresenter;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance;
@@ -117,15 +117,15 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
 
     Log.debug("initApplicationMenu()");
 
-    getApplicationMenu().addMenu(Serendipity.getConstant().newActivityMenuName(),
+    getApplicationMenu().addMenu(MainPageEntryPoint.getConstant().newActivityMenuName(),
         ExtGwtCx.getConstant().newActivityMenuItemNames(),
       new NewActivitySelectionHandler());
 
-    getApplicationMenu().addMenu(Serendipity.getConstant().newRecordMenuName(),
+    getApplicationMenu().addMenu(MainPageEntryPoint.getConstant().newRecordMenuName(),
         ExtGwtCx.getConstant().newRecordMenuItemNames(),
       new NewActivitySelectionHandler());
 
-    Menu goToMenu = getApplicationMenu().addMenu(Serendipity.getConstant().goToMenuName());
+    Menu goToMenu = getApplicationMenu().addMenu(MainPageEntryPoint.getConstant().goToMenuName());
     getApplicationMenu().addSubMenu(goToMenu, ExtGwtCx.getConstant().salesMenuItemName(),
         ExtGwtCx.getConstant().salesMenuItemNames(),
       new GoToSelectionHandler());
@@ -136,11 +136,11 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
         ExtGwtCx.getConstant().resourceCentreMenuItemNames(),
       new GoToSelectionHandler());
 
-    getApplicationMenu().addMenu(Serendipity.getConstant().toolsMenuName(),
+    getApplicationMenu().addMenu(MainPageEntryPoint.getConstant().toolsMenuName(),
         ExtGwtCx.getConstant().toolsMenuItemNames(),
       new NewActivitySelectionHandler());
 
-    getApplicationMenu().addMenu(Serendipity.getConstant().helpMenuName(),
+    getApplicationMenu().addMenu(MainPageEntryPoint.getConstant().helpMenuName(),
         ExtGwtCx.getConstant().helpMenuItemNames(),
       new NewActivitySelectionHandler());
   }

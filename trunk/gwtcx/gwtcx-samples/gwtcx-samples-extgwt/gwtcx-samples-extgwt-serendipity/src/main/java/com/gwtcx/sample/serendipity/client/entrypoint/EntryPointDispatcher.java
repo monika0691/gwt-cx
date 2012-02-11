@@ -43,12 +43,8 @@ public class EntryPointDispatcher implements EntryPoint {
         MultiPageEntryPoint entrypoint = (MultiPageEntryPoint) GWT.create(AccountPageEntryPoint.class);
         entrypoint.onModuleLoad();
       }
-      else if (page.equals(NameTokens.emailPage)) {
-        MultiPageEntryPoint entrypoint = (MultiPageEntryPoint) GWT.create(EmailPageEntryPoint.class);
-        entrypoint.onModuleLoad();
-      }
-      else if (page.equals(NameTokens.fileUploadPage)) {
-        MultiPageEntryPoint entrypoint = (MultiPageEntryPoint) GWT.create(FileUploadPageEntryPoint.class);
+      else if (page.equals(NameTokens.contactPage)) {
+        MultiPageEntryPoint entrypoint = (MultiPageEntryPoint) GWT.create(ContactPageEntryPoint.class);
         entrypoint.onModuleLoad();
       }
     } catch (Exception e) {

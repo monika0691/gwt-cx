@@ -29,7 +29,7 @@
   <!-- <inherits name="com.allen_sauer.gwt.log.gwt-log-OFF" /> -->
 
   <!-- The entry point class -->
-  <entry-point class="com.gwtcx.sample.serendipity.client.entrypoint.Serendipity" />
+  <entry-point class="com.gwtcx.sample.serendipity.client.entrypoint.EntryPointDispatcher" />
 
   <!-- Device dependent settings -->
   <replace-with class="com.gwtcx.sample.serendipity.client.gin.DesktopGinjectorProvider">
