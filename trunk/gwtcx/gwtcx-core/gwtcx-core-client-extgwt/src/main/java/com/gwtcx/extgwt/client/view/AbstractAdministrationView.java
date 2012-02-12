@@ -27,8 +27,6 @@ import com.gwtplatform.mvp.client.UiHandlers;
  */
 public abstract class AbstractAdministrationView<C extends UiHandlers> extends AbstractSettingsView<C> {
 
-  public static final String FILENAME = "Administration";
-
   @Inject
   public AbstractAdministrationView(String filename) {
     super(filename);

@@ -98,7 +98,7 @@ public class AccountPageView extends ViewWithUiHandlers<AccountPageUiHandlers> i
   }
 
   private void initNavigationPane() {
-    navigationPane.addSection(I18nUtil.getConstant().accountDetailsStackSectionName(),
+    navigationPane.addSection(I18nUtil.getConstant().accountDetailsNavigationPaneSectionName(),
         AccountDetailsNpsDataSource.getInstance());
   }
 

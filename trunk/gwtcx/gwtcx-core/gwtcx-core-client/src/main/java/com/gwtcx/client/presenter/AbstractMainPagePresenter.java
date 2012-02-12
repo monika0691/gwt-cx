@@ -14,7 +14,6 @@
 
 package com.gwtcx.client.presenter;
 
-// import com.google.gwt.event.shared.EventBus;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.MainPageUiHandlers;
@@ -25,58 +24,20 @@ import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
 
-public abstract class AbstractMainPagePresenter<V extends View, Proxy_ extends Proxy<?>> extends Presenter<V, Proxy_> implements MainPageUiHandlers {
+public abstract class AbstractMainPagePresenter<V extends View, Proxy_ extends Proxy<?>> extends Presenter<V, Proxy_> implements
+    MainPageUiHandlers {
 
   private final PlaceManager placeManager;
-
-  // public static NavigationPaneHeader navigationPaneHeader = null;
-  // public static NavigationPane navigationPane = null;
 
   @Inject
   public AbstractMainPagePresenter(EventBus eventBus, V view, Proxy_ proxy, PlaceManager placeManager) {
     super(eventBus, view, proxy);
 
-    // getView().setUiHandlers(this);
-
     this.placeManager = placeManager;
-
-    // MainPagePresenter.navigationPaneHeader = getView().getNavigationPaneHeader();
-    // MainPagePresenter.navigationPane = getView().getNavigationPane();
-  }
-
-  @Override
-  protected void onBind() {
-    super.onBind();
-
-    // Log.debug("onBind()");
-
-    // expand the first Navigation Pane section
-    // getView().getNavigationPane().expandSection(I18nUtil.getConstant().salesStackSectionName());
-
-    // reveal the first nested Presenter
-    // PlaceRequest placRequest = new PlaceRequest(NameTokens.activities);
-    // placeManager.revealPlace(placRequest);
-  }
-
-  @Override
-  protected void onReveal() {
-    super.onReveal();
-
-    // Log.debug("onReveal()");
-  }
-
-  @Override
-  protected void onReset() {
-    super.onReset();
-
-    // Log.debug("onReset()");
   }
 
   @Override
   protected void revealInParent() {
-
-    // Log.debug("revealInParent()");
-
     RevealRootContentEvent.fire(this, this);
   }
 
@@ -110,16 +71,4 @@ public abstract class AbstractMainPagePresenter<V extends View, Proxy_ extends P
   public PlaceManager getPlaceManager() {
     return placeManager;
   }
-
-  /*
-
-  public static NavigationPaneHeader getNavigationPaneHeader() {
-    return navigationPaneHeader;
-  }
-
-  public static NavigationPane getNavigationPane() {
-    return navigationPane;
-  }
-
-  */
 }

@@ -24,7 +24,7 @@ public class DataManagementView extends AbstractDataManagementView<DataManagemen
 
   @Inject
   public DataManagementView() {
-    super(FILENAME);
+    super(DATA_MANAGEMENT_FILENAME);
   }
 
   @Override

@@ -23,8 +23,6 @@ import com.gwtplatform.mvp.client.UiHandlers;
  */
 public abstract class AbstractDataManagementView<C extends UiHandlers> extends AbstractSettingsView<C> {
 
-  public static final String FILENAME = "DataManagement";
-
   @Inject
   public AbstractDataManagementView(String filename) {
     super(filename);

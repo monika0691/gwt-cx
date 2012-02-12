@@ -78,4 +78,18 @@ public interface NavigationPaneIcons extends ClientBundle {
   @Source(urlPrefix + "settings.png")
   ImageResource settings();
 
+  // Contacts
+
+  @Source(urlPrefix + "information.png")
+  ImageResource information();
+
+  @Source(urlPrefix + "moreaddresses.png")
+  ImageResource moreAddresses();
+
+  @Source(urlPrefix + "history.png")
+  ImageResource history();
+
+  @Source(urlPrefix + "relationships.png")
+  ImageResource relationships();
+
 }
