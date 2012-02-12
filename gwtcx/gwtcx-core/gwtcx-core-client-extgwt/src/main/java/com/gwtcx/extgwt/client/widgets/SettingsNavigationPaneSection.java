@@ -28,7 +28,7 @@ public class SettingsNavigationPaneSection extends NavigationPaneSection {
 
     Log.debug("SettingsNavigationPaneSection()");
 
-    this.setHeadingText(I18nUtil.getConstant().settingsStackSectionName());
+    this.setHeadingText(I18nUtil.getConstant().settingsNavigationPaneSectionName());
   }
 
   @Override
@@ -37,9 +37,9 @@ public class SettingsNavigationPaneSection extends NavigationPaneSection {
     if ("administration".equalsIgnoreCase(data)) {
       return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.administration());
     } else if ("templates".equalsIgnoreCase(data)) {
-      return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.templates());
+        return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.templates());
     } else if ("datamanagement".equalsIgnoreCase(data)) {
-      return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.dataManagement());
+        return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.dataManagement());
     } else {
       return ImageCell.makeImage(PlaceholderIcons.INSTANCE.placeholder16());
     }

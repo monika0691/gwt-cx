@@ -17,14 +17,14 @@ package com.gwtcx.client.presenter;
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtcx.client.uihandlers.AccountsUiHandlers;
+import com.gwtcx.client.uihandlers.ContactsUiHandlers;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 
 public abstract class AbstractContactsPresenter<V extends View, Proxy_ extends Proxy<?>> extends
-    AbstractPagingPresenter<V, Proxy_> implements AccountsUiHandlers {
+    AbstractPagingPresenter<V, Proxy_> implements ContactsUiHandlers {
 
   private static final String HOST_FILENAME = "contact.html";
   // private static final String FEATURES = "width=880, height=540, location=no";

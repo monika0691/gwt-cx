@@ -48,7 +48,7 @@
         </container:west>
         <container:center layoutData="{centerData}">
 
-          <gxt:ContentPanel ui:field="centerPanel" appearance="{contentPanelAppearance}" headingText="Dashboards" bodyBorder="false" />
+          <gxt:ContentPanel ui:field="centerPanel" appearance="{contentPanelAppearance}" headingText="Details" bodyBorder="false" />
 
         </container:center>
       </container:BorderLayoutContainer>

@@ -28,9 +28,18 @@ import com.sencha.gxt.widget.core.client.container.AccordionLayoutContainer;
  */
 public class NavigationPane extends AccordionLayoutContainer {
 
-  public static final String SALES_FILENAME = "Sales";
-  public static final String SETTINGS_FILENAME = "Settings";
-  public static final String RESOURCE_CENTRE_FILENAME = "ResourceCentre";
+  //
+  // Main Page Navigation Pane sections
+  //
+  public static final String SALES_FILENAME = "sales";
+  public static final String SETTINGS_FILENAME = "settings";
+  public static final String RESOURCE_CENTRE_FILENAME = "resource_centre";
+
+  //
+  // Entity Navigation Pane sections
+  //
+  public static final String ACCOUNT_DETAILS_FILENAME = "account_details";
+  public static final String CONTACT_DETAILS_FILENAME = "contact_details";
 
   NavigationPane() {
     super();
@@ -41,7 +50,6 @@ public class NavigationPane extends AccordionLayoutContainer {
   public NavigationPaneSection addSection(NavigationPaneSection section) {
 
     section.setAnimCollapse(false);
-    // section.setHeadingText(sectionName);
     this.add(section);
     this.setWidget(section);
 

@@ -28,7 +28,7 @@ public class SalesNavigationPaneSection extends NavigationPaneSection {
 
     Log.debug("SalesNavigationPaneSection()");
 
-    this.setHeadingText(I18nUtil.getConstant().salesStackSectionName());
+    this.setHeadingText(I18nUtil.getConstant().salesNavigationPaneSectionName());
   }
 
   @Override
@@ -37,7 +37,7 @@ public class SalesNavigationPaneSection extends NavigationPaneSection {
     if ("activities".equalsIgnoreCase(data)) {
       return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.activities());
     } else if ("calendar".equalsIgnoreCase(data)) {
-      return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.calendar());
+        return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.calendar());
     } else if ("dashboards".equalsIgnoreCase(data)) {
         return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.dashboards());
     } else if ("imports".equalsIgnoreCase(data)) {

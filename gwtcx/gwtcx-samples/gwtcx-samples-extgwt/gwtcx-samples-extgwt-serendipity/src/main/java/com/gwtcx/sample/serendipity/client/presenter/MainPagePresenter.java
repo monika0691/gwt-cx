@@ -90,9 +90,6 @@ public class MainPagePresenter extends
         displayName = event.getDisplayName();
 
         selectTimer.schedule(delayMillis);
-
-        // getNavigationPane().selectRecord(event.getName());
-        // getNavigationPaneHeader().setHeadingText(event.getDisplayName());
       }
     });
   }

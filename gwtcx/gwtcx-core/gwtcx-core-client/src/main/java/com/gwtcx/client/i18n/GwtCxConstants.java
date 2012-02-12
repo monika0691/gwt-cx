@@ -121,18 +121,21 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   // Navigation Pane
 
   @DefaultStringValue("Sales")
-  String salesStackSectionName();
+  String salesNavigationPaneSectionName();
 
   @DefaultStringValue("Settings")
-  String settingsStackSectionName();
+  String settingsNavigationPaneSectionName();
 
   @DefaultStringValue("Resource Centre")
-  String resourceCentreStackSectionName();
+  String resourceCentreNavigationPaneSectionName();
 
   // Entity Navigation Pane
 
   @DefaultStringValue("Details")
-  String accountDetailsStackSectionName();
+  String accountDetailsNavigationPaneSectionName();
+
+  @DefaultStringValue("Details")
+  String contactDetailsNavigationPaneSectionName();
 
   // ToolBar
 
@@ -170,6 +173,9 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
 
   // Entity ToolBar
 
+
+  // @DefaultStringValue("Save")
+  // String saveButton();
   @DefaultStringValue("Save and Close")
   String saveAndCloseButton();
 

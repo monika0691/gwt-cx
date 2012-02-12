@@ -107,11 +107,11 @@ public class MainPageView extends AbstractMainPageView<MainPageUiHandlers> imple
 
     Log.debug("initNavigationPane()");
 
-    getNavigationPane().addSection(SmartGwtCx.getConstant().salesStackSectionName(),
+    getNavigationPane().addSection(SmartGwtCx.getConstant().salesNavigationPaneSectionName(),
         SalesNpsDataSource.getInstance());
-    getNavigationPane().addSection(SmartGwtCx.getConstant().settingsStackSectionName(),
+    getNavigationPane().addSection(SmartGwtCx.getConstant().settingsNavigationPaneSectionName(),
         SettingsNpsDataSource.getInstance());
-    getNavigationPane().addSection(SmartGwtCx.getConstant().resourceCentreStackSectionName(),
+    getNavigationPane().addSection(SmartGwtCx.getConstant().resourceCentreNavigationPaneSectionName(),
         ResourceCentreNpsDataSource.getInstance());
 
     getNavigationPane().addSectionHeaderClickHandler(new SectionHeaderClickHandler() {
@@ -123,10 +123,10 @@ public class MainPageView extends AbstractMainPageView<MainPageUiHandlers> imple
         // If there is no selected record (e.g. the data hasn't finished loading)
         // then getSelectedRecord() will return an empty string.
         if (name.isEmpty()) {
-          if (section.getTitle().equals(SmartGwtCx.getConstant().settingsStackSectionName())) {
+          if (section.getTitle().equals(SmartGwtCx.getConstant().settingsNavigationPaneSectionName())) {
             // default to the first item e.g. "Administration" in Settings
             name = SettingsNpsDataSource.DEFAULT_RECORD_NAME;
-          } else if (section.getTitle().equals(SmartGwtCx.getConstant().resourceCentreStackSectionName())) {
+          } else if (section.getTitle().equals(SmartGwtCx.getConstant().resourceCentreNavigationPaneSectionName())) {
             // default to the first item e.g. "Highlights" in Resource Centre
             name = ResourceCentreNpsDataSource.DEFAULT_RECORD_NAME;
           }
@@ -138,7 +138,7 @@ public class MainPageView extends AbstractMainPageView<MainPageUiHandlers> imple
       }
     });
 
-    getNavigationPane().addRecordClickHandler(SmartGwtCx.getConstant().salesStackSectionName(),
+    getNavigationPane().addRecordClickHandler(SmartGwtCx.getConstant().salesNavigationPaneSectionName(),
         new RecordClickHandler() {
       @Override
       public void onRecordClick(RecordClickEvent event) {
@@ -146,7 +146,7 @@ public class MainPageView extends AbstractMainPageView<MainPageUiHandlers> imple
       }
     });
 
-    getNavigationPane().addRecordClickHandler(SmartGwtCx.getConstant().settingsStackSectionName(),
+    getNavigationPane().addRecordClickHandler(SmartGwtCx.getConstant().settingsNavigationPaneSectionName(),
         new RecordClickHandler() {
       @Override
       public void onRecordClick(RecordClickEvent event) {
@@ -154,7 +154,7 @@ public class MainPageView extends AbstractMainPageView<MainPageUiHandlers> imple
       }
     });
 
-    getNavigationPane().addRecordClickHandler(SmartGwtCx.getConstant().resourceCentreStackSectionName(),
+    getNavigationPane().addRecordClickHandler(SmartGwtCx.getConstant().resourceCentreNavigationPaneSectionName(),
         new RecordClickHandler() {
       @Override
       public void onRecordClick(RecordClickEvent event) {

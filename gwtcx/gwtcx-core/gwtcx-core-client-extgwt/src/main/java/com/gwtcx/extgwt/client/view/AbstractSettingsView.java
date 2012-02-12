@@ -65,6 +65,12 @@ import com.sencha.gxt.widget.core.client.grid.ColumnModel;
  */
 public abstract class AbstractSettingsView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
+  //
+  // Settings View Navigation Pane sections
+  //
+  public static final String ADMINISTRATION_FILENAME = "administration";
+  public static final String DATA_MANAGEMENT_FILENAME = "data_management";
+
   public static final String CONTEXT_AREA_WIDTH = "100%";
   public static final String CONTEXT_AREA_HEIGHT = "100%";
 

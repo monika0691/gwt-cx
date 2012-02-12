@@ -79,7 +79,7 @@ public interface ToolBarIcons extends ClientBundle {
   ImageResource save();
 
   @Source(urlPrefix + "saveandclose.png")
-  ImageResource saveandclose();
+  ImageResource saveAndClose();
 
   @Source(urlPrefix + "help.png")
   ImageResource help();

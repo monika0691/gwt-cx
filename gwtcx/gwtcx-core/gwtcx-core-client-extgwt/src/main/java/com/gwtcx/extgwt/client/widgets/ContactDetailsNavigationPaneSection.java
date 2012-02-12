@@ -21,25 +21,29 @@ import com.gwtcx.client.resources.NavigationPaneIcons;
 import com.gwtcx.client.resources.PlaceholderIcons;
 import com.gwtcx.client.util.I18nUtil;
 
-public class ResourceCentreNavigationPaneSection extends NavigationPaneSection {
+public class ContactDetailsNavigationPaneSection extends NavigationPaneSection {
 
-  public ResourceCentreNavigationPaneSection() {
-    super(NavigationPane.RESOURCE_CENTRE_FILENAME);
+  public ContactDetailsNavigationPaneSection() {
+    super(NavigationPane.CONTACT_DETAILS_FILENAME);
 
-    Log.debug("ResourceCentreNavigationPaneSection()");
+    Log.debug("ContactDetailsNavigationPaneSection()");
 
-    this.setHeadingText(I18nUtil.getConstant().resourceCentreNavigationPaneSectionName());
+    this.setHeadingText(I18nUtil.getConstant().contactDetailsNavigationPaneSectionName());
   }
 
   @Override
   public SafeHtml getIcon(String data) {
 
-    if ("highlights".equalsIgnoreCase(data)) {
-      return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.highlights());
-    } else if ("sales".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.sales());
-    } else if ("settings".equalsIgnoreCase(data)) {
-        return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.settings());
+    if ("information".equalsIgnoreCase(data)) {
+      return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.information());
+    } else if ("moreaddresses".equalsIgnoreCase(data)) {
+        return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.moreAddresses());
+    } else if ("activities".equalsIgnoreCase(data)) {
+        return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.activities());
+    } else if ("history".equalsIgnoreCase(data)) {
+        return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.history());
+    } else if ("relationships".equalsIgnoreCase(data)) {
+        return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.relationships());
     } else {
       return ImageCell.makeImage(PlaceholderIcons.INSTANCE.placeholder16());
     }
