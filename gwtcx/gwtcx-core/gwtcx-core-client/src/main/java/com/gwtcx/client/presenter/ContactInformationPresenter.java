@@ -75,6 +75,8 @@ public class ContactInformationPresenter extends
     activity = GwtCxEntryPoint.decodeBase64(Window.Location.getParameter(ACTIVITY));
     id = GwtCxEntryPoint.decodeBase64(Window.Location.getParameter(ID));
 
+    Log.debug("Activity: " + activity + " id: " + id);
+
     if (activity.equals(EDIT)) {
 
       try {
