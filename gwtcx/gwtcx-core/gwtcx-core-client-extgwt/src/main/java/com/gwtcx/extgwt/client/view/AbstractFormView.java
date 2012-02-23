@@ -15,21 +15,17 @@
 package com.gwtcx.extgwt.client.view;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
-import com.gwtcx.client.event.MastheadUpdateEvent;
-import com.gwtcx.client.util.I18nUtil;
-import com.gwtcx.shared.dto.AccountDto;
+import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.shared.dto.EntityDto;
-import com.gwtcx.smartgwt.client.widgets.EntityTab;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.smartgwt.client.widgets.tab.Tab;
+import com.sencha.gxt.widget.core.client.form.FormPanel;
 
 /**
- * AbstractPagingView
+ * AbstractFormView
  */
 public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
@@ -39,20 +35,21 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
   public static final String CONTEXT_AREA_HEIGHT = "100%";
 
   protected VerticalLayoutContainer panel;
+  protected FormPanel form;
 
-  // private final EventBus eventBus;
+  protected EntityDto dto;
 
-  private EntityDto dto;
+  protected final EventBus eventBus;
   // private EntityToolBar toolBar;
   // private TabSet tabSet;
 
   @Inject
-  public AbstractFormView() {
+  public AbstractFormView(final EventBus eventBus) {
     super();
 
     Log.debug("AbstractFormView()");
 
-    // this.eventBus= eventBus;
+    this.eventBus= eventBus;
 
     dto = null;
     // toolBar = AccountPagePresenter.getToolBar();
@@ -61,6 +58,10 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
     // panel.setStyleName(StyleTokens.contextArea);
     setPanel(new VerticalLayoutContainer());
     getPanel().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+
+    this.form = new FormPanel();
+    this.form.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    getPanel().add(this.form);
 
     // initialise the TabSet container
     // tabSet = new TabSet();

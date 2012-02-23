@@ -14,11 +14,12 @@
 
 package com.gwtcx.sample.serendipity.client.gin;
 
-// import com.google.gwt.event.shared.EventBus;
-import com.google.web.bindery.event.shared.EventBus;
 import com.google.gwt.inject.client.AsyncProvider;
 import com.google.gwt.inject.client.Ginjector;
 import com.google.inject.Provider;
+import com.google.web.bindery.event.shared.EventBus;
+import com.gwtcx.client.presenter.ContactInformationPresenter;
+import com.gwtcx.client.presenter.ContactPagePresenter;
 import com.gwtcx.sample.serendipity.client.presenter.AccountsPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.ActivitiesPresenter;
 import com.gwtcx.sample.serendipity.client.presenter.AdministrationPresenter;
@@ -38,11 +39,17 @@ public interface SerendipityGinjector extends Ginjector {
   EventBus getEventBus();
   PlaceManager getPlaceManager();
 
+  // LoggedInGatekeeper getLoggedInGatekeeper();
+  // AdminGatekeeper    getAdminGatekeeper();
+
   // Sign In
   // Provider<SignInPagePresenter> getSignInPagePresenter();
 
   // Main Page(s)
+  // AsyncProvider<MainPagePresenter> getMainPagePresenter();
   Provider<MainPagePresenter> getMainPagePresenter();
+
+  Provider<ContactPagePresenter> getContactPagePresenter();
 
   // Error Page
   AsyncProvider<ErrorPagePresenter> getErrorPagePresenter();
@@ -54,12 +61,18 @@ public interface SerendipityGinjector extends Ginjector {
   AsyncProvider<ImportsPresenter> getImportsPresenter();
   AsyncProvider<AccountsPresenter> getAccountsPresenter();
   AsyncProvider<ContactsPresenter> getContactsPresenter();
-
   AsyncProvider<ReportsPresenter> getReportsPresenter();
 
+  // AsyncProvider<AccountInformationPresenter> getAccountInformationPresenter();
+  // AsyncProvider<EmailInformationPresenter> getEmailInformationPresenter();
+
+  AsyncProvider<ContactInformationPresenter> getContactInformationPresenter();
+
+  // Settings
   AsyncProvider<AdministrationPresenter> getAdministrationPresenter();
   AsyncProvider<DataManagementPresenter> getDataManagementPresenter();
 
+  // Resource Centre
   AsyncProvider<HighlightsPresenter> getHighlightsPresenter();
 
 }

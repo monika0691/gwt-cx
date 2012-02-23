@@ -21,7 +21,6 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.entrypoint.GwtCxEntryPoint;
 import com.gwtcx.client.uihandlers.ContactInformationUiHandlers;
-import com.gwtcx.shared.dto.AccountDto;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
@@ -48,14 +47,14 @@ public class ContactInformationPresenter extends
   private String id;
 
   @ProxyCodeSplit
-  @NameToken(NameTokens.accountInformation)
+  @NameToken(NameTokens.contactInformation)
   // @UseGatekeeper(LoggedInGatekeeper.class)
   public interface MyProxy extends Proxy<ContactInformationPresenter>, Place {
   }
 
   public interface MyView extends View, HasUiHandlers<ContactInformationUiHandlers> {
-    void setResultSet(AccountDto account);
-    void setAccountId(String accountId);
+    // void setResultSet(AccountDto account);
+    void setId(String id);
   }
 
   @Inject
