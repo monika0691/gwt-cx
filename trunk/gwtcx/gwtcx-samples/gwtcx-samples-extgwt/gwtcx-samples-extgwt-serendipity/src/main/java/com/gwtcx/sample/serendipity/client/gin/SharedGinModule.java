@@ -15,6 +15,10 @@
 package com.gwtcx.sample.serendipity.client.gin;
 
 import com.gwtcx.client.NameTokens;
+import com.gwtcx.client.presenter.ContactInformationPresenter;
+import com.gwtcx.client.presenter.ContactPagePresenter;
+import com.gwtcx.extgwt.client.view.ContactInformationView;
+import com.gwtcx.extgwt.client.view.ContactPageView;
 import com.gwtcx.sample.serendipity.client.place.DefaultPlace;
 import com.gwtcx.sample.serendipity.client.place.SerendipityPlaceManager;
 import com.gwtcx.sample.serendipity.client.presenter.AccountsPresenter;
@@ -76,6 +80,7 @@ public class SharedGinModule extends AbstractPresenterModule {
     // bindConstant().annotatedWith(SecurityCookie.class).to(SharedTokens.securityCookieName);
 
     // Bind the Main page to the default place
+    // bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.signInPage);
     bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.mainPage);
 
     //
@@ -83,6 +88,10 @@ public class SharedGinModule extends AbstractPresenterModule {
     //
 
     // Main Pages
+    // bindPresenter(MainPagePresenter.class, MainPagePresenter.MyView.class,
+    //     MainPageView.class, MainPagePresenter.MyProxy.class);
+    bindPresenter(ContactPagePresenter.class, ContactPagePresenter.MyView.class,
+        ContactPageView.class, ContactPagePresenter.MyProxy.class);
 
     // Error Page
     bindPresenter(ErrorPagePresenter.class, ErrorPagePresenter.MyView.class,
@@ -101,6 +110,9 @@ public class SharedGinModule extends AbstractPresenterModule {
         ContactsView.class, ContactsPresenter.MyProxy.class);
     bindPresenter(ReportsPresenter.class, ReportsPresenter.MyView.class,
        ReportsView.class, ReportsPresenter.MyProxy.class);
+
+    bindPresenter(ContactInformationPresenter.class, ContactInformationPresenter.MyView.class,
+            ContactInformationView.class, ContactInformationPresenter.MyProxy.class);
 
     // Settings
     bindPresenter(AdministrationPresenter.class, AdministrationPresenter.MyView.class,
