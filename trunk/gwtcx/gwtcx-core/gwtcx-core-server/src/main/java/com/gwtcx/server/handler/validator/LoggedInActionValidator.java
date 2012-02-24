@@ -28,6 +28,7 @@ import com.gwtplatform.dispatch.shared.Result;
 public class LoggedInActionValidator implements ActionValidator  {
 
   private final Provider<HttpServletRequest> requestProvider;
+  // private final Provider<HttpSession> sessionProvider
 
   @Inject
   LoggedInActionValidator(final Provider<HttpServletRequest> requestProvider) {

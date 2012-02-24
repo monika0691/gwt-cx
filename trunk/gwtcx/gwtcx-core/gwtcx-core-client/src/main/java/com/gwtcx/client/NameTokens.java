@@ -43,6 +43,7 @@ public class NameTokens {
   public static final String queues = "Queues";
   public static final String reports = "Reports";
 
+  public static final String information = "Information";
   public static final String accountInformation = "AccountInformation";
   public static final String contactInformation = "ContactInformation";
   public static final String emailInformation = "EmailInformation";

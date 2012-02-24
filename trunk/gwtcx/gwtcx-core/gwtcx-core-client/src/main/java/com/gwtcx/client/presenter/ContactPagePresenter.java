@@ -37,6 +37,8 @@ public class ContactPagePresenter extends
     Presenter<ContactPagePresenter.MyView, ContactPagePresenter.MyProxy> implements
   ContactPageUiHandlers {
 
+  // public static NavigationPane navigationPane = null;
+
   private final PlaceManager placeManager;
 
   //
