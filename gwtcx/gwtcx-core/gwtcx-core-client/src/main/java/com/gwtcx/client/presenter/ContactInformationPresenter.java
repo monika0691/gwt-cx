@@ -20,7 +20,9 @@ import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.entrypoint.GwtCxEntryPoint;
+import com.gwtcx.client.event.NavigationPaneUpdateEvent;
 import com.gwtcx.client.uihandlers.ContactInformationUiHandlers;
+import com.gwtcx.client.util.I18nUtil;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
@@ -90,6 +92,15 @@ public class ContactInformationPresenter extends
   @Override
   protected void revealInParent() {
     RevealContentEvent.fire(this, ContactPagePresenter.TYPE_SetContextAreaContent, this);
+  }
+
+  @Override
+  protected void onReveal() {
+    super.onReveal();
+
+    Log.debug("onReveal() - " + NameTokens.contactInformation);
+
+    // NavigationPaneUpdateEvent.fire(getEventBus(), NameTokens.information, NameTokens.information);
   }
 
   // public void createOrUpdateAccount(AccountDto accountDto) { }

@@ -99,8 +99,9 @@ public class ContactPageView extends AbstractContactPageView<ContactPageUiHandle
   @Override
   protected void initToolBar() {
 
-    // getWestPanel().getHeader().hide();
-    getCenterPanel().getHeader().hide();
+    getWestPanel().getHeader().hide();
+    // getWestPanel().getHeader().setVisible(false);
+    // getCenterPanel().getHeader().hide();
 
     ToolTipConfig config = getToolBar().createToolTipConfig(I18nUtil.getConstant().saveButtonTooltip(), "Save the new Contact");
 

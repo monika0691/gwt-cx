@@ -26,7 +26,6 @@ import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.gwtcx.client.presenter.ContactInformationPresenter;
 
-// public class ContactInformationView<C extends UiHandlers> extends AbstractFormView<C> {
 public class ContactInformationView extends AbstractFormView<ContactInformationUiHandlers> implements
     ContactInformationPresenter.MyView {
 
