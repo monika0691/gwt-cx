@@ -22,6 +22,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.uihandlers.MainPageUiHandlers;
 import com.gwtcx.extgwt.client.ExtGwtCx;
@@ -29,6 +30,7 @@ import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
 import com.gwtcx.extgwt.client.view.AbstractMainPageView;
 import com.gwtcx.extgwt.client.widgets.ApplicationMenu;
 import com.gwtcx.extgwt.client.widgets.Masthead;
+import com.gwtcx.extgwt.client.widgets.NavigationPane;
 import com.gwtcx.extgwt.client.widgets.NavigationPaneSection;
 import com.gwtcx.extgwt.client.widgets.ResourceCentreNavigationPaneSection;
 import com.gwtcx.extgwt.client.widgets.SalesNavigationPaneSection;
@@ -59,8 +61,8 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
   protected NavigationPaneSection resourceCentreSection;
 
   @Inject
-  public MainPageDesktopView(final Masthead masthead, final ApplicationMenu applicationMenu) {
-    super(masthead, applicationMenu);
+  public MainPageDesktopView(final EventBus eventBus, final Masthead masthead, final ApplicationMenu applicationMenu) {
+    super(eventBus, masthead, applicationMenu);
 
     Log.debug("MainPageDesktopView()");
 
@@ -77,7 +79,12 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
   }
 
   @UiFactory
-  public ContentPanel createContentPanel(ContentPanelAppearance appearance) {
+  public NavigationPane createNavigationPane() {
+    return new NavigationPane(getEventBus());
+  }
+
+  @UiFactory
+  public ContentPanel createContentPanel(final ContentPanelAppearance appearance) {
     return new ContentPanel(appearance);
   }
 

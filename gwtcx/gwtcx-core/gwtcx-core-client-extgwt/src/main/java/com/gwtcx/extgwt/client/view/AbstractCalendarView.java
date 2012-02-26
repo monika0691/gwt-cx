@@ -24,7 +24,6 @@ import com.bradrydzewski.gwt.calendar.client.CalendarViews;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtcx.client.resources.ToolBarIcons;
@@ -136,6 +135,8 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
     bindCustomUiHandlers();
   }
 
+  /*
+
   public void resize() {
 
     int width = Window.getClientWidth();
@@ -146,6 +147,8 @@ public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWit
     panel.setSize(width + "px", height + "px");
     panel.onResize();
   }
+
+  */
 
   protected void bindCustomUiHandlers() {
 

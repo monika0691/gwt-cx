@@ -15,6 +15,8 @@
 package com.gwtcx.extgwt.client.view;
 
 import com.allen_sauer.gwt.log.client.Log;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -22,6 +24,7 @@ import com.gwtcx.shared.dto.EntityDto;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.form.FormPanel;
 
 /**
@@ -41,7 +44,6 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
 
   protected final EventBus eventBus;
   // private EntityToolBar toolBar;
-  // private TabSet tabSet;
 
   @Inject
   public AbstractFormView(final EventBus eventBus) {
@@ -52,33 +54,40 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
     this.eventBus= eventBus;
 
     dto = null;
-    // toolBar = AccountPagePresenter.getToolBar();
 
-
-    // panel.setStyleName(StyleTokens.contextArea);
     setPanel(new VerticalLayoutContainer());
     getPanel().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
 
-    this.form = new FormPanel();
-    this.form.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
-    getPanel().add(this.form);
+    setForm(new FormPanel());
+    getForm().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    getPanel().add(getForm(), new VerticalLayoutData(1, -1));
 
-    // initialise the TabSet container
-    // tabSet = new TabSet();
-    // tabSet.addTab(new AccountInformationGeneralTab());
+    Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+      @Override
+      public void execute() {
 
-    // getPanel().add(tabSet);
+        Log.debug("execute()");
+
+        resize();
+      }
+    });
 
     bindCustomUiHandlers();
   }
 
-  protected void bindCustomUiHandlers() {
+  public void resize() {
 
-    // initialise the ToolBar and register its handlers
-    // initToolBar();
+    int width = Window.getClientWidth();
+    int height = Window.getClientHeight();
 
-    // setMastheadLabel(I18nUtil.getConstant().newContact());
+    Log.debug("resize() - width: " + width + " height: " + height);
+
+    panel.setSize(width + "px", height + "px");
+    form.setSize(width + "px", height + "px");
+    // panel.onResize();
   }
+
+  protected void bindCustomUiHandlers() { }
 
   protected void initToolBar() { }
 
@@ -95,6 +104,14 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
 
   public void setPanel(VerticalLayoutContainer panel) {
     this.panel = panel;;
+  }
+
+  public void setForm(FormPanel form) {
+    this.form = form;;
+  }
+
+  public FormPanel getForm() {
+    return form;
   }
 
   public void setId(String id) {

@@ -56,8 +56,8 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
     getGrid().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
 
     // add the Tool Bar, and the Grid to the View's layout container
-    getPanel().add(this.toolBar, new VerticalLayoutData(1, -1));
-    getPanel().add(this.grid, new VerticalLayoutData(1, 1));
+    getPanel().add(getToolBar(), new VerticalLayoutData(1, -1));
+    getPanel().add(getGrid(), new VerticalLayoutData(1, 1));
 
     Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
       @Override
@@ -79,8 +79,8 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
 
     Log.debug("resize() - width: " + width + " height: " + height);
 
-    panel.setSize(width + "px", height + "px");
-    panel.onResize();
+    getPanel().setSize(width + "px", height + "px");
+    getPanel().onResize();
   }
 
   protected void bindCustomUiHandlers() { }

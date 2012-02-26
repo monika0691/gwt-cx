@@ -20,6 +20,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.extgwt.client.widgets.ApplicationMenu;
 import com.gwtcx.extgwt.client.widgets.Masthead;
 import com.gwtcx.extgwt.client.widgets.NavigationPane;
@@ -34,7 +35,7 @@ import com.sencha.gxt.widget.core.client.container.Viewport;
  */
 public abstract class AbstractMainPageView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
-  // private final EventBus eventBus;
+  protected final EventBus eventBus;
   protected Viewport viewport;
   protected final Masthead masthead;
   protected final ApplicationMenu applicationMenu;
@@ -50,12 +51,12 @@ public abstract class AbstractMainPageView<C extends UiHandlers> extends ViewWit
   @UiField public NavigationPane navigationPane;
 
   @Inject
-  public AbstractMainPageView(final Masthead masthead, final ApplicationMenu applicationMenu) {
+  public AbstractMainPageView(final EventBus eventBus, final Masthead masthead, final ApplicationMenu applicationMenu) {
     super();
 
     Log.debug("AbstractMainPageView()");
 
-    // this.eventBus= eventBus;
+    this.eventBus= eventBus;
     this.masthead = masthead;
     this.applicationMenu = applicationMenu;
 
@@ -63,11 +64,11 @@ public abstract class AbstractMainPageView<C extends UiHandlers> extends ViewWit
 
     // get rid of scroll bars, and clear out the window's built-in margin,
     // because we want to take advantage of the entire client area
-    this.viewport.setEnableScroll(false);  // calls Window.enableScrolling(false);
+    getViewport().setEnableScroll(false);  // calls Window.enableScrolling(false);
     Window.setMargin("0px");
 
-    this.northPanel.add(this.masthead);
-    this.northPanel.add(this.applicationMenu);
+    getNorthPanel().add(getMasthead());
+    getNorthPanel().add(getApplicationMenu());
 
     bindCustomUiHandlers();
   }
@@ -75,6 +76,7 @@ public abstract class AbstractMainPageView<C extends UiHandlers> extends ViewWit
   protected void createAndBindUi() {
 
     Log.warn("Don't forget to @Override createAndBindUi()");
+
     // e.g. setViewport(uiBinder.createAndBindUi(this));
   }
 
@@ -86,6 +88,10 @@ public abstract class AbstractMainPageView<C extends UiHandlers> extends ViewWit
 
     // initialise the NavigationPane and register its handlers
     initNavigationPane();
+  }
+
+  public EventBus getEventBus() {
+    return eventBus;
   }
 
   public Viewport getViewport() {
@@ -105,12 +111,20 @@ public abstract class AbstractMainPageView<C extends UiHandlers> extends ViewWit
 
   protected void initNavigationPane() { }
 
+  public Masthead getMasthead() {
+    return masthead;
+  }
+
   public ApplicationMenu getApplicationMenu() {
     return applicationMenu;
   }
 
   public NavigationPane getNavigationPane() {
     return navigationPane;
+  }
+
+  public FlowPanel getNorthPanel() {
+    return northPanel;
   }
 
   public ContentPanel getWestPanel() {
