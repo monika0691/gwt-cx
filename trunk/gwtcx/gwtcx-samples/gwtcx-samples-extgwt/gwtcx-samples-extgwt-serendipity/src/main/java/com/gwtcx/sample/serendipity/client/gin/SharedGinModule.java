@@ -55,6 +55,12 @@ public class SharedGinModule extends AbstractPresenterModule {
 
     install(new DefaultModule(SerendipityPlaceManager.class));
 
+    // bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
+    // bind(TokenFormatter.class).to(ParameterTokenFormatter.class).in(Singleton.class);
+    // bind(RootPresenter.class).asEagerSingleton();
+    // bind(GoogleAnalytics.class).to(GoogleAnalyticsImpl.class).in(Singleton.class);
+    // bind(PlaceManager.class).to(placeManagerClass).in(Singleton.class);
+
     //
     // Resources
     //

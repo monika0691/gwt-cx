@@ -22,7 +22,6 @@ import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.entrypoint.GwtCxEntryPoint;
 import com.gwtcx.client.event.NavigationPaneUpdateEvent;
 import com.gwtcx.client.uihandlers.ContactInformationUiHandlers;
-import com.gwtcx.client.util.I18nUtil;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
@@ -100,7 +99,7 @@ public class ContactInformationPresenter extends
 
     Log.debug("onReveal() - " + NameTokens.contactInformation);
 
-    // NavigationPaneUpdateEvent.fire(getEventBus(), NameTokens.information, NameTokens.information);
+    NavigationPaneUpdateEvent.fire(getEventBus(), NameTokens.contactInformation, "");
   }
 
   // public void createOrUpdateAccount(AccountDto accountDto) { }

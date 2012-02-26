@@ -34,7 +34,7 @@ public abstract class AbstractContactsPresenter<V extends View, Proxy_ extends P
       DispatchAsync dispatcher, PlaceManager placeManager) {
     super(eventBus, view, proxy, dispatcher, placeManager);
 
-    Log.warn("AbstractContactsPresenter()");
+    Log.debug("AbstractContactsPresenter()");
   }
 
   /*

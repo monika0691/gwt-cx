@@ -17,8 +17,13 @@ package com.gwtcx.extgwt.client.widgets;
 import java.util.Iterator;
 
 import com.allen_sauer.gwt.log.client.Log;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.WidgetCollection;
+import com.google.inject.Inject;
+import com.google.web.bindery.event.shared.EventBus;
+import com.gwtcx.client.event.NavigationPaneUpdateEvent;
+import com.gwtcx.client.event.NavigationPaneUpdateEventHandler;
 import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.widget.core.client.container.AccordionLayoutContainer;
@@ -41,11 +46,41 @@ public class NavigationPane extends AccordionLayoutContainer {
   public static final String ACCOUNT_DETAILS_FILENAME = "account_details";
   public static final String CONTACT_DETAILS_FILENAME = "contact_details";
 
-  NavigationPane() {
+  protected static int delayMillis = 250;
+
+  protected EventBus eventBus;
+  protected String name;
+
+  @Inject
+  public NavigationPane(final EventBus eventBus) {
     super();
 
     Log.debug("NavigationPane()");
+
+    this.eventBus = eventBus;
+
+    this.eventBus.addHandler(NavigationPaneUpdateEvent.getType(), new NavigationPaneUpdateEventHandler() {
+      @Override
+      public void onUpdateNavigationPane(NavigationPaneUpdateEvent event) {
+
+        Log.debug("onUpdateNavigationPane(NavigationPaneUpdateEvent event)");
+
+        name= event.getName();
+
+        selectTimer.schedule(delayMillis);
+      }
+    });
   }
+
+  protected Timer selectTimer = new Timer() {
+    @Override
+    public void run() {
+
+      Log.debug("run()");
+
+      selectRecord(name);
+    }
+  };
 
   public NavigationPaneSection addSection(NavigationPaneSection section) {
 

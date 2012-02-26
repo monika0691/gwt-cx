@@ -20,6 +20,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.presenter.ContactPagePresenter;
 import com.gwtcx.client.resources.ToolBarIcons;
 import com.gwtcx.client.uihandlers.ContactPageUiHandlers;
@@ -27,6 +28,7 @@ import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
 import com.gwtcx.extgwt.client.widgets.ContactDetailsNavigationPaneSection;
 import com.gwtcx.extgwt.client.widgets.Masthead;
+import com.gwtcx.extgwt.client.widgets.NavigationPane;
 import com.gwtcx.extgwt.client.widgets.NavigationPaneSection;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance;
@@ -47,8 +49,8 @@ public class ContactPageView extends AbstractContactPageView<ContactPageUiHandle
   protected NavigationPaneSection detailsSection;
 
   @Inject
-  public ContactPageView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Masthead masthead) {
-    super(toolBar, masthead);
+  public ContactPageView(final EventBus eventBus, final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Masthead masthead) {
+    super(eventBus, toolBar, masthead);
 
     Log.debug("ContactPageView()");
 
@@ -65,7 +67,12 @@ public class ContactPageView extends AbstractContactPageView<ContactPageUiHandle
   }
 
   @UiFactory
-  public ContentPanel createContentPanel(ContentPanelAppearance appearance) {
+  public NavigationPane createNavigationPane() {
+    return new NavigationPane(getEventBus());
+  }
+
+  @UiFactory
+  public ContentPanel createContentPanel(final ContentPanelAppearance appearance) {
     return new ContentPanel(appearance);
   }
 
@@ -99,9 +106,11 @@ public class ContactPageView extends AbstractContactPageView<ContactPageUiHandle
   @Override
   protected void initToolBar() {
 
-    getWestPanel().getHeader().hide();
+    Log.debug("initToolBar()");
+
     // getWestPanel().getHeader().setVisible(false);
-    // getCenterPanel().getHeader().hide();
+    getWestPanel().getHeader().hide();
+    getCenterPanel().getHeader().hide();
 
     ToolTipConfig config = getToolBar().createToolTipConfig(I18nUtil.getConstant().saveButtonTooltip(), "Save the new Contact");
 

@@ -44,8 +44,14 @@ public class NameTokens {
   public static final String reports = "Reports";
 
   public static final String information = "Information";
-  public static final String accountInformation = "AccountInformation";
+  public static final String relationships = "Relationships";
+
+  // Contact entity nested presenters and views
   public static final String contactInformation = "ContactInformation";
+  public static final String contactRelationships = "ContactRelationships";
+
+  //
+  public static final String accountInformation = "AccountInformation";
   public static final String emailInformation = "EmailInformation";
 
   // Settings nested presenters and views

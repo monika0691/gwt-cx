@@ -22,6 +22,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.uihandlers.MainPageUiHandlers;
 import com.gwtcx.extgwt.client.ExtGwtCx;
 import com.gwtcx.extgwt.client.view.AbstractMainPageView;
@@ -43,8 +44,8 @@ public class MainPageTabletView extends AbstractMainPageView<MainPageUiHandlers>
   private static MainPageUiBinder uiBinder = GWT.create(MainPageUiBinder.class);
 
   @Inject
-  public MainPageTabletView(final Masthead masthead, final ApplicationMenu applicationMenu) {
-    super(masthead, applicationMenu);
+  public MainPageTabletView(final EventBus eventBus, final Masthead masthead, final ApplicationMenu applicationMenu) {
+    super(eventBus, masthead, applicationMenu);
 
     Log.debug("MainPageDesktopView()");
 

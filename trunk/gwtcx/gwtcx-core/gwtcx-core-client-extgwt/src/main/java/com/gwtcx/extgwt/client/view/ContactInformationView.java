@@ -17,14 +17,12 @@ package com.gwtcx.extgwt.client.view;
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtcx.client.presenter.ContactInformationPresenter;
 import com.gwtcx.client.uihandlers.ContactInformationUiHandlers;
 import com.sencha.gxt.widget.core.client.TabPanel;
+import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.MarginData;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
-import com.sencha.gxt.widget.core.client.form.FieldLabel;
-import com.sencha.gxt.widget.core.client.form.TextField;
-import com.gwtcx.client.presenter.ContactInformationPresenter;
+import com.sencha.gxt.widget.core.client.form.FieldSet;
 
 public class ContactInformationView extends AbstractFormView<ContactInformationUiHandlers> implements
     ContactInformationPresenter.MyView {
@@ -32,46 +30,47 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
   protected TabPanel tabPanel;
 
   @Inject
-  public ContactInformationView(final EventBus eventBus) {
+  public ContactInformationView(final EventBus eventBus, final TabPanel tabPanel) {
     super(eventBus);
 
     Log.debug("ContactInformationView()");
 
-    this.tabPanel = new TabPanel();
-    form.setWidget(tabPanel);
+    this.tabPanel = tabPanel;
 
-    VerticalLayoutContainer p = new VerticalLayoutContainer();
-    p.setLayoutData(new MarginData(8));
+    getTabPanel().setWidth(CONTEXT_AREA_WIDTH);
+    // getForm().setLayoutData(new MarginData(8));
+    // getTabPanel().setLayoutData(new MarginData(8));
+    getForm().setWidget(tabPanel);
 
-    this.tabPanel.add(p, "Person Details");
+    FieldSet fieldSet = new FieldSet();
+    fieldSet.setHeadingText("General Information");
+    fieldSet.setCollapsible(true);
 
-    TextField firstName = new TextField();
-    firstName.setAllowBlank(false);
-    firstName.setValue("Darrell");
-    p.add(new FieldLabel(firstName, "First Name"), new VerticalLayoutData(1, -1));
 
-    TextField lastName = new TextField();
-    lastName.setAllowBlank(false);
-    lastName.setValue("Meyer");
-    p.add(new FieldLabel(lastName, "Last Name"), new VerticalLayoutData(1, -1));
 
-    TextField email = new TextField();
-    email.setAllowBlank(false);
-    p.add(new FieldLabel(email, "Email"), new VerticalLayoutData(1, -1));
+    HtmlLayoutContainer general = new HtmlLayoutContainer(getTableMarkup());
+    general.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    general.setLayoutData(new MarginData(8));
 
-    p = new VerticalLayoutContainer();
-    p.setLayoutData(new MarginData(8));
 
-    this.tabPanel.add(p, "Phone Numbers");
+    fieldSet.add(general);
 
-    TextField home = new TextField();
-    home.setValue("888-888-888");
-    p.add(new FieldLabel(home, "Home"), new VerticalLayoutData(1, -1));
+    // getTabPanel().add(general, "General");
 
-    TextField business = new TextField();
-    business.setValue("888-888-888");
-    p.add(new FieldLabel(business, "Business"), new VerticalLayoutData(1, -1));
+    getTabPanel().add(fieldSet, "General");
+
+    new ContactInformationNameSection(general);
+    new ContactInformationElectronicAddressSection(general);
   }
+
+  private native String getTableMarkup() /*-{
+    return [ '<table width=100% cellpadding=0 cellspacing=0>',
+        '<tr><td class=salutation width=50%></td><td class=businessPhone width=50%></td></tr>',
+        '<tr><td class=givenName></td><td class=homePhone></td></tr>',
+        '<tr><td class=middleName></td><td class=mobilePhone></td></tr>',
+        '<tr><td class=familyName></td><td class=fax></td></tr>', '</table>'
+    ].join("");
+  }-*/;
 
   @Override
   public void setId(String id) {
@@ -82,6 +81,10 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
       // set Masthead label and the browser window's title
       // setMastheadLabel(dto.getName());
     }
+  }
+
+  public TabPanel getTabPanel() {
+    return tabPanel;
   }
 
 }

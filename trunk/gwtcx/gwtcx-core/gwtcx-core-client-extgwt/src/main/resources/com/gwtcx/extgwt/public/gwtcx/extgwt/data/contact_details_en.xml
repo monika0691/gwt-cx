@@ -4,13 +4,13 @@
 
   <record>
     <icon>information</icon>
-    <name>Information</name>
+    <name>ContactInformation</name>
     <displayName>Information</displayName>
   </record>
   
   <record>
     <icon>moreaddresses</icon>
-    <name>More Addresses</name>
+    <name>ContactInformation</name>
     <displayName>More Addresses</displayName>
   </record>
   
@@ -22,7 +22,7 @@
   
   <record>
     <icon>history</icon>
-    <name>History</name>
+    <name>ContactInformation</name>
     <displayName>History</displayName>
   </record>
  
@@ -38,7 +38,7 @@
   
   <record>
     <icon>relationships</icon>
-    <name>Relationships</name>
+    <name>contactRelationships</name>
     <displayName>Relationships</displayName>
   </record>
 
