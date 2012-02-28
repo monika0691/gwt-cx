@@ -190,7 +190,7 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   String helpButtonTooltip();
 
   //
-  // Account entity tabs
+  // Account entity sections (tabs)
   //
 
   @DefaultStringValue("Account: ")
@@ -253,6 +253,58 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
 
   @DefaultStringValue("Notes")
   String notesTab();
+
+  //
+  // Contact entity sections (tabs)
+  //
+
+  @DefaultStringValue("Contact: ")
+  String contactWindowTitle();
+
+  @DefaultStringValue("New Contact")
+  String newContact();
+
+  // @DefaultStringValue("General")
+  // String generalTab();
+
+  // @DefaultStringValue("General Information")
+  // String generalInformationSectionItem();
+
+  @DefaultStringValue("Salutation")
+  String salutationLabel();
+  @DefaultStringValue("Given Name")
+  String givenNameLabel();
+  @DefaultStringValue("Middle Name")
+  String middleNameLabel();
+  @DefaultStringValue("Family Name")
+  String familyNameLabel();
+  @DefaultStringValue("Correspondence")
+  String correspondenceLabel();
+  @DefaultStringValue("Job Title")
+  String jobTitleLabel();
+  @DefaultStringValue("Occupation")
+  String occupationLabel();
+  @DefaultStringValue("Parent Customer")
+  String parentCustomerLabel();
+  @DefaultStringValue("Currency")
+  String currencyLabel();
+
+  @DefaultStringValue("Business Phone")
+  String businessPhoneLabel();
+  @DefaultStringValue("Home Phone")
+  String homePhoneLabel();
+  @DefaultStringValue("Mobile Phone")
+  String mobilePhoneLabel();
+  // @DefaultStringValue("Fax")
+  // String faxLabel();
+  @DefaultStringValue("Pager")
+  String pagerLabel();
+  // @DefaultStringValue("Email")
+  // String emailLabel();
+
+
+
+
 
   //
   // Email entity tabs

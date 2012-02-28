@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.view;
+package com.gwtcx.extgwt.client.view.contact;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.client.GWT;
@@ -27,7 +27,7 @@ import com.gwtcx.client.uihandlers.ContactPageUiHandlers;
 import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
 import com.gwtcx.extgwt.client.widgets.ContactDetailsNavigationPaneSection;
-import com.gwtcx.extgwt.client.widgets.Masthead;
+import com.gwtcx.extgwt.client.widgets.EntityMasthead;
 import com.gwtcx.extgwt.client.widgets.NavigationPane;
 import com.gwtcx.extgwt.client.widgets.NavigationPaneSection;
 import com.sencha.gxt.widget.core.client.ContentPanel;
@@ -49,7 +49,7 @@ public class ContactPageView extends AbstractContactPageView<ContactPageUiHandle
   protected NavigationPaneSection detailsSection;
 
   @Inject
-  public ContactPageView(final EventBus eventBus, final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Masthead masthead) {
+  public ContactPageView(final EventBus eventBus, final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final EntityMasthead masthead) {
     super(eventBus, toolBar, masthead);
 
     Log.debug("ContactPageView()");

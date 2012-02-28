@@ -12,8 +12,9 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.view;
+package com.gwtcx.extgwt.client.view.contact;
 
+import com.gwtcx.client.util.I18nUtil;
 import com.sencha.gxt.widget.core.client.container.AbstractHtmlLayoutContainer.HtmlData;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
@@ -43,18 +44,18 @@ public class ContactInformationNameSection {
   public void createFields() {
 
     salutation = new TextField();
-    panel.add(new FieldLabel(salutation, "Salutation"), new HtmlData(".salutation"));
+    panel.add(new FieldLabel(salutation, I18nUtil.getConstant().salutationLabel()), new HtmlData(".salutation"));
 
     givenName = new TextField();
-    panel.add(new FieldLabel(givenName, "Given Name"), new HtmlData(".givenName"));
+    panel.add(new FieldLabel(givenName, I18nUtil.getConstant().givenNameLabel()), new HtmlData(".givenName"));
 
     middleName = new TextField();
-    panel.add(new FieldLabel(middleName, "Middle Name"), new HtmlData(".middleName"));
+    panel.add(new FieldLabel(middleName, I18nUtil.getConstant().middleNameLabel()), new HtmlData(".middleName"));
 
     familyName = new TextField();
     familyName.setAllowBlank(false);
     // familyName.setValue("Ferguson");
-    panel.add(new FieldLabel(familyName, "Family Name"), new HtmlData(".familyName"));
+    panel.add(new FieldLabel(familyName, I18nUtil.getConstant().familyNameLabel()), new HtmlData(".familyName"));
 
   }
 }

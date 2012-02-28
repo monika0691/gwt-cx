@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.view;
+package com.gwtcx.extgwt.client.view.contact;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.uibinder.client.UiField;
@@ -21,16 +21,15 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtcx.extgwt.client.widgets.ApplicationMenu;
-import com.gwtcx.extgwt.client.widgets.Masthead;
+import com.gwtcx.extgwt.client.widgets.EntityMasthead;
 import com.gwtcx.extgwt.client.widgets.NavigationPane;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.Viewport;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
+import com.sencha.gxt.widget.core.client.container.Viewport;
 
 /**
  * AbstractContactPageView
@@ -44,7 +43,7 @@ public abstract class AbstractContactPageView<C extends UiHandlers> extends View
 
   protected final EventBus eventBus;
   protected final com.gwtcx.extgwt.client.widgets.ToolBar toolBar;
-  protected final Masthead masthead;
+  protected final EntityMasthead masthead;
 
   protected Viewport viewport;
 
@@ -59,7 +58,7 @@ public abstract class AbstractContactPageView<C extends UiHandlers> extends View
   @UiField public NavigationPane navigationPane;
 
   @Inject
-  public AbstractContactPageView(final EventBus eventBus, final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Masthead masthead) {
+  public AbstractContactPageView(final EventBus eventBus, final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final EntityMasthead masthead) {
     super();
 
     Log.debug("AbstractContactPageView()");
@@ -127,7 +126,7 @@ public abstract class AbstractContactPageView<C extends UiHandlers> extends View
     return toolBar;
   }
 
-  public Masthead getMasthead() {
+  public EntityMasthead getMasthead() {
     return masthead;
   }
 
