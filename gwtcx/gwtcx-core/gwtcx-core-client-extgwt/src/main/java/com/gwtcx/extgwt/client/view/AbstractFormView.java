@@ -75,7 +75,7 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
     bindCustomUiHandlers();
   }
 
-  public void resize() {
+  protected void resize() {
 
     int width = Window.getClientWidth();
     int height = Window.getClientHeight();

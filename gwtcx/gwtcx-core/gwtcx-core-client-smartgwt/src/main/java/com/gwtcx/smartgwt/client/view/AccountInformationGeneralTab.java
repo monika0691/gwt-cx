@@ -145,7 +145,7 @@ public class AccountInformationGeneralTab extends EntityTab {
     //
     // Section 2 Column 1
     //
-    addressName = new TextItem(ADDRESS_NAME, I18nUtil.getConstant().accountNameLabel());
+    addressName = new TextItem(ADDRESS_NAME, I18nUtil.getConstant().addressNameLabel());
     addressName.setWidth(DEFAULT_FIELD_WIDTH);
 
     addressLine1 = new TextItem(ADDRESS_LINE_1, I18nUtil.getConstant().addressLine1Label());
