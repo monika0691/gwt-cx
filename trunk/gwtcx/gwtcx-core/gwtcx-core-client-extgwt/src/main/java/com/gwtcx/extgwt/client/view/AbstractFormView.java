@@ -16,6 +16,8 @@ package com.gwtcx.extgwt.client.view;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
@@ -36,6 +38,8 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
 
   public static final String CONTEXT_AREA_WIDTH = "100%";
   public static final String CONTEXT_AREA_HEIGHT = "100%";
+
+  public static final int DEFAULT_MARGIN = 8;
 
   protected VerticalLayoutContainer panel;
   protected FormPanel form;
@@ -62,6 +66,8 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
     getForm().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
     getPanel().add(getForm(), new VerticalLayoutData(1, -1));
 
+    /*
+
     Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
       @Override
       public void execute() {
@@ -72,8 +78,31 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
       }
     });
 
+    */
+
+    // /*
+
+    this.panel.addResizeHandler(new ResizeHandler() {
+      @Override
+      public void onResize(ResizeEvent event) {
+
+        int width = event.getWidth();
+        int height = event.getHeight();
+
+        Log.debug("ResizeHandler() - width: " + width + " height: " + height);
+
+        panel.setSize(width + "px", height + "px");
+        form.setSize(width + "px", height + "px");
+        // form.forceLayout();
+      }
+    });
+
+    // */
+
     bindCustomUiHandlers();
   }
+
+  /*
 
   protected void resize() {
 
@@ -86,6 +115,8 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
     form.setSize(width + "px", height + "px");
     // panel.onResize();
   }
+
+  */
 
   protected void bindCustomUiHandlers() { }
 

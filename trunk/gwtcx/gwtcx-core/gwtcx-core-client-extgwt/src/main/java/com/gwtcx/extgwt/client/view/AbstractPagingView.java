@@ -72,7 +72,7 @@ public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithU
     bindCustomUiHandlers();
   }
 
-  public void resize() {
+  protected void resize() {
 
     int width = Window.getClientWidth();
     int height = Window.getClientHeight();

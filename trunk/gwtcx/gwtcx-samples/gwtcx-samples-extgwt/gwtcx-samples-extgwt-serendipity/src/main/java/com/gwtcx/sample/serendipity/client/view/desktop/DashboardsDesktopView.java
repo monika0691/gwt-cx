@@ -76,7 +76,7 @@ public class DashboardsDesktopView extends AbstractDashboardsView<DashboardsUiHa
 
     Log.debug("DashboardsDesktopView()");
 
-    panel.setStyleName("gwtcx-Dashboards-View");
+    getPanel().setStyleName("gwtcx-Dashboards-View");  // overflow: auto;
 
     if (GWT.isScript()) {
 
