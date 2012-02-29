@@ -44,4 +44,12 @@ public abstract class AbstractDashboardsView<C extends UiHandlers> extends ViewW
   public Widget asWidget() {
     return panel;
   }
+
+  public VerticalLayoutContainer getPanel() {
+    return panel;
+  }
+
+  public void setPanel(VerticalLayoutContainer panel) {
+    this.panel = panel;;
+  }
 }

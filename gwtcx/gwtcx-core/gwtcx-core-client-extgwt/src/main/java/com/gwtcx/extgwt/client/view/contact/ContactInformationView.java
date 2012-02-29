@@ -15,6 +15,8 @@
 package com.gwtcx.extgwt.client.view.contact;
 
 import com.allen_sauer.gwt.log.client.Log;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.presenter.ContactInformationPresenter;
@@ -32,6 +34,11 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
 
   protected TabPanel tabPanel;
 
+  protected VerticalLayoutContainer vLayout;
+
+  protected FieldSet generalInformation;
+  protected FieldSet addressInformation;
+
   @Inject
   public ContactInformationView(final EventBus eventBus, final TabPanel tabPanel) {
     super(eventBus);
@@ -40,47 +47,75 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
 
     this.tabPanel = tabPanel;
 
+    getPanel().setStyleName("gwtcx-Dashboards-View");  // overflow: auto;
+
     getTabPanel().setWidth(CONTEXT_AREA_WIDTH);
-    getForm().setWidget(tabPanel);
+    getForm().setWidget(getTabPanel());
 
-    // General Information - FieldSet
+    createGeneralInformationSection();
 
-    FieldSet generalInformation = new FieldSet();
+    createAddressInformationSection();
+
+    vLayout = new VerticalLayoutContainer();
+    vLayout.setLayoutData(new MarginData(DEFAULT_MARGIN));
+
+    vLayout.add(generalInformation, new VerticalLayoutData(1, -1));
+    vLayout.add(addressInformation, new VerticalLayoutData(1, -1));
+
+    getTabPanel().add(vLayout, "General");
+
+    // /*
+
+    this.panel.addResizeHandler(new ResizeHandler() {
+      @Override
+      public void onResize(ResizeEvent event) {
+
+        int width = event.getWidth();
+        int height = event.getHeight();
+
+        Log.debug("vLayout - width: " + width + " height: " + height);
+
+        vLayout.setSize(width + "px", height + "px");
+        generalInformation.setWidth((width - DEFAULT_MARGIN * 5) + "px");
+        addressInformation.setWidth((width - DEFAULT_MARGIN * 5) + "px");
+        generalInformation.forceLayout();
+        addressInformation.forceLayout();
+      }
+    });
+
+    // */
+  }
+
+  protected void createGeneralInformationSection() {
+
+    generalInformation = new FieldSet();
     generalInformation.setHeadingText("General Information");
     generalInformation.setCollapsible(true);
 
-    HtmlLayoutContainer generalLayout = new HtmlLayoutContainer(getTableMarkup1());
-    generalLayout.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
-    generalLayout.setLayoutData(new MarginData(8));
+    HtmlLayoutContainer generalLayout = new HtmlLayoutContainer(getGeneralInformationSectionTableMarkup());
+    generalLayout.setLayoutData(new MarginData(DEFAULT_MARGIN));
 
     new ContactInformationNameSection(generalLayout);
     new ContactInformationElectronicAddressSection(generalLayout);
 
     generalInformation.add(generalLayout);
+  }
 
-    // Address Information - FieldSet
+  protected void createAddressInformationSection() {
 
-    FieldSet addressInformation = new FieldSet();
+    addressInformation = new FieldSet();
     addressInformation.setHeadingText("Address Information");
     addressInformation.setCollapsible(true);
 
-    HtmlLayoutContainer addressLayout = new HtmlLayoutContainer(getTableMarkup2());
-    addressLayout.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
-    addressLayout.setLayoutData(new MarginData(8));
+    HtmlLayoutContainer addressLayout = new HtmlLayoutContainer(getAddressInformationSectionTableMarkup());
+    addressLayout.setLayoutData(new MarginData(DEFAULT_MARGIN));
 
     new ContactInformationAddressSection(addressLayout);
 
     addressInformation.add(addressLayout);
-
-    VerticalLayoutContainer vLayout = new VerticalLayoutContainer();
-    vLayout.setLayoutData(new MarginData(8));
-    vLayout.add(generalInformation, new VerticalLayoutData(1, -1));
-    vLayout.add(addressInformation, new VerticalLayoutData(1, -1));
-
-    getTabPanel().add(vLayout, "General");
   }
 
-  private native String getTableMarkup1() /*-{
+  private native String getGeneralInformationSectionTableMarkup() /*-{
     return [ '<table width=100% cellpadding=0 cellspacing=0>',
         '<tr><td class=salutation width=50%></td><td class=businessPhone width=50%></td></tr>',
         '<tr><td class=givenName></td><td class=homePhone></td></tr>',
@@ -89,7 +124,7 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
     ].join("");
   }-*/;
 
-  private native String getTableMarkup2() /*-{
+  private native String getAddressInformationSectionTableMarkup() /*-{
     return [ '<table width=100% cellpadding=0 cellspacing=0>',
         '<tr><td class=addressName width=50%></td><td class=postalCode width=50%></td></tr>',
         '<tr><td class=addressLine1></td><td class=country></td></tr>',
@@ -117,6 +152,25 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
 }
 
 /*
+
+
+    // vLayout.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+
+    // getTabPanel().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+
+        // vLayout.forceLayout();
+
+        // generalInformation.forceLayout();
+        // addressInformation.forceLayout();
+
+
+    // getTabPanel().forceLayout();
+    // vLayout.forceLayout();
+
+    // generalLayout.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    // addressLayout.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+
+    '<tr><td class=addressLine3></td><td class=rowSpacer1></td></tr>',
 
     // getForm().setLayoutData(new MarginData(8));
     // getTabPanel().setLayoutData(new MarginData(8));

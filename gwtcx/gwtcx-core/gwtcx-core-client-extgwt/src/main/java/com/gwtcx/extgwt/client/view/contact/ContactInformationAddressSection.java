@@ -14,9 +14,21 @@
 
 package com.gwtcx.extgwt.client.view.contact;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gwt.core.client.GWT;
 import com.gwtcx.client.util.I18nUtil;
-import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
+import com.gwtcx.shared.dto.AddressTypesDto;
+import com.gwtcx.shared.dto.CountriesDto;
+import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
+import com.sencha.gxt.data.shared.LabelProvider;
+import com.sencha.gxt.data.shared.ListStore;
+import com.sencha.gxt.data.shared.ModelKeyProvider;
+import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.widget.core.client.container.AbstractHtmlLayoutContainer.HtmlData;
+import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
+import com.sencha.gxt.widget.core.client.form.ComboBox;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
@@ -31,10 +43,18 @@ public class ContactInformationAddressSection {
   protected TextField city;
   protected TextField state;
   protected TextField postalCode;
-  // protected ComboBox<> country;
-  // protected ComboBox<> addressType;
-  protected TextField country;
-  protected TextField addressType;
+  protected ComboBox<CountriesDto> country;
+  protected ComboBox<AddressTypesDto> addressType;
+
+  public interface CountryProperties extends PropertyAccess<CountriesDto> {
+    ModelKeyProvider<CountriesDto> id();
+    LabelProvider<CountriesDto> name();
+  }
+
+  public interface AddressTypeProperties extends PropertyAccess<AddressTypesDto> {
+    ModelKeyProvider<AddressTypesDto> id();
+    LabelProvider<AddressTypesDto> name();
+  }
 
   public ContactInformationAddressSection(final HtmlLayoutContainer panel) {
 
@@ -66,16 +86,80 @@ public class ContactInformationAddressSection {
     postalCode = new TextField();
     panel.add(new FieldLabel(postalCode, I18nUtil.getConstant().postalCodeLabel()), new HtmlData(".postalCode"));
 
-    country = new TextField();
+
+
+    CountryProperties countryProperty = GWT.create(CountryProperties.class);
+    ListStore<CountriesDto> countryStore = new ListStore<CountriesDto>(countryProperty.id());
+    countryStore.addAll(getCountries());
+
+    country = new ComboBox<CountriesDto>(countryStore, countryProperty.name());
+    country.setAllowBlank(false);
+    country.setTriggerAction(TriggerAction.ALL);
+    country.setValue(countryStore.get(0));
+
     panel.add(new FieldLabel(country, I18nUtil.getConstant().countryLabel()), new HtmlData(".country"));
 
-    addressType = new TextField();
+
+
+    AddressTypeProperties addressTypeProperty = GWT.create(AddressTypeProperties.class);
+    ListStore<AddressTypesDto> addressTypeStore = new ListStore<AddressTypesDto>(addressTypeProperty.id());
+    addressTypeStore.addAll(getAddressTypes());
+
+    addressType = new ComboBox<AddressTypesDto>(addressTypeStore, addressTypeProperty.name());
+    addressType.setAllowBlank(false);
+    addressType.setTriggerAction(TriggerAction.ALL);
+    addressType.setValue(addressTypeStore.get(1));
+
     panel.add(new FieldLabel(addressType, I18nUtil.getConstant().addressTypeLabel()), new HtmlData(".addressType"));
 
+  }
+
+  public static List<CountriesDto> getCountries() {
+
+    List<CountriesDto> countries = new ArrayList<CountriesDto>();
+
+    countries.add(new CountriesDto("1", "Australia"));
+    countries.add(new CountriesDto("2", "New Zealand"));
+
+    return countries;
+  }
+
+  public static List<AddressTypesDto> getAddressTypes() {
+
+    List<AddressTypesDto> addressTypes = new ArrayList<AddressTypesDto>();
+
+    addressTypes.add(new AddressTypesDto("1", "Business"));
+    addressTypes.add(new AddressTypesDto("2", "Home"));
+    addressTypes.add(new AddressTypesDto("3", "Mailing"));
+    addressTypes.add(new AddressTypesDto("4", "Priority"));
+    addressTypes.add(new AddressTypesDto("5", "Other"));
+
+    return addressTypes;
   }
 }
 
 /*
+
+    // country.setForceSelection(true);
+
+    // country.addValueChangeHandler(new ValueChangeHandler<CountriesDto>() {
+    //   @Override
+    //   public void onValueChange(ValueChangeEvent<CountriesDto> event) {
+    //     Info.display("Selected", "You selected " + event.getValue());
+    //   }
+    // });
+
+    // country = new TextField();
+    // panel.add(new FieldLabel(country, I18nUtil.getConstant().countryLabel()), new HtmlData(".country"));
+
+
+    TextField rowSpacer1 = new TextField();
+    rowSpacer1.setVisible(false);
+    FieldLabel rowSpacer1Label = new FieldLabel(rowSpacer1, "rowSpacer1");
+    rowSpacer1Label.setVisible(false);
+    panel.add(rowSpacer1Label, new HtmlData(".rowSpacer1"));
+
+
 
     StockProperties props = GWT.create(StockProperties.class);
     ListStore<Stock> store = new ListStore<Stock>(props.symbol());

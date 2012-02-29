@@ -123,7 +123,7 @@ public class ContactPageView extends AbstractContactPageView<ContactPageUiHandle
       }
     });
 
-    getToolBar().addTextButton(ToolBarIcons.INSTANCE.saveAndClose(), null, null, new SelectHandler() {
+    getToolBar().addTextButton(ToolBarIcons.INSTANCE.saveAndClose(), I18nUtil.getConstant().saveAndCloseButton(), null, new SelectHandler() {
       @Override
       public void onSelect(SelectEvent event) {
         if (getUiHandlers() != null) {
