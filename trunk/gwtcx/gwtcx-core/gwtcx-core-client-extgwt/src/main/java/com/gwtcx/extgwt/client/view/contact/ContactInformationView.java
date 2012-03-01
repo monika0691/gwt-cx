@@ -39,6 +39,9 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
   protected FieldSet generalInformation;
   protected FieldSet addressInformation;
 
+  protected HtmlLayoutContainer generalLayout;
+  protected HtmlLayoutContainer addressLayout;
+
   @Inject
   public ContactInformationView(final EventBus eventBus, final TabPanel tabPanel) {
     super(eventBus);
@@ -59,8 +62,11 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
     vLayout = new VerticalLayoutContainer();
     vLayout.setLayoutData(new MarginData(DEFAULT_MARGIN));
 
-    vLayout.add(generalInformation, new VerticalLayoutData(1, -1));
-    vLayout.add(addressInformation, new VerticalLayoutData(1, -1));
+    // vLayout.add(generalInformation, new VerticalLayoutData(1, -1));
+    // vLayout.add(addressInformation, new VerticalLayoutData(1, -1));
+
+    vLayout.add(generalLayout, new VerticalLayoutData(1, -1));
+    vLayout.add(addressLayout, new VerticalLayoutData(1, -1));
 
     getTabPanel().add(vLayout, "General");
 
@@ -76,10 +82,10 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
         Log.debug("vLayout - width: " + width + " height: " + height);
 
         vLayout.setSize(width + "px", height + "px");
-        generalInformation.setWidth((width - DEFAULT_MARGIN * 5) + "px");
-        addressInformation.setWidth((width - DEFAULT_MARGIN * 5) + "px");
-        generalInformation.forceLayout();
-        addressInformation.forceLayout();
+        // generalInformation.setWidth((width - DEFAULT_MARGIN * 5) + "px");
+        // addressInformation.setWidth((width - DEFAULT_MARGIN * 5) + "px");
+        // generalInformation.forceLayout();
+        // addressInformation.forceLayout();
       }
     });
 
@@ -92,13 +98,13 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
     generalInformation.setHeadingText("General Information");
     generalInformation.setCollapsible(true);
 
-    HtmlLayoutContainer generalLayout = new HtmlLayoutContainer(getGeneralInformationSectionTableMarkup());
+    generalLayout = new HtmlLayoutContainer(getGeneralInformationSectionTableMarkup());
     generalLayout.setLayoutData(new MarginData(DEFAULT_MARGIN));
 
     new ContactInformationNameSection(generalLayout);
     new ContactInformationElectronicAddressSection(generalLayout);
 
-    generalInformation.add(generalLayout);
+    // generalInformation.add(generalLayout);
   }
 
   protected void createAddressInformationSection() {
@@ -107,12 +113,12 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
     addressInformation.setHeadingText("Address Information");
     addressInformation.setCollapsible(true);
 
-    HtmlLayoutContainer addressLayout = new HtmlLayoutContainer(getAddressInformationSectionTableMarkup());
+    addressLayout = new HtmlLayoutContainer(getAddressInformationSectionTableMarkup());
     addressLayout.setLayoutData(new MarginData(DEFAULT_MARGIN));
 
     new ContactInformationAddressSection(addressLayout);
 
-    addressInformation.add(addressLayout);
+    // addressInformation.add(addressLayout);
   }
 
   private native String getGeneralInformationSectionTableMarkup() /*-{
@@ -125,13 +131,17 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
   }-*/;
 
   private native String getAddressInformationSectionTableMarkup() /*-{
-    return [ '<table width=100% cellpadding=0 cellspacing=0>',
+    return [ '<fieldset>',
+        '<legend>Address Information:</legend>',
+        '<table width=100% cellpadding=0 cellspacing=0>',
         '<tr><td class=addressName width=50%></td><td class=postalCode width=50%></td></tr>',
         '<tr><td class=addressLine1></td><td class=country></td></tr>',
         '<tr><td class=addressLine2></td><td class=addressType></td></tr>',
         '<tr><td class=addressLine3></td><td></td></tr>',
         '<tr><td class=city></td><td></td></tr>',
-        '<tr><td class=state></td><td></td></tr>', '</table>'
+        '<tr><td class=state></td><td></td></tr>',
+        '</table>',
+        '</fieldset>'
     ].join("");
   }-*/;
 
@@ -153,7 +163,13 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
 
 /*
 
-
+<form action="">
+<fieldset>
+<legend>Personal information:</legend>
+Name: <input type="text" size="30" /><br />
+E-mail: <input type="text" size="30" /><br />
+Date of birth: <input type="text" size="10" />
+</fieldset>
     // vLayout.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
 
     // getTabPanel().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
