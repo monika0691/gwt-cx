@@ -24,11 +24,13 @@ import com.gwtcx.shared.dto.EntityDto;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
+import com.sencha.gxt.widget.core.client.form.FormPanel;
 
 /**
- * AbstractFormView
+ * AbstractTabbedFormView
  */
-public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractTabbedFormView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   // public static final String ENTITY_CONTEXT_AREA_STYLE_NAME = "gwtcx-Entity-ContextArea";
 
@@ -38,13 +40,15 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
   public static final int DEFAULT_MARGIN = 8;
 
   protected VerticalLayoutContainer panel;
+  protected FormPanel form;
 
   protected EntityDto dto;
 
   protected final EventBus eventBus;
+  // private EntityToolBar toolBar;
 
   @Inject
-  public AbstractFormView(final EventBus eventBus) {
+  public AbstractTabbedFormView(final EventBus eventBus) {
     super();
 
     Log.debug("AbstractFormView()");
@@ -56,6 +60,11 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
     setPanel(new VerticalLayoutContainer());
     // getPanel().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
     getPanel().setWidth(CONTEXT_AREA_WIDTH);
+
+    setForm(new FormPanel());
+    // getForm().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    getForm().setWidth(CONTEXT_AREA_WIDTH);
+    getPanel().add(getForm(), new VerticalLayoutData(1, -1));
 
     // /*
 
@@ -103,6 +112,8 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
     Log.debug("resize() - width: " + width + " height: " + height);
 
     panel.setSize(width + "px", height + "px");
+    form.setSize(width + "px", height + "px");
+    // panel.onResize();
   }
 
   // */
@@ -124,6 +135,14 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
 
   public void setPanel(VerticalLayoutContainer panel) {
     this.panel = panel;;
+  }
+
+  public void setForm(FormPanel form) {
+    this.form = form;;
+  }
+
+  public FormPanel getForm() {
+    return form;
   }
 
   public void setId(String id) {
