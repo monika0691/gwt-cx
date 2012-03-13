@@ -219,7 +219,7 @@ public class AccountInformationGeneralTab extends EntityTab {
         rowSpacer2, state);
     getForm().setTitleAlign(Alignment.LEFT);
 
-    this.setPane(form);
+    this.setPane(getForm());
   }
 
   @Override

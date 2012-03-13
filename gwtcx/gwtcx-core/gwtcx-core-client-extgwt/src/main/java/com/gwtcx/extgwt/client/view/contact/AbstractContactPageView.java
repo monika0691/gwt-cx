@@ -36,10 +36,10 @@ import com.sencha.gxt.widget.core.client.container.Viewport;
  */
 public abstract class AbstractContactPageView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
-      // public static final String CONTEXT_AREA_WIDTH = "100%";
-      // public static final String CONTEXT_AREA_HEIGHT = "100%";
-      public static final String TOOLBAR_WIDTH = "100%";
-      public static final String TOOLBAR_HEIGHT = "26px";
+  // public static final String CONTEXT_AREA_WIDTH = "100%";
+  // public static final String CONTEXT_AREA_HEIGHT = "100%";
+  public static final String TOOLBAR_WIDTH = "100%";
+  public static final String TOOLBAR_HEIGHT = "26px";
 
   protected final EventBus eventBus;
   protected final com.gwtcx.extgwt.client.widgets.ToolBar toolBar;

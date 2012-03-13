@@ -54,10 +54,7 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
     dto = null;
 
     setPanel(new VerticalLayoutContainer());
-    // getPanel().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
-    getPanel().setWidth(CONTEXT_AREA_WIDTH);
-
-    // /*
+    getPanel().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
 
     Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
       @Override
@@ -69,31 +66,8 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
       }
     });
 
-    // */
-
-    /*
-
-    this.panel.addResizeHandler(new ResizeHandler() {
-      @Override
-      public void onResize(ResizeEvent event) {
-
-        int width = event.getWidth();
-        int height = event.getHeight();
-
-        Log.debug("ResizeHandler() - width: " + width + " height: " + height);
-
-        panel.setSize(width + "px", height + "px");
-        form.setSize(width + "px", height + "px");
-        // form.forceLayout();
-      }
-    });
-
-    */
-
     bindCustomUiHandlers();
   }
-
-  // /*
 
   protected void resize() {
 
@@ -102,10 +76,9 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
 
     Log.debug("resize() - width: " + width + " height: " + height);
 
-    panel.setSize(width + "px", height + "px");
+    getPanel().setSize(width + "px", height + "px");
+    getPanel().onResize();
   }
-
-  // */
 
   protected void bindCustomUiHandlers() { }
 
@@ -141,6 +114,34 @@ public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiH
 
     */
   }
+
+
+
+  /*
+
+      // getPanel().setWidth(CONTEXT_AREA_WIDTH);
+
+
+    this.panel.addResizeHandler(new ResizeHandler() {
+      @Override
+      public void onResize(ResizeEvent event) {
+
+        int width = event.getWidth();
+        int height = event.getHeight();
+
+        Log.debug("ResizeHandler() - width: " + width + " height: " + height);
+
+        panel.setSize(width + "px", height + "px");
+        form.setSize(width + "px", height + "px");
+        // form.forceLayout();
+      }
+    });
+
+
+  */
+
+
+
 
   /*
 

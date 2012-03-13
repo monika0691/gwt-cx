@@ -46,12 +46,13 @@ public class ContextAreaGrid extends Grid<ContextAreaModel>{
     this.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
 
     this.setBorders(false);
-    this.setColumnLines(false);
     this.setColumnReordering(false);
     this.setHideHeaders(true);
-    this.setStripeRows(false);
 
     this.getView().setAutoExpandColumn(this.getColumnModel().getColumn(COLUMN_1_NAME_INDEX));
+    this.getView().setColumnLines(false);
+    this.getView().setStripeRows(true);
+
     this.getView().setEmptyText(I18nUtil.getConstant().gridEmptyText());
 
     // this.setSelectionModel(new CellSelectionModel<ContextAreaModel>());
