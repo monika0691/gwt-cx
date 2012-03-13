@@ -145,6 +145,8 @@ public class ContactPageView extends AbstractContactPageView<ContactPageUiHandle
     getToolBar().addTextButton(ToolBarIcons.INSTANCE.help(), null, null);
 
     getToolBar().addFill();
+
+    Log.debug("end initToolBar()");
   }
 
   @Override

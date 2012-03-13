@@ -143,12 +143,14 @@ public class ContactsContextAreaGrid extends Grid<ContactsDto> {
   public ContactsContextAreaGrid(ContactsDtoListStore store) {
     super(store, getColumnConfig());
 
+    this.setBorders(false);
+    this.setColumnReordering(true);
+
     // Auto expand the last column (e.g. the Email column)
     this.getView().setAutoExpandColumn(this.getColumnModel().getColumn(this.getColumnModel().getColumnCount() - 1));
-    this.setBorders(false);
-    this.setStripeRows(true);
-    this.setColumnLines(false);
-    this.setColumnReordering(true);
+    this.getView().setColumnLines(false);
+    this.getView().setStripeRows(true);
+
 
     this.store.addAll(getAccounts());
   }

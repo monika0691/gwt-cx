@@ -23,14 +23,13 @@ import com.gwtcx.client.presenter.ContactInformationPresenter;
 import com.gwtcx.client.uihandlers.ContactInformationUiHandlers;
 import com.gwtcx.extgwt.client.view.AbstractFormView;
 import com.sencha.gxt.widget.core.client.FramedPanel;
-import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.MarginData;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.form.FieldSet;
 
-public class ContactInformationView extends AbstractFormView<ContactInformationUiHandlers> implements
+public class ContactInformationFormView extends AbstractFormView<ContactInformationUiHandlers> implements
     ContactInformationPresenter.MyView {
 
   protected FramedPanel form;
@@ -44,14 +43,14 @@ public class ContactInformationView extends AbstractFormView<ContactInformationU
   protected HtmlLayoutContainer addressLayout;
 
   @Inject
-  public ContactInformationView(final EventBus eventBus) {
+  public ContactInformationFormView(final EventBus eventBus) {
     super(eventBus);
 
     Log.debug("ContactInformationView()");
 
     this.form = new FramedPanel();
 
-    getPanel().setStyleName("gwtcx-Dashboards-View");  // overflow: auto;
+    // getPanel().setStyleName("gwtcx-Dashboards-View");  // overflow: auto;
 
     getForm().setWidth(CONTEXT_AREA_WIDTH);
     getPanel().add(getForm(), new VerticalLayoutData(1, -1));

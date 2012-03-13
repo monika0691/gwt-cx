@@ -23,6 +23,7 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.shared.dto.EntityDto;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.form.FormPanel;
@@ -39,34 +40,31 @@ public abstract class AbstractTabbedFormView<C extends UiHandlers> extends ViewW
 
   public static final int DEFAULT_MARGIN = 8;
 
-  protected VerticalLayoutContainer panel;
-  protected FormPanel form;
-
-  protected EntityDto dto;
-
   protected final EventBus eventBus;
-  // private EntityToolBar toolBar;
+  protected final FormPanel form;
+  protected final TabPanel tabPanel;
+
+  protected EntityDto dto = null;
+  protected VerticalLayoutContainer panel;
 
   @Inject
-  public AbstractTabbedFormView(final EventBus eventBus) {
+  public AbstractTabbedFormView(final EventBus eventBus, final FormPanel form, final TabPanel tabPanel) {
     super();
 
-    Log.debug("AbstractFormView()");
+    Log.debug("AbstractTabbedFormView()");
 
     this.eventBus= eventBus;
-
-    dto = null;
+    this.form= form;
+    this.tabPanel= tabPanel;
 
     setPanel(new VerticalLayoutContainer());
-    // getPanel().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
-    getPanel().setWidth(CONTEXT_AREA_WIDTH);
 
-    setForm(new FormPanel());
-    // getForm().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
-    getForm().setWidth(CONTEXT_AREA_WIDTH);
+    getPanel().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    getForm().setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    getTabPanel().setWidth(CONTEXT_AREA_WIDTH);
+
     getPanel().add(getForm(), new VerticalLayoutData(1, -1));
-
-    // /*
+    getForm().setWidget(getTabPanel());
 
     Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
       @Override
@@ -78,31 +76,8 @@ public abstract class AbstractTabbedFormView<C extends UiHandlers> extends ViewW
       }
     });
 
-    // */
-
-    /*
-
-    this.panel.addResizeHandler(new ResizeHandler() {
-      @Override
-      public void onResize(ResizeEvent event) {
-
-        int width = event.getWidth();
-        int height = event.getHeight();
-
-        Log.debug("ResizeHandler() - width: " + width + " height: " + height);
-
-        panel.setSize(width + "px", height + "px");
-        form.setSize(width + "px", height + "px");
-        // form.forceLayout();
-      }
-    });
-
-    */
-
     bindCustomUiHandlers();
   }
-
-  // /*
 
   protected void resize() {
 
@@ -111,12 +86,12 @@ public abstract class AbstractTabbedFormView<C extends UiHandlers> extends ViewW
 
     Log.debug("resize() - width: " + width + " height: " + height);
 
-    panel.setSize(width + "px", height + "px");
-    form.setSize(width + "px", height + "px");
-    // panel.onResize();
-  }
+    getPanel().setSize(width + "px", height + "px");
+    getForm().setSize(width + "px", height + "px");
+    getTabPanel().setWidth(width + "px");
 
-  // */
+    getPanel().onResize();
+  }
 
   protected void bindCustomUiHandlers() { }
 
@@ -137,12 +112,12 @@ public abstract class AbstractTabbedFormView<C extends UiHandlers> extends ViewW
     this.panel = panel;;
   }
 
-  public void setForm(FormPanel form) {
-    this.form = form;;
-  }
-
   public FormPanel getForm() {
     return form;
+  }
+
+  public TabPanel getTabPanel() {
+    return tabPanel;
   }
 
   public void setId(String id) {
@@ -160,77 +135,4 @@ public abstract class AbstractTabbedFormView<C extends UiHandlers> extends ViewW
 
     */
   }
-
-  /*
-
-  public void setResultSet(EntityDto dto) {
-
-    try {
-      if (dto != null) {
-        this.dto = dto;
-        setFields(this.dto);
-      }
-    } catch (Exception e) {
-      Log.warn("Unable to set server response: " + e);
-    }
-  }
-
-  public void setFields(EntityDto dto) {
-
-    Tab[] tabs = tabSet.getTabs();
-
-    for (Tab tab : tabs) {
-      EntityTab entityTab = (EntityTab) tab;
-
-      entityTab.setFields(accountDto);
-    }
-
-    // set Masthead Account Name label and the browser window's title
-    setMastheadLabel(accountDto.getAccountName());
-  }
-
-  public AccountDto getFields() {
-
-    if (accountDto == null) {
-      accountDto = new AccountDto();
-    }
-
-    Tab[] tabs = tabSet.getTabs();
-
-    for (Tab tab : tabs) {
-      EntityTab entityTab = (EntityTab) tab;
-
-      entityTab.getFields(accountDto);
-    }
-
-    return accountDto;
-  }
-
-  public Boolean validateTabs() {
-    Boolean result = true;
-
-    Tab[] tabs = tabSet.getTabs();
-
-    for (Tab tab : tabs) {
-      EntityTab entityTab = (EntityTab) tab;
-
-      if (! entityTab.getForm().validate(false)) {
-        result = false;
-        break;
-      }
-    }
-
-    return result;
-  }
-
-  private void setMastheadLabel(String name) {
-
-    MastheadUpdateEvent.fire(eventBus, name + I18nUtil.getConstant().informationLabel());
-    // AccountPagePresenter.getMasthead().setLabelContents(name + I18nUtil.getConstant().informationLabel());
-
-    // set the browser window's title e.g. "Account: ABC Corporation Pty Ltd"
-    Window.setTitle(I18nUtil.getConstant().accountWindowTitle() + name);
-  }
-
-  */
 }

@@ -17,7 +17,7 @@ package com.gwtcx.sample.serendipity.client.gin;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.presenter.ContactInformationPresenter;
 import com.gwtcx.client.presenter.ContactPagePresenter;
-import com.gwtcx.extgwt.client.view.contact.ContactInformationView;
+import com.gwtcx.extgwt.client.view.contact.ContactInformationTabbedFormView;
 import com.gwtcx.extgwt.client.view.contact.ContactPageView;
 import com.gwtcx.sample.serendipity.client.place.DefaultPlace;
 import com.gwtcx.sample.serendipity.client.place.SerendipityPlaceManager;
@@ -118,7 +118,7 @@ public class SharedGinModule extends AbstractPresenterModule {
        ReportsView.class, ReportsPresenter.MyProxy.class);
 
     bindPresenter(ContactInformationPresenter.class, ContactInformationPresenter.MyView.class,
-            ContactInformationView.class, ContactInformationPresenter.MyProxy.class);
+            ContactInformationTabbedFormView.class, ContactInformationPresenter.MyProxy.class);
 
     // Settings
     bindPresenter(AdministrationPresenter.class, AdministrationPresenter.MyView.class,

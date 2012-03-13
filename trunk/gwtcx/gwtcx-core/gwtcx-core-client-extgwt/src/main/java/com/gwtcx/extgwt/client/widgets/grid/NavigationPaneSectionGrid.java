@@ -44,15 +44,14 @@ public class NavigationPaneSectionGrid extends Grid<NavigationPaneSectionModel>{
     this.setSize(NAVIGATION_PANE_WIDTH, NAVIGATION_PANE_HEIGHT);
 
     this.setBorders(false);
-    this.setColumnLines(false);
     this.setColumnReordering(false);
     this.setHideHeaders(true);
-    this.setStripeRows(false);
 
     // Auto expand the last column (e.g. the Display Name column)
     this.getView().setAutoExpandColumn(this.getColumnModel().getColumn(this.getColumnModel().getColumnCount() - 1));
-    // this.getView().setAutoExpandColumn(this.getColumnModel().getColumn(NAME_COLUMN_INDEX));
+    this.getView().setColumnLines(false);
     this.getView().setEmptyText(I18nUtil.getConstant().gridEmptyText());
+    this.getView().setStripeRows(false);
 
     // this.setSelectionModel(new CellSelectionModel<NavigationPaneSectionModel>());
   }
