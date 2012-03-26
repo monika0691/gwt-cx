@@ -15,14 +15,10 @@
   <packaging>war</packaging>
   <name>GWTCX smartGWT Samples - Serendipity</name>
 
-  <properties>
-    <generated-sources>target/generated-sources/apt</generated-sources>
-  </properties>
-
   <build>
 
     <!-- Generate compiled stuff in the target folder -->
-    <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
+    <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
 
     <plugins>
 
@@ -33,7 +29,7 @@
         <configuration>
 
           <logLevel>INFO</logLevel>
-          <style>PRETTY</style>
+          <style>${gwt.style}</style>
           <gwtVersion>${gwt.version}</gwtVersion>
 
           <!-- URL that should be automatically opened in the GWT shell (gwt:run) -->
@@ -41,7 +37,7 @@
           <module>com.gwtcx.sample.serendipity.Serendipity</module>
 
           <!-- Location of the develop-mode web application structure (gwt:run) -->
-          <hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
+          <hostedWebapp>${webappDirectory}</hostedWebapp>
           <copyWebapp>false</copyWebapp>
 
           <i18nConstantsBundles>
