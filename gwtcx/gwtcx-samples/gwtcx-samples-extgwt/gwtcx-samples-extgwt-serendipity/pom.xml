@@ -25,24 +25,53 @@
 
       <!-- GWT Maven Plugin -->
       <plugin>
-      <groupId>org.codehaus.mojo</groupId>
-      <artifactId>gwt-maven-plugin</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
         <configuration>
-          <appEngineVersion>${gae.version}</appEngineVersion>
-          <appEngineHome>${gae.home}</appEngineHome>
+
           <logLevel>INFO</logLevel>
           <style>${gwt.style}</style>
-          <server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>
-          <!-- Location of the develop-mode web application structure (gwt:run) -->
-          <hostedWebapp>${webappDirectory}</hostedWebapp>
-          <copyWebapp>false</copyWebapp>
-          <appEngineVersion>${gae.version}</appEngineVersion>
-          <appEngineHome>${gae.home}</appEngineHome>
+          <gwtVersion>${gwt.version}</gwtVersion>
+
           <!-- URL that should be automatically opened in the GWT shell (gwt:run) -->
           <runTarget>index.html</runTarget>
           <module>com.gwtcx.sample.serendipity.Serendipity</module>
 
-          <!-- <gwtVersion>${gwt.version}</gwtVersion> -->
+          <!-- Location of the develop-mode web application structure (gwt:run) -->
+          <hostedWebapp>${webappDirectory}</hostedWebapp>
+          <copyWebapp>false</copyWebapp>
+
+
+          <appEngineVersion>${gae.version}</appEngineVersion>
+          <appEngineHome>${gae.home}</appEngineHome>
+          <server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>
+          <port>${gae.port}</port>
+
+
+        </configuration>
+      </plugin>
+
+      <!-- The actual maven-gae-plugin. Type "mvn gae:run" to run project, "mvn gae:deploy"
+        to upload to GAE. -->
+      <plugin>
+        <groupId>net.kindleit</groupId>
+        <artifactId>maven-gae-plugin</artifactId>
+        <version>${maven-gae-plugin.version}</version>
+        <dependencies>
+          <dependency>
+            <groupId>net.kindleit</groupId>
+            <artifactId>gae-runtime</artifactId>
+            <version>${gae.version}</version>
+            <type>pom</type>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+      <!-- Upload application to the appspot automatically, during release:perform -->
+      <plugin>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <goals>gae:deploy</goals>
         </configuration>
       </plugin>
 
@@ -66,6 +95,22 @@
 
   <dependencies>
 
+
+    <!-- AppEngine dependencies
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-1.0-sdk</artifactId>
+    </dependency>
+    -->
+
+    <!-- Google App Engine meta-package -->
+    <dependency>
+      <groupId>net.kindleit</groupId>
+      <artifactId>gae-runtime</artifactId>
+      <version>${gae.version}</version>
+      <type>pom</type>
+    </dependency>
+
     <!-- GWT Customer Experience dependencies -->
     <dependency>
       <groupId>com.gwtcx</groupId>
@@ -75,12 +120,10 @@
       <groupId>com.gwtcx</groupId>
       <artifactId>gwtcx-core-client-extgwt</artifactId>
     </dependency>
-    <!--
     <dependency>
       <groupId>com.gwtcx</groupId>
       <artifactId>gwtcx-core-server-gae</artifactId>
     </dependency>
-    -->
 
     <!-- Ext GWT dependencies -->
     <dependency>
@@ -155,13 +198,6 @@
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-processors</artifactId>
     </dependency>
-
-    <!-- AppEngine dependencies
-    <dependency>
-      <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-api-1.0-sdk</artifactId>
-    </dependency>
-    -->
 
     <!-- GWT HighCharts dependencies -->
     <dependency>

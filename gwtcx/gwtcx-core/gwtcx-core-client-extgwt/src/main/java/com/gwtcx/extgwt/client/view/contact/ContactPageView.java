@@ -108,6 +108,8 @@ public class ContactPageView extends AbstractContactPageView<ContactPageUiHandle
 
     Log.debug("initToolBar()");
 
+    /*
+
     // getWestPanel().getHeader().setVisible(false);
     getWestPanel().getHeader().hide();
     getCenterPanel().getHeader().hide();
@@ -145,6 +147,8 @@ public class ContactPageView extends AbstractContactPageView<ContactPageUiHandle
     getToolBar().addTextButton(ToolBarIcons.INSTANCE.help(), null, null);
 
     getToolBar().addFill();
+
+    */
 
     Log.debug("end initToolBar()");
   }

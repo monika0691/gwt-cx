@@ -18,7 +18,6 @@
 
   <properties>
     <generated-sources>target/generated-sources/apt</generated-sources>
-    <gwt.style>PRETTY</gwt.style>  <!-- OBFUSCATED -->
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
   </properties>
 
