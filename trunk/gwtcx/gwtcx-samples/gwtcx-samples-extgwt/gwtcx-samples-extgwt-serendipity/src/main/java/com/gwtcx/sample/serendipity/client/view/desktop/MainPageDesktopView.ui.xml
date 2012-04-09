@@ -41,7 +41,7 @@
 
           <gxt:ContentPanel ui:field="westPanel" appearance="{contentPanelAppearance}" headingText="Workplace" bodyBorder="false">
 
-            <gwtcx:NavigationPane ui:field="navigationPane" fill="true" />
+            <gwtcx:NavigationPane ui:field="navigationPane" />
 
           </gxt:ContentPanel>
 
