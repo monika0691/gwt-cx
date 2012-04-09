@@ -16,8 +16,6 @@ package com.gwtcx.sample.serendipity.client.view.desktop;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.logical.shared.SelectionEvent;
-import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.user.client.ui.Widget;
@@ -44,6 +42,8 @@ import com.sencha.gxt.widget.core.client.event.ExpandEvent;
 import com.sencha.gxt.widget.core.client.event.ExpandEvent.ExpandHandler;
 import com.sencha.gxt.widget.core.client.event.RowClickEvent;
 import com.sencha.gxt.widget.core.client.event.RowClickEvent.RowClickHandler;
+import com.sencha.gxt.widget.core.client.event.SelectionEvent;
+import com.sencha.gxt.widget.core.client.event.SelectionEvent.SelectionHandler;
 import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.menu.Item;
 import com.sencha.gxt.widget.core.client.menu.Menu;
@@ -67,7 +67,7 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
     Log.debug("MainPageDesktopView()");
 
     // expand the first Navigation Pane section
-    getNavigationPane().setWidget(getNavigationPane().getWidget(0));
+    getNavigationPane().setActiveWidget(getNavigationPane().getWidget(0));
   }
 
   @Override
@@ -230,7 +230,7 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
     public void onSelection(SelectionEvent<Item> event) {
 
       // TO DO: need to use name NOT displayName as per RowClickHandler()
-      MenuItem item = (MenuItem) event.getSelectedItem();
+      MenuItem item = (MenuItem) event.getItem();
       String place = item.getText().trim();
 
       Info.display("Action", "You selected: " + place);
@@ -246,7 +246,7 @@ public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers
     public void onSelection(SelectionEvent<Item> event) {
 
       // TO DO: need to use name NOT displayName as per RowClickHandler()
-      MenuItem item = (MenuItem) event.getSelectedItem();
+      MenuItem item = (MenuItem) event.getItem();
       String place = item.getText().trim();
 
       if (getUiHandlers() != null) {

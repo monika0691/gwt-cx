@@ -16,8 +16,6 @@ package com.gwtcx.sample.serendipity.client.view.mobile;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.logical.shared.SelectionEvent;
-import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.user.client.ui.Widget;
@@ -32,6 +30,8 @@ import com.gwtcx.sample.serendipity.client.presenter.MainPagePresenter;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance;
 import com.sencha.gxt.widget.core.client.container.Viewport;
+import com.sencha.gxt.widget.core.client.event.SelectionEvent;
+import com.sencha.gxt.widget.core.client.event.SelectionEvent.SelectionHandler;
 import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.menu.Item;
 import com.sencha.gxt.widget.core.client.menu.MenuItem;
@@ -49,7 +49,7 @@ public class MainPageMobileView extends AbstractMainPageView<MainPageUiHandlers>
 
     Log.debug("MainPageMobileView()");
 
-    getNavigationPane().setWidget(getNavigationPane().getWidget(0));
+    getNavigationPane().setActiveWidget(getNavigationPane().getWidget(0));
   }
 
   @Override
@@ -105,7 +105,7 @@ public class MainPageMobileView extends AbstractMainPageView<MainPageUiHandlers>
   public class NewActivitySelectionHandler implements SelectionHandler<Item> {
     @Override
     public void onSelection(SelectionEvent<Item> event) {
-        MenuItem item = (MenuItem)event.getSelectedItem();
+        MenuItem item = (MenuItem)event.getItem();
         Info.display("Action", "You selected the " + item.getText());
     }
   }

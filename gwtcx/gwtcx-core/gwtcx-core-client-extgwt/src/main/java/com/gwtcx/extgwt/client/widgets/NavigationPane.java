@@ -86,7 +86,7 @@ public class NavigationPane extends AccordionLayoutContainer {
 
     section.setAnimCollapse(false);
     this.add(section);
-    this.setWidget(section);
+    this.setActiveWidget(section);
 
     return section;
   }
@@ -99,7 +99,7 @@ public class NavigationPane extends AccordionLayoutContainer {
     section.setAnimCollapse(false);
     section.setHeadingText(sectionName);
     this.add(section);
-    this.setWidget(section);
+    this.setActiveWidget(section);
 
     return section;
   }

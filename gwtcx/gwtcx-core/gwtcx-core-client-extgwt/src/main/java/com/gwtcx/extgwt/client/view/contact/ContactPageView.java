@@ -55,7 +55,7 @@ public class ContactPageView extends AbstractContactPageView<ContactPageUiHandle
     Log.debug("ContactPageView()");
 
     // expand the first Navigation Pane section
-    getNavigationPane().setWidget(getNavigationPane().getWidget(0));
+    getNavigationPane().setActiveWidget(getNavigationPane().getWidget(0));
   }
 
   @Override
