@@ -120,7 +120,7 @@
     <commons-fileupload.version>1.2.1</commons-fileupload.version>
     <commons-lang.version>2.4</commons-lang.version>
     <commons-io.version>1.4</commons-io.version>
-    <extgwt.version>3.0.0-rc</extgwt.version>
+    <extgwt.version>3.0.0-rc2</extgwt.version>
     <gae.version>1.6.1</gae.version> <!-- 0.9.0 -->
     <!-- <gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home> -->
     <gae.home>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
