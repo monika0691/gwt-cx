@@ -1,16 +1,14 @@
-#summary gwt-cx Wiki Home
+#summary Kiahu CX Wiki Home
 #labels Featured
 
-= Welcome to the gwt-cx Wiki =
+= Welcome to the Kiahu CX Wiki =
 
-The goal of this wiki is to provide an overview of why and how to use gwt-cx in your next project.
+The goal of this wiki is to provide an overview of why and how to use Kiahu CX in your next project.
 
 Please use the menu on the left to navigate around our wiki.
 
 ------
 
-We welcome any questions, comments or suggestions you may have on the framework. Please contact us on the [http://groups.google.com/group/gwt-cx gwt-cx  discussion group].
+We welcome any questions, comments or suggestions you may have on the framework. Please contact us on the [http://groups.google.com/group/gwt-cx discussion group].
 
-Thank you for your interest in gwt-cx.
-
-The gwt-cx team
+The Kiahu team
