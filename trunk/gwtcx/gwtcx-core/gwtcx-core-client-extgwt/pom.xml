@@ -51,36 +51,26 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>gwtcx-core-client</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope> <!-- Not needed server-side -->
     </dependency>
 
-  <!-- Ext GWT dependencies -->
+    <!-- Ext GWT dependencies -->
     <dependency>
       <groupId>com.sencha.gxt</groupId>
       <artifactId>gxt</artifactId>
-      <version>${extgwt.version}</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.sencha.gxt</groupId>
       <artifactId>uibinder-bridge</artifactId>
-      <version>${gwt.version}-SNAPSHOT</version>
-      <scope>provided</scope>
     </dependency>
     <!-- GWT Cal dependencies -->
     <dependency>
       <groupId>com.bradrydzewski</groupId>
       <artifactId>gwt-cal</artifactId>
-      <version>${gwt-cal.version}</version>
-      <scope>provided</scope>
     </dependency>
     <!-- GWT DnD dependencies -->
     <dependency>
       <groupId>com.allen-sauer.gwt.dnd</groupId>
       <artifactId>gwt-dnd</artifactId>
-      <version>${gwt-dnd.version}</version>
-      <scope>provided</scope>
     </dependency>
 
     <!-- Google Web Toolkit dependencies -->
@@ -94,26 +84,21 @@
     </dependency>
 
     <!-- GWT-Platform dependencies -->
-    <!-- MVP component -->
     <dependency>
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-mvp-client</artifactId>
-      <version>${gwtp.version}</version>
-      <scope>provided</scope>
     </dependency>
-    <!-- Dispatch client component -->
     <dependency>
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-dispatch-client</artifactId>
-      <version>${gwtp.version}</version>
-      <scope>provided</scope> <!-- Remove for GWTP 0.5.1 and earlier -->
     </dependency>
-    <!-- Annotation component -->
+    <dependency>
+      <groupId>com.gwtplatform</groupId>
+      <artifactId>gwtp-dispatch-server-guice</artifactId>
+    </dependency>
     <dependency>
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-processors</artifactId>
-      <version>${gwtp.version}</version>
-      <scope>provided</scope>
     </dependency>
 
     <!-- GWT-Log dependencies -->

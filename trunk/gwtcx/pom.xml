@@ -16,9 +16,9 @@
   <artifactId>gwtcx</artifactId>
   <version>1.0.0-dp1</version>
   <packaging>pom</packaging>
-  <name>The GWT Customer Experience (CX) framework</name>
+  <name>The Kiahu Customer Experience (CX) framework</name>
   <inceptionYear>2011</inceptionYear>
-  <description>GWT-CX is an open-source Customer Experience (CX) framework, that enables you to quickly and cost-effectively create innovative customer experiences.</description>
+  <description>Kiahu CX is an open-source Customer Experience (CX) framework, that enables you to quickly and cost-effectively create innovative customer experiences.</description>
   <url>http://code.google.com/p/gwt-cx/</url>
 
   <licenses>
@@ -31,17 +31,17 @@
   </licenses>
 
   <organization>
-    <name>upTick Pty Limited</name>
-    <url>http://uptick.com.au</url>
+    <name>Kiahu</name>
+    <url>http://kiahu.com</url>
   </organization>
 
   <developers>
     <developer>
       <id>rob.ferguson</id>
       <name>Rob Ferguson</name>
-      <email>rob.ferguson@uptick.com.au</email>
-      <organization>upTick</organization>
-      <organizationUrl>http://uptick.com.au</organizationUrl>
+      <email>rob.ferguson@kiahu.com</email>
+      <organization>Kiahu</organization>
+      <organizationUrl>http://kiahu.com</organizationUrl>
       <roles>
         <role>Architect</role>
         <role>Software Engineer</role>
@@ -51,9 +51,9 @@
     <developer>
       <id>sean.doyle</id>
       <name>Sean Doyle</name>
-      <email>sean.doyle@uptick.com.au</email>
-      <organization>upTick</organization>
-      <organizationUrl>http://uptick.com.au</organizationUrl>
+      <email>sean.doyle@kiahu.com</email>
+      <organization>Kiahu</organization>
+      <organizationUrl>http://kiahu.com</organizationUrl>
       <roles>
         <role>Software Engineer</role>
       </roles>
@@ -103,7 +103,6 @@
 
     <build-helper-maven-plugin.version>1.7</build-helper-maven-plugin.version>
     <gwt-maven-plugin.version>2.4.0</gwt-maven-plugin.version>
-    <hibernate3-maven-plugin.version>2.2</hibernate3-maven-plugin.version>
     <lifecycle-mapping-plugin.version>1.0.0</lifecycle-mapping-plugin.version>
     <maven-checkstyle-plugin.version>2.7</maven-checkstyle-plugin.version>
     <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
@@ -114,6 +113,8 @@
     <maven-processor-plugin.version>2.0.5</maven-processor-plugin.version>
     <maven-source-plugin.version>2.1.2</maven-source-plugin.version>
     <maven-surefire-plugin.version>2.6</maven-surefire-plugin.version>
+    
+    <hibernate3-maven-plugin.version>2.2</hibernate3-maven-plugin.version>
 
     <aopalliance.version>1.0</aopalliance.version>
     <commons-collections.version>3.2.1</commons-collections.version>
@@ -140,6 +141,7 @@
     <javax.mail.version>1.4.4</javax.mail.version>
     <javax.inject.version>1</javax.inject.version>
     <javax.persistence.version>1.0.0.Final</javax.persistence.version>
+    <!-- <persistence-api.version>1.0</persistence-api.version> -->
     <jcip-annotations.version>1.0</jcip-annotations.version>
     <!-- <jukito.version>1.1</jukito.version> -->
     <junit.version>4.9</junit.version>
@@ -251,8 +253,23 @@
           <version>${maven-processor-plugin.version}</version>
         </plugin>
 
-        <!-- Maven Checkstyle Plugin -->
+        <!-- Maven Checkstyle Plugin - TO DO -->
+        
         <!-- Maven Source Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${maven-source-plugin.version}</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
 
         <!-- Maven GAE Plugin -->
         <plugin>

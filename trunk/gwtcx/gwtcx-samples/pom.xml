@@ -24,7 +24,7 @@
   <modules>
     <!-- <module>gwtcx-samples-gwt</module> -->
     <module>gwtcx-samples-extgwt</module>
-    <module>gwtcx-samples-smartgwt</module>
+    <!-- <module>gwtcx-samples-smartgwt</module> -->
   </modules>
 
   <build>
@@ -47,10 +47,6 @@
               </configuration>
               <goals>
                 <goal>compile</goal>
-                <!--
-                <goal>generateAsync</goal>
-                <goal>test</goal>
-                -->
               </goals>
             </execution>
           </executions>
@@ -107,26 +103,69 @@
         <version>${project.version}</version>
         <scope>provided</scope>
       </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-client-extgwt</artifactId>
+        <version>${project.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-client-smartgwt</artifactId>
+        <version>${project.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-server</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-server-gae</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-shared</artifactId>
+        <version>${project.version}</version>
+      </dependency>      
+      
 
       <!-- Google Web Toolkit dependencies -->
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-user</artifactId>
         <version>${gwt.version}</version>
-        <scope>provided</scope> <!-- Not needed server-side -->
+        <scope>provided</scope>
       </dependency>
+      <!--
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-dev</artifactId>
         <version>${gwt.version}</version>
         <scope>test</scope>
       </dependency>
+       -->
+      <dependency>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt-dev</artifactId>
+        <version>${gwt.version}</version>
+        <!-- <scope>test</scope> -->
+        <scope>provided</scope> 
+      </dependency>
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-servlet</artifactId>
         <version>${gwt.version}</version>
         <scope>runtime</scope>
-      </dependency>
+      </dependency>    
+      <dependency>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt-servlet-deps</artifactId>
+        <version>${gwt.version}</version>
+        <scope>runtime</scope>
+      </dependency>            
 
       <!-- DI dependencies -->
       <dependency>
@@ -150,14 +189,12 @@
         <artifactId>guice-assistedinject</artifactId>
         <version>${guice.version}</version>
       </dependency>
-      <!--
       <dependency>
         <groupId>aopalliance</groupId>
         <artifactId>aopalliance</artifactId>
         <version>${aopalliance.version}</version>
       </dependency>
-      -->
-
+      
       <!-- GWT-Platform dependencies -->
       <!-- MVP component -->
       <dependency>
@@ -168,8 +205,8 @@
       </dependency>
       <!-- Dispatch client component -->
       <dependency>
-       <groupId>com.gwtplatform</groupId>
-       <artifactId>gwtp-dispatch-client</artifactId>
+        <groupId>com.gwtplatform</groupId>
+        <artifactId>gwtp-dispatch-client</artifactId>
         <version>${gwtp.version}</version>
         <scope>provided</scope> <!-- Remove for GWTP 0.5.1 and earlier -->
       </dependency>
@@ -185,7 +222,34 @@
         <artifactId>gwtp-processors</artifactId>
         <version>${gwtp.version}</version>
         <scope>provided</scope>
+      </dependency>      
+      
+      <!-- Standard Java extension jars -->
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>${servlet-api.version}</version>
       </dependency>
+      <dependency>
+        <groupId>javax.inject</groupId>
+        <artifactId>javax.inject</artifactId>
+        <version>${javax.inject.version}</version>
+      </dependency>
+      <!--
+      <dependency>
+        <groupId>javax.persistence</groupId>
+        <artifactId>persistence-api</artifactId>
+        <version>${persistence-api.version}</version>
+      </dependency>
+       -->
+       
+      <!-- JCIP Annotations dependencies -->
+      <dependency>
+        <groupId>net.jcip</groupId>
+        <artifactId>jcip-annotations</artifactId>
+        <version>${jcip-annotations.version}</version>
+      </dependency>  
+      
 
       <!-- GWT-Log dependencies -->
       <dependency>

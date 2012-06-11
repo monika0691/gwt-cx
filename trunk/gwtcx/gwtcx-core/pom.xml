@@ -35,16 +35,23 @@
       </plugin>
       -->
 
-    <!-- GWT Maven Plugin -->
+      <!-- GWT Maven Plugin -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
         <version>${gwt-maven-plugin.version}</version>
         <configuration>
+          <extraJvmArgs>-Xss1024k -Xmx512M</extraJvmArgs>
+          <!-- <includes>**/*GwtTest.java,**/*GwtTestSuite.java</includes> -->
+          <mode>htmlunit</mode>
+          
+          <!--
           <logLevel>INFO</logLevel>
           <style>PRETTY</style>
           <gwtVersion>${gwt.version}</gwtVersion>
           <extraJvmArgs>-Xss1024k -Xmx512M</extraJvmArgs>
+          -->
+          
         </configuration>
         <executions>
           <execution>
@@ -77,7 +84,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>${maven-source-plugin.version}</version>
       </plugin>
     </plugins>
   </build>
@@ -92,19 +98,38 @@
 
   <dependencyManagement>
     <dependencies>
-
+    
       <!-- GWT Customer Experience dependencies -->
+      <!-- Sub-modules -->
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-client</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-client-extgwt</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-client-smartgwt</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-server</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-server-gae</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>gwtcx-core-shared</artifactId>
         <version>${project.version}</version>
-      </dependency>
-
-      <!-- JCIP Annotations dependencies -->
-      <dependency>
-        <groupId>net.jcip</groupId>
-        <artifactId>jcip-annotations</artifactId>
-        <version>${jcip-annotations.version}</version>
       </dependency>
 
       <!-- Google Web Toolkit dependencies -->
@@ -127,6 +152,34 @@
         <version>${gwt.version}</version>
         <scope>runtime</scope>
       </dependency>
+      
+      <!-- Ext GWT dependencies -->
+      <dependency>
+        <groupId>com.sencha.gxt</groupId>
+        <artifactId>gxt</artifactId>
+        <version>${extgwt.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.sencha.gxt</groupId>
+        <artifactId>uibinder-bridge</artifactId>
+        <version>${gwt.version}-SNAPSHOT</version>
+        <scope>provided</scope>
+      </dependency>
+      <!-- GWT Cal dependencies -->
+      <dependency>
+        <groupId>com.bradrydzewski</groupId>
+        <artifactId>gwt-cal</artifactId>
+        <version>${gwt-cal.version}</version>
+        <scope>provided</scope>
+     </dependency>
+      <!-- GWT DnD dependencies -->
+      <dependency>
+        <groupId>com.allen-sauer.gwt.dnd</groupId>
+        <artifactId>gwt-dnd</artifactId>
+        <version>${gwt-dnd.version}</version>
+        <scope>provided</scope>
+      </dependency>      
 
       <!-- DI dependencies -->
       <dependency>
@@ -155,6 +208,62 @@
         <artifactId>aopalliance</artifactId>
         <version>${aopalliance.version}</version>
       </dependency>
+      
+      <!-- GWT-Platform dependencies -->
+      <!-- MVP component -->
+      <dependency>
+        <groupId>com.gwtplatform</groupId>
+        <artifactId>gwtp-mvp-client</artifactId>
+        <version>${gwtp.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <!-- Dispatch client component -->
+      <dependency>
+        <groupId>com.gwtplatform</groupId>
+        <artifactId>gwtp-dispatch-client</artifactId>
+        <version>${gwtp.version}</version>
+        <scope>provided</scope> <!-- Remove for GWTP 0.5.1 and earlier -->
+      </dependency>
+      <!-- Dispatch server component -->
+      <dependency>
+        <groupId>com.gwtplatform</groupId>
+        <artifactId>gwtp-dispatch-server-guice</artifactId>
+        <version>${gwtp.version}</version>
+      </dependency>
+      <!-- Annotation component -->
+      <dependency>
+        <groupId>com.gwtplatform</groupId>
+        <artifactId>gwtp-processors</artifactId>
+        <version>${gwtp.version}</version>
+        <scope>provided</scope>
+      </dependency>      
+      
+      <!-- Standard Java extension jars -->
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>${servlet-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.inject</groupId>
+        <artifactId>javax.inject</artifactId>
+        <version>${javax.inject.version}</version>
+      </dependency>
+      <!--
+      <dependency>
+        <groupId>javax.persistence</groupId>
+        <artifactId>persistence-api</artifactId>
+        <version>${persistence-api.version}</version>
+      </dependency>
+       -->
+
+      <!-- JCIP Annotations dependencies -->
+      <dependency>
+        <groupId>net.jcip</groupId>
+        <artifactId>jcip-annotations</artifactId>
+        <version>${jcip-annotations.version}</version>
+      </dependency>  
+
 
       <!-- GWT-Log dependencies -->
       <dependency>
