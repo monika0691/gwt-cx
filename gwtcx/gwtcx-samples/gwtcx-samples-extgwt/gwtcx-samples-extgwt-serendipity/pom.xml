@@ -56,7 +56,7 @@
       <plugin>
         <groupId>net.kindleit</groupId>
         <artifactId>maven-gae-plugin</artifactId>
-        <version>${maven-gae-plugin.version}</version>
+        <!-- <version>${maven-gae-plugin.version}</version> -->
         <dependencies>
           <dependency>
             <groupId>net.kindleit</groupId>
@@ -95,22 +95,6 @@
 
   <dependencies>
 
-
-    <!-- AppEngine dependencies
-    <dependency>
-      <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-api-1.0-sdk</artifactId>
-    </dependency>
-    -->
-
-    <!-- Google App Engine meta-package -->
-    <dependency>
-      <groupId>net.kindleit</groupId>
-      <artifactId>gae-runtime</artifactId>
-      <version>${gae.version}</version>
-      <type>pom</type>
-    </dependency>
-
     <!-- GWT Customer Experience dependencies -->
     <dependency>
       <groupId>com.gwtcx</groupId>
@@ -124,6 +108,10 @@
       <groupId>com.gwtcx</groupId>
       <artifactId>gwtcx-core-server-gae</artifactId>
     </dependency>
+    
+
+
+
 
     <!-- Ext GWT dependencies -->
     <dependency>
@@ -143,6 +131,9 @@
       <artifactId>gwt-dnd</artifactId>
     </dependency>
 
+
+
+
     <!-- Google Web Toolkit dependencies -->
     <dependency>
       <groupId>com.google.gwt</groupId>
@@ -157,6 +148,7 @@
       <artifactId>gwt-servlet-deps</artifactId> <!-- required for AutoBean support -->
     </dependency>
 
+    
     <!-- DI dependencies -->
     <dependency>
       <groupId>com.google.gwt.inject</groupId>
@@ -174,13 +166,12 @@
       <groupId>com.google.inject.extensions</groupId>
       <artifactId>guice-assistedinject</artifactId>
     </dependency>
-    <!--
     <dependency>
       <groupId>aopalliance</groupId>
       <artifactId>aopalliance</artifactId>
     </dependency>
-    -->
-
+    
+    
     <!-- GWT-Platform dependencies -->
     <dependency>
       <groupId>com.gwtplatform</groupId>
@@ -198,7 +189,18 @@
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-processors</artifactId>
     </dependency>
+    
+    
+    
 
+    <!-- Google App Engine meta-package -->
+    <dependency>
+      <groupId>net.kindleit</groupId>
+      <artifactId>gae-runtime</artifactId>
+      <version>${gae.version}</version>
+      <type>pom</type>
+    </dependency>
+    
     <!-- GWT HighCharts dependencies -->
     <dependency>
       <groupId>org.moxieapps</groupId>
