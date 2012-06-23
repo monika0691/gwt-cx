@@ -168,8 +168,6 @@
     <dependency>
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-mvp-client</artifactId>
-      <version>${gwtp.version}</version>
-      <scope>provided</scope>
     </dependency>
     <!-- Dispatch server component -->
     <dependency>
@@ -179,14 +177,11 @@
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-dispatch-server</artifactId>
       -->
-      <version>${gwtp.version}</version>
     </dependency>
     <!-- Annotation component -->
     <dependency>
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-processors</artifactId>
-      <version>${gwtp.version}</version>
-      <scope>provided</scope>
     </dependency>
 
   </dependencies>

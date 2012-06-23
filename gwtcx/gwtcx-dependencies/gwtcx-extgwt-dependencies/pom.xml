@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.gwtcx</groupId>
+  <artifactId>gwtcx-extgwt-dependencies</artifactId>
+  <version>1.0.0-dp1</version>
+  <packaging>pom</packaging>
+  
+  <name>GWTCX Ext GWT dependencies POM</name>
+  <description>Aggregate POM used to simplify Ext GWT (GXT) dependency retrieval</description>
+  
+  <properties>
+  	<gwt.version>2.4.0</gwt.version>
+    <extgwt.version>3.0.0</extgwt.version>
+    <gwt-cal.version>0.9.3</gwt-cal.version>
+    <gwt-dnd.version>3.1.2</gwt-dnd.version>
+  </properties>
+ 
+  <dependencies>
+  
+    <!-- Google Web Toolkit dependencies -->
+    <dependency>
+      <groupId>com.gwtcx</groupId>
+      <artifactId>gwtcx-gwt-dependencies</artifactId>
+      <version>${project.version}</version>
+      <type>pom</type>
+    </dependency>    
+
+    <!-- Ext GWT dependencies -->
+    <dependency>
+      <groupId>com.sencha.gxt</groupId>
+      <artifactId>gxt</artifactId>
+      <version>${extgwt.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sencha.gxt</groupId>
+      <artifactId>uibinder-bridge</artifactId>
+      <version>${gwt.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- GWT Cal dependencies -->
+    <dependency>
+      <groupId>com.bradrydzewski</groupId>
+      <artifactId>gwt-cal</artifactId>
+      <version>${gwt-cal.version}</version>
+      <scope>provided</scope>
+   </dependency>
+    <!-- GWT DnD dependencies -->
+    <dependency>
+      <groupId>com.allen-sauer.gwt.dnd</groupId>
+      <artifactId>gwt-dnd</artifactId>
+      <version>${gwt-dnd.version}</version>
+      <scope>provided</scope>
+    </dependency>  
+    
+    <!-- GWT Customer Experience dependencies -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-client-extgwt</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
+	  
+  </dependencies>
+	
+</project>

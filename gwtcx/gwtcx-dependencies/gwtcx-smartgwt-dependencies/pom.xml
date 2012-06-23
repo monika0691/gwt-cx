@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.gwtcx</groupId>
+  <artifactId>gwtcx-smartgwt-dependencies</artifactId>
+  <version>1.0.0-dp1</version>
+  <packaging>pom</packaging>
+  
+  <name>GWTCX Smart GWT dependencies POM</name>
+  <description>Aggregate POM used to simplify Smart GWT dependency retrieval</description>
+  
+  <properties>
+    <smartgwt.version>2.5</smartgwt.version>
+  </properties>
+ 
+  <dependencies>
+  
+    <!-- Google Web Toolkit dependencies -->
+    <dependency>
+      <groupId>com.gwtcx</groupId>
+      <artifactId>gwtcx-gwt-dependencies</artifactId>
+      <version>${project.version}</version>
+      <type>pom</type>
+    </dependency>  
+    
+    <!-- Smart GWT dependencies -->
+    <dependency>
+      <groupId>com.smartgwt</groupId>
+      <artifactId>smartgwt</artifactId>
+      <version>${smartgwt.version}</version>
+      <scope>provided</scope>
+    </dependency>  
+    
+    <!-- GWT Customer Experience dependencies -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-client-smartgwt</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
+	  
+  </dependencies>
+	
+</project>
