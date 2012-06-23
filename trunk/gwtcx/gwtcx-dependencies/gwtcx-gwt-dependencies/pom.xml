@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.gwtcx</groupId>
+  <artifactId>gwtcx-gwt-dependencies</artifactId>
+  <version>1.0.0-dp1</version>
+  <packaging>pom</packaging>
+  
+  <name>GWTCX GWT dependencies POM</name>
+  <description>Aggregate POM used to simplify GWT dependency retrieval</description>
+  
+  <properties>
+  	<gwt.version>2.4.0</gwt.version>
+  </properties>
+ 
+  <dependencies>
+ 
+    <!-- Google Web Toolkit dependencies -->
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>${gwt.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-servlet</artifactId>
+      <version>${gwt.version}</version>
+      <scope>runtime</scope>
+    </dependency>    
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-servlet-deps</artifactId>
+      <version>${gwt.version}</version>
+      <scope>runtime</scope>
+    </dependency>    
+    
+    <!-- GWT-Platform MVP dependencies -->
+    <dependency>
+      <groupId>com.gwtcx</groupId>
+      <artifactId>gwtcx-gwtp-mvp-dependencies</artifactId>
+      <version>${project.version}</version>
+      <type>pom</type>
+    </dependency>  
+    
+    <!-- GWT Customer Experience dependencies -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-client</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- 
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-server</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-server-gae</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-shared</artifactId>
+      <version>${project.version}</version>
+    </dependency>      
+     
+  </dependencies>
+	
+</project>

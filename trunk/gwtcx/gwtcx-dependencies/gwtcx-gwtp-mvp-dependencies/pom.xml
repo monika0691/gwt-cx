@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.gwtcx</groupId>
+  <artifactId>gwtcx-gwtp-mvp-dependencies</artifactId>
+  <version>1.0.0-dp1</version>
+  <packaging>pom</packaging>
+  
+  <name>GWTCX gwt-platform MVP dependencies POM</name>
+  <description>Aggregate POM used to simplify gwt-platform (GWTP) MVP dependency retrieval</description>
+  
+  <properties>
+    <aopalliance.version>1.0</aopalliance.version>
+    <gin.version>1.5.0</gin.version>
+    <guice.version>3.0</guice.version>
+	<gwtp.version>0.7</gwtp.version>
+  </properties>
+ 
+  <dependencies>
+ 
+    <!-- DI dependencies -->
+    <dependency>
+      <groupId>com.google.gwt.inject</groupId>
+      <artifactId>gin</artifactId>
+      <version>${gin.version}</version>
+      <scope>provided</scope> <!-- Not needed server-side -->
+    </dependency>
+      <dependency>
+      <groupId>com.google.inject</groupId>
+      <artifactId>guice</artifactId>
+      <version>${guice.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.inject.extensions</groupId>
+      <artifactId>guice-servlet</artifactId>
+      <version>${guice.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.inject.extensions</groupId>
+      <artifactId>guice-assistedinject</artifactId>
+      <version>${guice.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>aopalliance</groupId>
+      <artifactId>aopalliance</artifactId>
+      <version>${aopalliance.version}</version>
+    </dependency>
+      
+    <!-- GWT-Platform dependencies -->
+    <!-- MVP component -->
+    <dependency>
+      <groupId>com.gwtplatform</groupId>
+      <artifactId>gwtp-mvp-client</artifactId>
+      <version>${gwtp.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- TO DO: should be optional, include support for RF, ??? -->
+    <!-- Dispatch component 
+    <dependency>
+      <groupId>com.gwtcx</groupId>
+      <artifactId>gwtcx-gwtp-dispatch-dependencies</artifactId>
+      <version>${project.version}</version>
+      <type>pom</type>
+    </dependency>         
+    -->
+
+  </dependencies>
+	
+</project>

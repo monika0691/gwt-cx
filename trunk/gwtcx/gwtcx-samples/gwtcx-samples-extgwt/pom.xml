@@ -49,7 +49,7 @@
       <dependency>
         <groupId>com.sencha.gxt</groupId>
         <artifactId>uibinder-bridge</artifactId>
-        <version>${gwt.version}-SNAPSHOT</version>
+        <version>${gwt.version}</version>
         <scope>provided</scope>
       </dependency>
       <!-- GWT Cal dependencies -->

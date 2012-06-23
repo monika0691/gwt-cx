@@ -77,22 +77,16 @@
     <dependency>
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-mvp-client</artifactId>
-      <version>${gwtp.version}</version>
-      <scope>provided</scope>
     </dependency>
     <!-- Dispatch client component -->
     <dependency>
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-dispatch-client</artifactId>
-      <version>${gwtp.version}</version>
-      <scope>provided</scope> <!-- Remove for GWTP 0.5.1 and earlier -->
     </dependency>
     <!-- Annotation component -->
     <dependency>
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-processors</artifactId>
-      <version>${gwtp.version}</version>
-      <scope>provided</scope>
     </dependency>
 
     <!-- GWT-Log dependencies -->

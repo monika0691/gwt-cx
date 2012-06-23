@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.gwtcx</groupId>
+  <artifactId>gwtcx-gwtp-dispatch-dependencies</artifactId>
+  <version>1.0.0-dp1</version>
+  <packaging>pom</packaging>
+  
+  <name>GWTCX gwt-platform Dispatch dependencies POM</name>
+  <description>Aggregate POM used to simplify gwt-platform (GWTP) Dispatch dependency retrieval</description>
+  
+  <properties>
+	<gwtp.version>0.7</gwtp.version>
+  </properties>
+ 
+  <dependencies>
+
+    <!-- GWT-Platform dependencies -->
+    <!-- Dispatch client component -->
+    <dependency>
+      <groupId>com.gwtplatform</groupId>
+      <artifactId>gwtp-dispatch-client</artifactId>
+      <version>${gwtp.version}</version>
+      <scope>provided</scope> <!-- Remove for GWTP 0.5.1 and earlier -->
+    </dependency>
+    <!-- Dispatch server component -->
+    <dependency>
+      <groupId>com.gwtplatform</groupId>
+      <artifactId>gwtp-dispatch-server-guice</artifactId>
+      <version>${gwtp.version}</version>
+    </dependency>
+    <!-- Annotation component -->
+    <dependency>
+      <groupId>com.gwtplatform</groupId>
+      <artifactId>gwtp-processors</artifactId>
+      <version>${gwtp.version}</version>
+      <scope>provided</scope>
+    </dependency>      
+
+  </dependencies>
+	
+</project>

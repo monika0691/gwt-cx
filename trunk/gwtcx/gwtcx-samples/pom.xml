@@ -131,7 +131,6 @@
         <version>${project.version}</version>
       </dependency>      
       
-
       <!-- Google Web Toolkit dependencies -->
       <dependency>
         <groupId>com.google.gwt</groupId>
@@ -250,12 +249,30 @@
         <version>${jcip-annotations.version}</version>
       </dependency>  
       
-
       <!-- GWT-Log dependencies -->
       <dependency>
         <groupId>com.allen-sauer.gwt.log</groupId>
         <artifactId>gwt-log</artifactId>
         <version>${gwt-log.version}</version>
+      </dependency>
+
+      <!-- Log4j dependencies -->
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>${log4j.version}</version>
+      </dependency>
+
+      <!-- SLF4J dependencies -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
       </dependency>
 
     </dependencies>
