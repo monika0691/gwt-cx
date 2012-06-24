@@ -36,27 +36,27 @@
       <groupId>com.sencha.gxt</groupId>
       <artifactId>gxt</artifactId>
       <version>${extgwt.version}</version>
-      <scope>provided</scope>
+      <!-- <scope>provided</scope> -->
     </dependency>
     <dependency>
       <groupId>com.sencha.gxt</groupId>
       <artifactId>uibinder-bridge</artifactId>
       <version>${gwt.version}</version>
-      <scope>provided</scope>
+      <!-- <scope>provided</scope> -->
     </dependency>
     <!-- GWT Cal dependencies -->
     <dependency>
       <groupId>com.bradrydzewski</groupId>
       <artifactId>gwt-cal</artifactId>
       <version>${gwt-cal.version}</version>
-      <scope>provided</scope>
+      <!-- <scope>provided</scope> -->
    </dependency>
     <!-- GWT DnD dependencies -->
     <dependency>
       <groupId>com.allen-sauer.gwt.dnd</groupId>
       <artifactId>gwt-dnd</artifactId>
       <version>${gwt-dnd.version}</version>
-      <scope>provided</scope>
+      <!-- <scope>provided</scope> -->
     </dependency>  
     
     <!-- GWT Customer Experience dependencies -->
@@ -64,7 +64,7 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>gwtcx-core-client-extgwt</artifactId>
       <version>${project.version}</version>
-      <scope>provided</scope>
+      <!-- <scope>provided</scope> -->
     </dependency>
 	  
   </dependencies>

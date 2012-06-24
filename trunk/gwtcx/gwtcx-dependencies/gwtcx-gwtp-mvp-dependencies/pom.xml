@@ -28,7 +28,7 @@
       <groupId>com.google.gwt.inject</groupId>
       <artifactId>gin</artifactId>
       <version>${gin.version}</version>
-      <scope>provided</scope> <!-- Not needed server-side -->
+      <!-- <scope>provided</scope> -->
     </dependency>
       <dependency>
       <groupId>com.google.inject</groupId>
@@ -57,7 +57,7 @@
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-mvp-client</artifactId>
       <version>${gwtp.version}</version>
-      <scope>provided</scope>
+      <!-- <scope>provided</scope> -->
     </dependency>
     <!-- TO DO: should be optional, include support for RF, ??? -->
     <!-- Dispatch component 
