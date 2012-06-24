@@ -1,0 +1,12 @@
+webAppCreator -maven -out MyGwtMavenSampleApp com.kiahu.sample.MyGwtMavenSampleApp
+
+mvn archetype:generate -DarchetypeRepository=https://nexus.codehaus.org/content/groups/snapshots-group/  
+    -DarchetypeGroupId=org.codehaus.mojo 
+    -DarchetypeArtifactId=gwt-maven-plugin 
+    -DarchetypeVersion=2.1.1-SNAPSHOT 
+    -DgroupId=com.kiahu 
+    -DartifactId=MyGwtMavenSampleApp 
+    -Dversion=0.0.1-SNAPSHOT
+    -Dpackage=com.kiahu.sample
+    -Dmodule=MyGwtMavenSampleApp
+
