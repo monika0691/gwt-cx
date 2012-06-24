@@ -88,7 +88,6 @@
   </mailingLists>
 
   <modules>
-    <module>gwtcx-parent</module>
     <module>gwtcx-core</module>
     <module>gwtcx-samples</module>
   </modules>
