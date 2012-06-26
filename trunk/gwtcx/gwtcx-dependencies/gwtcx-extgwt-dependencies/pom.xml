@@ -12,7 +12,14 @@
   <packaging>pom</packaging>
   
   <name>GWTCX Ext GWT dependencies POM</name>
-  <description>Aggregate POM used to simplify Ext GWT (GXT) dependency retrieval</description>
+  <description>
+    Aggregate POM used to simplify Ext GWT (GXT) dependency retrieval.
+  
+    Related dependencies are grouped together into a POM then added as a dependency to a project as needed. 
+    This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted.
+  
+    See: http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
+  </description>
   
   <properties>
   	<gwt.version>2.4.0</gwt.version>
