@@ -19,7 +19,7 @@
 <module rename-to="serendipity">
 
   <!-- GWT-CX -->
-  <inherits name="com.gwtcx.FormFactor"/>
+  <!-- <inherits name="com.gwtcx.FormFactor"/> -->
   <inherits name="com.gwtcx.HighCharts" />
   <inherits name="com.gwtcx.TinyMce" />
   <inherits name="com.gwtcx.smartgwt.SmartGwt" />

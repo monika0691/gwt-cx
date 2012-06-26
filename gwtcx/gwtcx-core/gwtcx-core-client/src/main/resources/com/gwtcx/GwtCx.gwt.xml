@@ -32,6 +32,7 @@
   <script src="gwtcx/thirdparty/base64.js" />
 
   <!-- Inherit GwtCx modules -->
+  <inherits name="com.gwtcx.FormFactor"/>
   <inherits name="com.gwtcx.GwtCxShared" />
 
   <!-- Inherit GWTP modules -->
