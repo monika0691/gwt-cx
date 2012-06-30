@@ -19,7 +19,7 @@ import com.gwtcx.extgwt.client.view.PlaceholderView;
 import com.gwtcx.sample.serendipity.client.presenter.ImportsPresenter;
 
 /**
- * ActivitiesView
+ * ImportsView
  */
 public class ImportsView extends PlaceholderView implements ImportsPresenter.MyView {
 
@@ -43,7 +43,6 @@ public class ImportsView extends PlaceholderView implements ImportsPresenter.MyV
 
   @Override
   public void setUiHandlers(ImportsUiHandlers uiHandlers) {
-    // TODO Auto-generated method stub
   }
 
   @Override

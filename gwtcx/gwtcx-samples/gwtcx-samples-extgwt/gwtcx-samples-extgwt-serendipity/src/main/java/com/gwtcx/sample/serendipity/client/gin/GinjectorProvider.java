@@ -16,5 +16,5 @@ package com.gwtcx.sample.serendipity.client.gin;
 
 public interface GinjectorProvider {
 
-    SerendipityGinjector get() ;
+  SerendipityGinjector get() ;
 }

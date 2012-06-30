@@ -25,7 +25,8 @@
 
   <!-- Inherit GwtCx modules -->
   <inherits name="com.gwtcx.GwtCx" />
-
+  <inherits name="com.gwtcx.GwtCalendar" />
+  
   <!-- Inherit Ext GWT modules -->
   <inherits name="com.sencha.gwt.uibinder.UiBinder" />
   <inherits name="com.sencha.gxt.ui.GXT" />

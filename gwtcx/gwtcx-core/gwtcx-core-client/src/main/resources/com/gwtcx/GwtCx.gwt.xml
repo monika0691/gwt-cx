@@ -19,7 +19,7 @@
 <module>
 
   <inherits name="com.google.gwt.user.User" />
-  <inherits name="com.google.gwt.i18n.I18N" />
+  <!-- <inherits name="com.google.gwt.i18n.I18N" /> -->  <!-- now included in User.gwt.xml -->
   <inherits name="com.google.gwt.http.HTTP" />
   <inherits name="com.google.gwt.inject.Inject" />
 
@@ -27,6 +27,7 @@
   <inherits name="com.google.gwt.uibinder.GinUiBinder" />
 
   <!-- <inherits name="com.google.gwt.user.theme.clean.Clean"/> -->
+  <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
 
   <!-- Include support for Base 64 (which is not supported in IE) -->
   <script src="gwtcx/thirdparty/base64.js" />

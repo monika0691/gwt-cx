@@ -23,7 +23,7 @@
 
   <modules>
     <!-- <module>gwtcx-samples-gwt</module> -->
-    <module>gwtcx-samples-extgwt</module>
+    <module>gwtcx-samples-extgwt</module> 
     <!-- <module>gwtcx-samples-smartgwt</module> -->
   </modules>
 
@@ -67,6 +67,13 @@
               <artifactId>gwt-servlet</artifactId>
               <version>${gwt.version}</version>
             </dependency>
+			<!-- 
+			<dependency>
+              <groupId>com.google.gwt</groupId>
+              <artifactId>gwt-servlet-deps</artifactId>
+              <version>${gwt.version}</version>
+            </dependency>
+			-->
           </dependencies>
         </plugin>
        </plugins>

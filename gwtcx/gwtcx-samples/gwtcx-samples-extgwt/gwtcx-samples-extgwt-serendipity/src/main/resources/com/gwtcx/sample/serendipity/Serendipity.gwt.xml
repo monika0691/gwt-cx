@@ -2,7 +2,7 @@
 
 <!--
 
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2012 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -19,7 +19,6 @@
 <module rename-to="serendipity">
 
   <!-- GWT-CX -->
-  <!-- <inherits name="com.gwtcx.FormFactor"/> -->
   <inherits name="com.gwtcx.HighCharts" />
   <inherits name="com.gwtcx.GwtCalendar" />
   <inherits name="com.gwtcx.extgwt.ExtGwt" />
@@ -27,11 +26,15 @@
   <!-- GWT-LOG -->
   <inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
   <!-- <inherits name="com.allen_sauer.gwt.log.gwt-log-OFF" /> -->
+  
+  <!-- We need the JUnit module in the main module, -->
+  <!-- otherwise eclipse complains (Google plugin bug?) -->
+  <inherits name='com.google.gwt.junit.JUnit' />
 
   <!-- The entry point class -->
   <entry-point class="com.gwtcx.sample.serendipity.client.entrypoint.EntryPointDispatcher" />
 
-  <!-- Device dependent settings -->
+  <!-- Form Factor view selection -->
   <replace-with class="com.gwtcx.sample.serendipity.client.gin.DesktopGinjectorProvider">
     <when-type-is class="com.gwtcx.sample.serendipity.client.gin.GinjectorProvider"/>
   </replace-with>
@@ -56,7 +59,7 @@
 
   <!-- Set user agents, you can only set one target e.g. "safari" -->
   <!-- or all targets "ie6,ie8,gecko1_8,safari,opera,ie9"         -->
-  <!-- <set-property name="user.agent" value="safari" /> -->
+  <set-property name="user.agent" value="safari" />
 
   <set-configuration-property name="CssResource.style" value="pretty"/>
 
