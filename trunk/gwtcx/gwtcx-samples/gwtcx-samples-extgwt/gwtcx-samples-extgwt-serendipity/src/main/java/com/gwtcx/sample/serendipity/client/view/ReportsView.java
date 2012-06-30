@@ -43,7 +43,6 @@ public class ReportsView extends PlaceholderView implements ReportsPresenter.MyV
 
   @Override
   public void setUiHandlers(ReportsUiHandlers uiHandlers) {
-    // TODO Auto-generated method stub
   }
 
   @Override

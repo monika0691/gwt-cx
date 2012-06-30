@@ -28,6 +28,17 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.Verti
 import com.sencha.gxt.widget.core.client.form.FieldSet;
 import com.sencha.gxt.widget.core.client.form.FormPanel;
 
+/*
+
+  The values for HorizontalLayoutData and VerticalLayoutData have different meanings depending on which range they are in:
+
+- If -1, then the item is measured, and given the space it has requested - useful for fields or labels
+- If greater than 1, a pixel value is assigned - you've noticed this in using 100, which draws as 100px wide
+- If greater than 0, and less than or equal to 1, then it will be assigned a percentage of the remaining size after the 
+  first two items listed have been calculated. The value 1 is 100%, and .25 would be 25% of the remaining space.
+
+*/
+
 public class ContactInformationTabbedFormView extends AbstractTabbedFormView<ContactInformationUiHandlers> implements
     ContactInformationPresenter.MyView {
 

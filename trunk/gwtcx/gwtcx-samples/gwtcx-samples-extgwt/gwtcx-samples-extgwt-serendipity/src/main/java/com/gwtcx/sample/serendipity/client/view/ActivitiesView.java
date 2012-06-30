@@ -43,7 +43,6 @@ public class ActivitiesView extends PlaceholderView implements ActivitiesPresent
 
   @Override
   public void setUiHandlers(ActivitiesUiHandlers uiHandlers) {
-    // TODO Auto-generated method stub
   }
 
   @Override

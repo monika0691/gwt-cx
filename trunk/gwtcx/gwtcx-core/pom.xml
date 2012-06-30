@@ -41,6 +41,7 @@
         <artifactId>gwt-maven-plugin</artifactId>
         <version>${gwt-maven-plugin.version}</version>
         <configuration>
+		  <strict>${gwt.compiler.strict}</strict>
           <extraJvmArgs>-Xss1024k -Xmx512M</extraJvmArgs>
           <!-- <includes>**/*GwtTest.java,**/*GwtTestSuite.java</includes> -->
           <mode>htmlunit</mode>

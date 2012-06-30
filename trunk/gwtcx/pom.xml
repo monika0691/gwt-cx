@@ -89,13 +89,14 @@
 
   <modules>
     <module>gwtcx-core</module>
-    <module>gwtcx-samples</module>
+	<!-- <module>gwtcx-samples</module> -->
   </modules>
 
   <properties>
 
     <skipTests>true</skipTests>
     <testTimeOut>180</testTimeOut>
+	<gwt.compiler.strict>true</gwt.compiler.strict>
 
     <target.jdk>1.6</target.jdk>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

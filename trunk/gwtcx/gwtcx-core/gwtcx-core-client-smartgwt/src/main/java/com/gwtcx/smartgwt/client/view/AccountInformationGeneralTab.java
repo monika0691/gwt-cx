@@ -247,6 +247,10 @@ public class AccountInformationGeneralTab extends EntityTab {
       addressType.setValue(addressDto.getAddressType());
     }
   }
+  
+  // String toReturn = "";
+  // SafeHtml sfHtml = SimpleHtmlSanitizer.sanitizeHtml(toReturn);
+  // toReturn = sfHtml.asString();
 
   @Override
   public void getFields(Object accountDto) {
