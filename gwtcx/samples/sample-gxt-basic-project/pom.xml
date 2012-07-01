@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.gwtcx</groupId>
+    <artifactId>gwtcx-parent</artifactId>
+    <version>1.0.0-dp1</version>
+  </parent>
+
+  <groupId>com.kiahu</groupId>
+  <artifactId>sample-gxt-basic-project</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>Kiahu CX Sample - Basic Project</name>
+  <description>Sample POM that demonstrates how to use a parent POM (to configure properties and plugins) and grouped dependencies POMs (for dependency management)</description>
+  <url>http://kiahu.com</url>
+
+  <properties>
+
+    <!-- You can override properties set in the Parent POM -->
+    <target.jdk>1.7</target.jdk>
+
+  </properties>
+
+  <dependencies>
+
+    <!-- Kiahu CX - Ext GWT (GXT) meta-package -->
+    <dependency>
+      <groupId>com.gwtcx</groupId>
+      <artifactId>gwtcx-extgwt-dependencies</artifactId>
+      <version>${gwtcx.version}</version>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+
+    <!-- Generate compiled stuff in the target folder -->
+    <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+
+    <plugins>
+
+      <!-- GWT Maven Plugin -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <configuration>
+          <runTarget>index.html</runTarget>
+          <module>com.kiahu.sample.BasicProject</module>
+          <hostedWebapp>${webappDirectory}</hostedWebapp>
+          <copyWebapp>false</copyWebapp>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
