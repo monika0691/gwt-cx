@@ -1,10 +1,12 @@
 
-mvn archetype:generate -DarchetypeRepository=https://nexus.codehaus.org/content/groups/snapshots-group/  
-    -DarchetypeGroupId=org.codehaus.mojo 
-    -DarchetypeArtifactId=gwt-maven-plugin 
-    -DarchetypeVersion=2.1.1-SNAPSHOT 
-    -DgroupId=com.kiahu 
-    -DartifactId=sample-gxt-basic-project
-    -Dversion=0.0.1-SNAPSHOT
-    -Dpackage=com.kiahu.sample
-    -Dmodule=BasicProject
+mvn archetype:generate 
+  -DarchetypeRepository=https://nexus.codehaus.org/content/groups/snapshots-group/  
+  -DarchetypeGroupId=org.codehaus.mojo 
+  -DarchetypeArtifactId=gwt-maven-plugin 
+  -DarchetypeVersion=2.4.0 
+  -DgroupId=com.kiahu
+  -DartifactId=sample-gxt-basic-project
+  -Dversion=0.0.1-SNAPSHOT
+  -Dpackage=com.kiahu.sample
+  -Dmodule=BasicProject
+	
