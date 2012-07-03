@@ -39,10 +39,12 @@
       <type>pom</type>
     </dependency>
 
+    <!--
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
     </dependency>
+    -->
 
   </dependencies>
 
@@ -58,11 +60,54 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
         <configuration>
+
           <runTarget>index.html</runTarget>
           <module>com.kiahu.sample.BasicProject</module>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
           <copyWebapp>false</copyWebapp>
+
+          <!--
+          <i18nConstantsBundles>
+            <i18nConstantsBundle>
+              com.kiahu.sample.client.i18n.BasicProjectConstants
+            </i18nConstantsBundle>
+          </i18nConstantsBundles>
+          -->
+          <!--
+          <i18nConstantsWithLookupBundles>
+            <i18nConstantsWithLookupBundle>
+              ...Enums...
+            </i18nConstantsWithLookupBundle>
+          </i18nConstantsWithLookupBundles>
+          -->
+          <!--
+          <i18nMessagesBundles>
+            <i18nMessagesBundles>
+              com.kiahu.sample.client.i18n.BasicProjectMessages
+            </i18nMessagesBundles>
+          </i18nMessagesBundles>
+          -->
         </configuration>
+
+        <!-- JS is only needed in the package phase, this speeds up testing -->
+        <executions>
+          <execution>
+            <!-- <id>gwtcompile</id> -->
+            <phase>prepare-package</phase>
+            <configuration>
+              <extraJvmArgs>-Xss1024k -Xmx512M</extraJvmArgs>
+            </configuration>
+            <goals>
+              <goal>compile</goal>
+              <!--
+              <goal>i18n</goal>
+              <goal>generateAsync</goal>
+              <goal>resources</goal>
+              <goal>test</goal>
+              -->
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
     </plugins>
