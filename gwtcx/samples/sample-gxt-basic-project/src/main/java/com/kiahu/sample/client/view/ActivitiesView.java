@@ -23,6 +23,8 @@ import com.kiahu.sample.client.presenter.ActivitiesPresenter;
  */
 public class ActivitiesView extends PlaceholderView implements ActivitiesPresenter.MyView {
 
+  // /*
+
   private final String html = "<div>\n"
     + "<table align=\"center\">\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
@@ -40,7 +42,26 @@ public class ActivitiesView extends PlaceholderView implements ActivitiesPresent
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "</table>\n"
     + "</div>\n";
-  
+
+  // */
+
+  /*
+
+  private final String html = "<div data-role=\"page\">\n"
+      + "<div data-role=\"header\">\n"
+    + "<h1>My Title</h1>\n"
+    + "</div>\n"
+    + "<div data-role=\"content\">\n"
+    + "<ul data-role=\"listview\" data-inset=\"true\" data-filter=\"true\">\n"
+    + "<li><a href=\"#\">Acura</a></li>\n"
+    + "<li><a href=\"#\">Audi</a></li>\n"
+    + "<li><a href=\"#\">BMW</a></li>\n"
+    + "<li><a href=\"#\">Cadillac</a></li>\n"
+    + "<li><a href=\"#\">Ferrari</a></li>\n" + "</ul>\n" + "</div>\n"
+    + "</div>\n";
+
+  */
+
   // @Override
   public void setUiHandlers(ActivitiesUiHandlers uiHandlers) {
   }

@@ -39,13 +39,26 @@
       <type>pom</type>
     </dependency>
 
-    <!-- GWT HighCharts dependencies -->
+    <!-- GWT JQuery dependencies
+    <dependency>
+      <groupId>com.xedge</groupId>
+      <artifactId>jquery</artifactId>
+      <version>1.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+    -->
+
+
+
+
+    <!-- GWT HighCharts dependencies
     <dependency>
       <groupId>org.moxieapps</groupId>
       <artifactId>gwt.highcharts</artifactId>
       <version>${gwt.highcharts.version}</version>
       <scope>provided</scope>
     </dependency>
+    -->
 
     <!--
     <dependency>

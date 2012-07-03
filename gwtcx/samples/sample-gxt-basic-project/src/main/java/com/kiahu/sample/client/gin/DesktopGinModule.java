@@ -14,9 +14,9 @@
 
 package com.kiahu.sample.client.gin;
 
-import com.kiahu.sample.client.presenter.DashboardsPresenter;
+// import com.kiahu.sample.client.presenter.DashboardsPresenter;
 import com.kiahu.sample.client.presenter.MainPagePresenter;
-import com.kiahu.sample.client.view.desktop.DashboardsDesktopView;
+// import com.kiahu.sample.client.view.desktop.DashboardsDesktopView;
 import com.kiahu.sample.client.view.desktop.MainPageDesktopView;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
@@ -33,8 +33,8 @@ public class DesktopGinModule  extends AbstractPresenterModule {
     bindPresenter(MainPagePresenter.class, MainPagePresenter.MyView.class,
         MainPageDesktopView.class, MainPagePresenter.MyProxy.class);
 
-    bindPresenter(DashboardsPresenter.class, DashboardsPresenter.MyView.class,
-        DashboardsDesktopView.class, DashboardsPresenter.MyProxy.class);
+    // bindPresenter(DashboardsPresenter.class, DashboardsPresenter.MyView.class,
+    //     DashboardsDesktopView.class, DashboardsPresenter.MyProxy.class);
   }
 }
 

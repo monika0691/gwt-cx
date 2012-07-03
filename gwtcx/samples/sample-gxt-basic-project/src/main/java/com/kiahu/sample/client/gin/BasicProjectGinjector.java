@@ -26,7 +26,7 @@ import com.kiahu.sample.client.presenter.ActivitiesPresenter;
 import com.kiahu.sample.client.presenter.AdministrationPresenter;
 import com.kiahu.sample.client.presenter.CalendarPresenter;
 import com.kiahu.sample.client.presenter.ContactsPresenter;
-import com.kiahu.sample.client.presenter.DashboardsPresenter;
+// import com.kiahu.sample.client.presenter.DashboardsPresenter;
 import com.kiahu.sample.client.presenter.DataManagementPresenter;
 import com.kiahu.sample.client.presenter.ErrorPagePresenter;
 import com.kiahu.sample.client.presenter.HighlightsPresenter;
@@ -57,7 +57,7 @@ public interface BasicProjectGinjector extends Ginjector {
   // Sales
   AsyncProvider<ActivitiesPresenter> getActivitiesPresenter();
   AsyncProvider<CalendarPresenter> getCalendarPresenter();
-  AsyncProvider<DashboardsPresenter> getDashboardsPresenter();
+  // AsyncProvider<DashboardsPresenter> getDashboardsPresenter();
   AsyncProvider<ImportsPresenter> getImportsPresenter();
   AsyncProvider<AccountsPresenter> getAccountsPresenter();
   AsyncProvider<ContactsPresenter> getContactsPresenter();
