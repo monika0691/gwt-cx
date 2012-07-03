@@ -24,6 +24,7 @@ body
   <p>Find articles, diagrams and videos to help you work better.</p>  
   <p> </p>
   <ul>
+  <li><a href="http://kiahu.com/support/tutorials/" target="_blank">The Kiahu CX tutorials</a></li>
   <li><a href="http://uptick.com.au/blog/" target="_blank">The upTick blog</a></li>
   <li><a href="http://code.google.com/p/gwt-cx/" target="_blank">The gwt-cx site</a></li>
   <li><a href="http://code.google.com/webtoolkit/doc/latest/DevGuide.html" target="_blank">The GWT site</a></li>

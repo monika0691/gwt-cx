@@ -1,0 +1,18 @@
+
+remove_svn_dirs.bat
+
+for /f "tokens=* delims=" %%i in ('dir /s /b /a:d *.svn') do (
+  rd /s /q "%%i"
+)
+
+cvs ignore flags
+
+.project
+.classpath
+.settings
+.externalToolBuilders
+.launch
+.checkstyle
+.factorypath
+.wtpmodules
+target 
