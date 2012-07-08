@@ -12,18 +12,18 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view;
+package com.kiahu.sample.client.view.desktop;
 
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.AdministrationUiHandlers;
-import com.gwtcx.extgwt.client.view.AbstractAdministrationView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractAdministrationDesktopView;
 import com.kiahu.sample.client.presenter.AdministrationPresenter;
 
-public class AdministrationView extends AbstractAdministrationView<AdministrationUiHandlers>
+public class AdministrationDesktopView extends AbstractAdministrationDesktopView<AdministrationUiHandlers>
     implements AdministrationPresenter.MyView {
 
   @Inject
-  public AdministrationView() {
+  public AdministrationDesktopView() {
     super(ADMINISTRATION_FILENAME);
   }
 

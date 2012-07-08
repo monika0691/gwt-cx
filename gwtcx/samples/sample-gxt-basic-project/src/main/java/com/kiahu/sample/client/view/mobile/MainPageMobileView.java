@@ -25,7 +25,7 @@ import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.uihandlers.MainPageUiHandlers;
 import com.gwtcx.extgwt.client.ExtGwtCx;
-import com.gwtcx.extgwt.client.view.AbstractMainPageView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractMainPageDesktopView;
 import com.gwtcx.extgwt.client.widgets.ApplicationMenu;
 import com.gwtcx.extgwt.client.widgets.Masthead;
 import com.kiahu.sample.client.presenter.MainPagePresenter;
@@ -37,7 +37,7 @@ import com.sencha.gxt.widget.core.client.menu.Item;
 import com.sencha.gxt.widget.core.client.menu.MenuItem;
 
 
-public class MainPageMobileView extends AbstractMainPageView<MainPageUiHandlers> implements
+public class MainPageMobileView extends AbstractMainPageDesktopView<MainPageUiHandlers> implements
     MainPagePresenter.MyView {
 
   public interface MainPageUiBinder extends UiBinder<Viewport, MainPageMobileView> { }

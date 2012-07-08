@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2012 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -12,44 +12,39 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.desktop.view;
+package com.kiahu.sample.client.view.desktop;
 
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.Widget;
-import com.gwtplatform.mvp.client.ViewImpl;
+import com.gwtcx.client.uihandlers.ErrorPageUiHandlers;
+import com.gwtcx.extgwt.client.desktop.view.AbstractErrorPageDesktopView;
+import com.kiahu.sample.client.presenter.ErrorPagePresenter;
 
-public class PlaceholderDesktopView extends ViewImpl {
+public class ErrorPageDesktopView extends AbstractErrorPageDesktopView<ErrorPageUiHandlers> implements
+    ErrorPagePresenter.MyView {
 
   private final String html = "<div>\n"
     + "<table align=\"center\">\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
-    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
-    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "  <tr>\n"
-    + "    <td style=\"font-weight:bold;\">Placeholder view</td>\n"
+    + "    <td style=\"font-weight:bold;\">An error has occurred.</td>\n"
     + "  </tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>Try this action again. If the problem continues,</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>check the Serendipity forums for a solution or</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>contact your Serendipity administrator.</td>\n" + "</tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
-    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
-    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
-    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n"
+    + "    <td id=\"okButtonContainer\"></td>\n"
+    + "  </tr>\n"
     + "</table>\n"
     + "</div>\n";
 
-  private final HTMLPanel panel;
-
-  public PlaceholderDesktopView() {
-
-    panel = new HTMLPanel(getPanelHtml());
+  public ErrorPageDesktopView() {
+    super();
   }
 
   @Override
-  public Widget asWidget() {
-    return panel;
-  }
-
   protected String getPanelHtml() {
     return html;
   }

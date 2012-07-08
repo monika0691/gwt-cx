@@ -12,20 +12,24 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view;
+package com.kiahu.sample.client.view.desktop;
 
-import com.bradrydzewski.gwt.calendar.client.Calendar;
 import com.google.inject.Inject;
-import com.gwtcx.client.uihandlers.CalendarUiHandlers;
-import com.gwtcx.extgwt.client.view.AbstractCalendarView;
-import com.kiahu.sample.client.presenter.CalendarPresenter;
+import com.gwtcx.client.uihandlers.ContactsUiHandlers;
+import com.gwtcx.extgwt.client.desktop.view.AbstractContactsDesktopView;
+import com.gwtcx.extgwt.client.widgets.ToolBar;
+import com.gwtcx.extgwt.client.widgets.grid.ContactsContextAreaGrid;
+import com.kiahu.sample.client.presenter.ContactsPresenter;
 
-public class CalendarView extends AbstractCalendarView<CalendarUiHandlers>
-    implements CalendarPresenter.MyView {
+/**
+ * ContactsView
+ */
+public class ContactsDesktopView extends AbstractContactsDesktopView<ContactsUiHandlers> implements
+    ContactsPresenter.MyView {
 
   @Inject
-  public CalendarView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Calendar calendar) {
-    super(toolBar, calendar);
+  public ContactsDesktopView(ToolBar toolBar, ContactsContextAreaGrid grid) {
+    super(toolBar, grid);
   }
 
   // @Override

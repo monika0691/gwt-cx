@@ -105,7 +105,13 @@ public class ToolBar implements IsWidget {
 
   public TextButton addTextButton(ImageResource icon, String text, ToolTipConfig config, SelectHandler handler) {
 
-    TextButton button = new TextButton(text);
+    TextButton button = null;
+  
+    if (text != null) {
+      button = new TextButton(text);
+	} else {
+	  button = new TextButton();
+	}
     button.setIcon(icon);
 
     if (config != null)
@@ -136,7 +142,13 @@ public class ToolBar implements IsWidget {
 
   public ToggleButton addToggleButton(ImageResource icon, String text, ToolTipConfig config, SelectHandler handler) {
 
-    ToggleButton button = new ToggleButton(text);
+    ToggleButton button = null;
+  
+    if (text != null) {
+      button = new ToggleButton(text);
+	} else {
+	  button = new ToggleButton();
+	}  
     button.setIcon(icon);
 
     if (config != null)

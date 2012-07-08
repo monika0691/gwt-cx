@@ -12,18 +12,18 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view;
+package com.kiahu.sample.client.view.desktop;
 
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.HighlightsUiHandlers;
-import com.gwtcx.extgwt.client.view.AbstractHighlightsView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractHighlightsDesktopView;
 import com.kiahu.sample.client.presenter.HighlightsPresenter;
 
-public class HighlightsView extends AbstractHighlightsView<HighlightsUiHandlers> implements
+public class HighlightsDesktopView extends AbstractHighlightsDesktopView<HighlightsUiHandlers> implements
     HighlightsPresenter.MyView {
 
   @Inject
-  public HighlightsView() {
+  public HighlightsDesktopView() {
     super();
   }
 }

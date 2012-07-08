@@ -20,8 +20,7 @@
 
   <!-- Kiahu CX -->
   <inherits name="com.gwtcx.extgwt.ExtGwt" />
-  <!-- <inherits name="com.gwtcx.HighCharts" /> -->
-  <!-- <inherits name="com.gwtcx.JQueryMobile" /> -->
+  <inherits name="com.gwtcx.HighCharts" />
 
   <!-- GWT-LOG -->
   <inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
