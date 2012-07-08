@@ -39,26 +39,13 @@
       <type>pom</type>
     </dependency>
 
-    <!-- GWT JQuery dependencies
-    <dependency>
-      <groupId>com.xedge</groupId>
-      <artifactId>jquery</artifactId>
-      <version>1.1.0</version>
-      <scope>provided</scope>
-    </dependency>
-    -->
-
-
-
-
-    <!-- GWT HighCharts dependencies
+    <!-- GWT HighCharts dependencies -->
     <dependency>
       <groupId>org.moxieapps</groupId>
       <artifactId>gwt.highcharts</artifactId>
       <version>${gwt.highcharts.version}</version>
       <scope>provided</scope>
     </dependency>
-    -->
 
     <!--
     <dependency>
@@ -83,17 +70,20 @@
         <configuration>
 
           <runTarget>index.html</runTarget>
+
+          <!--
+          <runTarget>index.html</runTarget>
+          <runTarget>contact.html</runTarget>
+          -->
           <module>com.kiahu.sample.BasicProject</module>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
           <copyWebapp>false</copyWebapp>
 
-          <!--
           <i18nConstantsBundles>
             <i18nConstantsBundle>
               com.kiahu.sample.client.i18n.BasicProjectConstants
             </i18nConstantsBundle>
           </i18nConstantsBundles>
-          -->
           <!--
           <i18nConstantsWithLookupBundles>
             <i18nConstantsWithLookupBundle>
@@ -101,13 +91,11 @@
             </i18nConstantsWithLookupBundle>
           </i18nConstantsWithLookupBundles>
           -->
-          <!--
           <i18nMessagesBundles>
             <i18nMessagesBundles>
               com.kiahu.sample.client.i18n.BasicProjectMessages
             </i18nMessagesBundles>
           </i18nMessagesBundles>
-          -->
         </configuration>
 
         <!-- JS is only needed in the package phase, this speeds up testing -->
@@ -122,7 +110,6 @@
               <goal>compile</goal>
               <!--
               <goal>i18n</goal>
-              <goal>generateAsync</goal>
               <goal>resources</goal>
               <goal>test</goal>
               -->

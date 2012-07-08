@@ -19,6 +19,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.Event.NativePreviewEvent;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -45,6 +47,16 @@ public class Masthead implements IsWidget {
   @UiField FlowPanel eastLayout;
   @UiField Label name;
   @UiField HTML signedInUser;
+
+  // Have you ever dragged an image from a web page to the browser location bar? The browser
+  // will load the image as the only item on the page. This is a default browser action that we
+  // can prevent, along with others.
+  @SuppressWarnings("unused")
+  private Event.NativePreviewHandler preventDefaultMouseEvents = new Event.NativePreviewHandler() {
+      public void onPreviewNativeEvent(NativePreviewEvent event) {
+	    event.getNativeEvent().preventDefault();
+	  }
+  };
 
   public Masthead() {
     super();

@@ -12,23 +12,23 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view;
+package com.kiahu.sample.client.view.desktop;
 
 import com.google.inject.Inject;
-import com.gwtcx.client.uihandlers.ContactsUiHandlers;
-import com.gwtcx.extgwt.client.view.AbstractContactsView;
+import com.gwtcx.client.uihandlers.AccountsUiHandlers;
+import com.gwtcx.extgwt.client.desktop.view.AbstractAccountsDesktopView;
 import com.gwtcx.extgwt.client.widgets.ToolBar;
-import com.gwtcx.extgwt.client.widgets.grid.ContactsContextAreaGrid;
-import com.kiahu.sample.client.presenter.ContactsPresenter;
+import com.gwtcx.extgwt.client.widgets.grid.AccountsContextAreaGrid;
+import com.kiahu.sample.client.presenter.AccountsPresenter;
 
 /**
- * ContactsView
+ * AccountsView
  */
-public class ContactsView extends AbstractContactsView<ContactsUiHandlers> implements
-    ContactsPresenter.MyView {
+public class AccountsDesktopView extends AbstractAccountsDesktopView<AccountsUiHandlers> implements
+    AccountsPresenter.MyView {
 
   @Inject
-  public ContactsView(ToolBar toolBar, ContactsContextAreaGrid grid) {
+  public AccountsDesktopView(ToolBar toolBar, AccountsContextAreaGrid grid) {
     super(toolBar, grid);
   }
 

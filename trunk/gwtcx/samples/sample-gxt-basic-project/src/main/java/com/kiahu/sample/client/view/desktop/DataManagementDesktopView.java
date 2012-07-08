@@ -12,18 +12,18 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view;
+package com.kiahu.sample.client.view.desktop;
 
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.DataManagementUiHandlers;
-import com.gwtcx.extgwt.client.view.AbstractDataManagementView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractDataManagementDesktopView;
 import com.kiahu.sample.client.presenter.DataManagementPresenter;
 
-public class DataManagementView extends AbstractDataManagementView<DataManagementUiHandlers>
+public class DataManagementDesktopView extends AbstractDataManagementDesktopView<DataManagementUiHandlers>
     implements DataManagementPresenter.MyView {
 
   @Inject
-  public DataManagementView() {
+  public DataManagementDesktopView() {
     super(DATA_MANAGEMENT_FILENAME);
   }
 

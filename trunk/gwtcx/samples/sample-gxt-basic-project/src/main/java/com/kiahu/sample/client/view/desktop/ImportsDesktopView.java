@@ -12,36 +12,37 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view;
+package com.kiahu.sample.client.view.desktop;
 
-import com.gwtcx.client.uihandlers.ErrorPageUiHandlers;
-import com.gwtcx.extgwt.client.view.AbstractErrorPageView;
-import com.kiahu.sample.client.presenter.ErrorPagePresenter;
+import com.gwtcx.client.uihandlers.ImportsUiHandlers;
+import com.gwtcx.extgwt.client.desktop.view.PlaceholderDesktopView;
+import com.kiahu.sample.client.presenter.ImportsPresenter;
 
-public class ErrorPageView extends AbstractErrorPageView<ErrorPageUiHandlers> implements
-    ErrorPagePresenter.MyView {
+/**
+ * ImportsView
+ */
+public class ImportsDesktopView extends PlaceholderDesktopView implements ImportsPresenter.MyView {
 
   private final String html = "<div>\n"
     + "<table align=\"center\">\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
-    + "  <tr>\n"
-    + "    <td style=\"font-weight:bold;\">An error has occurred.</td>\n"
-    + "  </tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
-    + "  <tr>\n" + "<td>Try this action again. If the problem continues,</td>\n" + "</tr>\n"
-    + "  <tr>\n" + "<td>check the Serendipity forums for a solution or</td>\n" + "</tr>\n"
-    + "  <tr>\n" + "<td>contact your Serendipity administrator.</td>\n" + "</tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "  <tr>\n"
-    + "    <td id=\"okButtonContainer\"></td>\n"
+    + "    <td style=\"font-weight:bold;\">Placeholder Imports view</td>\n"
     + "  </tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+    + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "</table>\n"
     + "</div>\n";
 
-  public ErrorPageView() {
-    super();
+  // @Override
+  public void setUiHandlers(ImportsUiHandlers uiHandlers) {
   }
 
   @Override

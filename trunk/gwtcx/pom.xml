@@ -98,7 +98,7 @@
     <testTimeOut>180</testTimeOut>
 	<gwt.compiler.strict>true</gwt.compiler.strict>
 
-    <target.jdk>1.6</target.jdk>
+    <target.jdk>1.7</target.jdk>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -114,7 +114,7 @@
     <maven-processor-plugin.version>2.0.5</maven-processor-plugin.version>
     <maven-source-plugin.version>2.1.2</maven-source-plugin.version>
     <maven-surefire-plugin.version>2.6</maven-surefire-plugin.version>
-    
+
     <hibernate3-maven-plugin.version>2.2</hibernate3-maven-plugin.version>
 
     <aopalliance.version>1.0</aopalliance.version>
@@ -255,7 +255,7 @@
         </plugin>
 
         <!-- Maven Checkstyle Plugin - TO DO -->
-        
+
         <!-- Maven Source Plugin -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>

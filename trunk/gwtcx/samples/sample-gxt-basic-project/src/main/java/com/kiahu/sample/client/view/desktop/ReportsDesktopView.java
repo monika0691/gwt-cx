@@ -12,18 +12,16 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view;
+package com.kiahu.sample.client.view.desktop;
 
-import com.gwtcx.client.uihandlers.ActivitiesUiHandlers;
-import com.gwtcx.extgwt.client.view.PlaceholderView;
-import com.kiahu.sample.client.presenter.ActivitiesPresenter;
+import com.gwtcx.client.uihandlers.ReportsUiHandlers;
+import com.gwtcx.extgwt.client.desktop.view.PlaceholderDesktopView;
+import com.kiahu.sample.client.presenter.ReportsPresenter;
 
 /**
- * ActivitiesView
+ * ReportsView
  */
-public class ActivitiesView extends PlaceholderView implements ActivitiesPresenter.MyView {
-
-  // /*
+public class ReportsDesktopView extends PlaceholderDesktopView implements ReportsPresenter.MyView {
 
   private final String html = "<div>\n"
     + "<table align=\"center\">\n"
@@ -33,7 +31,7 @@ public class ActivitiesView extends PlaceholderView implements ActivitiesPresent
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "  <tr>\n"
-    + "    <td style=\"font-weight:bold;\">Placeholder Activities view</td>\n"
+    + "    <td style=\"font-weight:bold;\">Placeholder Reports view</td>\n"
     + "  </tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
     + "  <tr>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
@@ -43,27 +41,8 @@ public class ActivitiesView extends PlaceholderView implements ActivitiesPresent
     + "</table>\n"
     + "</div>\n";
 
-  // */
-
-  /*
-
-  private final String html = "<div data-role=\"page\">\n"
-      + "<div data-role=\"header\">\n"
-    + "<h1>My Title</h1>\n"
-    + "</div>\n"
-    + "<div data-role=\"content\">\n"
-    + "<ul data-role=\"listview\" data-inset=\"true\" data-filter=\"true\">\n"
-    + "<li><a href=\"#\">Acura</a></li>\n"
-    + "<li><a href=\"#\">Audi</a></li>\n"
-    + "<li><a href=\"#\">BMW</a></li>\n"
-    + "<li><a href=\"#\">Cadillac</a></li>\n"
-    + "<li><a href=\"#\">Ferrari</a></li>\n" + "</ul>\n" + "</div>\n"
-    + "</div>\n";
-
-  */
-
   // @Override
-  public void setUiHandlers(ActivitiesUiHandlers uiHandlers) {
+  public void setUiHandlers(ReportsUiHandlers uiHandlers) {
   }
 
   @Override
@@ -71,3 +50,30 @@ public class ActivitiesView extends PlaceholderView implements ActivitiesPresent
     return html;
   }
 }
+
+/*
+
+import com.google.inject.Inject;
+import com.gwtcx.sample.serendipity.client.presenter.ReportsPresenter;
+import com.gwtcx.client.uihandlers.ReportsUiHandlers;
+import com.gwtcx.extgwt.client.view.AbstractReportsView;
+import com.gwtcx.extgwt.client.widgets.ToolBar;
+import com.gwtcx.extgwt.client.widgets.grid.AccountsContextAreaGrid;
+
+public class ReportsView extends AbstractReportsView<ReportsUiHandlers> implements
+    ReportsPresenter.MyView {
+
+  @Inject
+  public ReportsView(ToolBar toolBar, AccountsContextAreaGrid grid) {
+    super(toolBar, grid);
+
+  }
+
+  // @Override
+  // protected void initToolBar() { }
+
+  // @Override
+  // protected void initStatusBar() { }
+}
+
+*/
