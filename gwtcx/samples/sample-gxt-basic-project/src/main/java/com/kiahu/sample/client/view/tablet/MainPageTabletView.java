@@ -15,99 +15,48 @@
 package com.kiahu.sample.client.view.tablet;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.logical.shared.SelectionEvent;
-import com.google.gwt.event.logical.shared.SelectionHandler;
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
-import com.google.web.bindery.event.shared.EventBus;
+import com.googlecode.mgwt.ui.client.widget.Button;
+import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.gwtcx.client.uihandlers.MainPageUiHandlers;
-import com.gwtcx.extgwt.client.ExtGwtCx;
-import com.gwtcx.extgwt.client.desktop.view.AbstractMainPageDesktopView;
-import com.gwtcx.extgwt.client.widgets.ApplicationMenu;
-import com.gwtcx.extgwt.client.widgets.Masthead;
-import com.kiahu.sample.client.presenter.MainPagePresenter;
-import com.sencha.gxt.widget.core.client.ContentPanel;
-import com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance;
-import com.sencha.gxt.widget.core.client.container.Viewport;
-import com.sencha.gxt.widget.core.client.info.Info;
-import com.sencha.gxt.widget.core.client.menu.Item;
-import com.sencha.gxt.widget.core.client.menu.MenuItem;
+import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.kiahu.sample.client.presenter.MainPageTabletPresenter;
 
+public class MainPageTabletView extends ViewWithUiHandlers<MainPageUiHandlers> implements
+    MainPageTabletPresenter.MyView {
 
-public class MainPageTabletView extends AbstractMainPageDesktopView<MainPageUiHandlers> implements
-    MainPagePresenter.MyView {
-
-  public interface MainPageUiBinder extends UiBinder<Viewport, MainPageTabletView> { }
-
-  private static MainPageUiBinder uiBinder = GWT.create(MainPageUiBinder.class);
+  LayoutPanel layoutPanel;
 
   @Inject
-  public MainPageTabletView(final EventBus eventBus, final Masthead masthead, final ApplicationMenu applicationMenu) {
-    super(eventBus, masthead, applicationMenu);
+  public MainPageTabletView() {
+    super();
 
-    Log.debug("MainPageDesktopView()");
+    Log.debug("MainPageTabletView()");
 
-    getNavigationPane().setActiveWidget(getNavigationPane().getWidget(0));
+    createAndBindUi();
+
+    bindCustomUiHandlers();
   }
 
-  @Override
   protected void createAndBindUi() {
 
     Log.debug("createAndBindUi()");
 
-    viewport = uiBinder.createAndBindUi(this);
+    layoutPanel = new LayoutPanel();
+    Button button = new Button("Hello mgwt");
+    layoutPanel.add(button);
+
+    // setViewport(uiBinder.createAndBindUi(this));
   }
 
-  @UiFactory
-  public ContentPanel createContentPanel(ContentPanelAppearance appearance) {
-    return new ContentPanel(appearance);
-  }
+  // Ext GWT Event and GWT Handler Mapping should be done here.
+  protected void bindCustomUiHandlers() {
 
-  @Override
-  public void setInSlot(Object slot, Widget content) {
-    Log.debug("setInSlot()");
-
-    if (slot == MainPagePresenter.TYPE_SetContextAreaContent) {
-      if (content != null) {
-        // getSouthLayout().setMembers(getWestLayout(), (VLayout) content);
-      }
-    } else {
-      super.setInSlot(slot, content);
-    }
   }
 
   @Override
-  public void removeFromSlot(Object slot, Widget content) {
-    super.removeFromSlot(slot, content);
-
-    Log.debug("removeFromSlot()");
-  }
-
-  @Override
-  protected void initApplicationMenu() {
-
-    Log.debug("initApplicationMenu()");
-
-    getApplicationMenu().addMenu(ExtGwtCx.getConstant().newActivityMenuName(),
-        ExtGwtCx.getConstant().newActivityMenuItemNames(),
-        new NewActivitySelectionHandler());
-  }
-
-  @Override
-  protected void initNavigationPane() {
-
-    Log.debug("initNavigationPane()");
-
-  }
-
-  public class NewActivitySelectionHandler implements SelectionHandler<Item> {
-    @Override
-    public void onSelection(SelectionEvent<Item> event) {
-        MenuItem item = (MenuItem) event.getSelectedItem();
-        Info.display("Action", "You selected the " + item.getText());
-    }
+  public Widget asWidget() {
+    return layoutPanel;
   }
 }
