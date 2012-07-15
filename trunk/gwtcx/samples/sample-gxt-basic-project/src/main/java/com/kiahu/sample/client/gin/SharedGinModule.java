@@ -16,10 +16,16 @@ package com.kiahu.sample.client.gin;
 
 import com.gwtcx.client.NameTokens;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
-import com.gwtplatform.mvp.client.gin.DefaultModule;
 import com.kiahu.sample.client.place.BasicProjectPlaceManager;
 import com.kiahu.sample.client.place.DefaultPlace;
 
+//
+// Bind the various classes and providers using a Guice module. The module class
+// looks almost exactly like it would in regular Guice (except we use GinModule
+// and AbstractGinModule instead of Module and AbstractModule.)
+// Note: GWTP's AbstractPresenterModule extends AbstractGinModule
+// See: http://code.google.com/p/google-gin/wiki/GinTutorial#Step_3._Declare_bindings
+//
 public class SharedGinModule extends AbstractPresenterModule {
 
   @Override
@@ -29,13 +35,8 @@ public class SharedGinModule extends AbstractPresenterModule {
     // Defaults
     //
 
-    install(new DefaultModule(BasicProjectPlaceManager.class));
-
-    // bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
-    // bind(TokenFormatter.class).to(ParameterTokenFormatter.class).in(Singleton.class);
-    // bind(RootPresenter.class).asEagerSingleton();
-    // bind(GoogleAnalytics.class).to(GoogleAnalyticsImpl.class).in(Singleton.class);
-    // bind(PlaceManager.class).to(placeManagerClass).in(Singleton.class);
+    // install(new DefaultModule(BasicProjectPlaceManager.class));
+    install(new MgwtGinModule(BasicProjectPlaceManager.class));
 
     //
     // Resources

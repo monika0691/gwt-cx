@@ -14,6 +14,11 @@
 
 package com.kiahu.sample.client.gin;
 
+import com.gwtcx.client.presenter.ContactInformationPresenter;
+import com.gwtcx.client.presenter.ContactPagePresenter;
+import com.gwtcx.extgwt.client.desktop.contact.view.ContactInformationTabbedFormDesktopView;
+import com.gwtcx.extgwt.client.desktop.contact.view.ContactPageDesktopView;
+import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.kiahu.sample.client.presenter.AccountsPresenter;
 import com.kiahu.sample.client.presenter.ActivitiesPresenter;
 import com.kiahu.sample.client.presenter.AdministrationPresenter;
@@ -25,6 +30,7 @@ import com.kiahu.sample.client.presenter.ErrorPagePresenter;
 import com.kiahu.sample.client.presenter.HighlightsPresenter;
 import com.kiahu.sample.client.presenter.ImportsPresenter;
 import com.kiahu.sample.client.presenter.MainPagePresenter;
+import com.kiahu.sample.client.presenter.MainPageTabletPresenter;
 import com.kiahu.sample.client.presenter.ReportsPresenter;
 import com.kiahu.sample.client.view.desktop.AccountsDesktopView;
 import com.kiahu.sample.client.view.desktop.ActivitiesDesktopView;
@@ -38,14 +44,9 @@ import com.kiahu.sample.client.view.desktop.HighlightsDesktopView;
 import com.kiahu.sample.client.view.desktop.ImportsDesktopView;
 import com.kiahu.sample.client.view.desktop.MainPageDesktopView;
 import com.kiahu.sample.client.view.desktop.ReportsDesktopView;
+import com.kiahu.sample.client.view.tablet.MainPageTabletView;
 
-import com.gwtcx.client.presenter.ContactInformationPresenter;
-import com.gwtcx.client.presenter.ContactPagePresenter;
-import com.gwtcx.extgwt.client.desktop.contact.view.ContactInformationTabbedFormDesktopView;
-import com.gwtcx.extgwt.client.desktop.contact.view.ContactPageDesktopView;
-import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
-
-public class DesktopGinModule  extends AbstractPresenterModule {
+public class DesktopGinModule extends AbstractPresenterModule {
 
   @Override
   protected void configure() {
@@ -57,6 +58,8 @@ public class DesktopGinModule  extends AbstractPresenterModule {
     // Main Page - index.html
     bindPresenter(MainPagePresenter.class, MainPagePresenter.MyView.class,
         MainPageDesktopView.class, MainPagePresenter.MyProxy.class);
+    bindPresenter(MainPageTabletPresenter.class, MainPageTabletPresenter.MyView.class,
+        MainPageTabletView.class, MainPageTabletPresenter.MyProxy.class);
 
     // Contact Page - contact.html
     bindPresenter(ContactPagePresenter.class, ContactPagePresenter.MyView.class,

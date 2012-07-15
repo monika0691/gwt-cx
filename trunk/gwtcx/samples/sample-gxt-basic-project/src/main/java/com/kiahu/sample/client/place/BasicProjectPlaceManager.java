@@ -28,13 +28,13 @@ public class BasicProjectPlaceManager extends PlaceManagerImpl {
 
   @Inject
   public BasicProjectPlaceManager(EventBus eventBus, TokenFormatter tokenFormatter,
-      @DefaultPlace String defaultNameToken) {
+      @DefaultPlace String defaultPlaceNameToken) {
     super(eventBus, tokenFormatter);
 
-    this.defaultPlaceRequest = new PlaceRequest(defaultNameToken);
+    this.defaultPlaceRequest = new PlaceRequest(defaultPlaceNameToken);
   }
 
-  // @Override
+  @Override
   public void revealDefaultPlace() {
     revealPlace(defaultPlaceRequest);
   }
