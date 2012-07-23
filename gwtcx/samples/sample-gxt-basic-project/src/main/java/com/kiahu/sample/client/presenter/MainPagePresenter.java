@@ -112,9 +112,8 @@ public class MainPagePresenter extends
   @Override
   protected void revealInParent() {
 
-    Log.debug("revealInParent() - RevealRootLayoutContentEvent.fire(this, this)");
+    Log.debug("revealInParent()");
 
-    // RevealRootContentEvent.fire(this, this);
     RevealRootLayoutContentEvent.fire(this, this);
   }
 

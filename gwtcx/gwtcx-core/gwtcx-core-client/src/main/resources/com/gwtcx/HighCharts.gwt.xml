@@ -20,7 +20,7 @@
 
   <public path="charts/highcharts" />
 
-  <inherits name="org.moxieapps.gwt.highcharts.Highcharts"/>
+  <inherits name="org.moxieapps.gwt.highcharts.Highcharts" />
 
   <!--
   <script src="gwtcx/highcharts/javascript/log4javascript-1.4.2.js" />

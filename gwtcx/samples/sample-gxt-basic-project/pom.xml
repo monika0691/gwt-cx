@@ -18,7 +18,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>Kiahu CX Sample - Basic Project</name>
+  <name>Kiahu CX Sample - GXT Basic Project</name>
   <description>Sample POM that demonstrates how to use a parent POM (to configure properties and plugins) and grouped dependencies POMs (for dependency management)</description>
   <url>http://kiahu.com</url>
 
@@ -27,13 +27,6 @@
     <target.jdk>1.7</target.jdk>
     <gwt.compiler.strict>true</gwt.compiler.strict>
   </properties>
-
-  <repositories>
-    <repository>
-    <id>sonatype snapshots</id>
-    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-    </repository>
-  </repositories>
 
   <dependencies>
 
@@ -53,12 +46,12 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- mgwt dependencies -->
+     <!-- Kiahu mgwt meta-package -->
     <dependency>
-      <groupId>com.googlecode.mgwt</groupId>
-      <artifactId>mgwt</artifactId>
-      <!-- <version>1.1.1</version> -->
-      <version>1.1.2-SNAPSHOT</version>
+      <groupId>com.gwtcx</groupId>
+      <artifactId>gwtcx-mgwt-dependencies</artifactId>
+      <version>${gwtcx.version}</version>
+      <type>pom</type>
     </dependency>
 
     <!--

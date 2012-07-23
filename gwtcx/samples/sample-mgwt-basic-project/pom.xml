@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.gwtcx</groupId>
+    <artifactId>gwtcx-parent</artifactId>
+    <version>1.0.0-dp1</version>
+  </parent>
+
+  <groupId>com.kiahu</groupId>
+  <artifactId>sample-mgwt-basic-project</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>Kiahu CX Sample - mgwt Basic Project</name>
+  <description>Sample POM that demonstrates how to use a parent POM (to configure properties and plugins) and grouped dependencies POMs (for dependency management)</description>
+  <url>http://kiahu.com</url>
+
+  <properties>
+    <!-- You can override properties set in the Parent POM -->
+    <target.jdk>1.7</target.jdk>
+    <gwt.compiler.strict>true</gwt.compiler.strict>
+  </properties>
+
+  <dependencies>
+
+    <!-- Kiahu mgwt meta-package -->
+    <dependency>
+      <groupId>com.gwtcx</groupId>
+      <artifactId>gwtcx-mgwt-dependencies</artifactId>
+      <version>${gwtcx.version}</version>
+      <type>pom</type>
+    </dependency>
+
+    <!--
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    -->
+
+  </dependencies>
+
+  <build>
+
+    <!-- Generate compiled stuff in the target folder -->
+    <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+
+    <plugins>
+
+      <!-- GWT Maven Plugin -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <configuration>
+
+          <strict>${gwt.compiler.strict}</strict>
+          <logLevel>INFO</logLevel> <!-- ERROR, WARN, INFO, TRACE, DEBUG, SPAM, or ALL -->
+          <localWorkers>3</localWorkers>
+          <draftCompile>true</draftCompile>
+
+          <runTarget>index.html</runTarget>
+
+          <!--
+          <runTarget>index.html</runTarget>
+          <runTarget>contact.html</runTarget>
+          -->
+          <module>com.kiahu.sample.BasicProject</module>
+          <hostedWebapp>${webappDirectory}</hostedWebapp>
+          <copyWebapp>false</copyWebapp>
+
+          <i18nConstantsBundles>
+            <i18nConstantsBundle>
+              com.kiahu.sample.client.i18n.BasicProjectConstants
+            </i18nConstantsBundle>
+          </i18nConstantsBundles>
+          <!--
+          <i18nConstantsWithLookupBundles>
+            <i18nConstantsWithLookupBundle>
+              ...Enums...
+            </i18nConstantsWithLookupBundle>
+          </i18nConstantsWithLookupBundles>
+          -->
+          <i18nMessagesBundles>
+            <i18nMessagesBundles>
+              com.kiahu.sample.client.i18n.BasicProjectMessages
+            </i18nMessagesBundles>
+          </i18nMessagesBundles>
+        </configuration>
+
+        <!-- JS is only needed in the package phase, this speeds up testing -->
+        <executions>
+          <execution>
+            <!-- <id>gwtcompile</id> -->
+            <phase>prepare-package</phase>
+            <configuration>
+              <extraJvmArgs>-Xss1024k -Xmx512M</extraJvmArgs>
+            </configuration>
+            <goals>
+              <goal>compile</goal>
+              <!--
+              <goal>i18n</goal>
+              <goal>resources</goal>
+              <goal>test</goal>
+              -->
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

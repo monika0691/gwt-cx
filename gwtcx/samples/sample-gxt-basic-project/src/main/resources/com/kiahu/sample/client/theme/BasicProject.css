@@ -27,6 +27,26 @@
   padding-left: 120px; */
 }
 
+#ContextArea {
+  position: absolute;
+  left: 300px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  overflow: hidden;
+  border-left: 1px solid black;
+}
+
+#NavigationPane {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 300px;
+  bottom: 0px;
+  overflow: hidden;
+  border-right: 1px solid black;
+}
+
 /*
 
 .gwtcx-Masthead-Name {
@@ -47,6 +67,6 @@
   float: left;
 }
 
+.gwtcx-ContextArea
+
 */
-
-

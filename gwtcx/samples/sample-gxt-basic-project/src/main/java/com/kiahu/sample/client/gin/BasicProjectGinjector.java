@@ -32,7 +32,6 @@ import com.kiahu.sample.client.presenter.ErrorPagePresenter;
 import com.kiahu.sample.client.presenter.HighlightsPresenter;
 import com.kiahu.sample.client.presenter.ImportsPresenter;
 import com.kiahu.sample.client.presenter.MainPagePresenter;
-import com.kiahu.sample.client.presenter.MainPageTabletPresenter;
 import com.kiahu.sample.client.presenter.ReportsPresenter;
 
 //
@@ -40,6 +39,7 @@ import com.kiahu.sample.client.presenter.ReportsPresenter;
 // of the interface gets generated for you at compile time.
 // See: http://code.google.com/p/google-gin/wiki/GinTutorial#Step_2._Defining_the_Ginjector
 //
+
 public interface BasicProjectGinjector extends Ginjector {
 
   EventBus getEventBus();
@@ -54,7 +54,9 @@ public interface BasicProjectGinjector extends Ginjector {
   // Main Page(s)
   // AsyncProvider<MainPagePresenter> getMainPagePresenter();
   Provider<MainPagePresenter> getMainPagePresenter();
-  Provider<MainPageTabletPresenter> getMainPageTabletPresenter();
+
+  // Provider<MainPageTabletPresenter> getMainPageTabletPresenter();
+  // AsyncProvider<AnimationsPresenter> getAnimationsPresenter();
 
   Provider<ContactPagePresenter> getContactPagePresenter();
 
