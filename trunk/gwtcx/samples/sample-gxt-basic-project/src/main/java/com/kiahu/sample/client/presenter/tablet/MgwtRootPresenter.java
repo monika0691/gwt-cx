@@ -12,8 +12,9 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.presenter;
+package com.kiahu.sample.client.presenter.tablet;
 
+import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.client.GWT;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -55,6 +56,9 @@ public class MgwtRootPresenter extends RootPresenter implements RevealAnimatable
 
        @Override
        public void setInSlot(Object slot, Widget content) {
+
+           Log.debug("setInSlot()");
+
            if(isAnimatable){
                if(display==null) display = GWT.create(AnimatableDisplay.class);
                if(initializing){
@@ -139,6 +143,9 @@ public class MgwtRootPresenter extends RootPresenter implements RevealAnimatable
 
     @Override
     public void onRevealAnimatableDisplayContent(RevealAnimatableDisplayContentEvent event) {
+
+        Log.debug("onRevealAnimatableDisplayContent()");
+
         display.setAnimation(event.getAnimation());
         setInSlot(rootSlot, event.getContent());
     }
@@ -146,12 +153,18 @@ public class MgwtRootPresenter extends RootPresenter implements RevealAnimatable
     @Override
       public void onRevealRootContent(
           final RevealRootContentEvent revealContentEvent) {
+
+        Log.debug("onRevealRootContent()");
+
         display.setUsingRootLayoutPanel(false);
         setInSlot(rootSlot, revealContentEvent.getContent());
       }
 
       public void onRevealRootLayoutContent(
           final RevealRootLayoutContentEvent revealContentEvent) {
+
+        Log.debug("onRevealRootLayoutContent()");
+
         display.setUsingRootLayoutPanel(true);
         setInSlot(rootSlot, revealContentEvent.getContent());
       }
@@ -159,6 +172,9 @@ public class MgwtRootPresenter extends RootPresenter implements RevealAnimatable
       @Override
       public void onRevealRootPopupContent(
           final RevealRootPopupContentEvent revealContentEvent) {
+
+        Log.debug("onRevealRootPopupContent()");
+
         addToPopupSlot(revealContentEvent.getContent());
       }
 

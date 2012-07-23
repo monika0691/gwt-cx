@@ -43,5 +43,6 @@
   <entry-point class="com.gwtcx.client.entrypoint.GwtCxEntryPoint" />
 
   <source path="client" />
+  <public path="public" />
 
 </module>

@@ -14,15 +14,15 @@
 
 package com.gwtcx.client.presenter;
 
-import com.google.web.bindery.event.shared.EventBus;
 import com.google.inject.Inject;
+import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.uihandlers.MainPageUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.Proxy;
-import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
+import com.gwtplatform.mvp.client.proxy.RevealRootLayoutContentEvent;
 
 public abstract class AbstractMainPagePresenter<V extends View, Proxy_ extends Proxy<?>> extends Presenter<V, Proxy_> implements
     MainPageUiHandlers {
@@ -38,7 +38,8 @@ public abstract class AbstractMainPagePresenter<V extends View, Proxy_ extends P
 
   @Override
   protected void revealInParent() {
-    RevealRootContentEvent.fire(this, this);
+    // RevealRootContentEvent.fire(this, this);
+    RevealRootLayoutContentEvent.fire(this, this);
   }
 
   protected void navigationPaneClicked(String place) {

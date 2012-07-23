@@ -18,11 +18,6 @@
 
 <module>
 
-  <inherits name="com.google.gwt.user.User" />
-  <inherits name="com.google.gwt.i18n.I18N" />
-  <inherits name="com.google.gwt.http.HTTP" />
-  <inherits name="com.google.gwt.inject.Inject" />
-
   <!-- Inherit GwtCx modules -->
   <inherits name="com.gwtcx.GwtCx" />
   <inherits name="com.gwtcx.GwtCalendar" />
@@ -33,8 +28,5 @@
   <!-- <inherits name="com.sencha.gxt.chart.Chart" /> -->
 
   <entry-point class="com.gwtcx.extgwt.client.entrypoint.ExtGwtEntryPoint" />
-
-  <source path="client" />
-  <public path="public" />
 
 </module>
