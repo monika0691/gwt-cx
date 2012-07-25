@@ -15,8 +15,10 @@
 package com.kiahu.sample.client.gin;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
+import com.kiahu.sample.client.presenter.tablet.AboutPresenter;
 import com.kiahu.sample.client.presenter.tablet.AnimationsPresenter;
 import com.kiahu.sample.client.presenter.tablet.MainPageTabletPresenter;
+import com.kiahu.sample.client.view.tablet.AboutView;
 import com.kiahu.sample.client.view.tablet.AnimationsView;
 import com.kiahu.sample.client.view.tablet.MainPageTabletView;
 
@@ -39,6 +41,9 @@ public class TabletGinModule  extends AbstractPresenterModule {
 
     bindPresenter(AnimationsPresenter.class, AnimationsPresenter.MyView.class,
         AnimationsView.class, AnimationsPresenter.MyProxy.class);
+
+    bindPresenter(AboutPresenter.class, AboutPresenter.MyView.class,
+        AboutView.class, AboutPresenter.MyProxy.class);
 
   }
 }
