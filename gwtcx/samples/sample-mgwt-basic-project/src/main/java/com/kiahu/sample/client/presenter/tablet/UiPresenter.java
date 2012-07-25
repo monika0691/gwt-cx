@@ -25,15 +25,14 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.Place;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
-import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.kiahu.sample.client.NameTokens;
 import com.kiahu.sample.client.event.RevealAnimatableDisplayContentEvent;
-import com.kiahu.sample.client.uihandlers.AnimationsUiHandlers;
+import com.kiahu.sample.client.uihandlers.UiUiHandlers;
 
-public class AnimationsPresenter extends
-    Presenter<AnimationsPresenter.MyView, AnimationsPresenter.MyProxy> implements
-        AnimationsUiHandlers {
+public class UiPresenter extends
+    Presenter<UiPresenter.MyView, UiPresenter.MyProxy> implements
+        UiUiHandlers {
 
   private final PlaceManager placeManager;
 
@@ -42,19 +41,19 @@ public class AnimationsPresenter extends
   // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
-  @NameToken(NameTokens.animations)
-  public interface MyProxy extends Proxy<AnimationsPresenter>, Place {
+  @NameToken(NameTokens.ui)
+  public interface MyProxy extends Proxy<UiPresenter>, Place {
   }
 
-  public interface MyView extends View, HasUiHandlers<AnimationsUiHandlers> {
+  public interface MyView extends View, HasUiHandlers<UiUiHandlers> {
   }
 
   @Inject
-  public AnimationsPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy,
+  public UiPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy,
       final PlaceManager placeManager) {
     super(eventBus, view, proxy);
 
-    Log.debug("AnimationsPresenter()");
+    Log.debug("UiPresenter()");
 
     this.placeManager = placeManager;
 
@@ -77,9 +76,6 @@ public class AnimationsPresenter extends
   public void onNavigationPaneClicked(String place) {
 
     Log.debug("onNavigationPaneClicked(): " + place);
-
-    PlaceRequest placeRequest = new PlaceRequest(NameTokens.slide);
-    getPlaceManager().revealPlace(placeRequest, false);
 
     // if (place.length() != 0) {
     //   PlaceRequest placeRequest = new PlaceRequest(place);

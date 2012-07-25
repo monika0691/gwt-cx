@@ -12,18 +12,10 @@
  * under the License.
  */
 
-package com.kiahu.sample.client;
+package com.kiahu.sample.client.uihandlers;
 
-/**
- * NameTokens Presenter proxy name tokens.
- */
-public class NameTokens {
+import com.gwtplatform.mvp.client.UiHandlers;
 
-  public static final String animations = "Animations";
-  public static final String slide = "Slide";
-
-  public static final String ui = "UI";
-
-  public static final String about = "About";
-
+public interface UiUiHandlers extends UiHandlers {
+  void onNavigationPaneClicked(String name);
 }

@@ -18,22 +18,21 @@ import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
+import com.googlecode.mgwt.ui.client.widget.Button;
 import com.googlecode.mgwt.ui.client.widget.RoundPanel;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 import com.gwtplatform.mvp.client.ViewImpl;
-import com.kiahu.sample.client.presenter.tablet.AboutPresenter;
+import com.kiahu.sample.client.presenter.tablet.SlidePresenter;
 
-public class AboutView extends ViewImpl implements AboutPresenter.MyView {
+public class SlideView extends ViewImpl implements SlidePresenter.MyView {
 
-  public LayoutPanel panel;
+  public RoundPanel panel;
+  public Button button;
 
   @Inject
-  public AboutView() {
+  public SlideView() {
     super();
 
-    Log.debug("AboutView()");
+    Log.debug("SlideView()");
 
     createAndBindUi();
   }
@@ -42,29 +41,18 @@ public class AboutView extends ViewImpl implements AboutPresenter.MyView {
 
     Log.debug("createAndBindUi()");
 
-    HeaderPanel headerPanel;
-    ScrollPanel scrollPanel;
-    RoundPanel round;
+    panel = new RoundPanel();
+    panel.getElement().setAttribute("style", "text-align:center");
+	panel.setHeight("200px");
 
-    panel = new LayoutPanel();
-    headerPanel = new HeaderPanel();
-    scrollPanel = new ScrollPanel();
-    round = new RoundPanel();
+	HTML html = new HTML("<p style='text-align: center; position: relative; top: 75px; font-size: 20px'>Great, yeah!<p>");
 
-    round.add(new HTML("<br />"));
-    round.add(new HTML("<strong>Kiahu CX<strong>"));
-    round.add(new HTML("<br />"));
-    round.add(new HTML("mgwt Showcase"));
-    round.add(new HTML("Version 1.1.2-SNAPSHOT"));
-    round.add(new HTML("<br />"));
+	button = new Button();
+	button.getElement().setAttribute("style", "margin:auto;width: 200px; top: 125px; position:relative;");
+	button.setText("Back");
 
-    scrollPanel.setWidget(round);
-    scrollPanel.setScrollingEnabledX(false);
-
-    panel.add(headerPanel);
-    panel.add(scrollPanel);
-
-    headerPanel.setCenter("About");
+	panel.add(html);
+	panel.add(button);
   }
 
   @Override
