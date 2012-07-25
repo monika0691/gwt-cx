@@ -44,7 +44,6 @@ public class MainPageTabletPresenter extends
   // @ProxyCodeSplit
   @ProxyStandard
   @NameToken(NameTokens.mainPage)
-  // @UseGatekeeper(LoggedInGatekeeper.class)
   public interface MyProxy extends Proxy<MainPageTabletPresenter>, Place {
   }
 
@@ -79,73 +78,17 @@ public class MainPageTabletPresenter extends
   }
 
   @Override
-  protected void onBind() {
-    super.onBind();
-
-    Log.debug("onBind()");
-  }
-
-  @Override
-  protected void onReveal() {
-    super.onReveal();
-
-    Log.debug("onReveal()");
-  }
-
-  @Override
-  protected void onReset() {
-    super.onReset();
-
-    Log.debug("onReset()");
-  }
-
-  @Override
-  protected void onHide() {
-    super.onHide();
-
-    Log.debug("onHide()");
-  }
-
-  @Override
-  protected void onUnbind() {
-    super.onHide();
-
-    Log.debug("onUnbind()");
-  }
-
-  @Override
   public void onNavigationPaneClicked(String place) {
 
     Log.debug("onNavigationPaneClicked(): " + place);
 
-    // if (place.length() != 0) {
-    //   PlaceRequest placeRequest = new PlaceRequest(place);
-    //   getPlaceManager().revealPlace(placeRequest);
-    // }
-
-    PlaceRequest placeRequest = new PlaceRequest(com.kiahu.sample.client.NameTokens.animations);
-    getPlaceManager().revealPlace(placeRequest);
+    if (place.length() != 0) {
+      PlaceRequest placeRequest = new PlaceRequest(place);
+      getPlaceManager().revealPlace(placeRequest);
+    }
   }
 
   public PlaceManager getPlaceManager() {
     return placeManager;
   }
 }
-
-/*
-
-
-  // Use this in leaf presenters, inside their {@link #revealInParent} method.
-  @ContentSlot
-  public static final Type<RevealContentHandler<?>> TYPE_SetNavigationPaneContent = new Type<RevealContentHandler<?>>();
-
-  // Use this in leaf presenters, inside their {@link #revealInParent} method.
-  @ContentSlot
-  public static final Type<RevealContentHandler<?>> TYPE_SetContextAreaContent = new Type<RevealContentHandler<?>>();
-
-    // RevealRootContentEvent.fire(this, this);
-    // RevealRootLayoutContentEvent.fire(this, this);
-    // RevealAnimatableDisplayContentEvent.fire(this, this, getAnimation());
-
-
-*/

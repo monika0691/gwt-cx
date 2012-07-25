@@ -22,6 +22,8 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.kiahu.sample.client.presenter.tablet.AboutPresenter;
 import com.kiahu.sample.client.presenter.tablet.AnimationsPresenter;
 import com.kiahu.sample.client.presenter.tablet.MainPageTabletPresenter;
+import com.kiahu.sample.client.presenter.tablet.SlidePresenter;
+import com.kiahu.sample.client.presenter.tablet.UiPresenter;
 
 //
 // Create a method for each object type you want to create, and the an implementation
@@ -39,6 +41,10 @@ public interface BasicProjectGinjector extends Ginjector {
   Provider<MainPageTabletPresenter> getMainPageTabletPresenter();
 
   AsyncProvider<AnimationsPresenter> getAnimationsPresenter();
+  AsyncProvider<SlidePresenter> getSlidePresenter();
+
   AsyncProvider<AboutPresenter> getAboutPresenter();
+
+  AsyncProvider<UiPresenter> getUiPresenter();
 
 }

@@ -18,9 +18,13 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.kiahu.sample.client.presenter.tablet.AboutPresenter;
 import com.kiahu.sample.client.presenter.tablet.AnimationsPresenter;
 import com.kiahu.sample.client.presenter.tablet.MainPageTabletPresenter;
+import com.kiahu.sample.client.presenter.tablet.SlidePresenter;
+import com.kiahu.sample.client.presenter.tablet.UiPresenter;
 import com.kiahu.sample.client.view.tablet.AboutView;
 import com.kiahu.sample.client.view.tablet.AnimationsView;
 import com.kiahu.sample.client.view.tablet.MainPageTabletView;
+import com.kiahu.sample.client.view.tablet.SlideView;
+import com.kiahu.sample.client.view.tablet.UiView;
 
 public class TabletGinModule  extends AbstractPresenterModule {
 
@@ -41,9 +45,14 @@ public class TabletGinModule  extends AbstractPresenterModule {
 
     bindPresenter(AnimationsPresenter.class, AnimationsPresenter.MyView.class,
         AnimationsView.class, AnimationsPresenter.MyProxy.class);
+    bindPresenter(SlidePresenter.class, SlidePresenter.MyView.class,
+            SlideView.class, SlidePresenter.MyProxy.class);
 
     bindPresenter(AboutPresenter.class, AboutPresenter.MyView.class,
         AboutView.class, AboutPresenter.MyProxy.class);
+
+    bindPresenter(UiPresenter.class, UiPresenter.MyView.class,
+        UiView.class, UiPresenter.MyProxy.class);
 
   }
 }

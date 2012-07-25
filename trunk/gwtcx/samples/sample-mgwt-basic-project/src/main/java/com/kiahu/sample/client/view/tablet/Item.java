@@ -12,18 +12,26 @@
  * under the License.
  */
 
-package com.kiahu.sample.client;
+package com.kiahu.sample.client.view.tablet;
 
-/**
- * NameTokens Presenter proxy name tokens.
- */
-public class NameTokens {
+import com.kiahu.sample.client.event.UIEntrySelectedEvent.UIEntry;
 
-  public static final String animations = "Animations";
-  public static final String slide = "Slide";
+public class Item {
 
-  public static final String ui = "UI";
+  private String displayString;
+  private final UIEntry entry;
 
-  public static final String about = "About";
+  public Item(String displayString, UIEntry entry) {
 
+	this.displayString = displayString;
+    this.entry = entry;
+  }
+
+  public String getDisplayString() {
+    return displayString;
+  }
+
+  public UIEntry getEntry() {
+    return entry;
+  }
 }

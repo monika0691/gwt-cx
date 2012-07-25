@@ -1,17 +1,3 @@
-/**
- * (C) Copyright 2012 Kiahu
- *
- * Licensed under the terms of the GNU General Public License version 3
- * as published by the Free Software Foundation. You may obtain a copy of the
- * License at: http://www.gnu.org/copyleft/gpl.html
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations
- * under the License.
- */
-
 package com.kiahu.sample.client.view.tablet;
 
 import java.util.ArrayList;
@@ -28,22 +14,23 @@ import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.kiahu.sample.client.NameTokens;
-import com.kiahu.sample.client.presenter.tablet.MainPageTabletPresenter;
-import com.kiahu.sample.client.uihandlers.MainPageTabletUiHandlers;
+import com.kiahu.sample.client.event.UIEntrySelectedEvent.UIEntry;
+import com.kiahu.sample.client.presenter.tablet.UiPresenter;
+import com.kiahu.sample.client.uihandlers.UiUiHandlers;
 
-public class MainPageTabletView extends ViewWithUiHandlers<MainPageTabletUiHandlers> implements
-    MainPageTabletPresenter.MyView {
+public class UiView extends ViewWithUiHandlers<UiUiHandlers> implements
+    UiPresenter.MyView {
 
   public LayoutPanel panel;
 
-  public CellListWithHeader<Topic> cellList;
-  public ArrayList<Topic> topicList;
+  public CellListWithHeader<Item> cellList;
+  public ArrayList<Item> list;
 
   @Inject
-  public MainPageTabletView() {
+  public UiView() {
     super();
 
-    Log.debug("MainPageTabletView()");
+    Log.debug("UiView()");
 
     createAndBindUi();
 
@@ -61,14 +48,14 @@ public class MainPageTabletView extends ViewWithUiHandlers<MainPageTabletUiHandl
     headerPanel = new HeaderPanel();
     scrollPanel = new ScrollPanel();
 
-    cellList = new CellListWithHeader<Topic>(new BasicCell<Topic>() {
+    cellList = new CellListWithHeader<Item>(new BasicCell<Item>() {
       @Override
-      public String getDisplayString(Topic model) {
-        return model.getName();
+      public String getDisplayString(Item model) {
+        return model.getDisplayString();
       }
 
       @Override
-      public boolean canBeSelected(Topic model) {
+      public boolean canBeSelected(Item model) {
         return true;
       }
     });
@@ -81,9 +68,9 @@ public class MainPageTabletView extends ViewWithUiHandlers<MainPageTabletUiHandl
     panel.add(headerPanel);
     panel.add(scrollPanel);
 
-    headerPanel.setCenter("mgwt");
+    headerPanel.setCenter(NameTokens.ui);
 
-    cellList.getCellList().render(createTopicsList());
+    cellList.getCellList().render(createAnimations());
   }
 
   // mgwt Event and GWT Handler Mapping should be done here.
@@ -95,23 +82,35 @@ public class MainPageTabletView extends ViewWithUiHandlers<MainPageTabletUiHandl
       @Override
       public void onCellSelected(CellSelectedEvent event) {
 
-        Topic topic = topicList.get(event.getIndex());
+        Item item = list.get(event.getIndex());
 
         if (getUiHandlers() != null) {
-          getUiHandlers().onNavigationPaneClicked(topic.getName());
+          getUiHandlers().onNavigationPaneClicked(item.getDisplayString());
         }
       }
     });
   }
 
-  private List<Topic> createTopicsList() {
+  private List<Item> createAnimations() {
 
-    topicList = new ArrayList<Topic>();
+    list = new ArrayList<Item>();
 
-    topicList.add(new Topic(NameTokens.animations, 5));
-    topicList.add(new Topic(NameTokens.ui, 5));
+    list.add(new Item("ButtonBar", UIEntry.BUTTON_BAR));
+    list.add(new Item("Buttons", UIEntry.BUTTONS));
+    list.add(new Item("Carousel", UIEntry.CAROUSEL));
+    list.add(new Item("Elements", UIEntry.ELEMENTS));
+    list.add(new Item("Forms", UIEntry.FORMS));
+    list.add(new Item("Group List", UIEntry.GROUP_LIST));
+    list.add(new Item("Popups", UIEntry.POPUPS));
+    list.add(new Item("ProgressBar", UIEntry.PROGRESS_BAR));
+    list.add(new Item("ProgressIndicator", UIEntry.PROGRESS_INDICATOR));
+    list.add(new Item("PullToRefresh", UIEntry.PULL_TO_REFRESH));
+    list.add(new Item("Scroll Widget", UIEntry.SCROLL_WIDGET));
+    list.add(new Item("Searchbox", UIEntry.SEARCH_BOX));
+    list.add(new Item("Slider", UIEntry.SLIDER));
+    list.add(new Item("TabBar", UIEntry.TABBAR));
 
-    return topicList;
+    return list;
   }
 
   @Override

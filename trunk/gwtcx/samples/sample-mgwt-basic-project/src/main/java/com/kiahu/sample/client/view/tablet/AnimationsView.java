@@ -18,18 +18,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
-import com.googlecode.mgwt.ui.client.widget.RoundPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellListWithHeader;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.kiahu.sample.client.NameTokens;
 import com.kiahu.sample.client.presenter.tablet.AnimationsPresenter;
 import com.kiahu.sample.client.uihandlers.AnimationsUiHandlers;
 import com.kiahu.sample.client.view.tablet.Animation.AnimationNames;
@@ -39,16 +37,8 @@ public class AnimationsView extends ViewWithUiHandlers<AnimationsUiHandlers> imp
 
   public LayoutPanel panel;
 
-  // @UiField
-  public SimplePanel westPanel;
-  // @UiField
-  public SimplePanel centerPanel;
-
-  public LayoutPanel navigationPaneLayoutPanel;
-  public LayoutPanel contextAreaLayoutPanel;
-
   public CellListWithHeader<Animation> cellList;
-  public ArrayList<Animation> animationlist;
+  public ArrayList<Animation> list;
 
   @Inject
   public AnimationsView() {
@@ -65,56 +55,12 @@ public class AnimationsView extends ViewWithUiHandlers<AnimationsUiHandlers> imp
 
     Log.debug("createAndBindUi()");
 
-    panel = new LayoutPanel();
-
-    westPanel = new SimplePanel();
-    getWestPanel().getElement().setId("NavigationPane");
-    getWestPanel().getElement().addClassName("landscapeonly");
-
-    // AnimatableDisplay navDisplay = GWT.create(AnimatableDisplay.class);
-    // final TabletPortraitOverlay tabletPortraitOverlay = new TabletPortraitOverlay();
-    // new OrientationRegionHandler(navContainer, tabletPortraitOverlay, navDisplay);
-    // new MasterRegionHandler(clientFactory.getEventBus(), "nav", tabletPortraitOverlay);
-
-    centerPanel = new SimplePanel();
-    getCenterPanel().getElement().setId("ContextArea");
-
-    getPanel().add(getWestPanel());
-    getPanel().add(getCenterPanel());
-
-    createNavigationPane();
-
-    createContextArea();
-  }
-
-  // Ext GWT Event and GWT Handler Mapping should be done here.
-  protected void bindCustomUiHandlers() {
-
-    cellList.getCellList().addCellSelectedHandler(
-        new CellSelectedHandler() {
-
-      @Override
-      public void onCellSelected(CellSelectedEvent event) {
-
-        Animation animation = animationlist.get(event.getIndex());
-
-        if (getUiHandlers() != null) {
-          getUiHandlers().onNavigationPaneClicked(animation.getName());
-        }
-      }
-    });
-  }
-
-  private void createNavigationPane() {
-
     HeaderPanel headerPanel;
     ScrollPanel scrollPanel;
 
-    navigationPaneLayoutPanel = new LayoutPanel();
+    panel = new LayoutPanel();
     headerPanel = new HeaderPanel();
     scrollPanel = new ScrollPanel();
-
-    navigationPaneLayoutPanel.add(headerPanel);
 
     cellList = new CellListWithHeader<Animation>(new BasicCell<Animation>() {
       @Override
@@ -133,64 +79,45 @@ public class AnimationsView extends ViewWithUiHandlers<AnimationsUiHandlers> imp
     scrollPanel.setWidget(cellList);
     scrollPanel.setScrollingEnabledX(false);
 
-    navigationPaneLayoutPanel.add(scrollPanel);
+    panel.add(headerPanel);
+    panel.add(scrollPanel);
 
-    getWestPanel().add(navigationPaneLayoutPanel);
-
-
-
-    headerPanel.setCenter("Animations");
+    headerPanel.setCenter(NameTokens.animations);
 
     cellList.getCellList().render(createAnimations());
   }
 
+  // mgwt Event and GWT Handler Mapping should be done here.
+  protected void bindCustomUiHandlers() {
 
-  private void createContextArea() {
+    cellList.getCellList().addCellSelectedHandler(
+        new CellSelectedHandler() {
 
-    HeaderPanel headerPanel;
-    ScrollPanel scrollPanel;
-    RoundPanel round;
+      @Override
+      public void onCellSelected(CellSelectedEvent event) {
 
-    contextAreaLayoutPanel = new LayoutPanel();
-    headerPanel = new HeaderPanel();
-    scrollPanel = new ScrollPanel();
+        Animation animation = list.get(event.getIndex());
 
-    contextAreaLayoutPanel.add(headerPanel);
-
-    round = new RoundPanel();
-
-    round.add(new HTML("<br />"));
-    round.add(new HTML("Kiahu CX - mgwt Showcase"));
-    round.add(new HTML("Version 1.1.2-SNAPSHOT"));
-    round.add(new HTML("<br />"));
-
-    scrollPanel.setWidget(round);
-    scrollPanel.setScrollingEnabledX(false);
-
-    contextAreaLayoutPanel.add(scrollPanel);
-
-    getCenterPanel().add(contextAreaLayoutPanel);
-
-
-
-
-    // view.setTitle("About");
-    headerPanel.setCenter("About");
+        if (getUiHandlers() != null) {
+          getUiHandlers().onNavigationPaneClicked(animation.getName());
+        }
+      }
+    });
   }
 
   private List<Animation> createAnimations() {
 
-    animationlist = new ArrayList<Animation>();
+    list = new ArrayList<Animation>();
 
-    animationlist.add(new Animation(AnimationNames.SLIDE, "Slide"));
-    animationlist.add(new Animation(AnimationNames.SLIDE_UP, "Slide up"));
-    animationlist.add(new Animation(AnimationNames.DISSOLVE, "Dissolve"));
-    animationlist.add(new Animation(AnimationNames.FADE, "Fade"));
-    animationlist.add(new Animation(AnimationNames.FLIP, "Flip"));
-    animationlist.add(new Animation(AnimationNames.POP, "Pop"));
-    animationlist.add(new Animation(AnimationNames.SWAP, "Swap"));
+    list.add(new Animation(AnimationNames.SLIDE, "Slide"));
+    list.add(new Animation(AnimationNames.SLIDE_UP, "Slide up"));
+    list.add(new Animation(AnimationNames.DISSOLVE, "Dissolve"));
+    list.add(new Animation(AnimationNames.FADE, "Fade"));
+    list.add(new Animation(AnimationNames.FLIP, "Flip"));
+    list.add(new Animation(AnimationNames.POP, "Pop"));
+    list.add(new Animation(AnimationNames.SWAP, "Swap"));
 
-    return animationlist;
+    return list;
   }
 
   @Override
@@ -199,17 +126,5 @@ public class AnimationsView extends ViewWithUiHandlers<AnimationsUiHandlers> imp
     Log.debug("asWidget()");
 
     return panel;
-  }
-
-  public LayoutPanel getPanel() {
-    return panel;
-  }
-
-  public SimplePanel getWestPanel() {
-    return westPanel;
-  }
-
-  public SimplePanel getCenterPanel() {
-    return centerPanel;
   }
 }
