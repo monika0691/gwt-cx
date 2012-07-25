@@ -19,6 +19,7 @@ import com.google.gwt.inject.client.Ginjector;
 import com.google.inject.Provider;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import com.kiahu.sample.client.presenter.tablet.AboutPresenter;
 import com.kiahu.sample.client.presenter.tablet.AnimationsPresenter;
 import com.kiahu.sample.client.presenter.tablet.MainPageTabletPresenter;
 
@@ -36,6 +37,8 @@ public interface BasicProjectGinjector extends Ginjector {
   // AsyncProvider<ErrorPagePresenter> getErrorPagePresenter();
 
   Provider<MainPageTabletPresenter> getMainPageTabletPresenter();
+
   AsyncProvider<AnimationsPresenter> getAnimationsPresenter();
+  AsyncProvider<AboutPresenter> getAboutPresenter();
 
 }

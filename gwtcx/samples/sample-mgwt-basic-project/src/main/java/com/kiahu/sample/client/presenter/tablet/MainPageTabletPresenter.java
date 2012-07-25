@@ -15,7 +15,6 @@
 package com.kiahu.sample.client.presenter.tablet;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.googlecode.mgwt.mvp.client.Animation;
@@ -23,14 +22,12 @@ import com.gwtcx.client.NameTokens;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
-import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.Place;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.Proxy;
-import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.kiahu.sample.client.event.RevealAnimatableDisplayContentEvent;
 import com.kiahu.sample.client.uihandlers.MainPageTabletUiHandlers;
 
@@ -52,18 +49,7 @@ public class MainPageTabletPresenter extends
   }
 
   public interface MyView extends View, HasUiHandlers<MainPageTabletUiHandlers> {
-    // HasClickHandlers creation();
-    // HasTapHandlers goBack();
-    void reset();
   }
-
-  // Use this in leaf presenters, inside their {@link #revealInParent} method.
-  @ContentSlot
-  public static final Type<RevealContentHandler<?>> TYPE_SetNavigationPaneContent = new Type<RevealContentHandler<?>>();
-
-  // Use this in leaf presenters, inside their {@link #revealInParent} method.
-  @ContentSlot
-  public static final Type<RevealContentHandler<?>> TYPE_SetContextAreaContent = new Type<RevealContentHandler<?>>();
 
   @Inject
   public MainPageTabletPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy,
@@ -80,11 +66,12 @@ public class MainPageTabletPresenter extends
   @Override
   protected void revealInParent() {
 
-    // RevealRootContentEvent.fire(this, this);
-    // RevealRootLayoutContentEvent.fire(this, this);
-    // RevealAnimatableDisplayContentEvent.fire(this, this, getAnimation());
+	Log.debug("revealInParent()");
 
-    RevealAnimatableDisplayContentEvent.fire(this, this, getAnimation());
+    RevealAnimatableDisplayContentEvent.fire(this, MgwtRootPresenter.TYPE_SetNavigationPaneContent, this, getAnimation());
+
+    PlaceRequest placeRequest = new PlaceRequest(com.kiahu.sample.client.NameTokens.about);
+    getPlaceManager().revealPlace(placeRequest, false);
   }
 
   private Animation getAnimation(){
@@ -110,8 +97,6 @@ public class MainPageTabletPresenter extends
     super.onReset();
 
     Log.debug("onReset()");
-
-    // getView().reset();
   }
 
   @Override
@@ -146,3 +131,21 @@ public class MainPageTabletPresenter extends
     return placeManager;
   }
 }
+
+/*
+
+
+  // Use this in leaf presenters, inside their {@link #revealInParent} method.
+  @ContentSlot
+  public static final Type<RevealContentHandler<?>> TYPE_SetNavigationPaneContent = new Type<RevealContentHandler<?>>();
+
+  // Use this in leaf presenters, inside their {@link #revealInParent} method.
+  @ContentSlot
+  public static final Type<RevealContentHandler<?>> TYPE_SetContextAreaContent = new Type<RevealContentHandler<?>>();
+
+    // RevealRootContentEvent.fire(this, this);
+    // RevealRootLayoutContentEvent.fire(this, this);
+    // RevealAnimatableDisplayContentEvent.fire(this, this, getAnimation());
+
+
+*/

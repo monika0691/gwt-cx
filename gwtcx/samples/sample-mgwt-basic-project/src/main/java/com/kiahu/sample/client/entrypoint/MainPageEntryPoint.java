@@ -15,17 +15,76 @@
 package com.kiahu.sample.client.entrypoint;
 
 import com.allen_sauer.gwt.log.client.Log;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
+import com.googlecode.mgwt.ui.client.MGWT;
+import com.googlecode.mgwt.ui.client.MGWTSettings;
+import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort;
+import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort.DENSITY;
 import com.gwtcx.client.NameTokens;
 
 public class MainPageEntryPoint extends MultiPageEntryPoint {
 
+  public static SimplePanel westPanel;
+  public static SimplePanel centerPanel;
+
+  public static SimplePanel getWestPanel() {
+    return westPanel;
+  }
+
+  public static SimplePanel getCenterPanel() {
+    return centerPanel;
+  }
+
   @Override
   protected void revealCurrentPlace(String page) {
+
+	Log.debug("revealCurrentPlace()");
+
+	createTabletDisplay();
 
     if (page.equals(NameTokens.mainPage)) {
       getBasicProjectGinjector().getPlaceManager().revealCurrentPlace();
     } else {
       Log.debug("Page name token: " + page);
     }
+  }
+
+  private void createTabletDisplay() {
+
+    Log.debug("createTabletDisplay()");
+
+    // see AbstractMainPageDesktopView
+    ViewPort viewPort = new MGWTSettings.ViewPort();
+    viewPort.setTargetDensity(DENSITY.MEDIUM);
+    viewPort.setUserScaleAble(false).setMinimumScale(1.0).setMinimumScale(1.0).setMaximumScale(1.0);
+
+    MGWTSettings settings = new MGWTSettings();
+    settings.setViewPort(viewPort);
+    settings.setIconUrl("images/logo.png");
+    settings.setAddGlosToIcon(true);
+    settings.setFullscreen(true);
+    settings.setPreventScrolling(true);
+    MGWT.applySettings(settings);
+
+    westPanel = new SimplePanel();
+    westPanel.getElement().setId("NavigationPane");
+    westPanel.getElement().addClassName("landscapeonly");
+
+
+    // AnimatableDisplay navDisplay = GWT.create(AnimatableDisplay.class);
+    // final TabletPortraitOverlay tabletPortraitOverlay = new TabletPortraitOverlay();
+    // new OrientationRegionHandler(navContainer, tabletPortraitOverlay, navDisplay);
+    // new MasterRegionHandler(clientFactory.getEventBus(), "nav", tabletPortraitOverlay);
+
+    centerPanel = new SimplePanel();
+    centerPanel.getElement().setId("ContextArea");
+
+    RootLayoutPanel.get().clear();
+	RootPanel.get().clear();
+
+    RootPanel.get().add(westPanel);
+    RootPanel.get().add(centerPanel);
   }
 }

@@ -22,4 +22,6 @@ public class NameTokens {
   public static final String animations = "Animations";
   public static final String ui = "UI";
 
+  public static final String about = "About";
+
 }

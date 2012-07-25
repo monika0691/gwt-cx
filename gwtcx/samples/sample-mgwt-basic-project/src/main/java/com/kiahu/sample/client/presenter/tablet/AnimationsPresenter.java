@@ -66,7 +66,7 @@ public class AnimationsPresenter extends
     Log.debug("revealInParent()");
 
     // RevealContentEvent.fire(this, MainPageTabletPresenter.TYPE_SetNavigationPaneContent, this);
-    RevealAnimatableDisplayContentEvent.fire(this, this, getAnimation());
+    RevealAnimatableDisplayContentEvent.fire(this, MgwtRootPresenter.TYPE_SetNavigationPaneContent, this, getAnimation());
   }
 
   private Animation getAnimation(){

@@ -38,16 +38,22 @@ public class RevealAnimatableDisplayContentEvent extends
 
   public static Type<RevealAnimatableDisplayContentHandler> getType() { return TYPE; }
 
-  public static void fire(HasHandlers source, Presenter<?, ?> content, Animation animation) {
-    source.fireEvent(new RevealAnimatableDisplayContentEvent(content, animation));
+  public static void fire(HasHandlers source, Object slot, Presenter<?, ?> content, Animation animation) {
+    source.fireEvent(new RevealAnimatableDisplayContentEvent(slot, content, animation));
   }
 
+  private Object slot;
   private Presenter<?,?> content;
   private Animation animation;
 
-  public RevealAnimatableDisplayContentEvent(Presenter<?, ?> content,Animation animation) {
+  public RevealAnimatableDisplayContentEvent(Object slot, Presenter<?, ?> content,Animation animation) {
+	this.slot = slot;
     this.content = content;
     this.animation=animation;
+  }
+
+  public Object getSlot() {
+    return slot;
   }
 
   public Presenter<?, ?> getContent() {

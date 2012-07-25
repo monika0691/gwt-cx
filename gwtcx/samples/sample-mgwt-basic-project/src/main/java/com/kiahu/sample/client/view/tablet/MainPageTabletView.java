@@ -18,17 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
-import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.MGWTSettings;
-import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort;
-import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort.DENSITY;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
-import com.googlecode.mgwt.ui.client.widget.RoundPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellListWithHeader;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
@@ -37,6 +30,110 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.kiahu.sample.client.NameTokens;
 import com.kiahu.sample.client.presenter.tablet.MainPageTabletPresenter;
 import com.kiahu.sample.client.uihandlers.MainPageTabletUiHandlers;
+
+public class MainPageTabletView extends ViewWithUiHandlers<MainPageTabletUiHandlers> implements
+    MainPageTabletPresenter.MyView {
+
+  public LayoutPanel navigationPaneLayoutPanel;
+
+  public CellListWithHeader<Topic> cellList;
+  public ArrayList<Topic> topicList;
+
+  @Inject
+  public MainPageTabletView() {
+    super();
+
+    Log.debug("MainPageTabletView()");
+
+    createAndBindUi();
+
+    bindCustomUiHandlers();
+  }
+
+  protected void createAndBindUi() {
+
+    Log.debug("createAndBindUi()");
+
+    createNavigationPane();
+  }
+
+  // Ext GWT Event and GWT Handler Mapping should be done here.
+  protected void bindCustomUiHandlers() {
+
+    cellList.getCellList().addCellSelectedHandler(
+        new CellSelectedHandler() {
+
+      @Override
+      public void onCellSelected(CellSelectedEvent event) {
+
+        Topic topic = topicList.get(event.getIndex());
+
+        if (getUiHandlers() != null) {
+          getUiHandlers().onNavigationPaneClicked(topic.getName());
+        }
+      }
+    });
+  }
+
+  private void createNavigationPane() {
+
+    HeaderPanel headerPanel;
+    ScrollPanel scrollPanel;
+
+    navigationPaneLayoutPanel = new LayoutPanel();
+    headerPanel = new HeaderPanel();
+    scrollPanel = new ScrollPanel();
+
+    navigationPaneLayoutPanel.add(headerPanel);
+
+    cellList = new CellListWithHeader<Topic>(new BasicCell<Topic>() {
+      @Override
+      public String getDisplayString(Topic model) {
+        return model.getName();
+      }
+
+      @Override
+      public boolean canBeSelected(Topic model) {
+        return true;
+      }
+    });
+
+    cellList.getCellList().setRound(true);
+
+    scrollPanel.setWidget(cellList);
+    scrollPanel.setScrollingEnabledX(false);
+
+    navigationPaneLayoutPanel.add(scrollPanel);
+
+    // view.setTitle("mgwt");
+    headerPanel.setCenter("mgwt");
+    // view.getFirstHeader().setText("Showcase");
+    // cellList.getHeader().setText("Showcase");
+    // view.setTopics(createTopicsList());
+    cellList.getCellList().render(createTopicsList());
+  }
+
+  private List<Topic> createTopicsList() {
+
+    topicList = new ArrayList<Topic>();
+    topicList.add(new Topic(NameTokens.animations, 5));
+    topicList.add(new Topic(NameTokens.ui, 5));
+
+    return topicList;
+  }
+
+
+  @Override
+  public Widget asWidget() {
+
+    Log.debug("asWidget()");
+
+    return navigationPaneLayoutPanel;
+  }
+}
+
+/*
+
 
 public class MainPageTabletView extends ViewWithUiHandlers<MainPageTabletUiHandlers> implements
     MainPageTabletPresenter.MyView {
@@ -181,7 +278,7 @@ public class MainPageTabletView extends ViewWithUiHandlers<MainPageTabletUiHandl
     round = new RoundPanel();
 
     round.add(new HTML("<br />"));
-    round.add(new HTML("mgwt Showcase"));
+    round.add(new HTML("Kiahu CX - mgwt Showcase"));
     round.add(new HTML("Version 1.1.2-SNAPSHOT"));
     round.add(new HTML("<br />"));
 
@@ -273,3 +370,5 @@ public class MainPageTabletView extends ViewWithUiHandlers<MainPageTabletUiHandl
     getWestPanel().add(navigationPaneLayoutPanel);
   }
 }
+
+*/

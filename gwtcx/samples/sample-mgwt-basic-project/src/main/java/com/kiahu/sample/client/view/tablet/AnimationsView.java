@@ -160,7 +160,7 @@ public class AnimationsView extends ViewWithUiHandlers<AnimationsUiHandlers> imp
     round = new RoundPanel();
 
     round.add(new HTML("<br />"));
-    round.add(new HTML("mgwt Showcase"));
+    round.add(new HTML("Kiahu CX - mgwt Showcase"));
     round.add(new HTML("Version 1.1.2-SNAPSHOT"));
     round.add(new HTML("<br />"));
 
