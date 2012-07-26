@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view.tablet;
+package com.kiahu.sample.client.view.tablet.animations;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.user.client.ui.HTML;
@@ -21,18 +21,17 @@ import com.google.inject.Inject;
 import com.googlecode.mgwt.ui.client.widget.Button;
 import com.googlecode.mgwt.ui.client.widget.RoundPanel;
 import com.gwtplatform.mvp.client.ViewImpl;
-import com.kiahu.sample.client.presenter.tablet.SlidePresenter;
 
-public class SlideView extends ViewImpl implements SlidePresenter.MyView {
+public abstract class AbstractAnimationView extends ViewImpl {
 
   public RoundPanel panel;
   public Button button;
 
   @Inject
-  public SlideView() {
+  public AbstractAnimationView() {
     super();
 
-    Log.debug("SlideView()");
+    Log.debug("AbstractAnimationView()");
 
     createAndBindUi();
   }

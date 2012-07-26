@@ -21,8 +21,14 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.kiahu.sample.client.presenter.tablet.AboutPresenter;
 import com.kiahu.sample.client.presenter.tablet.AnimationsPresenter;
+import com.kiahu.sample.client.presenter.tablet.DissolvePresenter;
+import com.kiahu.sample.client.presenter.tablet.FadePresenter;
+import com.kiahu.sample.client.presenter.tablet.FlipPresenter;
 import com.kiahu.sample.client.presenter.tablet.MainPageTabletPresenter;
+import com.kiahu.sample.client.presenter.tablet.PopPresenter;
 import com.kiahu.sample.client.presenter.tablet.SlidePresenter;
+import com.kiahu.sample.client.presenter.tablet.SlideUpPresenter;
+import com.kiahu.sample.client.presenter.tablet.SwapPresenter;
 import com.kiahu.sample.client.presenter.tablet.UiPresenter;
 
 //
@@ -42,6 +48,12 @@ public interface BasicProjectGinjector extends Ginjector {
 
   AsyncProvider<AnimationsPresenter> getAnimationsPresenter();
   AsyncProvider<SlidePresenter> getSlidePresenter();
+  AsyncProvider<SlideUpPresenter> getSlideUpPresenter();
+  AsyncProvider<DissolvePresenter> getDissolvePresenter();
+  AsyncProvider<FadePresenter> getFadePresenter();
+  AsyncProvider<FlipPresenter> getFlipPresenter();
+  AsyncProvider<PopPresenter> getPopPresenter();
+  AsyncProvider<SwapPresenter> getSwapPresenter();
 
   AsyncProvider<AboutPresenter> getAboutPresenter();
 

@@ -30,6 +30,7 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.kiahu.sample.client.NameTokens;
 import com.kiahu.sample.client.presenter.tablet.MainPageTabletPresenter;
 import com.kiahu.sample.client.uihandlers.MainPageTabletUiHandlers;
+import com.kiahu.sample.client.view.tablet.ui.Topic;
 
 public class MainPageTabletView extends ViewWithUiHandlers<MainPageTabletUiHandlers> implements
     MainPageTabletPresenter.MyView {

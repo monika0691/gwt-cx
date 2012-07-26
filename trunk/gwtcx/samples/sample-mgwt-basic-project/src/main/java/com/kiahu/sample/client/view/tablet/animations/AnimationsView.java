@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view.tablet;
+package com.kiahu.sample.client.view.tablet.animations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +20,10 @@ import java.util.List;
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
+import com.googlecode.mgwt.ui.client.MGWT;
+import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
@@ -30,12 +34,14 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.kiahu.sample.client.NameTokens;
 import com.kiahu.sample.client.presenter.tablet.AnimationsPresenter;
 import com.kiahu.sample.client.uihandlers.AnimationsUiHandlers;
-import com.kiahu.sample.client.view.tablet.Animation.AnimationNames;
+import com.kiahu.sample.client.view.tablet.BasicCell;
+import com.kiahu.sample.client.view.tablet.animations.Animation.AnimationNames;
 
 public class AnimationsView extends ViewWithUiHandlers<AnimationsUiHandlers> implements
     AnimationsPresenter.MyView {
 
   public LayoutPanel panel;
+  public HeaderButton backButton;
 
   public CellListWithHeader<Animation> cellList;
   public ArrayList<Animation> list;
@@ -60,7 +66,12 @@ public class AnimationsView extends ViewWithUiHandlers<AnimationsUiHandlers> imp
 
     panel = new LayoutPanel();
     headerPanel = new HeaderPanel();
+    backButton = new HeaderButton();
     scrollPanel = new ScrollPanel();
+
+	headerPanel.setLeftWidget(backButton);
+	backButton.setBackButton(true);
+	backButton.setVisible(!MGWT.getOsDetection().isAndroid());
 
     cellList = new CellListWithHeader<Animation>(new BasicCell<Animation>() {
       @Override
@@ -82,7 +93,8 @@ public class AnimationsView extends ViewWithUiHandlers<AnimationsUiHandlers> imp
     panel.add(headerPanel);
     panel.add(scrollPanel);
 
-    headerPanel.setCenter(NameTokens.animations);
+    backButton.setText("Home");
+    headerPanel.setCenter(NameTokens.animations);  // "Animations"
 
     cellList.getCellList().render(createAnimations());
   }
@@ -90,9 +102,17 @@ public class AnimationsView extends ViewWithUiHandlers<AnimationsUiHandlers> imp
   // mgwt Event and GWT Handler Mapping should be done here.
   protected void bindCustomUiHandlers() {
 
-    cellList.getCellList().addCellSelectedHandler(
-        new CellSelectedHandler() {
+    backButton.addTapHandler(new TapHandler() {
+      @Override
+      public void onTap(TapEvent event) {
 
+    	if (getUiHandlers() != null) {
+          getUiHandlers().onNavigationPaneClicked(com.gwtcx.client.NameTokens.mainPage);
+        }
+      }
+    });
+
+    cellList.getCellList().addCellSelectedHandler(new CellSelectedHandler() {
       @Override
       public void onCellSelected(CellSelectedEvent event) {
 
@@ -109,13 +129,13 @@ public class AnimationsView extends ViewWithUiHandlers<AnimationsUiHandlers> imp
 
     list = new ArrayList<Animation>();
 
-    list.add(new Animation(AnimationNames.SLIDE, "Slide"));
-    list.add(new Animation(AnimationNames.SLIDE_UP, "Slide up"));
-    list.add(new Animation(AnimationNames.DISSOLVE, "Dissolve"));
-    list.add(new Animation(AnimationNames.FADE, "Fade"));
-    list.add(new Animation(AnimationNames.FLIP, "Flip"));
-    list.add(new Animation(AnimationNames.POP, "Pop"));
-    list.add(new Animation(AnimationNames.SWAP, "Swap"));
+    list.add(new Animation(AnimationNames.SLIDE, NameTokens.slide));
+    list.add(new Animation(AnimationNames.SLIDE_UP, NameTokens.slideUp));
+    list.add(new Animation(AnimationNames.DISSOLVE, NameTokens.dissolve));
+    list.add(new Animation(AnimationNames.FADE, NameTokens.fade));
+    list.add(new Animation(AnimationNames.FLIP, NameTokens.flip));
+    list.add(new Animation(AnimationNames.POP, NameTokens.pop));
+    list.add(new Animation(AnimationNames.SWAP, NameTokens.swap));
 
     return list;
   }

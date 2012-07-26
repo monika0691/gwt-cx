@@ -18,74 +18,43 @@ import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.googlecode.mgwt.mvp.client.Animation;
-import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.Place;
-import com.gwtplatform.mvp.client.proxy.PlaceManager;
-import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.kiahu.sample.client.NameTokens;
 import com.kiahu.sample.client.event.RevealAnimatableDisplayContentEvent;
-import com.kiahu.sample.client.uihandlers.AnimationsUiHandlers;
 
-public class AnimationsPresenter extends
-    Presenter<AnimationsPresenter.MyView, AnimationsPresenter.MyProxy> implements
-        AnimationsUiHandlers {
-
-  private final PlaceManager placeManager;
+public class SwapPresenter extends
+    Presenter<SwapPresenter.MyView, SwapPresenter.MyProxy> {
 
   //
   //
   // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
-  @NameToken(NameTokens.animations)
-  public interface MyProxy extends Proxy<AnimationsPresenter>, Place {
+  @NameToken(NameTokens.swap)
+  public interface MyProxy extends Proxy<SwapPresenter>, Place {
   }
 
-  public interface MyView extends View, HasUiHandlers<AnimationsUiHandlers> {
+  public interface MyView extends View {
   }
 
   @Inject
-  public AnimationsPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy,
-      final PlaceManager placeManager) {
+  public SwapPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy) {
     super(eventBus, view, proxy);
 
-    Log.debug("AnimationsPresenter()");
-
-    this.placeManager = placeManager;
-
-    getView().setUiHandlers(this);
+    Log.debug("SwapPresenter()");
   }
 
   @Override
   protected void revealInParent() {
-
-    Log.debug("revealInParent()");
-
-    RevealAnimatableDisplayContentEvent.fire(this, MgwtRootPresenter.TYPE_SetNavigationPaneContent, this, getAnimation());
+    RevealAnimatableDisplayContentEvent.fire(this, MgwtRootPresenter.TYPE_SetContextAreaContent, this, getAnimation());
   }
 
   private Animation getAnimation(){
-    return Animation.SLIDE;
-  }
-
-  @Override
-  public void onNavigationPaneClicked(String place) {
-
-    Log.debug("onNavigationPaneClicked(): " + place);
-
-    if (place.length() != 0) {
-      PlaceRequest placeRequest = new PlaceRequest(place);
-      getPlaceManager().revealPlace(placeRequest);
-    }
-  }
-
-  public PlaceManager getPlaceManager() {
-    return placeManager;
+    return Animation.SWAP;
   }
 }
-

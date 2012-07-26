@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view.tablet;
+package com.kiahu.sample.client.view.tablet.animations;
 
 public class Animation {
 

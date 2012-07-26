@@ -129,7 +129,8 @@
           <executions>
             <execution>
               <configuration>
-                <extraJvmArgs>-Xss1024k -Xmx512M</extraJvmArgs>
+                <!-- <extraJvmArgs>-Xss1024k -Xmx512M</extraJvmArgs> -->
+				<extraJvmArgs>-Xmx1024m</extraJvmArgs>
 				<logLevel>${log.level}</logLevel>
 				<style>${gwt.style}</style>
                 <gwtVersion>${gwt.version}</gwtVersion>

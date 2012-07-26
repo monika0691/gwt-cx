@@ -12,26 +12,18 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view.tablet;
+package com.kiahu.sample.client.view.tablet.animations;
 
-import com.kiahu.sample.client.event.UIEntrySelectedEvent.UIEntry;
+import com.allen_sauer.gwt.log.client.Log;
+import com.google.inject.Inject;
+import com.kiahu.sample.client.presenter.tablet.PopPresenter;
 
-public class Item {
+public class PopView extends AbstractAnimationView implements PopPresenter.MyView {
 
-  private String displayString;
-  private final UIEntry entry;
+  @Inject
+  public PopView() {
+    super();
 
-  public Item(String displayString, UIEntry entry) {
-
-	this.displayString = displayString;
-    this.entry = entry;
-  }
-
-  public String getDisplayString() {
-    return displayString;
-  }
-
-  public UIEntry getEntry() {
-    return entry;
+    Log.debug("PopView()");
   }
 }

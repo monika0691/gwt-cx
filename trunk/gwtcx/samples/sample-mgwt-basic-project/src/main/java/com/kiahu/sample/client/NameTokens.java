@@ -21,6 +21,12 @@ public class NameTokens {
 
   public static final String animations = "Animations";
   public static final String slide = "Slide";
+  public static final String slideUp = "Slide Up";
+  public static final String dissolve = "Dissolve";
+  public static final String fade = "Fade";
+  public static final String flip = "Flip";
+  public static final String pop = "Pop";
+  public static final String swap = "Swap";
 
   public static final String ui = "UI";
 
