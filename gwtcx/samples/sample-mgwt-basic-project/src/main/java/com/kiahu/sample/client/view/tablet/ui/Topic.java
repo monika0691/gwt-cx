@@ -1,4 +1,4 @@
-package com.kiahu.sample.client.view.tablet;
+package com.kiahu.sample.client.view.tablet.ui;
 
 import java.io.Serializable;
 

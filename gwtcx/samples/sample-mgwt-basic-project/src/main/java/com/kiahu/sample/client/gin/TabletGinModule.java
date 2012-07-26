@@ -17,14 +17,26 @@ package com.kiahu.sample.client.gin;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.kiahu.sample.client.presenter.tablet.AboutPresenter;
 import com.kiahu.sample.client.presenter.tablet.AnimationsPresenter;
+import com.kiahu.sample.client.presenter.tablet.DissolvePresenter;
+import com.kiahu.sample.client.presenter.tablet.FadePresenter;
+import com.kiahu.sample.client.presenter.tablet.FlipPresenter;
 import com.kiahu.sample.client.presenter.tablet.MainPageTabletPresenter;
+import com.kiahu.sample.client.presenter.tablet.PopPresenter;
 import com.kiahu.sample.client.presenter.tablet.SlidePresenter;
+import com.kiahu.sample.client.presenter.tablet.SlideUpPresenter;
+import com.kiahu.sample.client.presenter.tablet.SwapPresenter;
 import com.kiahu.sample.client.presenter.tablet.UiPresenter;
-import com.kiahu.sample.client.view.tablet.AboutView;
-import com.kiahu.sample.client.view.tablet.AnimationsView;
 import com.kiahu.sample.client.view.tablet.MainPageTabletView;
-import com.kiahu.sample.client.view.tablet.SlideView;
-import com.kiahu.sample.client.view.tablet.UiView;
+import com.kiahu.sample.client.view.tablet.ui.UiView;
+import com.kiahu.sample.client.view.tablet.animations.AboutView;
+import com.kiahu.sample.client.view.tablet.animations.AnimationsView;
+import com.kiahu.sample.client.view.tablet.animations.DissolveView;
+import com.kiahu.sample.client.view.tablet.animations.FadeView;
+import com.kiahu.sample.client.view.tablet.animations.FlipView;
+import com.kiahu.sample.client.view.tablet.animations.PopView;
+import com.kiahu.sample.client.view.tablet.animations.SlideUpView;
+import com.kiahu.sample.client.view.tablet.animations.SlideView;
+import com.kiahu.sample.client.view.tablet.animations.SwapView;
 
 public class TabletGinModule  extends AbstractPresenterModule {
 
@@ -47,6 +59,18 @@ public class TabletGinModule  extends AbstractPresenterModule {
         AnimationsView.class, AnimationsPresenter.MyProxy.class);
     bindPresenter(SlidePresenter.class, SlidePresenter.MyView.class,
             SlideView.class, SlidePresenter.MyProxy.class);
+    bindPresenter(SlideUpPresenter.class, SlideUpPresenter.MyView.class,
+            SlideUpView.class, SlideUpPresenter.MyProxy.class);
+    bindPresenter(DissolvePresenter.class, DissolvePresenter.MyView.class,
+    		DissolveView.class, DissolvePresenter.MyProxy.class);
+    bindPresenter(FadePresenter.class, FadePresenter.MyView.class,
+    		FadeView.class, FadePresenter.MyProxy.class);
+    bindPresenter(FlipPresenter.class, FlipPresenter.MyView.class,
+    		FlipView.class, FlipPresenter.MyProxy.class);
+    bindPresenter(PopPresenter.class, PopPresenter.MyView.class,
+    		PopView.class, PopPresenter.MyProxy.class);
+    bindPresenter(SwapPresenter.class, SwapPresenter.MyView.class,
+    		SwapView.class, SwapPresenter.MyProxy.class);
 
     bindPresenter(AboutPresenter.class, AboutPresenter.MyView.class,
         AboutView.class, AboutPresenter.MyProxy.class);

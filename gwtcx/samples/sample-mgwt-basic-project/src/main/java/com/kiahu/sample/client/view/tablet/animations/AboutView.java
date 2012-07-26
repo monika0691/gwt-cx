@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view.tablet;
+package com.kiahu.sample.client.view.tablet.animations;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.user.client.ui.HTML;
