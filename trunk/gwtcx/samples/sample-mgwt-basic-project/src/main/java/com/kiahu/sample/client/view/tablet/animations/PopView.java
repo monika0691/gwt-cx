@@ -16,7 +16,7 @@ package com.kiahu.sample.client.view.tablet.animations;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
-import com.kiahu.sample.client.presenter.tablet.PopPresenter;
+import com.kiahu.sample.client.presenter.tablet.animations.PopPresenter;
 
 public class PopView extends AbstractAnimationView implements PopPresenter.MyView {
 

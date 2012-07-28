@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.presenter.tablet;
+package com.kiahu.sample.client.presenter.tablet.ui;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
@@ -26,27 +26,28 @@ import com.gwtplatform.mvp.client.proxy.Place;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.kiahu.sample.client.NameTokens;
 import com.kiahu.sample.client.event.RevealAnimatableDisplayContentEvent;
+import com.kiahu.sample.client.presenter.tablet.MgwtRootPresenter;
 
-public class SwapPresenter extends
-    Presenter<SwapPresenter.MyView, SwapPresenter.MyProxy> {
+public class SearchboxPresenter extends
+    Presenter<SearchboxPresenter.MyView, SearchboxPresenter.MyProxy> {
 
   //
   //
   // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
-  @NameToken(NameTokens.swap)
-  public interface MyProxy extends Proxy<SwapPresenter>, Place {
+  @NameToken(NameTokens.searchbox)
+  public interface MyProxy extends Proxy<SearchboxPresenter>, Place {
   }
 
   public interface MyView extends View {
   }
 
   @Inject
-  public SwapPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy) {
+  public SearchboxPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy) {
     super(eventBus, view, proxy);
 
-    Log.debug("SwapPresenter()");
+    Log.debug("SearchboxPresenter()");
   }
 
   @Override
@@ -55,6 +56,6 @@ public class SwapPresenter extends
   }
 
   private Animation getAnimation(){
-    return Animation.SWAP;
+    return Animation.SLIDE;
   }
 }

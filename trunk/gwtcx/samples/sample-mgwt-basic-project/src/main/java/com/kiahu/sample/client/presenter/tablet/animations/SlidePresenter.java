@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.presenter.tablet;
+package com.kiahu.sample.client.presenter.tablet.animations;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
@@ -26,27 +26,28 @@ import com.gwtplatform.mvp.client.proxy.Place;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.kiahu.sample.client.NameTokens;
 import com.kiahu.sample.client.event.RevealAnimatableDisplayContentEvent;
+import com.kiahu.sample.client.presenter.tablet.MgwtRootPresenter;
 
-public class PopPresenter extends
-    Presenter<PopPresenter.MyView, PopPresenter.MyProxy> {
+public class SlidePresenter extends
+    Presenter<SlidePresenter.MyView, SlidePresenter.MyProxy> {
 
   //
   //
   // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
-  @NameToken(NameTokens.pop)
-  public interface MyProxy extends Proxy<PopPresenter>, Place {
+  @NameToken(NameTokens.slide)
+  public interface MyProxy extends Proxy<SlidePresenter>, Place {
   }
 
   public interface MyView extends View {
   }
 
   @Inject
-  public PopPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy) {
+  public SlidePresenter(final EventBus eventBus, final MyView view, final MyProxy proxy) {
     super(eventBus, view, proxy);
 
-    Log.debug("PopPresenter()");
+    Log.debug("SlidePresenter()");
   }
 
   @Override
@@ -55,6 +56,6 @@ public class PopPresenter extends
   }
 
   private Animation getAnimation(){
-    return Animation.POP;
+    return Animation.SLIDE;
   }
 }

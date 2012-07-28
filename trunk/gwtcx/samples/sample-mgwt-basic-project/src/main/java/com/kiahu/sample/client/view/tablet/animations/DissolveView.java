@@ -16,7 +16,7 @@ package com.kiahu.sample.client.view.tablet.animations;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
-import com.kiahu.sample.client.presenter.tablet.DissolvePresenter;
+import com.kiahu.sample.client.presenter.tablet.animations.DissolvePresenter;
 
 public class DissolveView extends AbstractAnimationView implements DissolvePresenter.MyView {
 

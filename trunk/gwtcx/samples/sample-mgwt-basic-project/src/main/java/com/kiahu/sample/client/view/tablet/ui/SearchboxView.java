@@ -12,18 +12,31 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view.tablet.animations;
+package com.kiahu.sample.client.view.tablet.ui;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
-import com.kiahu.sample.client.presenter.tablet.animations.FadePresenter;
+import com.googlecode.mgwt.ui.client.widget.MSearchBox;
+import com.kiahu.sample.client.NameTokens;
+import com.kiahu.sample.client.presenter.tablet.ui.SearchboxPresenter;
 
-public class FadeView extends AbstractAnimationView implements FadePresenter.MyView {
+public class SearchboxView extends AbstractUiView implements SearchboxPresenter.MyView {
 
   @Inject
-  public FadeView() {
+  public SearchboxView() {
     super();
 
-    Log.debug("FadeView()");
+    Log.debug("SearchboxView()");
+  }
+
+  @Override
+  protected void createAndBindUi() {
+	super.createAndBindUi();
+
+    Log.debug("createAndBindUi()");
+
+    scrollPanel.setWidget(new MSearchBox());
+
+    headerPanel.setCenter(NameTokens.searchbox);
   }
 }

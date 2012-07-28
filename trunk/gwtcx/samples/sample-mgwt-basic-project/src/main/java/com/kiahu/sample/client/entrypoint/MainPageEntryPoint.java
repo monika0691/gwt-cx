@@ -62,7 +62,7 @@ public class MainPageEntryPoint extends MultiPageEntryPoint {
 
     MGWTSettings settings = new MGWTSettings();
     settings.setViewPort(viewPort);
-    settings.setIconUrl("images/logo.png");
+    settings.setIconUrl("logo.png");
     settings.setAddGlosToIcon(true);
     settings.setFullscreen(true);
     settings.setPreventScrolling(true);

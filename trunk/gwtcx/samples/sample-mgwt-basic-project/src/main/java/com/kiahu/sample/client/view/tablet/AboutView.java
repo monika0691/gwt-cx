@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view.tablet.animations;
+package com.kiahu.sample.client.view.tablet;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.user.client.ui.HTML;
@@ -52,10 +52,11 @@ public class AboutView extends ViewImpl implements AboutPresenter.MyView {
     round = new RoundPanel();
 
     round.add(new HTML("<br />"));
-    round.add(new HTML("<strong>Kiahu CX<strong>"));
-    round.add(new HTML("<br />"));
     round.add(new HTML("mgwt Showcase"));
     round.add(new HTML("Version 1.1.2-SNAPSHOT"));
+    round.add(new HTML("Using GWT, GWTP and mgwt to build mobile apps"));
+    round.add(new HTML("<br />"));
+    round.add(new HTML("<a target='_blank' href='http://www.kiahu.com'>Kiahu.com</a>"));
     round.add(new HTML("<br />"));
 
     scrollPanel.setWidget(round);

@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.presenter.tablet;
+package com.kiahu.sample.client.presenter.tablet.ui;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
@@ -26,27 +26,28 @@ import com.gwtplatform.mvp.client.proxy.Place;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.kiahu.sample.client.NameTokens;
 import com.kiahu.sample.client.event.RevealAnimatableDisplayContentEvent;
+import com.kiahu.sample.client.presenter.tablet.MgwtRootPresenter;
 
-public class SlidePresenter extends
-    Presenter<SlidePresenter.MyView, SlidePresenter.MyProxy> {
+public class PullToRefreshPresenter extends
+    Presenter<PullToRefreshPresenter.MyView, PullToRefreshPresenter.MyProxy> {
 
   //
   //
   // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
-  @NameToken(NameTokens.slide)
-  public interface MyProxy extends Proxy<SlidePresenter>, Place {
+  @NameToken(NameTokens.pullToRefresh)
+  public interface MyProxy extends Proxy<PullToRefreshPresenter>, Place {
   }
 
   public interface MyView extends View {
   }
 
   @Inject
-  public SlidePresenter(final EventBus eventBus, final MyView view, final MyProxy proxy) {
+  public PullToRefreshPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy) {
     super(eventBus, view, proxy);
 
-    Log.debug("SlidePresenter()");
+    Log.debug("PullToRefreshPresenter()");
   }
 
   @Override

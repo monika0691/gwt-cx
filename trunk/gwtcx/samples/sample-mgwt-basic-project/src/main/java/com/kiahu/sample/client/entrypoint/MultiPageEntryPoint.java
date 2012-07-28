@@ -32,7 +32,12 @@ public abstract class MultiPageEntryPoint extends AbstractMultiPageEntryPoint {
   protected void bind() {
 
     BasicProjectClientBundle.INSTANCE.css().ensureInjected();
-    StyleInjector.inject(BasicProjectClientBundle.INSTANCE.media().getText());
+    // StyleInjector.inject(BasicProjectClientBundle.INSTANCE.media().getText());
+    // Issue 4911: Support media-dependent selectors in ClientBundle
+    // See: http://code.google.com/p/google-web-toolkit/issues/detail?id=4911
+    String mgwtCss = "@media only screen and (orientation:portrait) {"
+            + BasicProjectClientBundle.INSTANCE.mgwtCss().getText() + "}";
+    StyleInjector.injectAtEnd(mgwtCss);
 
     I18nUtil.init();
 

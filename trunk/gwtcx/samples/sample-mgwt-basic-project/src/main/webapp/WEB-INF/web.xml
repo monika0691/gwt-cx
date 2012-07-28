@@ -22,7 +22,7 @@
    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
    version="2.5">
 
-  <!-- Place GuiceFilter at the top of your web.xml file
+  <!-- Place GuiceFilter at the top of your web.xml file -->
   <filter>
     <filter-name>guiceFilter</filter-name>
     <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
@@ -32,7 +32,7 @@
     <filter-name>guiceFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  -->
+
 
   <!--
     This Guice listener hijacks all further filters and servlets.
@@ -40,12 +40,12 @@
     ServletModule#configureServlets() by calling
     serve(String).with(Class<? extends HttpServlet>) and
     filter(String).through(Class<? extends Filter)
-
+  -->
   <listener>
     <listener-class>com.kiahu.sample.server.guice.BasicProjectGuiceServletContextListener
     </listener-class>
   </listener>
-  -->
+
 
   <!-- Default page to serve -->
   <welcome-file-list>
