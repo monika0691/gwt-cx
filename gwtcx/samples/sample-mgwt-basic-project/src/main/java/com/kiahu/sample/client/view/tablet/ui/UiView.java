@@ -20,6 +20,10 @@ import java.util.List;
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
+import com.googlecode.mgwt.ui.client.MGWT;
+import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
@@ -29,7 +33,7 @@ import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.kiahu.sample.client.NameTokens;
 import com.kiahu.sample.client.event.UIEntrySelectedEvent.UIEntry;
-import com.kiahu.sample.client.presenter.tablet.UiPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.UiPresenter;
 import com.kiahu.sample.client.uihandlers.UiUiHandlers;
 import com.kiahu.sample.client.view.tablet.BasicCell;
 
@@ -37,6 +41,7 @@ public class UiView extends ViewWithUiHandlers<UiUiHandlers> implements
     UiPresenter.MyView {
 
   public LayoutPanel panel;
+  public HeaderButton backButton;
 
   public CellListWithHeader<Item> cellList;
   public ArrayList<Item> list;
@@ -61,7 +66,12 @@ public class UiView extends ViewWithUiHandlers<UiUiHandlers> implements
 
     panel = new LayoutPanel();
     headerPanel = new HeaderPanel();
+    backButton = new HeaderButton();
     scrollPanel = new ScrollPanel();
+
+	headerPanel.setLeftWidget(backButton);
+	backButton.setBackButton(true);
+	backButton.setVisible(!MGWT.getOsDetection().isAndroid());
 
     cellList = new CellListWithHeader<Item>(new BasicCell<Item>() {
       @Override
@@ -83,13 +93,24 @@ public class UiView extends ViewWithUiHandlers<UiUiHandlers> implements
     panel.add(headerPanel);
     panel.add(scrollPanel);
 
-    headerPanel.setCenter(NameTokens.ui);
+    backButton.setText("Home");
+    headerPanel.setCenter(NameTokens.ui);  // "UI"
 
     cellList.getCellList().render(createAnimations());
   }
 
   // mgwt Event and GWT Handler Mapping should be done here.
   protected void bindCustomUiHandlers() {
+
+    backButton.addTapHandler(new TapHandler() {
+      @Override
+      public void onTap(TapEvent event) {
+
+    	if (getUiHandlers() != null) {
+          getUiHandlers().onNavigationPaneClicked(com.gwtcx.client.NameTokens.mainPage);
+        }
+      }
+    });
 
     cellList.getCellList().addCellSelectedHandler(
         new CellSelectedHandler() {

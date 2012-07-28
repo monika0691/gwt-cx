@@ -52,8 +52,11 @@
   <!-- See com.google.gwt.user.rebind.UserAgentPropertyGenerator -->
   <set-property name="user.agent" value="safari" />
   <!-- <extend-property values="safari, gecko1_8" name="user.agent"/> -->
+
   <set-property name="mgwt.os" value="desktop" />
-  <extend-property values="iphone, ipad, retina, android, desktop" name="mgwt.os" />
+  <!-- <extend-property values="desktop, iphone, ipad, retina, android, android_tablet" name="mgwt.os" /> -->
+  <extend-property values="desktop, iphone, ipad, android, android_tablet" name="mgwt.os" />
+  <!-- <extend-property values="desktop, ipad" name="mgwt.os" /> -->
 
   <set-configuration-property name="CssResource.style" value="pretty"/>
 

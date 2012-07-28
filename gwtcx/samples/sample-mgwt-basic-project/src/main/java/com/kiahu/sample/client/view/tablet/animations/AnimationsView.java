@@ -32,7 +32,7 @@ import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.kiahu.sample.client.NameTokens;
-import com.kiahu.sample.client.presenter.tablet.AnimationsPresenter;
+import com.kiahu.sample.client.presenter.tablet.animations.AnimationsPresenter;
 import com.kiahu.sample.client.uihandlers.AnimationsUiHandlers;
 import com.kiahu.sample.client.view.tablet.BasicCell;
 import com.kiahu.sample.client.view.tablet.animations.Animation.AnimationNames;

@@ -24,7 +24,7 @@
 
   <properties>
     <!-- You can override properties set in the Parent POM -->
-    <target.jdk>1.7</target.jdk>
+    <target.jdk>1.6</target.jdk>
     <gwt.compiler.strict>true</gwt.compiler.strict>
   </properties>
 
@@ -36,6 +36,13 @@
       <artifactId>gwtcx-mgwt-dependencies</artifactId>
       <version>${gwtcx.version}</version>
       <type>pom</type>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>${gwt.version}</version>
+      <scope>provided</scope>
     </dependency>
 
     <!--

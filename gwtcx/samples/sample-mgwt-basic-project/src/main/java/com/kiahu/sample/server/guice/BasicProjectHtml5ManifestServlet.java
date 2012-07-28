@@ -12,18 +12,21 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.view.tablet.animations;
+package com.kiahu.sample.server.guice;
 
-import com.allen_sauer.gwt.log.client.Log;
-import com.google.inject.Inject;
-import com.kiahu.sample.client.presenter.tablet.animations.FadePresenter;
+import com.google.inject.Singleton;
+import com.googlecode.mgwt.linker.server.MGWTHtml5ManifestServlet;
 
-public class FadeView extends AbstractAnimationView implements FadePresenter.MyView {
+// import net.jcip.annotations.ThreadSafe;
 
-  @Inject
-  public FadeView() {
+@Singleton
+@SuppressWarnings("serial")
+// @ThreadSafe
+public class BasicProjectHtml5ManifestServlet extends MGWTHtml5ManifestServlet {
+
+  // private static final long serialVersionUID = 3003646428681343770L;
+
+  public BasicProjectHtml5ManifestServlet() {
     super();
-
-    Log.debug("FadeView()");
   }
 }

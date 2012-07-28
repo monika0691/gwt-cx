@@ -18,7 +18,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.CssResource.NotStrict;
-import com.google.gwt.resources.client.TextResource;
 
 public interface BasicProjectClientBundle extends ClientBundle {
 
@@ -30,7 +29,10 @@ public interface BasicProjectClientBundle extends ClientBundle {
   @Source("com/kiahu/sample/client/theme/BasicProject.css")
   public CssResource css();
 
-  // This is a very nasty workaround because GWT CssResource does not support @media correctly!
   @Source("com/kiahu/sample/client/theme/Media.css")
-  TextResource media();
+  public CssResource mgwtCss();
+
+  // This is a very nasty workaround because GWT CssResource does not support @media correctly!
+  // @Source("com/kiahu/sample/client/theme/Media.css")
+  // TextResource media();
 }

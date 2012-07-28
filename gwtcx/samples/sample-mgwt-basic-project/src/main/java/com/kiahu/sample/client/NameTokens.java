@@ -29,6 +29,20 @@ public class NameTokens {
   public static final String swap = "Swap";
 
   public static final String ui = "UI";
+  public static final String buttonBar = "ButtonBar";
+  public static final String buttons = "Buttons";
+  public static final String carousel = "Carousel";
+  public static final String elements = "Elements";
+  public static final String forms = "Forms";
+  public static final String groupList = "Group List";
+  public static final String popups = "Popups";
+  public static final String progressBar = "ProgressBar";
+  public static final String progressIndicator = "ProgressIndicator";
+  public static final String pullToRefresh = "PullToRefresh";
+  public static final String scrollWidget = "Scroll Widget";
+  public static final String searchbox = "Searchbox";
+  public static final String slider = "Slider";
+  public static final String tabBar = "TabBar";
 
   public static final String about = "About";
 

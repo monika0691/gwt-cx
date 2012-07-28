@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.presenter.tablet;
+package com.kiahu.sample.client.presenter.tablet.ui;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
@@ -26,27 +26,28 @@ import com.gwtplatform.mvp.client.proxy.Place;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.kiahu.sample.client.NameTokens;
 import com.kiahu.sample.client.event.RevealAnimatableDisplayContentEvent;
+import com.kiahu.sample.client.presenter.tablet.MgwtRootPresenter;
 
-public class FlipPresenter extends
-    Presenter<FlipPresenter.MyView, FlipPresenter.MyProxy> {
+public class ButtonsPresenter extends
+    Presenter<ButtonsPresenter.MyView, ButtonsPresenter.MyProxy> {
 
   //
   //
   // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
-  @NameToken(NameTokens.flip)
-  public interface MyProxy extends Proxy<FlipPresenter>, Place {
+  @NameToken(NameTokens.buttons)
+  public interface MyProxy extends Proxy<ButtonsPresenter>, Place {
   }
 
   public interface MyView extends View {
   }
 
   @Inject
-  public FlipPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy) {
+  public ButtonsPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy) {
     super(eventBus, view, proxy);
 
-    Log.debug("FlipPresenter()");
+    Log.debug("ButtonsPresenter()");
   }
 
   @Override
@@ -55,6 +56,6 @@ public class FlipPresenter extends
   }
 
   private Animation getAnimation(){
-    return Animation.FLIP;
+    return Animation.SLIDE;
   }
 }

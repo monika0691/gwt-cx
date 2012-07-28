@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.presenter.tablet;
+package com.kiahu.sample.client.presenter.tablet.ui;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
@@ -26,27 +26,28 @@ import com.gwtplatform.mvp.client.proxy.Place;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.kiahu.sample.client.NameTokens;
 import com.kiahu.sample.client.event.RevealAnimatableDisplayContentEvent;
+import com.kiahu.sample.client.presenter.tablet.MgwtRootPresenter;
 
-public class SlideUpPresenter extends
-    Presenter<SlideUpPresenter.MyView, SlideUpPresenter.MyProxy> {
+public class SliderPresenter extends
+    Presenter<SliderPresenter.MyView, SliderPresenter.MyProxy> {
 
   //
   //
   // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
-  @NameToken(NameTokens.slideUp)
-  public interface MyProxy extends Proxy<SlideUpPresenter>, Place {
+  @NameToken(NameTokens.slider)
+  public interface MyProxy extends Proxy<SliderPresenter>, Place {
   }
 
   public interface MyView extends View {
   }
 
   @Inject
-  public SlideUpPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy) {
+  public SliderPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy) {
     super(eventBus, view, proxy);
 
-    Log.debug("SlideUpPresenter()");
+    Log.debug("SliderPresenter()");
   }
 
   @Override
@@ -55,6 +56,6 @@ public class SlideUpPresenter extends
   }
 
   private Animation getAnimation(){
-    return Animation.SLIDE_UP;
+    return Animation.SLIDE;
   }
 }

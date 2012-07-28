@@ -20,16 +20,30 @@ import com.google.inject.Provider;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.kiahu.sample.client.presenter.tablet.AboutPresenter;
-import com.kiahu.sample.client.presenter.tablet.AnimationsPresenter;
-import com.kiahu.sample.client.presenter.tablet.DissolvePresenter;
-import com.kiahu.sample.client.presenter.tablet.FadePresenter;
-import com.kiahu.sample.client.presenter.tablet.FlipPresenter;
+import com.kiahu.sample.client.presenter.tablet.animations.AnimationsPresenter;
+import com.kiahu.sample.client.presenter.tablet.animations.DissolvePresenter;
+import com.kiahu.sample.client.presenter.tablet.animations.FadePresenter;
+import com.kiahu.sample.client.presenter.tablet.animations.FlipPresenter;
+import com.kiahu.sample.client.presenter.tablet.animations.PopPresenter;
+import com.kiahu.sample.client.presenter.tablet.animations.SlidePresenter;
+import com.kiahu.sample.client.presenter.tablet.animations.SlideUpPresenter;
+import com.kiahu.sample.client.presenter.tablet.animations.SwapPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.ButtonBarPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.ButtonsPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.CarouselPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.ElementsPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.FormsPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.GroupListPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.PopupsPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.ProgressBarPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.ProgressIndicatorPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.PullToRefreshPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.ScrollWidgetPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.SearchboxPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.SliderPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.TabBarPresenter;
+import com.kiahu.sample.client.presenter.tablet.ui.UiPresenter;
 import com.kiahu.sample.client.presenter.tablet.MainPageTabletPresenter;
-import com.kiahu.sample.client.presenter.tablet.PopPresenter;
-import com.kiahu.sample.client.presenter.tablet.SlidePresenter;
-import com.kiahu.sample.client.presenter.tablet.SlideUpPresenter;
-import com.kiahu.sample.client.presenter.tablet.SwapPresenter;
-import com.kiahu.sample.client.presenter.tablet.UiPresenter;
 
 //
 // Create a method for each object type you want to create, and the an implementation
@@ -55,8 +69,21 @@ public interface BasicProjectGinjector extends Ginjector {
   AsyncProvider<PopPresenter> getPopPresenter();
   AsyncProvider<SwapPresenter> getSwapPresenter();
 
-  AsyncProvider<AboutPresenter> getAboutPresenter();
-
   AsyncProvider<UiPresenter> getUiPresenter();
+  AsyncProvider<ButtonBarPresenter> getButtonBarPresenter();
+  AsyncProvider<ButtonsPresenter> getButtonsPresenter();
+  AsyncProvider<CarouselPresenter> getCarouselPresenter();
+  AsyncProvider<ElementsPresenter> getElementsPresenter();
+  AsyncProvider<FormsPresenter> getFormsPresenter();
+  AsyncProvider<GroupListPresenter> getGroupListPresenter();
+  AsyncProvider<PopupsPresenter> getPopupsPresenter();
+  AsyncProvider<ProgressBarPresenter> getProgressBarPresenter();
+  AsyncProvider<ProgressIndicatorPresenter> getProgressIndicatorPresenter();
+  AsyncProvider<PullToRefreshPresenter> getPullToRefreshPresenter();
+  AsyncProvider<ScrollWidgetPresenter> getScrollWidgetPresenter();
+  AsyncProvider<SearchboxPresenter> getSearchboxPresenter();
+  AsyncProvider<SliderPresenter> getSliderPresenter();
+  AsyncProvider<TabBarPresenter> getTabBarPresenter();
 
+  AsyncProvider<AboutPresenter> getAboutPresenter();
 }

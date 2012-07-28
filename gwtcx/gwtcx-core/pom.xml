@@ -21,7 +21,7 @@
     <module>gwtcx-core-client-smartgwt</module>
     <module>gwtcx-core-shared</module>
     <module>gwtcx-core-server</module>
-    <module>gwtcx-core-server-gae</module>
+    <!-- <module>gwtcx-core-server-gae</module> -->
   </modules>
 
   <build>
@@ -45,14 +45,14 @@
           <extraJvmArgs>-Xss1024k -Xmx512M</extraJvmArgs>
           <!-- <includes>**/*GwtTest.java,**/*GwtTestSuite.java</includes> -->
           <mode>htmlunit</mode>
-          
+
           <!--
           <logLevel>INFO</logLevel>
           <style>PRETTY</style>
           <gwtVersion>${gwt.version}</gwtVersion>
           <extraJvmArgs>-Xss1024k -Xmx512M</extraJvmArgs>
           -->
-          
+
         </configuration>
         <executions>
           <execution>
@@ -99,7 +99,7 @@
 
   <dependencyManagement>
     <dependencies>
-    
+
       <!-- GWT Customer Experience dependencies -->
       <!-- Sub-modules -->
       <dependency>
@@ -159,7 +159,7 @@
         <version>${gwt.version}</version>
         <scope>runtime</scope>
       </dependency>
-      
+
       <!-- Ext GWT dependencies -->
       <dependency>
         <groupId>com.sencha.gxt</groupId>
@@ -186,7 +186,7 @@
         <artifactId>gwt-dnd</artifactId>
         <version>${gwt-dnd.version}</version>
         <scope>provided</scope>
-      </dependency>      
+      </dependency>
 
       <!-- DI dependencies -->
       <dependency>
@@ -215,7 +215,7 @@
         <artifactId>aopalliance</artifactId>
         <version>${aopalliance.version}</version>
       </dependency>
-      
+
       <!-- GWT-Platform dependencies -->
       <!-- MVP component -->
       <dependency>
@@ -243,8 +243,8 @@
         <artifactId>gwtp-processors</artifactId>
         <version>${gwtp.version}</version>
         <scope>provided</scope>
-      </dependency>      
-      
+      </dependency>
+
       <!-- Standard Java extension jars -->
       <dependency>
         <groupId>javax.servlet</groupId>
@@ -269,7 +269,7 @@
         <groupId>net.jcip</groupId>
         <artifactId>jcip-annotations</artifactId>
         <version>${jcip-annotations.version}</version>
-      </dependency>  
+      </dependency>
 
 
       <!-- GWT-Log dependencies -->
