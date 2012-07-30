@@ -25,6 +25,9 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
+import com.googlecode.mgwt.ui.client.dialog.TabletPortraitOverlay;
+import com.googlecode.mgwt.ui.client.layout.MasterRegionHandler;
+import com.googlecode.mgwt.ui.client.layout.OrientationRegionHandler;
 import com.gwtplatform.mvp.client.RootPresenter;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
@@ -121,6 +124,11 @@ public class MgwtRootPresenter extends RootPresenter implements RevealAnimatable
 
 	    Log.debug("initialiseNavigationPane...");
 
+	    final TabletPortraitOverlay tabletPortraitOverlay = new TabletPortraitOverlay();
+
+	    new OrientationRegionHandler(MainPageEntryPoint.getWestPanel(), tabletPortraitOverlay, navigationPaneDisplay);
+	    new MasterRegionHandler(MgwtRootPresenter.eventBus, "NavigationPane", tabletPortraitOverlay);
+
 	    MainPageEntryPoint.getWestPanel().setWidget(navigationPaneDisplay);
 
 	    navigationPaneDisplay.setFirstWidget(content);
@@ -215,10 +223,13 @@ public class MgwtRootPresenter extends RootPresenter implements RevealAnimatable
   }
 
   private static final Object rootSlot = new Object();
+  private static EventBus eventBus;
 
   @Inject
   public MgwtRootPresenter(final EventBus eventBus, final AnimatableDisplayView view) {
     super(eventBus, view);
+
+    MgwtRootPresenter.eventBus = eventBus;
   }
 
   @Override
