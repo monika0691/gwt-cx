@@ -74,10 +74,6 @@
 
           <runTarget>index.html</runTarget>
 
-          <!--
-          <runTarget>index.html</runTarget>
-          <runTarget>contact.html</runTarget>
-          -->
           <module>com.kiahu.sample.BasicProject</module>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
           <copyWebapp>false</copyWebapp>

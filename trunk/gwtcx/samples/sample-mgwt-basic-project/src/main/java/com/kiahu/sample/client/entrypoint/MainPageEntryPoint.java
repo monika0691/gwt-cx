@@ -72,12 +72,6 @@ public class MainPageEntryPoint extends MultiPageEntryPoint {
     westPanel.getElement().setId("NavigationPane");
     westPanel.getElement().addClassName("landscapeonly");
 
-
-    // AnimatableDisplay navDisplay = GWT.create(AnimatableDisplay.class);
-    // final TabletPortraitOverlay tabletPortraitOverlay = new TabletPortraitOverlay();
-    // new OrientationRegionHandler(navContainer, tabletPortraitOverlay, navDisplay);
-    // new MasterRegionHandler(clientFactory.getEventBus(), "nav", tabletPortraitOverlay);
-
     centerPanel = new SimplePanel();
     centerPanel.getElement().setId("ContextArea");
 

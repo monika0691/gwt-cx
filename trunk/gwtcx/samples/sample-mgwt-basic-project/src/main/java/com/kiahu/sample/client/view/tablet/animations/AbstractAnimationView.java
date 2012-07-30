@@ -18,11 +18,15 @@ import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.widget.Button;
 import com.googlecode.mgwt.ui.client.widget.RoundPanel;
-import com.gwtplatform.mvp.client.ViewImpl;
+import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.kiahu.sample.client.NameTokens;
+import com.kiahu.sample.client.uihandlers.AnimationUiHandlers;
 
-public abstract class AbstractAnimationView extends ViewImpl {
+public abstract class AbstractAnimationView extends ViewWithUiHandlers<AnimationUiHandlers> {
 
   public RoundPanel panel;
   public Button button;
@@ -34,6 +38,8 @@ public abstract class AbstractAnimationView extends ViewImpl {
     Log.debug("AbstractAnimationView()");
 
     createAndBindUi();
+
+    bindCustomUiHandlers();
   }
 
   protected void createAndBindUi() {
@@ -52,6 +58,22 @@ public abstract class AbstractAnimationView extends ViewImpl {
 
 	panel.add(html);
 	panel.add(button);
+  }
+
+  // mgwt Event and GWT Handler Mapping should be done here.
+  protected void bindCustomUiHandlers() {
+
+    Log.debug("bindCustomUiHandlers()");
+
+    button.addTapHandler(new TapHandler() {
+      @Override
+      public void onTap(TapEvent event) {
+
+    	if (getUiHandlers() != null) {
+          getUiHandlers().onBackButtonTapped(NameTokens.about);
+        }
+      }
+    });
   }
 
   @Override

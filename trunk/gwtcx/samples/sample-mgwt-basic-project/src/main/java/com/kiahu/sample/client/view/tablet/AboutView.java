@@ -18,6 +18,11 @@ import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
+import com.googlecode.mgwt.ui.client.MGWT;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.RoundPanel;
@@ -28,6 +33,10 @@ import com.kiahu.sample.client.presenter.tablet.AboutPresenter;
 public class AboutView extends ViewImpl implements AboutPresenter.MyView {
 
   public LayoutPanel panel;
+  public HeaderPanel headerPanel;
+  public HeaderButton backButton;
+  public HeaderButton navButton;
+  public ScrollPanel scrollPanel;
 
   @Inject
   public AboutView() {
@@ -36,20 +45,31 @@ public class AboutView extends ViewImpl implements AboutPresenter.MyView {
     Log.debug("AboutView()");
 
     createAndBindUi();
+
+    bindCustomUiHandlers();
   }
 
   protected void createAndBindUi() {
 
     Log.debug("createAndBindUi()");
 
-    HeaderPanel headerPanel;
-    ScrollPanel scrollPanel;
-    RoundPanel round;
-
     panel = new LayoutPanel();
     headerPanel = new HeaderPanel();
+    backButton = new HeaderButton();
+    navButton = new HeaderButton();
     scrollPanel = new ScrollPanel();
-    round = new RoundPanel();
+
+	backButton.setBackButton(true);
+	backButton.setVisible(!MGWT.getOsDetection().isAndroid());
+
+	if (!MGWT.getOsDetection().isPhone()) {
+	  headerPanel.setLeftWidget(navButton);
+	  navButton.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getUtilCss().portraitonly());
+	} else {
+	  headerPanel.setLeftWidget(backButton);
+	}
+
+	RoundPanel round = new RoundPanel();
 
     round.add(new HTML("<br />"));
     round.add(new HTML("mgwt Showcase"));
@@ -65,7 +85,23 @@ public class AboutView extends ViewImpl implements AboutPresenter.MyView {
     panel.add(headerPanel);
     panel.add(scrollPanel);
 
+    backButton.setText("Home");
+    navButton.setText("Nav");
+
     headerPanel.setCenter("About");
+  }
+
+  // mgwt Event and GWT Handler Mapping should be done here.
+  protected void bindCustomUiHandlers() {
+
+    Log.debug("bindCustomUiHandlers()");
+
+    navButton.addTapHandler(new TapHandler() {
+      @Override
+      public void onTap(TapEvent event) {
+        // eventBus.fireEvent(new ShowMasterEvent(eventId));
+      }
+    });
   }
 
   @Override

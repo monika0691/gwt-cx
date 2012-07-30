@@ -144,7 +144,7 @@ public class PullToRefreshView extends AbstractUiView implements PullToRefreshPr
 		    callback.onFailure(null);
 		  } else {
 		    for (int i = 0; i < 5; i++) {
-			  list.add(0, new Topic("generated Topic " + (counter + 1), counter));
+			  list.add(list.size(), new Topic("generated Topic " + (counter + 1), counter));
 				counter++;
 			}
 
@@ -167,8 +167,8 @@ public class PullToRefreshView extends AbstractUiView implements PullToRefreshPr
 	list = new LinkedList<Topic>();
 
 	while (counter < 20) {
-		list.add(new Topic("Topic " + (counter + 1), counter));
-		counter++;
+	  list.add(new Topic("Topic " + (counter + 1), counter));
+	  counter++;
 	}
 
 	return list;

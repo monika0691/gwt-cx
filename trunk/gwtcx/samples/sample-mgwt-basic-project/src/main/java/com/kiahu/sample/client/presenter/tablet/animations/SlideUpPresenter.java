@@ -18,18 +18,25 @@ import com.allen_sauer.gwt.log.client.Log;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.googlecode.mgwt.mvp.client.Animation;
+import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.Place;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.kiahu.sample.client.NameTokens;
 import com.kiahu.sample.client.event.RevealAnimatableDisplayContentEvent;
 import com.kiahu.sample.client.presenter.tablet.MgwtRootPresenter;
+import com.kiahu.sample.client.uihandlers.AnimationUiHandlers;
 
 public class SlideUpPresenter extends
-    Presenter<SlideUpPresenter.MyView, SlideUpPresenter.MyProxy> {
+    Presenter<SlideUpPresenter.MyView, SlideUpPresenter.MyProxy>  implements
+      AnimationUiHandlers {
+
+  private final PlaceManager placeManager;
 
   //
   //
@@ -40,14 +47,19 @@ public class SlideUpPresenter extends
   public interface MyProxy extends Proxy<SlideUpPresenter>, Place {
   }
 
-  public interface MyView extends View {
+  public interface MyView extends View, HasUiHandlers<AnimationUiHandlers>  {
   }
 
   @Inject
-  public SlideUpPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy) {
-    super(eventBus, view, proxy);
+  public SlideUpPresenter(final EventBus eventBus, final MyView view, final MyProxy proxy,
+      final PlaceManager placeManager) {
+	super(eventBus, view, proxy);
 
     Log.debug("SlideUpPresenter()");
+
+    this.placeManager = placeManager;
+
+    getView().setUiHandlers(this);
   }
 
   @Override
@@ -57,5 +69,20 @@ public class SlideUpPresenter extends
 
   private Animation getAnimation(){
     return Animation.SLIDE_UP;
+  }
+
+  @Override
+  public void onBackButtonTapped(String place) {
+
+    Log.debug("onBackButtonTapped(): " + place);
+
+    if (place.length() != 0) {
+      PlaceRequest placeRequest = new PlaceRequest(place);
+      getPlaceManager().revealPlace(placeRequest, false);
+    }
+  }
+
+  public PlaceManager getPlaceManager() {
+    return placeManager;
   }
 }
