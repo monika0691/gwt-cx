@@ -22,6 +22,7 @@ import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.dialog.TabletPortraitOverlay;
 import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
@@ -29,6 +30,7 @@ import com.googlecode.mgwt.ui.client.widget.RoundPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.kiahu.sample.client.presenter.tablet.AboutPresenter;
+import com.kiahu.sample.client.presenter.tablet.MgwtRootPresenter;
 
 public class AboutView extends ViewImpl implements AboutPresenter.MyView {
 
@@ -99,9 +101,17 @@ public class AboutView extends ViewImpl implements AboutPresenter.MyView {
     navButton.addTapHandler(new TapHandler() {
       @Override
       public void onTap(TapEvent event) {
-        // eventBus.fireEvent(new ShowMasterEvent(eventId));
+        showMaster();
       }
     });
+  }
+
+  private void showMaster() {
+
+	Log.debug("showMaster()");
+
+	TabletPortraitOverlay dialog = MgwtRootPresenter.AnimatableDisplayView.getTabletPortraitOverlay();
+	dialog.show();
   }
 
   @Override
@@ -109,3 +119,63 @@ public class AboutView extends ViewImpl implements AboutPresenter.MyView {
     return panel;
   }
 }
+
+/*
+
+
+  <replace-with class="com.kiahu.sample.client.display.AnimatableDisplayIphoneImpl">
+    <when-type-is class="com.googlecode.mgwt.mvp.client.AnimatableDisplay"/>
+      <all>
+        <when-property-is name="mgwt.os" value="desktop"/>
+      </all>
+  </replace-with>
+
+
+
+
+    // eventBus.fireEvent(new ShowMasterEvent(eventId));
+
+	Widget content = ((AnimatableDisplayIphoneImpl) display).getFirstWidget();
+
+	if (content != null) {
+
+	  Log.debug("getFirstWidget() - content != null");
+
+	  dialog.setWidget(content);
+	  dialog.show();
+	}
+	else {
+
+      content = ((AnimatableDisplayIphoneImpl) display).getSecondWidget();
+
+  	  if (content != null) {
+
+  	    Log.debug("getSecondWidget() - content != null");
+
+  	    dialog.setWidget(content);
+  		dialog.show();
+  	  }
+	}
+
+
+
+public class AnimatableDisplayIphoneImpl extends com.googlecode.mgwt.mvp.client.display.AnimatableDisplayIphoneImpl {
+
+  public AnimatableDisplayIphoneImpl() {
+    super();
+
+	Log.debug("AnimatableDisplayIphoneImpl()");
+  }
+
+  public SimplePanel getFirstWidget() {
+    return first;
+  }
+
+  public SimplePanel getSecondWidget() {
+    return second;
+  }
+}
+
+
+
+*/

@@ -53,6 +53,12 @@ public class MgwtRootPresenter extends RootPresenter implements RevealAnimatable
    */
   public static class AnimatableDisplayView extends RootView {
 
+	private static TabletPortraitOverlay tabletPortraitOverlay;
+
+	public static TabletPortraitOverlay getTabletPortraitOverlay() {
+	  return tabletPortraitOverlay;
+	}
+
     private boolean usingRootLayoutPanel = false;
     private boolean isAnimatable = false;
     private Animation animation = null;
@@ -124,7 +130,9 @@ public class MgwtRootPresenter extends RootPresenter implements RevealAnimatable
 
 	    Log.debug("initialiseNavigationPane...");
 
-	    final TabletPortraitOverlay tabletPortraitOverlay = new TabletPortraitOverlay();
+	    // The Popover dialog
+	    // final TabletPortraitOverlay tabletPortraitOverlay = new TabletPortraitOverlay();
+	    tabletPortraitOverlay = new TabletPortraitOverlay();
 
 	    new OrientationRegionHandler(MainPageEntryPoint.getWestPanel(), tabletPortraitOverlay, navigationPaneDisplay);
 	    new MasterRegionHandler(MgwtRootPresenter.eventBus, "NavigationPane", tabletPortraitOverlay);

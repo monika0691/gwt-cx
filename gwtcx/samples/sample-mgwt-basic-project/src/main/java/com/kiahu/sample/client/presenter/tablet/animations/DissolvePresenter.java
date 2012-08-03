@@ -78,7 +78,7 @@ public class DissolvePresenter extends
 
     if (place.length() != 0) {
       PlaceRequest placeRequest = new PlaceRequest(place);
-      getPlaceManager().revealPlace(placeRequest, false);
+      getPlaceManager().revealPlace(placeRequest);
     }
   }
 

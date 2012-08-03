@@ -26,8 +26,8 @@ import com.gwtcx.client.NameTokens;
 
 public class MainPageEntryPoint extends MultiPageEntryPoint {
 
-  public static SimplePanel westPanel;
-  public static SimplePanel centerPanel;
+  private static SimplePanel westPanel;
+  private static SimplePanel centerPanel;
 
   public static SimplePanel getWestPanel() {
     return westPanel;

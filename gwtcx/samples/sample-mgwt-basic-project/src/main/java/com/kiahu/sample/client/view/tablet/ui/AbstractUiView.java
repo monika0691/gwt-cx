@@ -17,14 +17,18 @@ package com.kiahu.sample.client.view.tablet.ui;
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.dialog.TabletPortraitOverlay;
 import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.kiahu.sample.client.NameTokens;
+import com.kiahu.sample.client.presenter.tablet.MgwtRootPresenter;
 
 public abstract class AbstractUiView extends ViewImpl {
 
@@ -72,10 +76,26 @@ public abstract class AbstractUiView extends ViewImpl {
     navButton.setText("Nav");
   }
 
+
   // mgwt Event and GWT Handler Mapping should be done here.
   protected void bindCustomUiHandlers() {
 
     Log.debug("bindCustomUiHandlers()");
+
+    navButton.addTapHandler(new TapHandler() {
+      @Override
+      public void onTap(TapEvent event) {
+        showMaster();
+      }
+    });
+  }
+
+  private void showMaster() {
+
+	Log.debug("showMaster()");
+
+	TabletPortraitOverlay dialog = MgwtRootPresenter.AnimatableDisplayView.getTabletPortraitOverlay();
+	dialog.show();
   }
 
   @Override
