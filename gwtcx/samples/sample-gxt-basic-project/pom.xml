@@ -46,6 +46,8 @@
       <scope>provided</scope>
     </dependency>
 
+
+
      <!-- Kiahu mgwt meta-package -->
     <dependency>
       <groupId>com.gwtcx</groupId>
@@ -53,6 +55,7 @@
       <version>${gwtcx.version}</version>
       <type>pom</type>
     </dependency>
+
 
     <!--
     <dependency>

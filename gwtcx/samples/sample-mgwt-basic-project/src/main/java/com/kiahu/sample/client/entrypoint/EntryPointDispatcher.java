@@ -39,6 +39,9 @@ public class EntryPointDispatcher implements EntryPoint {
         MultiPageEntryPoint entrypoint = (MultiPageEntryPoint) GWT.create(MainPageEntryPoint.class);
         entrypoint.onModuleLoad();
       }
+
+      /*
+
       else if (page.equals(NameTokens.accountPage)) {
         MultiPageEntryPoint entrypoint = (MultiPageEntryPoint) GWT.create(AccountPageEntryPoint.class);
         entrypoint.onModuleLoad();
@@ -47,6 +50,8 @@ public class EntryPointDispatcher implements EntryPoint {
         MultiPageEntryPoint entrypoint = (MultiPageEntryPoint) GWT.create(ContactPageEntryPoint.class);
         entrypoint.onModuleLoad();
       }
+
+      */
     } catch (Exception e) {
       Log.error("e: " + e);
       e.printStackTrace();
