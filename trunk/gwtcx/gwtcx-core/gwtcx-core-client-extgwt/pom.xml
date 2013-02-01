@@ -58,10 +58,12 @@
       <groupId>com.sencha.gxt</groupId>
       <artifactId>gxt</artifactId>
     </dependency>
+    <!-- No longer required as of GWT 2.5
     <dependency>
       <groupId>com.sencha.gxt</groupId>
       <artifactId>uibinder-bridge</artifactId>
-    </dependency>
+    </dependency> 
+	-->
     <!-- GWT Cal dependencies -->
     <dependency>
       <groupId>com.bradrydzewski</groupId>
