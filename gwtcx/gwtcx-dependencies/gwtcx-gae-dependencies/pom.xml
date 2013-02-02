@@ -22,7 +22,7 @@
   </description>
   
   <properties>
-    <gae.version>1.6.1</gae.version>
+    <gae.version>1.7.3</gae.version>
   </properties>
  
   <dependencies>

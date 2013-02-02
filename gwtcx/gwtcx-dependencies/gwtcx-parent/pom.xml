@@ -12,7 +12,22 @@
   <packaging>pom</packaging>
   
   <name>GWTCX - Parent POM</name>
-  <description>Parent POM used to configure properties and plugins.</description>  
+  <description>Parent POM used to configure properties and plugins.</description>
+
+  <!--
+    IMPORTANT: The properties in this (the Parent) POM (that are used to configure properties and plugins) must be keep in sync
+      with the gwtcx POM as well as the following POMs: 
+	  - gwtcx-parent
+      - gwtcx-gwt-dependencies
+	  - gwtcx-gwtp-mvp-dependencies
+	  - gwtcx-gwtp-dispatch-dependencies
+	
+	  - gwtcx-extgwt-dependencies
+	  - gwtcx-mgwt-dependencies
+	  - gwtcx-smartgwt-dependencies
+	
+	  - gwtcx-gae-dependencies
+  -->
   
   <properties>
     <gwtcx.version>1.0.0-dp1</gwtcx.version>

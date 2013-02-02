@@ -22,8 +22,8 @@
   </description>
   
   <properties>
-  	<gwt.version>2.4.0</gwt.version>
-    <extgwt.version>3.0.0</extgwt.version>
+  	<gwt.version>2.5.0</gwt.version>
+    <extgwt.version>3.0.1</extgwt.version>
     <gwt-cal.version>0.9.3</gwt-cal.version>
     <gwt-dnd.version>3.1.2</gwt-dnd.version>
   </properties>
