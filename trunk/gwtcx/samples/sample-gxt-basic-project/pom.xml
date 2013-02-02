@@ -19,12 +19,12 @@
   <packaging>war</packaging>
 
   <name>Kiahu CX Sample - GXT Basic Project</name>
-  <description>Sample POM that demonstrates how to use a parent POM (to configure properties and plugins) and grouped dependencies POMs (for dependency management)</description>
+  <description>Sample POM that demonstrates how to use a parent POM (to configure properties and plugins) and grouped dependencies POMs (for dependency management).</description>
   <url>http://kiahu.com</url>
 
   <properties>
     <!-- You can override properties set in the Parent POM -->
-    <target.jdk>1.7</target.jdk>
+    <target.jdk>1.6</target.jdk>
     <gwt.compiler.strict>true</gwt.compiler.strict>
   </properties>
 

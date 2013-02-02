@@ -22,7 +22,7 @@
     </description>
   
   <properties>
-	<gwtp.version>0.7</gwtp.version>
+    <gwtp.version>1.0-RC-1</gwtp.version>
   </properties>
  
   <dependencies>

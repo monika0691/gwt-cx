@@ -18,7 +18,10 @@
   <packaging>pom</packaging>
   <name>The Kiahu Customer Experience (CX) framework</name>
   <inceptionYear>2011</inceptionYear>
-  <description>Kiahu CX is an open-source Customer Experience (CX) framework, that enables you to quickly and cost-effectively create innovative customer experiences.</description>
+  <description>
+    Kiahu CX is an open-source Customer Experience (CX) framework, that enables you to quickly and
+    cost-effectively create innovative customer experiences.
+  </description>
   <url>http://code.google.com/p/gwt-cx/</url>
 
   <licenses>
@@ -92,7 +95,22 @@
 	<!-- <module>gwtcx-samples</module> -->
   </modules>
 
+  <!--
+    IMPORTANT: The properties in this POM must be keep in sync with the following POMs:
+      - gwtcx-parent
+      - gwtcx-gwt-dependencies
+	  - gwtcx-gwtp-mvp-dependencies
+	  - gwtcx-gwtp-dispatch-dependencies
+	
+	  - gwtcx-extgwt-dependencies
+	  - gwtcx-mgwt-dependencies
+	  - gwtcx-smartgwt-dependencies
+	
+	  - gwtcx-gae-dependencies
+  -->
+
   <properties>
+    <gwtcx.version>1.0.0-dp1</gwtcx.version>
 
     <skipTests>true</skipTests>
     <testTimeOut>180</testTimeOut>
