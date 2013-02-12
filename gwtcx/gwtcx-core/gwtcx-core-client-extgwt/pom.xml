@@ -62,7 +62,7 @@
     <dependency>
       <groupId>com.sencha.gxt</groupId>
       <artifactId>uibinder-bridge</artifactId>
-    </dependency> 
+    </dependency>
 	-->
     <!-- GWT Cal dependencies -->
     <dependency>
@@ -90,6 +90,7 @@
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-mvp-client</artifactId>
     </dependency>
+    <!-- TODO: should be optional, include support for RF, Restlet, ...
     <dependency>
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-dispatch-client</artifactId>
@@ -102,6 +103,7 @@
       <groupId>com.gwtplatform</groupId>
       <artifactId>gwtp-processors</artifactId>
     </dependency>
+     -->
 
     <!-- GWT-Log dependencies -->
     <dependency>

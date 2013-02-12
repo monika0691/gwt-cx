@@ -2,7 +2,7 @@
 
 <!--
 
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -26,19 +26,18 @@
   <!-- GinUiBinder allows injecting widgets in UiBinder -->
   <inherits name="com.google.gwt.uibinder.GinUiBinder" />
 
-  <!-- <inherits name="com.google.gwt.user.theme.clean.Clean"/> -->
-  <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+  <inherits name="com.google.gwt.user.theme.clean.Clean" />
 
   <!-- Include support for Base 64 (which is not supported in IE) -->
   <script src="gwtcx/thirdparty/base64.js" />
 
   <!-- Inherit GwtCx modules -->
-  <inherits name="com.gwtcx.FormFactor"/>
-  <inherits name="com.gwtcx.GwtCxShared" />
+  <inherits name="com.gwtcx.FormFactor" /> 
+  <inherits name="com.gwtcx.GwtCxSharedDispatch" />
 
   <!-- Inherit GWTP modules -->
   <inherits name="com.gwtplatform.mvp.Mvp" />
-  <inherits name="com.gwtplatform.dispatch.Dispatch" />
+  <!-- <inherits name="com.gwtplatform.dispatch.Dispatch" /> -->  <!-- now included in GwtCxSharedDispatch.gwt.xml -->
 
   <entry-point class="com.gwtcx.client.entrypoint.GwtCxEntryPoint" />
 
