@@ -1,3 +1,20 @@
+GWT 2.5
+-------
+
+// -- on one line --
+mvn archetype:generate -DarchetypeGroupId=org.codehaus.mojo -DarchetypeArtifactId=gwt-maven-plugin -DarchetypeVersion=2.5.0 -DgroupId=com.kiahu -DartifactId=basic-project -Dversion=0.0.1-SNAPSHOT -Dpackage=com.kiahu.sample -Dmodule=BasicProject
+
+mvn archetype:generate  
+  -DarchetypeGroupId=org.codehaus.mojo 
+  -DarchetypeArtifactId=gwt-maven-plugin 
+  -DarchetypeVersion=2.5.0 
+  -DgroupId=com.kiahu
+  -DartifactId=basic-project
+  -Dversion=0.0.1-SNAPSHOT
+  -Dpackage=com.kiahu.sample
+  -Dmodule=BasicProject
+
+-------
 
 // -- on one line --
 mvn archetype:generate -DarchetypeRepository=https://nexus.codehaus.org/content/groups/snapshots-group/ -DarchetypeGroupId=org.codehaus.mojo -DarchetypeArtifactId=gwt-maven-plugin -DarchetypeVersion=2.4.0 -DgroupId=com.kiahu -DartifactId=sample-gxt-basic-project -Dversion=0.0.1-SNAPSHOT -Dpackage=com.kiahu.sample -Dmodule=BasicProject
@@ -26,4 +43,3 @@ mvn archetype:generate
   -Dversion=0.0.1-SNAPSHOT
   -Dpackage=com.kiahu.sample
   -Dmodule=BasicProject
-	

@@ -13,7 +13,7 @@
 
   <artifactId>gwtcx-core-client-smartgwt</artifactId>
   <packaging>jar</packaging>
-  <name>GWTCX Core Client - smartGWT</name>
+  <name>GWTCX Core Client - Smart GWT</name>
 
   <build>
     <resources>
@@ -51,9 +51,17 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>gwtcx-core-client</artifactId>
+      <!--
       <version>${project.version}</version>
       <scope>provided</scope>
+      -->
     </dependency>
+    <!--
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-shared</artifactId>
+    </dependency>
+    -->
 
     <!-- smartGWT dependencies -->
     <dependency>

@@ -47,9 +47,14 @@
   <dependencies>
 
     <!-- GWT Customer Experience dependencies -->
+    <!-- TODO: should be optional, include support for RF, Restlet, ...
+         Some UiHandlers depend on DTO's defined in the GWT CX shared module.
+         As do some (non abstract) Presenters
+		 See also: com.gwtcx.GwtCx which inherits com.gwtcx.GwtCxSharedDispatch
+     -->
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>gwtcx-core-shared</artifactId>
+      <artifactId>gwtcx-core-shared-dispatch</artifactId>
     </dependency>
 
     <!-- Google Web Toolkit dependencies -->

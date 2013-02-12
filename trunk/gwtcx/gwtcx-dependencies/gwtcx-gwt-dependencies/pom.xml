@@ -85,12 +85,13 @@
       <artifactId>gwtcx-core-server-gae</artifactId>
       <version>${project.version}</version>
     </dependency>
-    -->
+	
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>gwtcx-core-shared</artifactId>
+      <artifactId>gwtcx-core-shared-dispatch</artifactId>
       <version>${project.version}</version>
     </dependency>   
+	-->
 
   </dependencies>
 	
