@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2013 Kiahu
+ * (C) Copyright 2010, 2011 upTick Pty Ltd
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -12,16 +12,29 @@
  * under the License.
  */
 
-package com.kiahu.sample.server.guice;
+package com.gwtcx.shared.dto;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.google.inject.servlet.GuiceServletContextListener;
+import java.io.Serializable;
 
-public class BasicProjectGuiceServletContextListener extends GuiceServletContextListener {
+public class EntityDto implements Serializable {
 
-  @Override
-  protected Injector getInjector() {
-    return Guice.createInjector(new BasicProjectServerModule(), new BasicProjectServletModule());
+  private static final long serialVersionUID = 3434148714982575460L;
+
+  protected String id;
+
+  public EntityDto() {
+    this.id = "-1";
+  }
+
+  public EntityDto(String id) {
+    this.id = id;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 }

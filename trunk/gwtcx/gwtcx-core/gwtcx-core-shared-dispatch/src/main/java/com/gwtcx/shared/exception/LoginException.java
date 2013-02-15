@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2013 Kiahu
+ * (C) Copyright 2010, 2011 upTick Pty Ltd
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -12,16 +12,24 @@
  * under the License.
  */
 
-package com.kiahu.sample.server.guice;
+package com.gwtcx.shared.exception;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.google.inject.servlet.GuiceServletContextListener;
+public class LoginException extends Exception {
 
-public class BasicProjectGuiceServletContextListener extends GuiceServletContextListener {
+  private static final long serialVersionUID = -6517677039932882817L;
 
-  @Override
-  protected Injector getInjector() {
-    return Guice.createInjector(new BasicProjectServerModule(), new BasicProjectServletModule());
+  public LoginException() {
+  }
+
+  public LoginException(String message) {
+    super(message);
+  }
+
+  public LoginException(String message, Throwable cause) {
+    super(message + " (" + cause.getMessage() + ")");
+  }
+
+  public LoginException(Throwable cause) {
+    super(cause.getMessage());
   }
 }

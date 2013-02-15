@@ -56,18 +56,21 @@
       <groupId>org.restlet.gwt</groupId>
       <artifactId>org.restlet</artifactId>
       <version>${restlet.version}</version>
+	  <!-- <scope>provided</scope> -->
     </dependency>
 	<dependency>
       <groupId>org.restlet.gwt</groupId>
       <artifactId>org.restlet.ext.json</artifactId>
       <version>${restlet.version}</version>
+	  <!-- <scope>provided</scope> -->
     </dependency>
 	<dependency>
       <groupId>org.restlet.gwt</groupId>
       <artifactId>org.restlet.ext.xml</artifactId>
       <version>${restlet.version}</version>
+	  <!-- <scope>provided</scope> -->
     </dependency>
-	  
+	
   </dependencies>
 	
 </project>
