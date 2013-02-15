@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2013 Kiahu
+ * (C) Copyright 2010, 2011 upTick Pty Ltd
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -12,16 +12,16 @@
  * under the License.
  */
 
-package com.kiahu.sample.server.guice;
+package com.gwtcx.shared.action;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.google.inject.servlet.GuiceServletContextListener;
+import com.gwtplatform.dispatch.annotation.GenDispatch;
+import com.gwtplatform.dispatch.annotation.In;
+import com.gwtplatform.dispatch.shared.ActionImpl;
 
-public class BasicProjectGuiceServletContextListener extends GuiceServletContextListener {
+// @GenDispatch(isSecure = false, serviceName = UnsecuredActionImpl.DEFAULT_SERVICE_NAME)
+@GenDispatch(isSecure = true, serviceName = ActionImpl.DEFAULT_SERVICE_NAME)
+public class DeleteAccount {
 
-  @Override
-  protected Injector getInjector() {
-    return Guice.createInjector(new BasicProjectServerModule(), new BasicProjectServletModule());
-  }
+  @In(1) String id;;
+
 }

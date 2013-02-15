@@ -24,7 +24,6 @@
   <inherits name="com.gwtcx.Mgwt" />
   <inherits name="com.gwtcx.extgwt.ExtGwt" />
   <inherits name="com.gwtcx.HighCharts" />
-  <inherits name="com.gwtcx.Restlet" />
 
   <!-- GWT-LOG -->
   <inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
@@ -41,7 +40,6 @@
   <replace-with class="com.kiahu.sample.client.gin.DesktopGinjectorProvider">
     <when-type-is class="com.kiahu.sample.client.gin.GinjectorProvider"/>
   </replace-with>
-  <!--
   <replace-with class="com.kiahu.sample.client.gin.TabletGinjectorProvider">
     <when-type-is class="com.kiahu.sample.client.gin.GinjectorProvider"/>
     <when-property-is name="formfactor" value="tablet"/>
@@ -50,7 +48,6 @@
     <when-type-is class="com.kiahu.sample.client.gin.GinjectorProvider"/>
     <when-property-is name="formfactor" value="mobile"/>
   </replace-with>
-  -->
 
   <!-- Specify the paths for translatable code -->
   <source path="client" />

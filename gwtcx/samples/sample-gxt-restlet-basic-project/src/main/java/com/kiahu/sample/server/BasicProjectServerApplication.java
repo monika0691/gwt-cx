@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2013 Kiahu
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -12,16 +12,17 @@
  * under the License.
  */
 
-package com.kiahu.sample.server.guice;
+package com.kiahu.sample.server;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.google.inject.servlet.GuiceServletContextListener;
+import org.restlet.ext.wadl.WadlApplication;
 
-public class BasicProjectGuiceServletContextListener extends GuiceServletContextListener {
+public class BasicProjectServerApplication extends WadlApplication {
 
-  @Override
-  protected Injector getInjector() {
-    return Guice.createInjector(new BasicProjectServerModule(), new BasicProjectServletModule());
+  public BasicProjectServerApplication() {
+    setName("RESTful Basic Project Server application");
+    setDescription("Kiahu CX Restlet Sample");
+    setOwner("Kiahu");
+    setAuthor("The Kiahu CX Team");
   }
+
 }

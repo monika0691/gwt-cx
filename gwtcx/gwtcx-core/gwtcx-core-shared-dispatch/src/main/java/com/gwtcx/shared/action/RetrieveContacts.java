@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2013 Kiahu
+ * (C) Copyright 2010, 2011 upTick Pty Ltd
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -12,16 +12,22 @@
  * under the License.
  */
 
-package com.kiahu.sample.server.guice;
+package com.gwtcx.shared.action;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.google.inject.servlet.GuiceServletContextListener;
+import java.util.List;
 
-public class BasicProjectGuiceServletContextListener extends GuiceServletContextListener {
+import com.gwtcx.shared.dto.ContactsDto;
+import com.gwtplatform.dispatch.annotation.GenDispatch;
+import com.gwtplatform.dispatch.annotation.In;
+import com.gwtplatform.dispatch.annotation.Out;
+import com.gwtplatform.dispatch.shared.ActionImpl;
 
-  @Override
-  protected Injector getInjector() {
-    return Guice.createInjector(new BasicProjectServerModule(), new BasicProjectServletModule());
-  }
+@GenDispatch(isSecure = true, serviceName = ActionImpl.DEFAULT_SERVICE_NAME)
+public class RetrieveContacts {
+
+  @In(1) int maxResults;
+  @In(2) int firstResult;
+
+  @Out(1) List<ContactsDto> dtos;
+
 }

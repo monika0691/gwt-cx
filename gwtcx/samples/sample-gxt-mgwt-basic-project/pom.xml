@@ -49,15 +49,6 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- Kiahu CX Restlet meta-package -->
-    <dependency>
-      <groupId>com.gwtcx</groupId>
-      <artifactId>gwtcx-restlet-dependencies</artifactId>
-      <version>${gwtcx.version}</version>
-      <type>pom</type>
-    </dependency>
-
-
 
      <!-- Kiahu CX mgwt meta-package -->
     <dependency>
@@ -66,7 +57,6 @@
       <version>${gwtcx.version}</version>
       <type>pom</type>
     </dependency>
-
 
 
     <!--

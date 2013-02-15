@@ -1,5 +1,8 @@
-/**
- * (C) Copyright 2013 Kiahu
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+ * (C) Copyright 2010, 2011 upTick Pty Ltd
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -10,18 +13,16 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations
  * under the License.
- */
 
-package com.kiahu.sample.server.guice;
+-->
+      
+<module>
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.google.inject.servlet.GuiceServletContextListener;
+  <inherits name="com.google.gwt.user.User" />
+  
+  <!-- Inherit GWTP modules -->
+  <inherits name="com.gwtplatform.dispatch.Dispatch" />
 
-public class BasicProjectGuiceServletContextListener extends GuiceServletContextListener {
-
-  @Override
-  protected Injector getInjector() {
-    return Guice.createInjector(new BasicProjectServerModule(), new BasicProjectServletModule());
-  }
-}
+  <source path="shared" />
+  
+</module>
