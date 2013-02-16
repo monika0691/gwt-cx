@@ -29,7 +29,9 @@
     <!-- You can override properties set in the Parent POM -->
     <target.jdk>1.6</target.jdk>
     <gwt.compiler.strict>true</gwt.compiler.strict>
+
     <restlet.version>2.1.1</restlet.version>
+
   </properties>
 
   <repositories>
@@ -60,21 +62,54 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- Kiahu CX Restlet meta-package -->
+    <!-- Kiahu CX Restlet meta-package -
     <dependency>
       <groupId>com.gwtcx</groupId>
       <artifactId>gwtcx-restlet-dependencies</artifactId>
       <version>${gwtcx.version}</version>
-      <type>pom</type>
     </dependency>
+    -->
+
+
+
+    <!--
+    <dependency>
+      <groupId>org.restlet.gwt</groupId>
+      <artifactId>org.restlet</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.gwt</groupId>
+      <artifactId>org.restlet.ext.json</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.gwt</groupId>
+      <artifactId>org.restlet.ext.xml</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    -->
 
 
 
     <dependency>
       <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.servlet</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.wadl</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+
+    <!--
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
       <artifactId>org.restlet</artifactId>
       <version>${restlet.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.restlet.jee</groupId>
       <artifactId>org.restlet.ext.atom</artifactId>
@@ -100,11 +135,7 @@
       <artifactId>org.restlet.ext.jackson</artifactId>
       <version>${restlet.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.json</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
+
     <dependency>
       <groupId>org.restlet.jee</groupId>
       <artifactId>org.restlet.ext.net</artifactId>
@@ -125,6 +156,15 @@
       <artifactId>org.restlet.ext.xml</artifactId>
       <version>${restlet.version}</version>
     </dependency>
+    -->
+
+    <!--
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.json</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    -->
 
 
     <!--

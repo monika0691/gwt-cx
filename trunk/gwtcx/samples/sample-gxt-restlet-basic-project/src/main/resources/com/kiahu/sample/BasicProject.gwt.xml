@@ -23,7 +23,7 @@
   <!-- Kiahu CX -->
   <inherits name="com.gwtcx.extgwt.ExtGwt" />
   <inherits name="com.gwtcx.HighCharts" />
-  <inherits name="com.gwtcx.Restlet" />
+  <!-- <inherits name="com.gwtcx.Restlet" /> -->
 
   <!-- GWT-LOG -->
   <inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />

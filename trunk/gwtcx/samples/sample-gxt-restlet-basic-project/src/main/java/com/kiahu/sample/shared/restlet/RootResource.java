@@ -12,17 +12,13 @@
  * under the License.
  */
 
-package com.kiahu.sample.server;
+package com.kiahu.sample.shared.restlet;
 
-import org.restlet.ext.wadl.WadlApplication;
+import org.restlet.resource.Get;
 
-public class BasicProjectServerApplication extends WadlApplication {
+public interface RootResource {
 
-  public BasicProjectServerApplication() {
-    setName("RESTful Basic Project Server application");
-    setDescription("Kiahu CX Restlet Sample");
-    setOwner("Kiahu");
-    setAuthor("The Kiahu CX Team");
-  }
+  @Get
+  public String represent();
 
 }
