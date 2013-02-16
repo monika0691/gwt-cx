@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2013 Kiahu
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -22,6 +22,7 @@ public class BasicProjectGuiceServletContextListener extends GuiceServletContext
 
   @Override
   protected Injector getInjector() {
-    return Guice.createInjector(new BasicProjectServerModule(), new BasicProjectServletModule());
+    // return Guice.createInjector(new BasicProjectServerModule(), new BasicProjectServletModule());
+    return Guice.createInjector(new BasicProjectServletModule());
   }
 }
