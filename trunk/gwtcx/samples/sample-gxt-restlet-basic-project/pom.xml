@@ -51,6 +51,14 @@
       <groupId>com.gwtcx</groupId>
       <artifactId>gwtcx-extgwt-dependencies</artifactId>
       <version>${gwtcx.version}</version>
+      <!--
+      <exclusions>
+        <exclusion>
+          <groupId>org.json</groupId>
+          <artifactId>json</artifactId>
+        </exclusion>
+      </exclusions>
+      -->
       <type>pom</type>
     </dependency>
 
@@ -70,25 +78,24 @@
     </dependency>
     -->
 
-
-
-    <!--
     <dependency>
       <groupId>org.restlet.gwt</groupId>
       <artifactId>org.restlet</artifactId>
       <version>${restlet.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.restlet.gwt</groupId>
+    <groupId>org.restlet.gwt</groupId>
       <artifactId>org.restlet.ext.json</artifactId>
       <version>${restlet.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.restlet.gwt</groupId>
       <artifactId>org.restlet.ext.xml</artifactId>
       <version>${restlet.version}</version>
+      <scope>provided</scope>
     </dependency>
-    -->
 
 
 
@@ -103,7 +110,27 @@
       <version>${restlet.version}</version>
     </dependency>
 
+
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.gwt</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+
     <!--
+
+    <dependency>
+      <groupId>org.restlet.gwt</groupId>
+      <artifactId>org.restlet.ext.json</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.gwt</groupId>
+      <artifactId>org.restlet.ext.xml</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+
+
     <dependency>
       <groupId>org.restlet.jee</groupId>
       <artifactId>org.restlet</artifactId>

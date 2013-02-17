@@ -2,7 +2,7 @@
 
 <!--
 
- * (C) Copyright 2013 Kiahu
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -24,6 +24,15 @@
   <inherits name="com.gwtcx.extgwt.ExtGwt" />
   <inherits name="com.gwtcx.HighCharts" />
   <!-- <inherits name="com.gwtcx.Restlet" /> -->
+
+  <!-- Inherit Restlet modules -->
+  <inherits name="org.restlet.Restlet" />
+  <inherits name="org.restlet.JSON" />
+  <inherits name="org.restlet.XML" />
+  <!--
+  <inherits name="org.restlet.JSON" />
+  <inherits name="org.restlet.XML" />
+  -->
 
   <!-- GWT-LOG -->
   <inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
