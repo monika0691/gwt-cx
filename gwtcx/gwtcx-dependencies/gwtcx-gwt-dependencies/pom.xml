@@ -33,6 +33,26 @@
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
       <version>${gwt.version}</version>
+	  <!--
+	  <exclusions>
+        <exclusion>
+		  <groupId>javax.validation</groupId>
+          <artifactId>validation-api</artifactId>
+          <version>1.0.0.GA</version>
+        </exclusion>
+		<exclusion>
+		  <groupId>javax.validation</groupId>
+          <artifactId>validation-api</artifactId>
+          <version>1.0.0.GA</version>
+          <classifier>sources</classifier>
+        </exclusion>
+		<exclusion>
+		  <groupId>org.json</groupId>
+          <artifactId>json</artifactId>
+          <version>20090211</version>
+        </exclusion>
+      </exclusions>
+	  -->
       <!-- <scope>provided</scope> -->
     </dependency>
     <dependency>
