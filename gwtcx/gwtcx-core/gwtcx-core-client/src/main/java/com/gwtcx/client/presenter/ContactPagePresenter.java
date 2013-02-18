@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -34,8 +34,8 @@ import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.proxy.RevealRootLayoutContentEvent;
 
 public class ContactPagePresenter extends
-    Presenter<ContactPagePresenter.MyView, ContactPagePresenter.MyProxy> implements
-  ContactPageUiHandlers {
+   Presenter<ContactPagePresenter.MyView, ContactPagePresenter.MyProxy> implements
+    ContactPageUiHandlers {
 
   // public static NavigationPane navigationPane = null;
 
@@ -105,7 +105,7 @@ public class ContactPagePresenter extends
   }
 
   public void onSaveButtonClicked() {
-    //
+
   }
 
   public static native void close() /*-{ $wnd.close(); }-*/;

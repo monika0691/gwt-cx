@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -15,14 +15,12 @@
 package com.gwtcx.client.presenter;
 
 import com.allen_sauer.gwt.log.client.Log;
-// import com.google.gwt.event.shared.EventBus;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.gwt.http.client.URL;
 import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.gwtcx.client.entrypoint.GwtCxEntryPoint;
 import com.gwtcx.client.uihandlers.AccountsUiHandlers;
-import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
@@ -35,24 +33,11 @@ public abstract class AbstractAccountsPresenter<V extends View, Proxy_ extends P
 
   @Inject
   public AbstractAccountsPresenter(EventBus eventBus, V view, Proxy_ proxy,
-      DispatchAsync dispatcher, PlaceManager placeManager) {
-    super(eventBus, view, proxy, dispatcher, placeManager);
+      PlaceManager placeManager) {
+    super(eventBus, view, proxy, placeManager);
 
     Log.warn("AbstractAccountsPresenter()");
   }
-
-  /*
-
-  @Override
-  protected void revealInParent() {
-
-    Log.warn("Don't forget to @Override revealInParent()");
-
-    // For example:
-    // RevealContentEvent.fire(this, MainPagePresenter.TYPE_SetContextAreaContent, this);
-  }
-
-  */
 
   @Override
   protected void retrieveResultSet() { }

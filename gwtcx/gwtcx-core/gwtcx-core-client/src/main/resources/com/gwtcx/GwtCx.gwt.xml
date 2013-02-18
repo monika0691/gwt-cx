@@ -33,11 +33,10 @@
 
   <!-- Inherit GwtCx modules -->
   <inherits name="com.gwtcx.FormFactor" /> 
-  <inherits name="com.gwtcx.GwtCxSharedDispatch" />
+  <!-- <inherits name="com.gwtcx.GwtCxSharedDispatch" /> -->
 
   <!-- Inherit GWTP modules -->
   <inherits name="com.gwtplatform.mvp.Mvp" />
-  <!-- <inherits name="com.gwtplatform.dispatch.Dispatch" /> -->  <!-- now included in GwtCxSharedDispatch.gwt.xml -->
 
   <entry-point class="com.gwtcx.client.entrypoint.GwtCxEntryPoint" />
 

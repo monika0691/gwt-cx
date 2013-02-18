@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -15,13 +15,12 @@
 package com.gwtcx.client.presenter;
 
 import com.allen_sauer.gwt.log.client.Log;
-// import com.google.gwt.event.shared.EventBus;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.gwt.http.client.URL;
 import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.gwtcx.client.entrypoint.GwtCxEntryPoint;
-import com.gwtplatform.dispatch.shared.DispatchAsync;
+// import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -42,7 +41,7 @@ public abstract class AbstractPagingPresenter<V extends View, Proxy_ extends Pro
   public static final String NAME = "_blank";
   public static final String FEATURES = "width=880, height=540, location=no";
 
-  private final DispatchAsync dispatcher;
+  // private final DispatchAsync dispatcher;
   private final PlaceManager placeManager;
 
   private int maxResults;
@@ -51,10 +50,11 @@ public abstract class AbstractPagingPresenter<V extends View, Proxy_ extends Pro
   private int numberOfElements;
 
   @Inject
-  public AbstractPagingPresenter(EventBus eventBus, V view, Proxy_ proxy, DispatchAsync dispatcher, PlaceManager placeManager) {
+  // public AbstractPagingPresenter(EventBus eventBus, V view, Proxy_ proxy, DispatchAsync dispatcher, PlaceManager placeManager) {
+  public AbstractPagingPresenter(EventBus eventBus, V view, Proxy_ proxy, PlaceManager placeManager) {
     super(eventBus, view, proxy);
 
-    this.dispatcher = dispatcher;
+    // this.dispatcher = dispatcher;
     this.placeManager = placeManager;
   }
 
@@ -135,9 +135,9 @@ public abstract class AbstractPagingPresenter<V extends View, Proxy_ extends Pro
 
   // */
 
-  protected DispatchAsync getDispatcher() {
-    return dispatcher;
-  }
+  // protected DispatchAsync getDispatcher() {
+  //   return dispatcher;
+  // }
 
   protected PlaceManager getPlaceManager() {
     return placeManager;

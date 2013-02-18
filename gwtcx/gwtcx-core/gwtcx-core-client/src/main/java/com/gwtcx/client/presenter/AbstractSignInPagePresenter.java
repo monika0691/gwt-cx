@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -15,11 +15,9 @@
 package com.gwtcx.client.presenter;
 
 import com.allen_sauer.gwt.log.client.Log;
-// import com.google.gwt.event.shared.EventBus;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.SignInPageUiHandlers;
-import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -31,18 +29,16 @@ public abstract class AbstractSignInPagePresenter<V extends View, Proxy_ extends
   public static final String REDIRECT = "redirect";
 
   // private final EventBus eventBus;
-  private final DispatchAsync dispatcher;
   private final PlaceManager placeManager;
 
   @Inject
   public AbstractSignInPagePresenter(EventBus eventBus, V view, Proxy_ proxy,
-      DispatchAsync dispatcher, PlaceManager placeManager) {
+      PlaceManager placeManager) {
     super(eventBus, view, proxy);
 
     // getView().setUiHandlers(this);
 
     // this.eventBus = eventBus;
-    this.dispatcher = dispatcher;
     this.placeManager = placeManager;
   }
 
@@ -58,10 +54,6 @@ public abstract class AbstractSignInPagePresenter<V extends View, Proxy_ extends
 
   protected void sendCredentialsToServer() {
     Log.warn("Don't forget to @Override sendCredentialsToServer()");
-  }
-
-  protected DispatchAsync getDispatcher() {
-    return dispatcher;
   }
 
   protected PlaceManager getPlaceManager()  {

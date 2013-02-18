@@ -16,7 +16,7 @@
     Aggregate POM used to simplify Ext GWT (GXT) dependency retrieval.
   
     Related dependencies are grouped together into a POM then added as a dependency to a project as needed. 
-    This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted.
+    This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted.  Therefore, the scope element must be provided in the project's POM (and omitted here).
   
     See: http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
   </description>
@@ -33,17 +33,17 @@
     <!-- Google Web Toolkit dependencies -->
     <dependency>
       <groupId>com.gwtcx</groupId>
-      <artifactId>gwtcx-gwt-dependencies</artifactId>
+      <artifactId>gwtcx-gwt-provided-scope-dependencies</artifactId>
       <version>${project.version}</version>
       <type>pom</type>
     </dependency>    
-
+    
     <!-- Ext GWT dependencies -->
     <dependency>
       <groupId>com.sencha.gxt</groupId>
       <artifactId>gxt</artifactId>
       <version>${extgwt.version}</version>
-      <!-- <scope>provided</scope> -->
+	  <!-- <scope>provided</scope> -->
     </dependency>
 	<!-- No longer required as of GWT 2.5
     <dependency>

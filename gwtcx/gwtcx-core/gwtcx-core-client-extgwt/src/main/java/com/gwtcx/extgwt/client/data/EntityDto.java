@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2012 Kiahu
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -12,13 +12,30 @@
  * under the License.
  */
 
-package com.kiahu.sample.client.gin;
+package com.gwtcx.extgwt.client.data;
 
-import com.google.gwt.inject.client.GinModules;
-// import com.gwtplatform.dispatch.client.gin.DispatchAsyncModule;
+import java.io.Serializable;
 
-// @GinModules({DispatchAsyncModule.class, SharedGinModule.class, DesktopGinModule.class})
-@GinModules({SharedGinModule.class, DesktopGinModule.class})
-public interface DesktopGinjector extends BasicProjectGinjector {
+public class EntityDto implements Serializable {
 
+  private static final long serialVersionUID = 3434148714982575460L;
+
+  protected String id;
+
+  public EntityDto() {
+    this.id = "-1";
+  }
+
+  public EntityDto(String id) {
+    this.id = id;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
 }
+

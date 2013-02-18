@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -14,11 +14,11 @@
 
 package com.gwtcx.client.uihandlers;
 
-import com.gwtcx.shared.dto.EmailDto;
+// import com.gwtcx.shared.dto.EmailDto;
 import com.gwtplatform.mvp.client.UiHandlers;
 
 public interface EmailInformationUiHandlers extends UiHandlers {
-  void onSaveButtonClicked(EmailDto dto);
-  void onSaveAndCloseButtonClicked(EmailDto dto);
-  void onEmailButtonClicked(EmailDto dto);
+  // void onSaveButtonClicked(EmailDto dto);
+  // void onSaveAndCloseButtonClicked(EmailDto dto);
+  // void onEmailButtonClicked(EmailDto dto);
 }

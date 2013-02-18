@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.gwtcx</groupId>
+  <artifactId>gwtcx-gwt-compile-scope-dependencies</artifactId>
+  <version>1.0.0-dp1</version>
+  <packaging>pom</packaging>
+  
+  <name>GWTCX GWT compile scope dependencies POM</name>
+  <description>
+    Aggregate POM used to simplify GWT dependency retrieval.
+  
+    Related dependencies are grouped together into a POM then added as a dependency to a project as needed. 
+    This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted.
+  
+    See: http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
+  </description>
+  
+  <properties>
+	<aopalliance.version>1.0</aopalliance.version>
+    <gin.version>2.0.0</gin.version>
+    <guice.version>3.0</guice.version>
+	<gwtp.version>1.0-RC-1</gwtp.version>
+	
+	<gwt.version>2.5.0</gwt.version>
+	<gwt.highcharts.version>1.1.3</gwt.highcharts.version>
+  </properties>
+ 
+  <dependencies>
+  
+    <!-- DI dependencies -->
+    <dependency>
+      <groupId>com.google.inject</groupId>
+      <artifactId>guice</artifactId>
+      <version>${guice.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.inject.extensions</groupId>
+      <artifactId>guice-servlet</artifactId>
+      <version>${guice.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.inject.extensions</groupId>
+      <artifactId>guice-assistedinject</artifactId>
+      <version>${guice.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>aopalliance</groupId>
+      <artifactId>aopalliance</artifactId>
+      <version>${aopalliance.version}</version>
+    </dependency>
+ 
+    <!-- Google Web Toolkit dependencies -->
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-servlet</artifactId>
+      <version>${gwt.version}</version>
+      <scope>runtime</scope>
+    </dependency>  
+    <!--	
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-servlet-deps</artifactId>
+      <version>${gwt.version}</version>
+      <scope>runtime</scope>
+    </dependency>    
+    -->
+    
+    <!-- GWT Customer Experience dependencies -->
+    <!-- 
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-server</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-server-gae</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+	
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-shared-dispatch</artifactId>
+      <version>${project.version}</version>
+    </dependency>   
+	-->
+
+  </dependencies>
+	
+</project>

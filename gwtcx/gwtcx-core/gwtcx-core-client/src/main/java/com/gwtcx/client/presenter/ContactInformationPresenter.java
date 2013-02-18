@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -22,7 +22,7 @@ import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.entrypoint.GwtCxEntryPoint;
 import com.gwtcx.client.event.NavigationPaneUpdateEvent;
 import com.gwtcx.client.uihandlers.ContactInformationUiHandlers;
-import com.gwtplatform.dispatch.shared.DispatchAsync;
+// import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
@@ -35,14 +35,14 @@ import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
 public class ContactInformationPresenter extends
     Presenter<ContactInformationPresenter.MyView, ContactInformationPresenter.MyProxy> implements
-    ContactInformationUiHandlers {
+      ContactInformationUiHandlers {
 
   public static final String ID = "id";
 
   private static final String ACTIVITY = "activity";
   private static final String EDIT = "edit";
 
-  private final DispatchAsync dispatcher;
+  // private final DispatchAsync dispatcher;
 
   private String activity;
   private String id;
@@ -60,12 +60,12 @@ public class ContactInformationPresenter extends
 
   @Inject
   public ContactInformationPresenter(EventBus eventBus, MyView view, MyProxy proxy,
-      PlaceManager placeManager, DispatchAsync dispatcher) {
+      PlaceManager placeManager) {
     super(eventBus, view, proxy);
 
     getView().setUiHandlers(this);
 
-    this.dispatcher = dispatcher;
+    // this.dispatcher = dispatcher;
   }
 
   @Override
@@ -80,7 +80,7 @@ public class ContactInformationPresenter extends
     if (activity.equals(EDIT)) {
 
       try {
-        // retrieveAccount(id);
+        // retrieveContact(id);
       }
       catch (Exception e) {
         Log.warn("Unable to retrieve contact: " + e);
@@ -110,7 +110,7 @@ public class ContactInformationPresenter extends
 
   // protected void retrieveAccount(Long accountId) { }
 
-  public DispatchAsync getDispatcher() {
-    return dispatcher;
-  }
+  // public DispatchAsync getDispatcher() {
+  //   return dispatcher;
+  // }
 }

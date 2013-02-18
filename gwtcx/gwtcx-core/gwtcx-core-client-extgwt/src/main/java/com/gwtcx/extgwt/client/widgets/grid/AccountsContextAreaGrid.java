@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -28,8 +28,8 @@ import com.gwtcx.client.resources.GridIcons;
 import com.gwtcx.client.resources.ImageCell;
 import com.gwtcx.client.resources.NavigationPaneIcons;
 import com.gwtcx.client.util.I18nUtil;
+import com.gwtcx.extgwt.client.data.AccountsDto;
 import com.gwtcx.extgwt.client.data.AccountsDtoListStore;
-import com.gwtcx.shared.dto.AccountsDto;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;

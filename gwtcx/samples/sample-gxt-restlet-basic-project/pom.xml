@@ -29,19 +29,15 @@
     <!-- You can override properties set in the Parent POM -->
     <target.jdk>1.6</target.jdk>
     <gwt.compiler.strict>true</gwt.compiler.strict>
-
     <restlet.version>2.1.1</restlet.version>
-
   </properties>
 
   <repositories>
-
     <repository>
       <id>maven-restlet</id>
       <name>Public online Restlet repository</name>
       <url>http://maven.restlet.org</url>
     </repository>
-
   </repositories>
 
   <dependencies>
@@ -51,155 +47,44 @@
       <groupId>com.gwtcx</groupId>
       <artifactId>gwtcx-extgwt-dependencies</artifactId>
       <version>${gwtcx.version}</version>
-      <!--
-      <exclusions>
-        <exclusion>
-          <groupId>org.json</groupId>
-          <artifactId>json</artifactId>
-        </exclusion>
-      </exclusions>
-      -->
+      <scope>provided</scope>
+      <type>pom</type>  <!-- This is not a "jar" dependency, so we must specify the type. -->
+    </dependency>
+    <!-- Kiahu CX - GWT compile scope meta-package -->
+    <dependency>
+      <groupId>com.gwtcx</groupId>
+      <artifactId>gwtcx-gwt-compile-scope-dependencies</artifactId>
+      <version>${gwtcx.version}</version>
+      <scope>compile</scope>
       <type>pom</type>
     </dependency>
-
     <!-- GWT HighCharts dependencies -->
     <dependency>
       <groupId>org.moxieapps</groupId>
       <artifactId>gwt.highcharts</artifactId>
       <version>${gwt.highcharts.version}</version>
       <scope>provided</scope>
+      <!-- <type>jar</type> --> <!-- The default for the type field is "jar". -->
     </dependency>
 
-    <!-- Kiahu CX Restlet meta-package -
+    <!-- Kiahu CX - Restlet provided scope meta-package -->
     <dependency>
       <groupId>com.gwtcx</groupId>
-      <artifactId>gwtcx-restlet-dependencies</artifactId>
+      <artifactId>gwtcx-restlet-provided-scope-dependencies</artifactId>
       <version>${gwtcx.version}</version>
-    </dependency>
-    -->
-
-    <dependency>
-      <groupId>org.restlet.gwt</groupId>
-      <artifactId>org.restlet</artifactId>
-      <version>${restlet.version}</version>
       <scope>provided</scope>
+      <type>pom</type>
     </dependency>
+    <!-- Kiahu CX - Restlet compile scope meta-package -->
     <dependency>
-    <groupId>org.restlet.gwt</groupId>
-      <artifactId>org.restlet.ext.json</artifactId>
-      <version>${restlet.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.restlet.gwt</groupId>
-      <artifactId>org.restlet.ext.xml</artifactId>
-      <version>${restlet.version}</version>
-      <scope>provided</scope>
+      <groupId>com.gwtcx</groupId>
+      <artifactId>gwtcx-restlet-compile-scope-dependencies</artifactId>
+      <version>${gwtcx.version}</version>
+      <scope>compile</scope>
+      <type>pom</type>
     </dependency>
 
 
-
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.servlet</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.wadl</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-
-
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.gwt</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-
-    <!--
-
-    <dependency>
-      <groupId>org.restlet.gwt</groupId>
-      <artifactId>org.restlet.ext.json</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.restlet.gwt</groupId>
-      <artifactId>org.restlet.ext.xml</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-
-
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.atom</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.fileupload</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.freemarker</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.gwt</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.jackson</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.net</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.servlet</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.wadl</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.xml</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-    -->
-
-    <!--
-    <dependency>
-      <groupId>org.restlet.jee</groupId>
-      <artifactId>org.restlet.ext.json</artifactId>
-      <version>${restlet.version}</version>
-    </dependency>
-    -->
-
-
-    <!--
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-    </dependency>
-    -->
 
   </dependencies>
 

@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -14,7 +14,6 @@
 
 package com.gwtcx.client.presenter;
 
-// import com.google.gwt.event.shared.EventBus;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.inject.Inject;
@@ -31,7 +30,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
-import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
+import com.gwtplatform.mvp.client.proxy.RevealRootLayoutContentEvent;
 
 public class AccountPagePresenter extends
     Presenter<AccountPagePresenter.MyView, AccountPagePresenter.MyProxy> implements
@@ -99,7 +98,8 @@ public class AccountPagePresenter extends
 
   @Override
   protected void revealInParent() {
-    RevealRootContentEvent.fire(this, this);
+    // RevealRootContentEvent.fire(this, this);
+    RevealRootLayoutContentEvent.fire(this, this);
   }
 
   /*
