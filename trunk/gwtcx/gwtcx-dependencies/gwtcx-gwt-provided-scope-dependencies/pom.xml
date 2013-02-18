@@ -7,16 +7,16 @@
   <modelVersion>4.0.0</modelVersion>
  
   <groupId>com.gwtcx</groupId>
-  <artifactId>gwtcx-gwt-dependencies</artifactId>
+  <artifactId>gwtcx-gwt-provided-scope-dependencies</artifactId>
   <version>1.0.0-dp1</version>
   <packaging>pom</packaging>
   
-  <name>GWTCX GWT dependencies POM</name>
+  <name>GWTCX GWT provided scope dependencies POM</name>
   <description>
     Aggregate POM used to simplify GWT dependency retrieval.
   
     Related dependencies are grouped together into a POM then added as a dependency to a project as needed. 
-    This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted.
+    This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted.  Therefore, the scope element must be provided in the project's POM (and omitted here).
   
     See: http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
   </description>
@@ -33,60 +33,27 @@
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
       <version>${gwt.version}</version>
-	  <!--
-	  <exclusions>
-        <exclusion>
-		  <groupId>javax.validation</groupId>
-          <artifactId>validation-api</artifactId>
-          <version>1.0.0.GA</version>
-        </exclusion>
-		<exclusion>
-		  <groupId>javax.validation</groupId>
-          <artifactId>validation-api</artifactId>
-          <version>1.0.0.GA</version>
-          <classifier>sources</classifier>
-        </exclusion>
-		<exclusion>
-		  <groupId>org.json</groupId>
-          <artifactId>json</artifactId>
-          <version>20090211</version>
-        </exclusion>
-      </exclusions>
-	  -->
       <!-- <scope>provided</scope> -->
     </dependency>
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-servlet</artifactId>
-      <version>${gwt.version}</version>
-      <scope>runtime</scope>
-    </dependency>  
-    <!--	
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-servlet-deps</artifactId>
-      <version>${gwt.version}</version>
-      <scope>runtime</scope>
-    </dependency>    
-    -->
 	
     <!-- GWT-Platform dependencies -->
 	<!-- MVP dependencies -->
     <dependency>
       <groupId>com.gwtcx</groupId>
-      <artifactId>gwtcx-gwtp-mvp-dependencies</artifactId>
+      <artifactId>gwtcx-gwtp-mvp-provided-scope-dependencies</artifactId>
       <version>${project.version}</version>
       <type>pom</type>
     </dependency>  
     <!-- TO DO: Review GwtCx.gwt.xml inherit's "com.gwtplatform.dispatch.Dispatch" -->
-	<!-- Dispatch dependencies -->
+	<!-- Dispatch dependencies 
     <dependency>
       <groupId>com.gwtcx</groupId>
       <artifactId>gwtcx-gwtp-dispatch-dependencies</artifactId>
       <version>${project.version}</version>
       <type>pom</type>
     </dependency>  
-    
+    -->
+	
     <!-- GWT Customer Experience dependencies -->
     <dependency>
       <groupId>${project.groupId}</groupId>

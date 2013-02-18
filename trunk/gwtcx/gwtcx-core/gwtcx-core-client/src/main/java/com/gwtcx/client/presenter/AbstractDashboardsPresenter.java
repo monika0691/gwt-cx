@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -15,7 +15,6 @@
 package com.gwtcx.client.presenter;
 
 import com.allen_sauer.gwt.log.client.Log;
-// import com.google.gwt.event.shared.EventBus;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.DashboardsUiHandlers;
@@ -26,7 +25,6 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 public abstract class AbstractDashboardsPresenter<V extends View, Proxy_ extends Proxy<?>> extends
     Presenter<V, Proxy_> implements DashboardsUiHandlers {
 
-  // private final DispatchAsync dispatcher;
   // private final PlaceManager placeManager;
 
   @Inject
@@ -48,10 +46,6 @@ public abstract class AbstractDashboardsPresenter<V extends View, Proxy_ extends
   }
 
   /*
-
-  protected DispatchAsync getDispatcher() {
-    return dispatcher;
-  }
 
   protected PlaceManager getPlaceManager() {
     return placeManager;

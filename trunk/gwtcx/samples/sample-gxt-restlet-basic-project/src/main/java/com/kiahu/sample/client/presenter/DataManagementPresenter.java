@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2012 Kiahu
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -22,7 +22,6 @@ import com.gwtcx.client.event.NavigationPaneUpdateEvent;
 import com.gwtcx.client.presenter.AbstractDataManagementPresenter;
 import com.gwtcx.client.uihandlers.DataManagementUiHandlers;
 import com.gwtcx.extgwt.client.ExtGwtCx;
-import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
@@ -51,8 +50,8 @@ public class DataManagementPresenter extends
 
   @Inject
   public DataManagementPresenter(EventBus eventBus, MyView view, MyProxy proxy,
-      DispatchAsync dispatcher, PlaceManager placeManager) {
-    super(eventBus, view, proxy, dispatcher, placeManager);
+      PlaceManager placeManager) {
+    super(eventBus, view, proxy, placeManager);
 
     getView().setUiHandlers(this);
   }

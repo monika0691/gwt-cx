@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -15,14 +15,14 @@
 package com.gwtcx.client.presenter;
 
 import com.allen_sauer.gwt.log.client.Log;
-// import com.google.gwt.event.shared.EventBus;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
+// import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.gwtcx.client.entrypoint.GwtCxEntryPoint;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.uihandlers.AccountInformationUiHandlers;
+/*
 import com.gwtcx.shared.action.CreateAccountAction;
 import com.gwtcx.shared.action.CreateAccountResult;
 import com.gwtcx.shared.action.RetrieveAccountAction;
@@ -31,6 +31,7 @@ import com.gwtcx.shared.action.UpdateAccountAction;
 import com.gwtcx.shared.action.UpdateAccountResult;
 import com.gwtcx.shared.dto.AccountDto;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
+*/
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
@@ -43,7 +44,7 @@ import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
 public class AccountInformationPresenter extends
     Presenter<AccountInformationPresenter.MyView, AccountInformationPresenter.MyProxy> implements
-    AccountInformationUiHandlers {
+      AccountInformationUiHandlers {
 
   // AccountsRecord.ACCOUNT_ID
   public static final String ACCOUNT_ID = "accountId";
@@ -53,7 +54,7 @@ public class AccountInformationPresenter extends
   private static final String EDIT = "edit";
   // private static final String NEW = "new";
 
-  private final DispatchAsync dispatcher;
+  // private final DispatchAsync dispatcher;
 
   private String activity;
   private String accountId;
@@ -65,18 +66,20 @@ public class AccountInformationPresenter extends
   }
 
   public interface MyView extends View, HasUiHandlers<AccountInformationUiHandlers> {
-    void setResultSet(AccountDto account);
+    // void setResultSet(AccountDto account);
     void setAccountId(String accountId);
   }
 
   @Inject
+  // public AccountInformationPresenter(EventBus eventBus, MyView view, MyProxy proxy,
+  //     PlaceManager placeManager, DispatchAsync dispatcher) {
   public AccountInformationPresenter(EventBus eventBus, MyView view, MyProxy proxy,
-      PlaceManager placeManager, DispatchAsync dispatcher) {
+      PlaceManager placeManager) {
     super(eventBus, view, proxy);
 
     getView().setUiHandlers(this);
 
-    this.dispatcher = dispatcher;
+    // this.dispatcher = dispatcher;
   }
 
   @Override
@@ -101,7 +104,7 @@ public class AccountInformationPresenter extends
       }
 
       try {
-        retrieveAccount(id);
+        // retrieveAccount(id);
       }
       catch (Exception e) {
         Log.warn("Unable to retrieve account: " + e);
@@ -126,11 +129,13 @@ public class AccountInformationPresenter extends
     RevealContentEvent.fire(this, AccountPagePresenter.TYPE_SetContextAreaContent, this);
   }
 
+  public static native void close() /*-{ $wnd.close(); }-*/;
+
+  /*
+
   public void onSaveButtonClicked(AccountDto accountDto) {
     createOrUpdateAccount(accountDto);
   }
-
-  public static native void close() /*-{ $wnd.close(); }-*/;
 
   public void onSaveAndCloseButtonClicked(AccountDto accountDto) {
     createOrUpdateAccount(accountDto);
@@ -195,4 +200,6 @@ public class AccountInformationPresenter extends
       }
     });
   }
+
+  */
 }

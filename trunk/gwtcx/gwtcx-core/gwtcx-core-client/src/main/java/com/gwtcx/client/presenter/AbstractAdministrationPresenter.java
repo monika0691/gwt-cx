@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -15,11 +15,10 @@
 package com.gwtcx.client.presenter;
 
 import com.allen_sauer.gwt.log.client.Log;
-// import com.google.gwt.event.shared.EventBus;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.AdministrationUiHandlers;
-import com.gwtplatform.dispatch.shared.DispatchAsync;
+// import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -29,17 +28,17 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 public abstract class AbstractAdministrationPresenter<V extends View, Proxy_ extends Proxy<?>> extends
     Presenter<V, Proxy_> implements AdministrationUiHandlers {
 
-  private final DispatchAsync dispatcher;
+  // private final DispatchAsync dispatcher;
   private final PlaceManager placeManager;
 
   @Inject
   public AbstractAdministrationPresenter(EventBus eventBus, V view, Proxy_ proxy,
-      DispatchAsync dispatcher, PlaceManager placeManager) {
+      PlaceManager placeManager) {
     super(eventBus, view, proxy);
 
     // getView().setUiHandlers(this);
 
-    this.dispatcher = dispatcher;
+    // this.dispatcher = dispatcher;
     this.placeManager = placeManager;
   }
 
@@ -59,9 +58,9 @@ public abstract class AbstractAdministrationPresenter<V extends View, Proxy_ ext
     }
   }
 
-  protected DispatchAsync getDispatcher() {
-    return dispatcher;
-  }
+  // protected DispatchAsync getDispatcher() {
+  //   return dispatcher;
+  // }
 
   protected PlaceManager getPlaceManager() {
     return placeManager;

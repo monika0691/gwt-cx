@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.gwtcx</groupId>
+  <artifactId>gwtcx-gwtp-mvp-provided-scope-dependencies</artifactId>
+  <version>1.0.0-dp1</version>
+  <packaging>pom</packaging>
+  
+  <name>GWTCX gwt-platform MVP provided scope dependencies POM</name>
+  <description>
+    Aggregate POM used to simplify gwt-platform (GWTP) MVP dependency retrieval.
+    
+    Related dependencies are grouped together into a POM then added as a dependency to a project as needed. 
+    This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted.  Therefore, the scope element must be provided in the project's POM (and omitted here).
+  
+    See: http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
+  </description>
+  
+  <properties>
+    <aopalliance.version>1.0</aopalliance.version>
+    <gin.version>2.0.0</gin.version>
+    <guice.version>3.0</guice.version>
+	<gwtp.version>1.0-RC-1</gwtp.version>
+  </properties>
+ 
+  <dependencies>
+ 
+    <!-- DI dependencies -->
+    <dependency>
+      <groupId>com.google.gwt.inject</groupId>
+      <artifactId>gin</artifactId>
+      <version>${gin.version}</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+
+    <!-- GWT-Platform dependencies -->
+    <!-- MVP component -->
+    <dependency>
+      <groupId>com.gwtplatform</groupId>
+      <artifactId>gwtp-mvp-client</artifactId>
+      <version>${gwtp.version}</version>
+      <!-- <scope>provided</scope> -->
+    </dependency>
+
+  </dependencies>
+	
+</project>

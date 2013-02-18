@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -20,7 +20,7 @@ import com.google.inject.Inject;
 import com.gwtcx.client.resources.ToolBarIcons;
 import com.gwtcx.client.uihandlers.ReportsUiHandlers;
 import com.gwtcx.client.util.I18nUtil;
-import com.gwtcx.shared.dto.AccountsDto;
+import com.gwtcx.extgwt.client.data.AccountsDto;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;

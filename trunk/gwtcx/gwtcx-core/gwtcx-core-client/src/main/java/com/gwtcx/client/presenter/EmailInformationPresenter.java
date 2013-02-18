@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -15,16 +15,11 @@
 package com.gwtcx.client.presenter;
 
 import com.allen_sauer.gwt.log.client.Log;
-// import com.google.gwt.event.shared.EventBus;
-import com.google.web.bindery.event.shared.EventBus;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
+import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.uihandlers.EmailInformationUiHandlers;
-import com.gwtcx.shared.action.SendEmailAction;
-import com.gwtcx.shared.action.SendEmailResult;
-import com.gwtcx.shared.dto.EmailDto;
-import com.gwtplatform.dispatch.shared.DispatchAsync;
+// import com.gwtcx.shared.dto.EmailDto;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
@@ -39,7 +34,7 @@ public class EmailInformationPresenter extends
     Presenter<EmailInformationPresenter.MyView, EmailInformationPresenter.MyProxy> implements
   com.gwtcx.client.uihandlers.EmailInformationUiHandlers {
 
-  private final DispatchAsync dispatcher;
+  // private final DispatchAsync dispatcher;
 
   @ProxyCodeSplit
   @NameToken(NameTokens.emailInformation)
@@ -47,18 +42,20 @@ public class EmailInformationPresenter extends
   }
 
   public interface MyView extends View, HasUiHandlers<EmailInformationUiHandlers> {
-    void setResultSet(EmailDto dto);
-    void setId(Long id);
+    // void setResultSet(EmailDto dto);
+    // void setId(Long id);
   }
 
   @Inject
   public EmailInformationPresenter(EventBus eventBus, MyView view, MyProxy proxy,
-      PlaceManager placeManager, DispatchAsync dispatcher) {
+      PlaceManager placeManager) {
     super(eventBus, view, proxy);
+
+    Log.warn("EmailInformationPresenter()");
 
     getView().setUiHandlers(this);
 
-    this.dispatcher = dispatcher;
+    // this.dispatcher = dispatcher;
   }
 
   @Override
@@ -84,6 +81,10 @@ public class EmailInformationPresenter extends
     RevealContentEvent.fire(this, EmailPagePresenter.TYPE_SetContextAreaContent, this);
   }
 
+  public static native void close() /*-{ $wnd.close(); }-*/;
+
+  /*
+
   public void onSaveButtonClicked(EmailDto dto) {
     createOrUpdateEmail(dto);
   }
@@ -100,8 +101,6 @@ public class EmailInformationPresenter extends
     // sendEmail(dto); // commented out for DEMO
     // close();
   }
-
-  public static native void close() /*-{ $wnd.close(); }-*/;
 
   public void createOrUpdateEmail(EmailDto dto) {
 
@@ -142,4 +141,6 @@ public class EmailInformationPresenter extends
       }
     });
   }
+
+  */
 }

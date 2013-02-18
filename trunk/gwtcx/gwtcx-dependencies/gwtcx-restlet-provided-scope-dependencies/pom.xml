@@ -7,16 +7,16 @@
   <modelVersion>4.0.0</modelVersion>
  
   <groupId>com.gwtcx</groupId>
-  <artifactId>gwtcx-restlet-dependencies</artifactId>
+  <artifactId>gwtcx-restlet-provided-scope-dependencies</artifactId>
   <version>1.0.0-dp1</version>
   <packaging>pom</packaging>
   
-  <name>GWTCX Restlet dependencies POM</name>
+  <name>GWTCX Restlet provided scope dependencies POM</name>
   <description>
     Aggregate POM used to simplify Restlet dependency retrieval.
   
     Related dependencies are grouped together into a POM then added as a dependency to a project as needed. 
-    This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted.
+    This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted. Therefore, the scope element must be provided in the project's POM (and omitted here).
   
     See: http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
   </description>
@@ -34,15 +34,7 @@
   </properties>
  
   <dependencies>
-  
-    <!-- Google Web Toolkit dependencies -->
-    <dependency>
-      <groupId>com.gwtcx</groupId>
-      <artifactId>gwtcx-gwt-dependencies</artifactId>
-      <version>${project.version}</version>
-      <type>pom</type>
-    </dependency>    
-	
+  	 
 	<!-- Restlet dependencies -->
 	<!-- 
 	  I updated my local copies of:
@@ -56,19 +48,16 @@
       <groupId>org.restlet.gwt</groupId>
       <artifactId>org.restlet</artifactId>
       <version>${restlet.version}</version>
-	  <!-- <scope>provided</scope> -->
     </dependency>
 	<dependency>
       <groupId>org.restlet.gwt</groupId>
       <artifactId>org.restlet.ext.json</artifactId>
       <version>${restlet.version}</version>
-	  <!-- <scope>provided</scope> -->
     </dependency>
 	<dependency>
       <groupId>org.restlet.gwt</groupId>
       <artifactId>org.restlet.ext.xml</artifactId>
       <version>${restlet.version}</version>
-	  <!-- <scope>provided</scope> -->
     </dependency>
 	
   </dependencies>
