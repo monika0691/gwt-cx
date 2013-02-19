@@ -14,6 +14,7 @@
 
 package com.gwtcx.extgwt.client.data;
 
+import com.gwtcx.shared.dto.AccountsDto;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 

@@ -61,18 +61,14 @@
       <version>${project.version}</version>
       <!-- <scope>provided</scope> -->
     </dependency>
-    <!-- 
-    <dependency>
+	<dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>gwtcx-core-server</artifactId>
+      <artifactId>gwtcx-core-shared</artifactId>
       <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>gwtcx-core-server-gae</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+	  <!-- <scope>provided</scope> -->
+    </dependency> 
 	
+    <!-- 
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>gwtcx-core-shared-dispatch</artifactId>

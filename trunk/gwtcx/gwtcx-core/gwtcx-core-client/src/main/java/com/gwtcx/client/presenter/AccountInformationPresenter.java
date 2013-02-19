@@ -105,6 +105,7 @@ public class AccountInformationPresenter extends
 
       try {
         // retrieveAccount(id);
+        Log.warn("retrieveAccount(id): " + id);
       }
       catch (Exception e) {
         Log.warn("Unable to retrieve account: " + e);

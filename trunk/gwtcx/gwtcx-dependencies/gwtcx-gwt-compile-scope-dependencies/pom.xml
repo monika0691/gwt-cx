@@ -72,7 +72,20 @@
     -->
     
     <!-- GWT Customer Experience dependencies -->
+	<dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-shared</artifactId>
+      <version>${project.version}</version>
+    </dependency> 
+	
     <!-- 
+	
+	<dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-shared-dispatch</artifactId>
+      <version>${project.version}</version>
+    </dependency>  
+	
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>gwtcx-core-server</artifactId>
@@ -84,11 +97,6 @@
       <version>${project.version}</version>
     </dependency>
 	
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>gwtcx-core-shared-dispatch</artifactId>
-      <version>${project.version}</version>
-    </dependency>   
 	-->
 
   </dependencies>

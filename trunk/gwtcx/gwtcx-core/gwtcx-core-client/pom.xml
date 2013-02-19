@@ -51,10 +51,15 @@
          Some UiHandlers depend on DTO's defined in the GWT CX shared module.
          As do some (non abstract) Presenters
 		 See also: com.gwtcx.GwtCx which inherits com.gwtcx.GwtCxSharedDispatch
-     -->
+
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>gwtcx-core-shared-dispatch</artifactId>
+    </dependency>
+    -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-shared</artifactId>
     </dependency>
 
     <!-- Google Web Toolkit dependencies -->
