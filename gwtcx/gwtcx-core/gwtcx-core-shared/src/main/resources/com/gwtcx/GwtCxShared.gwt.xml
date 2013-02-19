@@ -1,4 +1,7 @@
-/**
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
  * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
@@ -10,32 +13,13 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations
  * under the License.
- */
 
-package com.gwtcx.extgwt.client.data;
+-->
+      
+<module>
 
-import java.io.Serializable;
-
-public class EntityDto implements Serializable {
-
-  private static final long serialVersionUID = 3434148714982575460L;
-
-  protected String id;
-
-  public EntityDto() {
-    this.id = "-1";
-  }
-
-  public EntityDto(String id) {
-    this.id = id;
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-}
-
+  <inherits name="com.google.gwt.user.User" />
+  
+  <source path="shared" />
+  
+</module>

@@ -156,6 +156,12 @@
   </build>
 
   <dependencies>
+  
+      <!-- GWT Customer Experience dependencies -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-shared</artifactId>
+    </dependency>
 
     <!-- Google Web Toolkit dependencies -->
     <dependency>

@@ -19,6 +19,7 @@
     <module>gwtcx-core-client</module>
     <module>gwtcx-core-client-extgwt</module>
     <module>gwtcx-core-client-smartgwt</module>
+    <module>gwtcx-core-shared</module>
 	<module>gwtcx-core-shared-dispatch</module>
     <module>gwtcx-core-server</module>
     <!-- <module>gwtcx-core-server-gae</module> -->
@@ -125,6 +126,11 @@
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>gwtcx-core-server-gae</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>gwtcx-core-shared</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

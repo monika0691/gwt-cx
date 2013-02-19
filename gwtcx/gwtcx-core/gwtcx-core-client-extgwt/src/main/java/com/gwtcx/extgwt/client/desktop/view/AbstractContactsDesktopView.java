@@ -21,7 +21,7 @@ import com.google.inject.Inject;
 import com.gwtcx.client.resources.ToolBarIcons;
 import com.gwtcx.client.uihandlers.ContactsUiHandlers;
 import com.gwtcx.client.util.I18nUtil;
-import com.gwtcx.extgwt.client.data.ContactsDto;
+import com.gwtcx.shared.dto.ContactsDto;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.sencha.gxt.widget.core.client.event.RowDoubleClickEvent;
 import com.sencha.gxt.widget.core.client.event.RowDoubleClickEvent.RowDoubleClickHandler;
