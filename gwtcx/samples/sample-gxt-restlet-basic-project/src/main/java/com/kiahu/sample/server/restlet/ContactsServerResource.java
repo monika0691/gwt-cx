@@ -92,9 +92,26 @@ public class ContactsServerResource extends WadlServerResource implements
         setMobilePhone("0414 234 535").setBusinessPhone("(08) 8223 8000").
         setEmail("enquiries@adbri.com.au"));
 
-    // contacts.add(new ContactRepresentation("3", "Mr Michael Fraser", "AGL Energy Limited", "North Sydney", "Level 22, 101 Miller Street North Sydney NSW 2065", "0414 114 115", "(02) 9921 2999", "enquiries@agl.com.au"));
-    // contacts.add(new ContactRepresentation("4", "Mr Peter Boyd", "Alesco Corporation Limited", "Sydney", "Level 24, 207 Kent Street Sydney NSW 2000", "0414 233 332", "(02) 9248 2000", "enquiries@alesco.com.au"));
-    // contacts.add(new ContactRepresentation("5", "Mr John Bevan", "Alumina Limited", "Southbank", "Level 12, 60 City Road Southbank VIC 3006", "0414 456 345", "(03) 8699 2600", "enquiries@alumina.com.au"));
+    contacts.add(new ContactRepresentation("3").
+        setFullName("Mr Michael Fraser").
+        setParentCustomer("AGL Energy Limited").setCity("North Sydney").
+        setLocation("Level 22, 101 Miller Street North Sydney NSW 2065").
+        setMobilePhone("0414 114 115").setBusinessPhone("(02) 9921 2999").
+        setEmail("enquiries@agl.com.au"));
+
+    contacts.add(new ContactRepresentation("4").
+        setFullName("Mr Peter Boyd").
+        setParentCustomer("Alesco Corporation Limited").setCity("Sydney").
+        setLocation("Level 24, 207 Kent Street Sydney NSW 2000").
+        setMobilePhone("0414 233 332").setBusinessPhone("(02) 9248 2000").
+        setEmail("enquiries@alesco.com.au"));
+
+    contacts.add(new ContactRepresentation("5").
+        setFullName("Mr John Bevan").
+        setParentCustomer("Alumina Limited").setCity("Southbank").
+        setLocation("Level 12, 60 City Road Southbank VIC 3006").
+        setMobilePhone("0414 456 345").setBusinessPhone("(03) 8699 2600").
+        setEmail("enquiries@alumina.com.au"));
 
     return contacts;
   }

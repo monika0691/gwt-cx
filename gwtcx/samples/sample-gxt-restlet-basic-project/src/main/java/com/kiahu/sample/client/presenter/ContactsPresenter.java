@@ -88,7 +88,8 @@ public class ContactsPresenter extends
     Log.debug("onReset() - " + NameTokens.contacts);
   }
 
-  private static final String contactsPath = "/contacts";
+  // private static final String urlPattern = "/RESTfulAPI/1.0/*";
+  private static final String contactsPath = "/RESTfulAPI/1.0/contacts";
 
   @Override
   protected void retrieveResultSet() {
