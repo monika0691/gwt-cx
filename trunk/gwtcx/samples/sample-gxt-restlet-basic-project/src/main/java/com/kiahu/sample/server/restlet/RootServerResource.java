@@ -51,5 +51,4 @@ public class RootServerResource extends WadlServerResource implements
   public String represent() {
     return "Welcome to the " + getApplication().getName() + ".";
   }
-
 }

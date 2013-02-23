@@ -42,22 +42,33 @@
       <artifactId>org.restlet.ext.servlet</artifactId>
       <version>${restlet.version}</version>
 	  <!-- <type>jar</type> --> <!-- The default for the type field is "jar". -->
-	  <!-- <scope>provided</scope> --> <!-- The default for the scope field is "compile". -->
+	  <!-- <scope>compile</scope> --> <!-- The default for the scope field is "compile". -->
     </dependency>
     <dependency>
       <groupId>org.restlet.jee</groupId>
       <artifactId>org.restlet.ext.wadl</artifactId>
       <version>${restlet.version}</version>
     </dependency>
-
     <dependency>
       <groupId>org.restlet.jee</groupId>
       <artifactId>org.restlet.ext.gwt</artifactId>
       <version>${restlet.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.jackson</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.xstream</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+
+
 
     <!--
-
+	
     <dependency>
       <groupId>org.restlet.gwt</groupId>
       <artifactId>org.restlet.ext.json</artifactId>

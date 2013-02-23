@@ -28,8 +28,9 @@ import com.gwtcx.client.resources.GridIcons;
 import com.gwtcx.client.resources.ImageCell;
 import com.gwtcx.client.resources.NavigationPaneIcons;
 import com.gwtcx.client.util.I18nUtil;
-import com.gwtcx.extgwt.client.data.ContactsDtoListStore;
-import com.gwtcx.shared.dto.ContactsDto;
+import com.gwtcx.extgwt.client.data.ContactRepresentationListStore;
+import com.gwtcx.shared.dto.ContactRepresentation;
+// import com.gwtcx.shared.dto.ContactsDto;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
@@ -40,7 +41,7 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 /**
  * AccountsContextAreaGrid
  */
-public class ContactsContextAreaGrid extends Grid<ContactsDto> {
+public class ContactsContextAreaGrid extends Grid<ContactRepresentation> {
 
   public static final int SMALL_ICON_COLUMN_WIDTH = 24;
 
@@ -52,18 +53,18 @@ public class ContactsContextAreaGrid extends Grid<ContactsDto> {
   public static final int BUSINESS_PHONE_COLUMN_WIDTH = 90;
   public static final int EMAIL_COLUMN_WIDTH = 180;
 
-  public interface ContactsProperties extends PropertyAccess<ContactsDto> {
+  public interface ContactsProperties extends PropertyAccess<ContactRepresentation> {
     @Path("id")
-    ModelKeyProvider<ContactsDto> key();
+    ModelKeyProvider<ContactRepresentation> key();
 
-    ValueProvider<ContactsDto, String> id();
-    ValueProvider<ContactsDto, String> fullName();
-    ValueProvider<ContactsDto, String> parentCustomer();
-    ValueProvider<ContactsDto, String> city();
-    ValueProvider<ContactsDto, String> location();
-    ValueProvider<ContactsDto, String> phone();
-    ValueProvider<ContactsDto, String> businessPhone();
-    ValueProvider<ContactsDto, String> email();
+    ValueProvider<ContactRepresentation, String> id();
+    ValueProvider<ContactRepresentation, String> fullName();
+    ValueProvider<ContactRepresentation, String> parentCustomer();
+    ValueProvider<ContactRepresentation, String> city();
+    ValueProvider<ContactRepresentation, String> location();
+    ValueProvider<ContactRepresentation, String> homePhone();
+    ValueProvider<ContactRepresentation, String> businessPhone();
+    ValueProvider<ContactRepresentation, String> email();
   }
 
   private static final ContactsProperties property = GWT.create(ContactsProperties.class);
@@ -71,9 +72,9 @@ public class ContactsContextAreaGrid extends Grid<ContactsDto> {
   private static final SafeHtml ROW_ICON = ImageCell.makeImage(GridIcons.INSTANCE.rowCollapsed());
   private static final SafeHtml ENTITY_ICON = ImageCell.makeImage(NavigationPaneIcons.INSTANCE.contacts());
 
-  public static ColumnModel<ContactsDto> getColumnConfig() {
+  public static ColumnModel<ContactRepresentation> getColumnConfig() {
 
-    ColumnConfig<ContactsDto, String> rowIconColumnConfig = new ColumnConfig<ContactsDto, String>(property.id(),
+    ColumnConfig<ContactRepresentation, String> rowIconColumnConfig = new ColumnConfig<ContactRepresentation, String>(property.id(),
         SMALL_ICON_COLUMN_WIDTH, "");
     rowIconColumnConfig.setCell(new ImageCell() {
       @Override
@@ -91,7 +92,7 @@ public class ContactsContextAreaGrid extends Grid<ContactsDto> {
     rowIconColumnConfig.setResizable(false);
     rowIconColumnConfig.setMenuDisabled(true);
 
-    ColumnConfig<ContactsDto, String> entityIconColumnConfig = new ColumnConfig<ContactsDto, String>(property.id(),
+    ColumnConfig<ContactRepresentation, String> entityIconColumnConfig = new ColumnConfig<ContactRepresentation, String>(property.id(),
         SMALL_ICON_COLUMN_WIDTH + 4, "");
     entityIconColumnConfig.setCell(new ImageCell() {
       @Override
@@ -109,22 +110,22 @@ public class ContactsContextAreaGrid extends Grid<ContactsDto> {
     entityIconColumnConfig.setResizable(false);
     entityIconColumnConfig.setMenuDisabled(true);
 
-    ColumnConfig<ContactsDto, String> fullNameColumnConfig = new ColumnConfig<ContactsDto, String>(property.fullName(),
+    ColumnConfig<ContactRepresentation, String> fullNameColumnConfig = new ColumnConfig<ContactRepresentation, String>(property.fullName(),
         FULL_NAME_COLUMN_WIDTH, I18nUtil.getConstant().fullName());
-    ColumnConfig<ContactsDto, String> parentCustomerColumnConfig = new ColumnConfig<ContactsDto, String>(property.parentCustomer(),
+    ColumnConfig<ContactRepresentation, String> parentCustomerColumnConfig = new ColumnConfig<ContactRepresentation, String>(property.parentCustomer(),
         PARENT_CUSTOMER_COLUMN_WIDTH, I18nUtil.getConstant().parentCustomer());
-    ColumnConfig<ContactsDto, String> cityColumnConfig = new ColumnConfig<ContactsDto, String>(property.city(),
+    ColumnConfig<ContactRepresentation, String> cityColumnConfig = new ColumnConfig<ContactRepresentation, String>(property.city(),
         CITY_COLUMN_WIDTH, I18nUtil.getConstant().city());
     // ColumnConfig<ContactsDto, String> locationColumnConfig = new ColumnConfig<ContactsDto, String>(property.location(),
     //     LOCATION_COLUMN_WIDTH, I18nUtil.getConstant().location());
-    ColumnConfig<ContactsDto, String> phoneColumnConfig = new ColumnConfig<ContactsDto, String>(property.phone(),
+    ColumnConfig<ContactRepresentation, String> phoneColumnConfig = new ColumnConfig<ContactRepresentation, String>(property.homePhone(),
         PHONE_COLUMN_WIDTH, I18nUtil.getConstant().phone());
-    ColumnConfig<ContactsDto, String> businessPhoneColumnConfig = new ColumnConfig<ContactsDto, String>(property.businessPhone(),
+    ColumnConfig<ContactRepresentation, String> businessPhoneColumnConfig = new ColumnConfig<ContactRepresentation, String>(property.businessPhone(),
         BUSINESS_PHONE_COLUMN_WIDTH, I18nUtil.getConstant().businessPhone());
-    ColumnConfig<ContactsDto, String> emailColumnConfig = new ColumnConfig<ContactsDto, String>(property.email(),
+    ColumnConfig<ContactRepresentation, String> emailColumnConfig = new ColumnConfig<ContactRepresentation, String>(property.email(),
         EMAIL_COLUMN_WIDTH, I18nUtil.getConstant().email());
 
-    List<ColumnConfig<ContactsDto, ?>> columnConfigList = new ArrayList<ColumnConfig<ContactsDto, ?>>();
+    List<ColumnConfig<ContactRepresentation, ?>> columnConfigList = new ArrayList<ColumnConfig<ContactRepresentation, ?>>();
     columnConfigList.add(rowIconColumnConfig);
     columnConfigList.add(entityIconColumnConfig);
     columnConfigList.add(fullNameColumnConfig);
@@ -134,13 +135,13 @@ public class ContactsContextAreaGrid extends Grid<ContactsDto> {
     columnConfigList.add(businessPhoneColumnConfig);
     columnConfigList.add(emailColumnConfig);
 
-    ColumnModel<ContactsDto> columnModel = new ColumnModel<ContactsDto>(columnConfigList);
+    ColumnModel<ContactRepresentation> columnModel = new ColumnModel<ContactRepresentation>(columnConfigList);
 
     return columnModel;
   }
 
   @Inject
-  public ContactsContextAreaGrid(ContactsDtoListStore store) {
+  public ContactsContextAreaGrid(ContactRepresentationListStore store) {
     super(store, getColumnConfig());
 
     this.setBorders(false);
@@ -152,19 +153,28 @@ public class ContactsContextAreaGrid extends Grid<ContactsDto> {
     this.getView().setStripeRows(true);
 
 
-    this.store.addAll(getAccounts());
+    // this.store.addAll(getContacts());
   }
 
-  public static List<ContactsDto> getAccounts() {
+  public void setResultSet(List<ContactRepresentation> resultSet) {
 
-    List<ContactsDto> accounts = new ArrayList<ContactsDto>();
-
-    accounts.add(new ContactsDto("1", "Dr Frank Wolf", "Abacus Property Group", "Sydney", "Level 34, 264-278 George Street Sydney NSW 2000", "0414 414 515", "(02) 9253 8600", "enquiries@abacus.com.au"));
-    accounts.add(new ContactsDto("2", "Mr Mark Chellew", "Adelaide Brighton Limited", "Adelaide", "Level 1, 157 Grenfell Street Adelaide SA 5000", "0414 515 515", "(08) 8223 8000", "enquiries@adbri.com.au"));
-    accounts.add(new ContactsDto("3", "Mr Michael Fraser", "AGL Energy Limited", "North Sydney", "Level 22, 101 Miller Street North Sydney NSW 2065", "0414 114 115", "(02) 9921 2999", "enquiries@agl.com.au"));
-    accounts.add(new ContactsDto("4", "Mr Peter Boyd", "Alesco Corporation Limited", "Sydney", "Level 24, 207 Kent Street Sydney NSW 2000", "0414 233 332", "(02) 9248 2000", "enquiries@alesco.com.au"));
-    accounts.add(new ContactsDto("5", "Mr John Bevan", "Alumina Limited", "Southbank", "Level 12, 60 City Road Southbank VIC 3006", "0414 456 345", "(03) 8699 2600", "enquiries@alumina.com.au"));
-
-    return accounts;
+    this.store.addAll(resultSet);
   }
+
+  /*
+
+  public static List<ContactsDto> getContacts() {
+
+    List<ContactsDto> contacts = new ArrayList<ContactsDto>();
+
+    contacts.add(new ContactsDto("1", "Dr Frank Wolf", "Abacus Property Group", "Sydney", "Level 34, 264-278 George Street Sydney NSW 2000", "0414 414 515", "(02) 9253 8600", "enquiries@abacus.com.au"));
+    contacts.add(new ContactsDto("2", "Mr Mark Chellew", "Adelaide Brighton Limited", "Adelaide", "Level 1, 157 Grenfell Street Adelaide SA 5000", "0414 515 515", "(08) 8223 8000", "enquiries@adbri.com.au"));
+    contacts.add(new ContactsDto("3", "Mr Michael Fraser", "AGL Energy Limited", "North Sydney", "Level 22, 101 Miller Street North Sydney NSW 2065", "0414 114 115", "(02) 9921 2999", "enquiries@agl.com.au"));
+    contacts.add(new ContactsDto("4", "Mr Peter Boyd", "Alesco Corporation Limited", "Sydney", "Level 24, 207 Kent Street Sydney NSW 2000", "0414 233 332", "(02) 9248 2000", "enquiries@alesco.com.au"));
+    contacts.add(new ContactsDto("5", "Mr John Bevan", "Alumina Limited", "Southbank", "Level 12, 60 City Road Southbank VIC 3006", "0414 456 345", "(03) 8699 2600", "enquiries@alumina.com.au"));
+
+    return contacts;
+  }
+
+  */
 }

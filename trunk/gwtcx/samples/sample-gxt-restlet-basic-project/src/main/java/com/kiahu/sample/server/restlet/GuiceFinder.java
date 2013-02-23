@@ -38,24 +38,3 @@ public class GuiceFinder extends Finder {
     return injector.getInstance(targetClass);
   }
 }
-
-/*
-
-public class GuiceFinder extends Finder {
-
-  private final Injector injector;
-
-  public GuiceFinder(Injector injector, Context context, Class targetClass)
-  {
-      super(context, targetClass);
-      this.injector = injector;
-  }
-
-  @Override
-  public ServerResource create(Class targetClass, Request request, Response response)
-  {
-      return injector.getInstance(targetClass);
-  }
-}
-
-*/

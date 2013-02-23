@@ -12,31 +12,17 @@
  * under the License.
  */
 
-package com.gwtcx.shared.dto;
+package com.kiahu.sample.client.restlet;
 
-import java.io.Serializable;
+import org.restlet.client.resource.ClientProxy;
+import org.restlet.client.resource.Get;
+import org.restlet.client.resource.Result;
 
-public class EntityDto implements Serializable {
+import com.gwtcx.shared.dto.ContactsRepresentation;
 
-  private static final long serialVersionUID = 1L;
+public interface ContactsResourceProxy extends ClientProxy {
 
-  protected String id;
+    @Get
+    public void retrieve(Result<ContactsRepresentation> result);
 
-  public EntityDto() {
-    this.id = "-1";
-  }
-
-  public EntityDto(String id) {
-    this.id = id;
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  // http://en.wikipedia.org/wiki/Covariant_return_type
-  public EntityDto setId(String id) {
-    this.id = id;
-    return this;
-  }
 }

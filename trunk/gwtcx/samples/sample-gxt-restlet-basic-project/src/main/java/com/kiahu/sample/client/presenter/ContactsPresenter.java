@@ -14,7 +14,10 @@
 
 package com.kiahu.sample.client.presenter;
 
+import java.util.List;
+
 import com.allen_sauer.gwt.log.client.Log;
+import com.google.gwt.core.client.GWT;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.NameTokens;
@@ -31,6 +34,11 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
+import com.gwtcx.shared.dto.ContactRepresentation;
+import com.gwtcx.shared.dto.ContactsRepresentation;
+import com.kiahu.sample.client.restlet.ContactsResourceProxy;
+import org.restlet.client.resource.Result;
+
 public class ContactsPresenter extends
     AbstractContactsPresenter<ContactsPresenter.MyView, ContactsPresenter.MyProxy> implements
   ContactsUiHandlers {
@@ -45,6 +53,7 @@ public class ContactsPresenter extends
   }
 
   public interface MyView extends View, HasUiHandlers<ContactsUiHandlers> {
+    void setResultSet(List<ContactRepresentation> resultSet);
   }
 
   @Inject
@@ -79,9 +88,31 @@ public class ContactsPresenter extends
     Log.debug("onReset() - " + NameTokens.contacts);
   }
 
+  private static final String contactsPath = "/contacts";
+
   @Override
   protected void retrieveResultSet() {
 
+    Log.debug("retrieveResultSet()");
+
+    // Remotely retrieve the contacts list in GWT serialization format
+    ContactsResourceProxy client = GWT.create(ContactsResourceProxy.class);
+    client.getClientResource().setReference(contactsPath);
+    client.retrieve(new Result<ContactsRepresentation>() {
+
+      @Override
+      public void onSuccess(ContactsRepresentation result) {
+
+        Log.debug("onSuccess()");
+
+        getView().setResultSet(result.getContacts());
+      }
+
+      @Override
+      public void onFailure(Throwable caught) {
+        Log.debug("onFailure() - " + caught.getLocalizedMessage());
+      }
+    });
   }
 
   @Override

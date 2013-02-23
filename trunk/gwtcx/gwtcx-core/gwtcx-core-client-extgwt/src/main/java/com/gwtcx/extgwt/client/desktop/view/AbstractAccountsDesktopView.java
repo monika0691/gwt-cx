@@ -24,8 +24,8 @@ import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.shared.dto.AccountsDto;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.sencha.gxt.widget.core.client.event.RowDoubleClickEvent;
-import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.RowDoubleClickEvent.RowDoubleClickHandler;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
@@ -79,7 +79,7 @@ public abstract class AbstractAccountsDesktopView<C extends UiHandlers> extends 
   public void setResultSet(List<AccountsDto> resultSet) {
     // resultSet == null when there are no items in the table
     // if (resultSet != null) {
-    //   ((AccountsContextAreaListGrid) getListGrid()).setResultSet(resultSet);
+    //   ((ContactsContextAreaListGrid) getListGrid()).setResultSet(resultSet);
     // }
   }
 
