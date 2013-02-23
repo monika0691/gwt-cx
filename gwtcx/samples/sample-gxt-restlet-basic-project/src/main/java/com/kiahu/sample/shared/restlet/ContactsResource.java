@@ -12,25 +12,24 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.data;
+package com.kiahu.sample.shared.restlet;
 
-import com.gwtcx.shared.dto.ContactsDto;
-import com.sencha.gxt.data.shared.ListStore;
-import com.sencha.gxt.data.shared.ModelKeyProvider;
+import org.restlet.resource.Get;
+// import org.restlet.resource.Options;
 
-/**
- * ContactsDtoListStore
- */
-public class ContactsDtoListStore extends ListStore<ContactsDto> {
+import com.gwtcx.shared.dto.ContactsRepresentation;
 
-  public static ModelKeyProvider<ContactsDto> KP = new ModelKeyProvider<ContactsDto>() {
-    @Override
-    public String getKey(ContactsDto item) {
-      return item.getId();
-    }
-  };
+public interface ContactsResource {
 
-  public ContactsDtoListStore() {
-    super(KP);
-  }
+  @Get
+  public ContactsRepresentation retreive();
+
+  // @Get
+  // ContactRepresentation getContact();
+
+  // @Options
+  // public String description();
+
+  // @Post
+  // public void add(ContactRepresentation contact);
 }

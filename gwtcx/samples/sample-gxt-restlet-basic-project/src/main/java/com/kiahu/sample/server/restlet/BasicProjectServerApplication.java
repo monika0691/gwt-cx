@@ -14,9 +14,7 @@
 
 package com.kiahu.sample.server.restlet;
 
-import org.restlet.Restlet;
 import org.restlet.ext.wadl.WadlApplication;
-import org.restlet.routing.Router;
 
 public class BasicProjectServerApplication extends WadlApplication {
 
@@ -39,20 +37,15 @@ public class BasicProjectServerApplication extends WadlApplication {
    *
    * @return The inbound root Restlet.
    */
+
+  /*
   @Override
   public Restlet createInboundRoot() {
     Router router = new Router(getContext());
     // router.attach("/", RootServerResource.class);
     router.attach("/contacts/", RootServerResource.class);
-    /*
-    router.attach("/accounts/", AccountsServerResource.class);
-    router.attach("/accounts/{accountId}", AccountServerResource.class);
-    router.attach("/accounts/{accountId}/mails/", MailsServerResource.class);
-    router.attach("/accounts/{accountId}/mails/{mailId}", MailServerResource.class);
-    router.attach("/accounts/{accountId}/contacts/", ContactsServerResource.class);
-    router.attach("/accounts/{accountId}/contacts/{contactId}", ContactServerResource.class);
-    */
+
     return router;
   }
-
+  */
 }

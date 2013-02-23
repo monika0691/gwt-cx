@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class AccountDto implements Serializable {
 
-  private static final long serialVersionUID = 3434148714982575460L;
+  private static final long serialVersionUID = 1L;
 
   protected String accountId;
   protected String accountName;

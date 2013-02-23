@@ -15,28 +15,27 @@
 package com.gwtcx.shared.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
-public class EntityDto implements Serializable {
+public class ContactsRepresentation implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  protected String id;
+  private List<ContactRepresentation> contacts;
 
-  public EntityDto() {
-    this.id = "-1";
+  public ContactsRepresentation() {
+    // this.contacts = new ArrayList<ContactRepresentation>();
   }
 
-  public EntityDto(String id) {
-    this.id = id;
+  public ContactsRepresentation(List<ContactRepresentation> contacts) {
+    this.contacts = contacts;
   }
 
-  public String getId() {
-    return id;
+  public List<ContactRepresentation> getContacts() {
+    return contacts;
   }
 
-  // http://en.wikipedia.org/wiki/Covariant_return_type
-  public EntityDto setId(String id) {
-    this.id = id;
-    return this;
-  }
+  // public void setContacts(List<ContactRepresentation> contacts) {
+  //   this.contacts = contacts;
+  // }
 }

@@ -27,9 +27,9 @@ public class GuiceRouter extends Router {
 
   public GuiceRouter(Injector injector, Context context)
   {
-      super(context);
-      this.injector = injector;
-      attachRoutes();
+    super(context);
+    this.injector = injector;
+    attachRoutes();
   }
 
   @Override
