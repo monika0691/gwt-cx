@@ -29,7 +29,7 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.Verti
 import com.sencha.gxt.widget.core.client.form.FormPanel;
 
 /**
- * AbstractTabbedFormView
+ * AbstractTabbedFormDesktopView
  */
 public abstract class AbstractTabbedFormDesktopView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 

@@ -22,6 +22,7 @@ import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormDesktopView;
 import com.gwtcx.extgwt.client.desktop.view.contact.ContactInformationAddressSection;
 import com.gwtcx.extgwt.client.desktop.view.contact.ContactInformationElectronicAddressSection;
 import com.gwtcx.extgwt.client.desktop.view.contact.ContactInformationNameSection;
+import com.gwtcx.shared.dto.ContactRepresentation;
 import com.kiahu.sample.client.presenter.contact.ContactInformationPresenter;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
@@ -54,12 +55,19 @@ public class ContactInformationTabbedFormDesktopView extends
   protected HtmlLayoutContainer generalLayout;
   protected HtmlLayoutContainer addressLayout;
 
+  protected ContactInformationNameSection nameSection;
+  protected ContactInformationElectronicAddressSection addressSection;
+
+  private ContactRepresentation contact;
+
   @Inject
   public ContactInformationTabbedFormDesktopView(final EventBus eventBus, final FormPanel form,
       final TabPanel tabPanel) {
     super(eventBus, form, tabPanel);
 
     Log.debug("ContactInformationTabbedFormView()");
+
+    contact = null;
 
     createGeneralInformationSection();
 
@@ -88,8 +96,8 @@ public class ContactInformationTabbedFormDesktopView extends
     generalLayout = new HtmlLayoutContainer(getGeneralInformationSectionTableMarkup());
     generalLayout.setLayoutData(new MarginData(DEFAULT_MARGIN));
 
-    new ContactInformationNameSection(generalLayout);
-    new ContactInformationElectronicAddressSection(generalLayout);
+    nameSection = new ContactInformationNameSection(generalLayout);
+    addressSection = new ContactInformationElectronicAddressSection(generalLayout);
 
     generalInformation.add(generalLayout);
   }
@@ -137,11 +145,57 @@ public class ContactInformationTabbedFormDesktopView extends
   @Override
   public void setId(String id) {
 
+  }
+
+  @Override
+  public void setResult(ContactRepresentation dto) {
+
+    try {
+      if (dto != null) {
+        this.contact = dto;
+        setFields(this.contact);
+      }
+    } catch (Exception e) {
+      Log.warn("Unable to set server response: " + e);
+    }
+  }
+
+  public void setFields(ContactRepresentation dto) {
+
+    nameSection.setFields(dto);
+    // addressSection.setFields(dto);
+
+    // set Masthead Contact Name label and the browser window's title
+    // setMastheadLabel(dto.getFullName());
+  }
+}
+
+/*
+
+  public void setId(String id) {
+
+    Log.warn("Don't forget to @Override setId()");
+
     if (dto != null) {
       dto.setId(id);
 
       // set Masthead label and the browser window's title
-      // setMastheadLabel(dto.getName());
+      setMastheadLabel(dto.getName());
     }
   }
-}
+
+  public void setFields(AccountDto accountDto) {
+
+    Tab[] tabs = tabSet.getTabs();
+
+    for (Tab tab : tabs) {
+      EntityTab entityTab = (EntityTab) tab;
+
+      entityTab.setFields(accountDto);
+    }
+
+    // set Masthead Account Name label and the browser window's title
+    setMastheadLabel(accountDto.getAccountName());
+  }
+
+*/

@@ -59,7 +59,7 @@ public class ContactInformationPresenter extends
   }
 
   public interface MyView extends View, HasUiHandlers<ContactInformationUiHandlers> {
-    // void setResultSet(AccountDto account);
+    void setResult(ContactRepresentation contact);
     // void setId(String id);
   }
 
@@ -129,7 +129,7 @@ public class ContactInformationPresenter extends
 
         Log.debug("onSuccess()");
 
-        // getView().setResultSet(result.getContact());
+        getView().setResult(result);
       }
 
       @Override
