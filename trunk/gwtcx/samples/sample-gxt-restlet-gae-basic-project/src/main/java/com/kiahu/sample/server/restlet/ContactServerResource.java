@@ -39,10 +39,26 @@ public class ContactServerResource extends WadlServerResource implements
 
     try {
       ContactRepresentation contact = new ContactRepresentation(id).
-          setFullName("Dr Frank Wolf").
-          setParentCustomer("Abacus Property Group").setCity("Sydney").
+          setSalutation("Frank").
+          setGivenName("Frank").
+          setMiddleName("").
+          setFamilyName("Wolf").
+          setFullName("Frank Wolf").
+          setCorrespondence("Dr Frank Wolf").
+          setJobTitle("CEO").
+          setOccupation("Director").
+          setParentCustomer("Abacus Property Group").
+          setCurrency("AUD").
+          setAddressName("Abacus House").
+          setAddressLine1("Level 34, 264-278 George Street").setAddressLine2("").setAddressLine3("").
+          setCity("Sydney").setPostalCode("2000").setCountry("Australia").
           setLocation("Level 34, 264-278 George Street Sydney NSW 2000").
-          setMobilePhone("0414 414 515").setBusinessPhone("(02) 9253 8600").
+          setAddressType("Mailing").
+          setBusinessPhone("(02) 9253 8600").
+          setHomePhone("(02) 9253 8600").
+          setMobilePhone("0414 414 515").
+          setFax("").
+          setPager("").
           setEmail("enquiries@abacus.com.au");
 
       if (contact != null) {
