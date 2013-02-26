@@ -15,21 +15,20 @@
 package com.gwtcx.client.presenter;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.google.web.bindery.event.shared.EventBus;
 import com.google.inject.Inject;
+import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 
-public abstract class AbstractCalendarPresenter<V extends View, Proxy_ extends Proxy<?>> extends
+public class AbstractContactInformationPresenter<V extends View, Proxy_ extends Proxy<?>> extends
     Presenter<V, Proxy_> {
 
   private final PlaceManager placeManager;
 
   @Inject
-  public AbstractCalendarPresenter(EventBus eventBus, V view, Proxy_ proxy,
-      PlaceManager placeManager) {
+  public AbstractContactInformationPresenter(EventBus eventBus, V view, Proxy_ proxy, PlaceManager placeManager) {
     super(eventBus, view, proxy);
 
     // getView().setUiHandlers(this);
@@ -37,16 +36,18 @@ public abstract class AbstractCalendarPresenter<V extends View, Proxy_ extends P
     this.placeManager = placeManager;
   }
 
+
   @Override
   protected void revealInParent() {
 
     Log.warn("Don't forget to @Override revealInParent()");
 
     // For example:
-    // RevealContentEvent.fire(this, MainPagePresenter.TYPE_SetContextAreaContent, this);
+    // RevealContentEvent.fire(this, ContactPagePresenter.TYPE_SetContextAreaContent, this);
   }
 
   protected PlaceManager getPlaceManager() {
     return placeManager;
   }
+
 }

@@ -39,6 +39,11 @@ public class Party extends DatastoreEntity {
   {
      ACCOUNT("A"), CONTACT("C"), INDIVIDUAL("I"), ORGANISATION("O");
 
+     // Be sure to make all of your persistent fields private and create accessors
+     // (getters and setters) for them. In addition to all the good reasons for
+     // using encapsulation, if a persistent object field is accessed directly from
+     // another object, this may circumvent the JPA/JDO class enhancement post-processing.
+
      private PartyType(String abbreviation) { this.abbreviation = abbreviation; }
      public String getAbbreviation() { return abbreviation; }
 

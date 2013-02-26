@@ -20,31 +20,15 @@
   
     See: http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
   </description>
-  
-  <properties>
-    <gae.version>1.7.3</gae.version>
-  </properties>
- 
+
   <dependencies>
   
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>gwtcx-core-server</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+    <!-- GWT Customer Experience dependencies -->
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>gwtcx-core-server-gae</artifactId>
       <version>${project.version}</version>
     </dependency>
-    
-    <!-- Google App Engine meta-package -->
-    <dependency>
-      <groupId>net.kindleit</groupId>
-      <artifactId>gae-runtime</artifactId>
-	  <version>${gae.version}</version>
-      <type>pom</type>
-    </dependency> 
 
   </dependencies>
 	

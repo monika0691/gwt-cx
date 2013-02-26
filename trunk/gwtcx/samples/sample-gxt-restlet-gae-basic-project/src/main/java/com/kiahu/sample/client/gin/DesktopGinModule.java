@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2012 Kiahu
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -14,10 +14,6 @@
 
 package com.kiahu.sample.client.gin;
 
-import com.gwtcx.client.presenter.ContactInformationPresenter;
-import com.gwtcx.client.presenter.ContactPagePresenter;
-import com.gwtcx.extgwt.client.desktop.contact.view.ContactInformationTabbedFormDesktopView;
-import com.gwtcx.extgwt.client.desktop.contact.view.ContactPageDesktopView;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.kiahu.sample.client.presenter.AccountsPresenter;
 import com.kiahu.sample.client.presenter.ActivitiesPresenter;
@@ -31,6 +27,8 @@ import com.kiahu.sample.client.presenter.HighlightsPresenter;
 import com.kiahu.sample.client.presenter.ImportsPresenter;
 import com.kiahu.sample.client.presenter.MainPagePresenter;
 import com.kiahu.sample.client.presenter.ReportsPresenter;
+import com.kiahu.sample.client.presenter.contact.ContactInformationPresenter;
+import com.kiahu.sample.client.presenter.contact.ContactPagePresenter;
 import com.kiahu.sample.client.view.desktop.AccountsDesktopView;
 import com.kiahu.sample.client.view.desktop.ActivitiesDesktopView;
 import com.kiahu.sample.client.view.desktop.AdministrationDesktopView;
@@ -43,6 +41,8 @@ import com.kiahu.sample.client.view.desktop.HighlightsDesktopView;
 import com.kiahu.sample.client.view.desktop.ImportsDesktopView;
 import com.kiahu.sample.client.view.desktop.MainPageDesktopView;
 import com.kiahu.sample.client.view.desktop.ReportsDesktopView;
+import com.kiahu.sample.client.view.desktop.contact.ContactInformationTabbedFormDesktopView;
+import com.kiahu.sample.client.view.desktop.contact.ContactPageDesktopView;
 
 public class DesktopGinModule extends AbstractPresenterModule {
 

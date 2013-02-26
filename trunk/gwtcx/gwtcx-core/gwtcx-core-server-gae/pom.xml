@@ -16,17 +16,72 @@
   <packaging>jar</packaging>
   <name>GWTCX Core - Server GAE</name>
 
+  <description>
+    Aggregate POM used to simplify GAE/Datanucleus/JPA dependency retrieval.
+
+    Related dependencies are grouped together into a POM then added as a dependency to a project as needed.
+    This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted.
+
+    See: http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
+
+	Note: The default for the type field is "jar".  The default for the scope field is "compile".
+
+	See: http://code.google.com/p/appengine-maven-plugin/
+	     http://stackoverflow.com/questions/13915341/appengine-maven-plugin-configuration-options-like-jvm-flags
+		 unofficial (KindleIt) v official (Google) since 1.7.4
+
+         http://www.datanucleus.org/products/accessplatform_3_2/jpa/maven.html
+	     http://www.datanucleus.org/products/accessplatform_3_2/jpa/multitenancy.html
+		 http://www.datanucleus.org/products/accessplatform/logging.html
+		 http://www.datanucleus.org/servlet/forum/index
+		 http://www.datanucleus.org/project/download.html
+  </description>
+
+  <properties>
+    <appengine.target.version>1.7.5</appengine.target.version>
+	 <!-- <gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home> -->
+    <gae.home>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
+    <gae.port>8080</gae.port>
+
+	<datanucleus-maven-plugin.version>3.2.0-m3</datanucleus-maven-plugin.version>
+	<jdo-api.version>3.0</jdo-api.version>
+	<geronimo-jpa_2.0_spec.version>1.1</geronimo-jpa_2.0_spec.version>
+    <datanucleus-core.version>[3.2.0-m2, 3.2.99)</datanucleus-core.version>
+	<datanucleus-api-jpa.version>[3.2.0-m2, 3.2.99)</datanucleus-api-jpa.version>
+	<datanucleus-appengine.version>2.1.2</datanucleus-appengine.version>
+
+  </properties>
+
   <build>
     <plugins>
 
+	  <!-- You can run mvn help:describe -Dplugin=appengine to see all of the available goals -->
+	  <plugin>
+        <groupId>com.google.appengine</groupId>
+        <artifactId>appengine-maven-plugin</artifactId>
+        <version>${appengine.target.version}</version>
+      </plugin>
+
+	  <!--
+	    Note that this plugin step will automatically try to bring in the latest
+		applicable version of datanucleus-core for use by the enhancer. It does
+		this since you don't need to have datanucleus-core in your POM for compilation/enhancement.
+		If you want to use an earlier version then you need to add exclusions to
+		the maven-datanucleus-plugin
+	  -->
       <plugin>
         <groupId>org.datanucleus</groupId>
-        <artifactId>maven-datanucleus-plugin</artifactId>
-        <version>3.0.1</version>
+        <artifactId>datanucleus-maven-plugin</artifactId>
+        <version>${datanucleus-maven-plugin.version}</version>
         <configuration>
           <api>JPA</api>
+		  <verbose>true</verbose>
+		  <!--
+		  <enhancerName>ASM</enhancerName>
+          <metadataIncludes>com/package/entities/*.class</metadataIncludes>
+		  -->
+		  <!-- <persistenceUnitName>MyUnit</persistenceUnitName> -->
           <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
-          <verbose>true</verbose>
         </configuration>
         <executions>
           <execution>
@@ -43,96 +98,71 @@
 
   <dependencies>
 
-    <!-- GWT Customer Experience dependencies -->
+    <!-- GWT Customer Experience dependencies
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>gwtcx-core-shared</artifactId>
     </dependency>
-
-    <!-- JCIP Annotations dependencies
-    <dependency>
-      <groupId>net.jcip</groupId>
-      <artifactId>jcip-annotations</artifactId>
-    </dependency>
     -->
-
-    <!-- Google Web Toolkit dependencies -->
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-user</artifactId>
-    </dependency>
-
-    <!-- GWT-Platform dependencies -->
-    <!-- Dispatch server component -->
-    <dependency>
-      <groupId>com.gwtplatform</groupId>
-      <artifactId>gwtp-dispatch-server-guice</artifactId>
-    </dependency>
-    <!-- Annotation component -->
-    <dependency>
-      <groupId>com.gwtplatform</groupId>
-      <artifactId>gwtp-processors</artifactId>
-    </dependency>
 
     <!-- Google AppEngine dependencies -->
     <dependency>
       <groupId>com.google.appengine</groupId>
       <artifactId>appengine-api-1.0-sdk</artifactId>
+      <version>${appengine.target.version}</version>
+    </dependency>
+	<!--
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-testing</artifactId>
       <version>${gae.version}</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.google.appengine.orm</groupId>
-      <artifactId>datanucleus-appengine</artifactId>
-      <version>2.0.0-final</version>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-stubs</artifactId>
+      <version>${gae.version}</version>
+      <scope>test</scope>
     </dependency>
-    <!-- DataNucleus dependencies -->
-    <dependency>
-      <groupId>org.datanucleus</groupId>
-      <artifactId>datanucleus-core</artifactId>
-      <version>[3.0, 3.1)</version>
+	-->
+
+	<!-- DataNucleus dependencies -->
+	<dependency>
+      <groupId>javax.jdo</groupId>
+      <artifactId>jdo-api</artifactId>
+      <version>${jdo-api.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.geronimo.specs</groupId>
       <artifactId>geronimo-jpa_2.0_spec</artifactId>
-      <version>1.0</version>
-      <optional>true</optional>
+      <version>${geronimo-jpa_2.0_spec.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.datanucleus</groupId>
+      <artifactId>datanucleus-core</artifactId>
+      <version>${datanucleus-core.version}</version>
+      <!-- <scope>runtime</scope> -->  <!-- Error : Could not find API definition for name "JPA". Perhaps you dont have the requisite datanucleus-api-XXX jar in the CLASSPATH? -->
+      <!-- <optional>true</optional> -->
     </dependency>
     <dependency>
       <groupId>org.datanucleus</groupId>
       <artifactId>datanucleus-api-jpa</artifactId>
-      <version>[3.0, 3.1)</version>
-      <optional>true</optional>
+      <version>${datanucleus-api-jpa.version}</version>
+      <!-- <scope>runtime</scope> -->
+      <!-- <optional>true</optional> -->
     </dependency>
-    <dependency>
-      <groupId>javax.jdo</groupId>
-      <artifactId>jdo-api</artifactId>
-      <version>[3.0, 4.0)</version>
-    </dependency>
+    <!-- Obviously replace the datanucleus-rdbms jar with the jar for whichever datastore you are using.
     <dependency>
       <groupId>org.datanucleus</groupId>
-      <artifactId>datanucleus-api-jdo</artifactId>
-      <version>[3.0, 3.1)</version>
-      <optional>true</optional>
+      <artifactId>datanucleus-rdbms</artifactId>
+      <version>[3.2.0-m1, 3.2.99)</version>
+      <scope>runtime</scope>
     </dependency>
-
-    <dependency>
-      <groupId>org.datanucleus</groupId>
-      <artifactId>datanucleus-enhancer</artifactId>
-      <version>[3.0, 3.1)</version>
-      <scope>compile</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-api-stubs</artifactId>
-      <version>1.5.5</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-testing</artifactId>
-      <version>1.5.5</version>
-      <scope>test</scope>
+    -->
+	<dependency>
+      <groupId>com.google.appengine.orm</groupId>
+      <artifactId>datanucleus-appengine</artifactId>
+      <version>${datanucleus-appengine.version}</version>
     </dependency>
 
   </dependencies>

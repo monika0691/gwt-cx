@@ -66,7 +66,7 @@
     <commons-lang.version>2.4</commons-lang.version>
     <commons-io.version>1.4</commons-io.version>
     <extgwt.version>3.0.1</extgwt.version>
-    <gae.version>1.7.3</gae.version>
+    <gae.version>1.7.5</gae.version>
     <!-- <gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home> -->
     <gae.home>${settings.localRepository}/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
     <gae.port>8080</gae.port>

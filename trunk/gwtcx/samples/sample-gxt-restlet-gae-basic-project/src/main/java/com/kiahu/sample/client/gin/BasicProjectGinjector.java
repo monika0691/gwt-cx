@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2012 Kiahu
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -18,8 +18,6 @@ import com.google.gwt.inject.client.AsyncProvider;
 import com.google.gwt.inject.client.Ginjector;
 import com.google.inject.Provider;
 import com.google.web.bindery.event.shared.EventBus;
-import com.gwtcx.client.presenter.ContactInformationPresenter;
-import com.gwtcx.client.presenter.ContactPagePresenter;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.kiahu.sample.client.presenter.AccountsPresenter;
 import com.kiahu.sample.client.presenter.ActivitiesPresenter;
@@ -33,6 +31,8 @@ import com.kiahu.sample.client.presenter.HighlightsPresenter;
 import com.kiahu.sample.client.presenter.ImportsPresenter;
 import com.kiahu.sample.client.presenter.MainPagePresenter;
 import com.kiahu.sample.client.presenter.ReportsPresenter;
+import com.kiahu.sample.client.presenter.contact.ContactInformationPresenter;
+import com.kiahu.sample.client.presenter.contact.ContactPagePresenter;
 
 //
 // Create a method for each object type you want to create, and the an implementation

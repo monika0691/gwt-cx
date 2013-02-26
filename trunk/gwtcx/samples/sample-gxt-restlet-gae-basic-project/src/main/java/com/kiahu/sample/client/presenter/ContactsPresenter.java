@@ -91,6 +91,8 @@ public class ContactsPresenter extends
   // private static final String urlPattern = "/RESTfulAPI/1.0/*";
   private static final String contactsPath = "/RESTfulAPI/1.0/contacts";
 
+  // retrieveResultSet() is called in the AbstractPagingPresenter's onBind() method
+
   @Override
   protected void retrieveResultSet() {
 
