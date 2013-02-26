@@ -66,8 +66,7 @@ public class MainPagePresenter extends
   public static final Type<RevealContentHandler<?>> TYPE_SetContextAreaContent = new Type<RevealContentHandler<?>>();
 
   @Inject
-  public MainPagePresenter(final EventBus eventBus, MyView view, MyProxy proxy,
-      PlaceManager placeManager) {
+  public MainPagePresenter(final EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager) {
     super(eventBus, view, proxy, placeManager);
 
     Log.debug("MainPagePresenter()");

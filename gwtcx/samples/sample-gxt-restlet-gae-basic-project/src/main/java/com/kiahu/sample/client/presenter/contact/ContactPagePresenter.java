@@ -12,16 +12,16 @@
  * under the License.
  */
 
-package com.gwtcx.client.presenter;
+package com.kiahu.sample.client.presenter.contact;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.NameTokens;
+import com.gwtcx.client.presenter.AbstractContactPagePresenter;
 import com.gwtcx.client.uihandlers.ContactPageUiHandlers;
 import com.gwtplatform.mvp.client.HasUiHandlers;
-import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.NameToken;
@@ -33,13 +33,10 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.proxy.RevealRootLayoutContentEvent;
 
+
 public class ContactPagePresenter extends
-   Presenter<ContactPagePresenter.MyView, ContactPagePresenter.MyProxy> implements
-    ContactPageUiHandlers {
-
-  // public static NavigationPane navigationPane = null;
-
-  private final PlaceManager placeManager;
+    AbstractContactPagePresenter<ContactPagePresenter.MyView, ContactPagePresenter.MyProxy> implements
+  ContactPageUiHandlers {
 
   //
   // don't forget to update your Ginjector & SharedGinModule
@@ -58,15 +55,12 @@ public class ContactPagePresenter extends
   public static final Type<RevealContentHandler<?>> TYPE_SetContextAreaContent = new Type<RevealContentHandler<?>>();
 
   @Inject
-  public ContactPagePresenter(EventBus eventBus, MyView view, MyProxy proxy,
-      PlaceManager placeManager) {
-    super(eventBus, view, proxy);
+  public ContactPagePresenter(EventBus eventBus, MyView view, MyProxy proxy, PlaceManager placeManager) {
+    super(eventBus, view, proxy, placeManager);
 
     Log.debug("ContactPagePresenter()");
 
     getView().setUiHandlers(this);
-
-    this.placeManager = placeManager;
   }
 
   @Override
@@ -86,16 +80,6 @@ public class ContactPagePresenter extends
   }
 
   @Override
-  protected void onReveal() {
-    super.onReveal();
-  }
-
-  @Override
-  protected void onReset() {
-    super.onReset();
-  }
-
-  @Override
   protected void revealInParent() {
 
     Log.debug("revealInParent() - RevealRootLayoutContentEvent.fire(this, this)");
@@ -106,26 +90,13 @@ public class ContactPagePresenter extends
 
   public void onSaveButtonClicked() {
 
+    // fire event to notify the nested Presenters
+
   }
 
   public static native void close() /*-{ $wnd.close(); }-*/;
 
   public void onSaveAndCloseButtonClicked() {
     close();
-  }
-
-  protected void navigationPaneClicked(String place) {
-    if (place.length() != 0) {
-      PlaceRequest placeRequest = new PlaceRequest(place);
-      getPlaceManager().revealPlace(placeRequest);
-    }
-  }
-
-  public void onNavigationPaneSectionClicked(String place) {
-    navigationPaneClicked(place);
-  }
-
-  public PlaceManager getPlaceManager() {
-    return placeManager;
   }
 }

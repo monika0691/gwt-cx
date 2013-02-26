@@ -22,8 +22,8 @@ import com.gwtcx.shared.dto.ContactsRepresentation;
 
 public interface ContactsResourceProxy extends ClientProxy {
 
-    @Get
-    public void retrieve(Result<ContactsRepresentation> result);
+  @Get
+  public void retrieve(Result<ContactsRepresentation> result);
 
 }
 

@@ -12,12 +12,19 @@
  * under the License.
  */
 
+// http://stackoverflow.com/questions/12294627/generate-setters-that-return-self-in-eclipse
+// http://www.marchwicki.pl/blog/2010/11/building-a-pojo-in-an-elegant-way/
+// TODO: http://stackoverflow.com/questions/4342601/building-an-object/)
+// http://my.safaribooksonline.com/book/programming/java/9780137150021/creating-and-destroying-objects/ch02lev1sec2
+
+// See: http://en.wikipedia.org/wiki/Method_chaining
+
 package com.gwtcx.server.gae.domain;
 
 // Don't forget to add the add the following line to persistence.xml:
 // <class>com.gwtcx.core.server.gae.domain.Contact</class>
 
-import java.util.logging.Logger;
+// import java.util.logging.Logger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,6 +35,11 @@ import javax.persistence.Entity;
 @Entity
 public class Contact extends Party {
 
+  // Be sure to make all of your persistent fields private and create accessors
+  // (getters and setters) for them. In addition to all the good reasons for
+  // using encapsulation, if a persistent object field is accessed directly from
+  // another object, this may circumvent the JPA/JDO class enhancement post-processing.
+
   @Column(name = EntityTokens.GIVEN_NAME_COLUMN)
   private String givenName;
 
@@ -37,7 +49,7 @@ public class Contact extends Party {
   @Column(name = EntityTokens.FAMILY_NAME_COLUMN)
   private String familyName;
 
-  private static Logger logger = Logger.getLogger(Contact.class.getName());
+  // private static Logger logger = Logger.getLogger(Contact.class.getName());
 
   public String getGivenName() {
     return givenName;

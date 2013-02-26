@@ -21,8 +21,8 @@
     <module>gwtcx-core-client-smartgwt</module>
     <module>gwtcx-core-shared</module>
 	<module>gwtcx-core-shared-dispatch</module>
-    <module>gwtcx-core-server</module>
-    <!-- <module>gwtcx-core-server-gae</module> -->
+    <!-- <module>gwtcx-core-server</module> -->
+    <module>gwtcx-core-server-gae</module>
   </modules>
 
   <build>
@@ -118,11 +118,13 @@
         <artifactId>gwtcx-core-client-smartgwt</artifactId>
         <version>${project.version}</version>
       </dependency>
+	  <!--
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>gwtcx-core-server</artifactId>
         <version>${project.version}</version>
       </dependency>
+	  -->
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>gwtcx-core-server-gae</artifactId>

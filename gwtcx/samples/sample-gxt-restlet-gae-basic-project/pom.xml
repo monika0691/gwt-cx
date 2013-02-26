@@ -79,7 +79,7 @@
     <!-- Kiahu CX - Restlet/JEE compile scope meta-package -->
     <dependency>
       <groupId>com.gwtcx</groupId>
-      <artifactId>gwtcx-restlet-gae-compile-scope-dependencies</artifactId>
+      <artifactId>gwtcx-restlet-jee-compile-scope-dependencies</artifactId>
       <version>${gwtcx.version}</version>
       <scope>compile</scope>
       <type>pom</type>
