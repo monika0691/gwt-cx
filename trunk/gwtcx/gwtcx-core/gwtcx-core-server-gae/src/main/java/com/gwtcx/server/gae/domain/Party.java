@@ -48,6 +48,8 @@ public class Party extends DatastoreEntity {
      public String getAbbreviation() { return abbreviation; }
 
      private String abbreviation;
+
+     // It's important to have the constants at the top, and the methods/attributes at the bottom.
   }
 
 }

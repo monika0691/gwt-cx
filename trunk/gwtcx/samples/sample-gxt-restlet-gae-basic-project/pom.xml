@@ -27,7 +27,7 @@
 
   <properties>
     <!-- You can override properties set in the Parent POM -->
-    <target.jdk>1.6</target.jdk>
+    <target.jdk>1.7</target.jdk>
     <gwt.compiler.strict>true</gwt.compiler.strict>
     <restlet.version>2.1.1</restlet.version>
   </properties>

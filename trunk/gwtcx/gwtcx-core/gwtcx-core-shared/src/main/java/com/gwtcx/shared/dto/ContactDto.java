@@ -25,6 +25,20 @@ public class ContactDto extends EntityDto {
 
   private static final long serialVersionUID = 1L;
 
+  enum Field
+  {
+     SALUTATION("salutation"), GIVEN_NAME("givenName"), MIDDLE_NAME("middleName"),
+         FAMILY_NAME("familyName"), FULL_NAME("fullName"), CORRESPONDENCE("correspondence"),
+       JOB_TITLE("jobTitle"), OCCUPATION("occupation"), PARENT_CUSTOMER("parentCustomer"), CURRENCY("currency"), NOT_USED("notUsed");
+
+     private Field(String stringValue) { this.stringValue = stringValue; }
+     public String toString() { return stringValue; }
+
+     private String stringValue;
+
+     // It's important to have the constants at the top, and the methods/attributes at the bottom.
+  }
+
   protected String salutation;      // Rob
   protected String givenName;       // Robert
   protected String middleName;      // James
@@ -67,6 +81,85 @@ public class ContactDto extends EntityDto {
   public ContactDto setId(String id) {
     this.id = id;
     return this;
+  }
+
+  public Field getFieldAsEnum(String fieldName) {
+
+    Field result = Field.NOT_USED;
+
+    for (Field field : Field.values()) {
+      if (fieldName.contentEquals(field.toString())) {
+        result = field;
+      }
+    }
+
+    return result;
+  }
+
+  public String getFieldValue(String fieldName) {
+
+    String result = null;
+    Field field = getFieldAsEnum(fieldName);
+
+    switch (field) {
+
+      case SALUTATION: result = getSalutation(); break;
+
+      case GIVEN_NAME: result = getGivenName(); break;
+
+      case MIDDLE_NAME: result = getMiddleName(); break;
+
+      case FAMILY_NAME: result = getFamilyName(); break;
+
+      case FULL_NAME: result = getFullName(); break;
+
+      case CORRESPONDENCE: result = getCorrespondence(); break;
+
+      case JOB_TITLE: result = getJobTitle(); break;
+
+      case OCCUPATION: result = getOccupation(); break;
+
+      case PARENT_CUSTOMER: result = getParentCustomer(); break;
+
+      case CURRENCY: result = getCurrency(); break;
+
+      default:
+        result = "Unknown field";
+        break;
+    }
+
+    return result;
+  }
+
+  public void setFieldValue(String fieldName, String value) {
+
+    Field field = getFieldAsEnum(fieldName);
+
+    switch (field) {
+
+      case SALUTATION: setSalutation(value); break;
+
+      case GIVEN_NAME: setGivenName(value); break;
+
+      case MIDDLE_NAME: setMiddleName(value); break;
+
+      case FAMILY_NAME: setFamilyName(value); break;
+
+      case FULL_NAME: setFullName(value); break;
+
+      case CORRESPONDENCE: setCorrespondence(value); break;
+
+      case JOB_TITLE: setJobTitle(value); break;
+
+      case OCCUPATION: setOccupation(value); break;
+
+      case PARENT_CUSTOMER: setParentCustomer(value); break;
+
+      case CURRENCY: setCurrency(value); break;
+
+      default:
+        break;
+    }
   }
 
   public String getSalutation() {

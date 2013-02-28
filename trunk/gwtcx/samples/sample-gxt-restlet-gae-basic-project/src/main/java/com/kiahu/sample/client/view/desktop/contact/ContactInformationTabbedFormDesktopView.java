@@ -125,7 +125,7 @@ public class ContactInformationTabbedFormDesktopView extends
         '<tr><td class=givenName></td><td class=homePhone></td></tr>',
         '<tr><td class=middleName></td><td class=mobilePhone></td></tr>',
         '<tr><td class=familyName></td><td class=fax></td></tr>',
-         '<tr><td></td><td class=email></td></tr>',
+         '<tr><td class=parentCustomer></td><td class=email></td></tr>',
         '</table>'
     ].join("");
   }-*/;
@@ -150,17 +150,21 @@ public class ContactInformationTabbedFormDesktopView extends
   @Override
   public void setResult(ContactRepresentation dto) {
 
+    Log.debug("setResult()");
+
     try {
       if (dto != null) {
         this.contact = dto;
         setFields(this.contact);
       }
     } catch (Exception e) {
-      Log.warn("Unable to set server response: " + e);
+      Log.error("Unable to set server response: " + e);
     }
   }
 
   public void setFields(ContactRepresentation dto) {
+
+    Log.debug("setFields()");
 
     nameSection.setFields(dto);
     // addressSection.setFields(dto);
