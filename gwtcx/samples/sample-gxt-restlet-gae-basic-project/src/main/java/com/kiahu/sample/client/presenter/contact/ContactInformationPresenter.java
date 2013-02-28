@@ -35,6 +35,7 @@ import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
 import com.gwtcx.shared.dto.ContactRepresentation;
 // import com.gwtcx.shared.dto.ContactsRepresentation;
+import com.kiahu.sample.client.presenter.MainPagePresenter;
 import com.kiahu.sample.client.restlet.ContactResourceProxy;
 import org.restlet.client.resource.Result;
 
@@ -53,7 +54,8 @@ public class ContactInformationPresenter extends
   // don't forget to update your Ginjector & SharedGinModule
   //
   @ProxyCodeSplit
-  @NameToken(NameTokens.contactInformation)
+  // @NameToken(NameTokens.contactInformation)
+  @NameToken(NameTokens.queues)
   // @UseGatekeeper(LoggedInGatekeeper.class)
   public interface MyProxy extends Proxy<ContactInformationPresenter>, Place {
   }
@@ -76,8 +78,11 @@ public class ContactInformationPresenter extends
   protected void onBind() {
     super.onBind();
 
-    activity = GwtCxEntryPoint.decodeBase64(Window.Location.getParameter(ACTIVITY));
-    id = GwtCxEntryPoint.decodeBase64(Window.Location.getParameter(ID));
+    // activity = GwtCxEntryPoint.decodeBase64(Window.Location.getParameter(ACTIVITY));
+    // id = GwtCxEntryPoint.decodeBase64(Window.Location.getParameter(ID));
+
+    activity = EDIT;
+    id = "3";
 
     Log.debug("Activity: " + activity + " id: " + id);
 
@@ -93,7 +98,11 @@ public class ContactInformationPresenter extends
 
   @Override
   protected void revealInParent() {
-    RevealContentEvent.fire(this, ContactPagePresenter.TYPE_SetContextAreaContent, this);
+    // RevealContentEvent.fire(this, ContactPagePresenter.TYPE_SetContextAreaContent, this);
+
+    Log.debug("revealInParent() - " + NameTokens.queues);
+
+    RevealContentEvent.fire(this, MainPagePresenter.TYPE_SetContextAreaContent, this);
   }
 
   @Override
@@ -102,7 +111,8 @@ public class ContactInformationPresenter extends
 
     Log.debug("onReveal() - " + NameTokens.contactInformation);
 
-    NavigationPaneUpdateEvent.fire(getEventBus(), NameTokens.contactInformation, "");
+    // NavigationPaneUpdateEvent.fire(getEventBus(), NameTokens.contactInformation, "");
+    NavigationPaneUpdateEvent.fire(getEventBus(), NameTokens.queues, "");
   }
 
   // public void createOrUpdateAccount(AccountDto accountDto) { }
