@@ -19,44 +19,17 @@ import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.uihandlers.ContactInformationUiHandlers;
 import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormDesktopView;
-import com.gwtcx.extgwt.client.desktop.view.contact.ContactInformationAddressSection;
-import com.gwtcx.extgwt.client.desktop.view.contact.ContactInformationElectronicAddressSection;
-import com.gwtcx.extgwt.client.desktop.view.contact.ContactInformationNameSection;
+import com.gwtcx.extgwt.client.desktop.view.contact.ContactInformationGeneralInformationTab;
 import com.gwtcx.shared.dto.ContactRepresentation;
 import com.kiahu.sample.client.presenter.contact.ContactInformationPresenter;
 import com.sencha.gxt.widget.core.client.TabPanel;
-import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.MarginData;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
-import com.sencha.gxt.widget.core.client.form.FieldSet;
 import com.sencha.gxt.widget.core.client.form.FormPanel;
-
-/*
-
-  The values for HorizontalLayoutData and VerticalLayoutData have different meanings depending on which range they are in:
-
-  - If -1, then the item is measured, and given the space it has requested - useful for fields or labels
-  - If greater than 1, a pixel value is assigned - you've noticed this in using 100, which draws as 100px wide
-  - If greater than 0, and less than or equal to 1, then it will be assigned a percentage of the remaining size after the
-    first two items listed have been calculated. The value 1 is 100%, and .25 would be 25% of the remaining space.
-
-*/
 
 public class ContactInformationTabbedFormDesktopView extends
     AbstractTabbedFormDesktopView<ContactInformationUiHandlers> implements
   ContactInformationPresenter.MyView {
 
-  protected VerticalLayoutContainer vLayout;
-
-  protected FieldSet generalInformation;
-  protected FieldSet addressInformation;
-
-  protected HtmlLayoutContainer generalLayout;
-  protected HtmlLayoutContainer addressLayout;
-
-  protected ContactInformationNameSection nameSection;
-  protected ContactInformationElectronicAddressSection addressSection;
+  private ContactInformationGeneralInformationTab generalInformationTab;
 
   private ContactRepresentation contact;
 
@@ -65,86 +38,22 @@ public class ContactInformationTabbedFormDesktopView extends
       final TabPanel tabPanel) {
     super(eventBus, form, tabPanel);
 
-    Log.debug("ContactInformationTabbedFormView()");
+    Log.debug("ContactInformationTabbedFormDesktopView()");
 
     contact = null;
 
-    createGeneralInformationSection();
-
-    createAddressInformationSection();
-
-    vLayout = new VerticalLayoutContainer();
-    vLayout.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
-    // vLayout.setStyleName("gwtcx-Dashboards-View");  // overflow: auto;
-    vLayout.setLayoutData(new MarginData(DEFAULT_MARGIN));
-
-    vLayout.add(generalInformation, new VerticalLayoutData(1, -1));
-    vLayout.add(addressInformation, new VerticalLayoutData(1, -1));
-
-    // vLayout.add(generalLayout, new VerticalLayoutData(1, -1));
-    // vLayout.add(addressLayout, new VerticalLayoutData(1, -1));
-
-    getTabPanel().add(vLayout, "General");
+    createTabs();
   }
 
-  protected void createGeneralInformationSection() {
+  protected void createTabs() {
 
-    generalInformation = new FieldSet();
-    generalInformation.setHeadingText("General Information");
-    generalInformation.setCollapsible(true);
-
-    generalLayout = new HtmlLayoutContainer(getGeneralInformationSectionTableMarkup());
-    generalLayout.setLayoutData(new MarginData(DEFAULT_MARGIN));
-
-    nameSection = new ContactInformationNameSection(generalLayout);
-    addressSection = new ContactInformationElectronicAddressSection(generalLayout);
-
-    generalInformation.add(generalLayout);
+    generalInformationTab = new ContactInformationGeneralInformationTab(getTabPanel());
   }
-
-  protected void createAddressInformationSection() {
-
-    addressInformation = new FieldSet();
-    addressInformation.setHeadingText("Address Information");
-    addressInformation.setCollapsible(true);
-
-    addressLayout = new HtmlLayoutContainer(getAddressInformationSectionTableMarkup());
-    addressLayout.setLayoutData(new MarginData(DEFAULT_MARGIN));
-
-    new ContactInformationAddressSection(addressLayout);
-
-    addressInformation.add(addressLayout);
-  }
-
-  // Widgets that are implemented using <table> or <frame> elements do not automatically fill the space provided by the layout.
-  // In order to fix this, you will need to explicitly set these widgets width and height to 100%.
-
-  private native String getGeneralInformationSectionTableMarkup() /*-{
-    return [ '<table width=100% cellpadding=0 cellspacing=0>',
-        '<tr><td class=salutation width=50%></td><td class=businessPhone width=50%></td></tr>',
-        '<tr><td class=givenName></td><td class=homePhone></td></tr>',
-        '<tr><td class=middleName></td><td class=mobilePhone></td></tr>',
-        '<tr><td class=familyName></td><td class=fax></td></tr>',
-         '<tr><td class=parentCustomer></td><td class=email></td></tr>',
-        '</table>'
-    ].join("");
-  }-*/;
-
-  private native String getAddressInformationSectionTableMarkup() /*-{
-    return [ '<table width=100% cellpadding=0 cellspacing=0>',
-        '<tr><td class=addressName width=50%></td><td class=postalCode width=50%></td></tr>',
-        '<tr><td class=addressLine1></td><td class=country></td></tr>',
-        '<tr><td class=addressLine2></td><td class=addressType></td></tr>',
-        '<tr><td class=addressLine3></td><td></td></tr>',
-        '<tr><td class=city></td><td></td></tr>',
-        '<tr><td class=state></td><td></td></tr>',
-        '</table>',
-    ].join("");
-  }-*/;
 
   @Override
   public void setId(String id) {
 
+    // TODO
   }
 
   @Override
@@ -166,15 +75,130 @@ public class ContactInformationTabbedFormDesktopView extends
 
     Log.debug("setFields()");
 
-    nameSection.setFields(dto);
-    // addressSection.setFields(dto);
+    generalInformationTab.setFields(dto);
 
     // set Masthead Contact Name label and the browser window's title
     // setMastheadLabel(dto.getFullName());
   }
 }
 
+
 /*
+
+
+  private final static int TAB_LABEL = 0;
+
+  private String[][] tabs = {
+    {"General"}
+  };
+
+  // {"Details"}, {"Administration"}, {"Notes"}
+
+  private int numberOfTabs = tabs.length;
+
+  protected void createTabs() {
+
+    VerticalLayoutContainer layout = null;
+
+    try {
+
+      for (int row = 0; row < numberOfTabs; row++) {
+
+        layout = new VerticalLayoutContainer();
+        layout.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+        layout.setLayoutData(new MarginData(DEFAULT_MARGIN));
+
+        createFieldSets(layout);
+        getTabPanel().add(layout, tabs[row][TAB_LABEL]);
+      }
+
+    } catch (Exception e) {
+      Log.error("Unable to create tabs: " + e);
+    }
+  }
+
+  private String[][] fieldSets = {
+    {"General Information", "Address Information", ""},
+    {"Section 1", "Section 2"}
+  };
+
+  private int numberOfSections = fieldSets.length;
+  @SuppressWarnings("unchecked")
+  private EntitySection<ContactRepresentation> [] entitySections = new EntitySection[numberOfTabs];
+
+  protected void createFieldSets(VerticalLayoutContainer layout) {
+
+    for (int row = 0; row < numberOfSections; row++) {
+
+      HtmlLayoutContainer HtmlLayout = getSectionHtmlLayout(Section.NAME_SECTION.toString());
+      HtmlLayout.setLayoutData(new MarginData(DEFAULT_MARGIN));
+
+      entitySections[row] = new ContactInformationNameSection(HtmlLayout);
+
+      layout.add(createGeneralInformationFieldSet(), new VerticalLayoutData(1, -1));
+    }
+  }
+
+
+  protected FieldSet createGeneralInformationFieldSet() {
+
+    FieldSet fieldSet = new FieldSet();
+    fieldSet.setHeadingText("General Information");
+    fieldSet.setCollapsible(true);
+
+    HtmlLayoutContainer layout = getSectionHtmlLayout(Section.NAME_SECTION.toString());
+    layout.setLayoutData(new MarginData(DEFAULT_MARGIN));
+
+    nameSection = new ContactInformationNameSection(layout);
+    electronicAddressSection = new ContactInformationElectronicAddressSection(layout);
+
+    fieldSet.add(layout);
+
+    return fieldSet;
+  }
+
+
+  protected void createGeneralTab() {
+
+    VerticalLayoutContainer layout = new VerticalLayoutContainer();
+    layout.setSize(CONTEXT_AREA_WIDTH, CONTEXT_AREA_HEIGHT);
+    // vLayout.setStyleName("gwtcx-Dashboards-View");  // overflow: auto;
+    layout.setLayoutData(new MarginData(DEFAULT_MARGIN));
+
+    layout.add(createGeneralInformationFieldSet(), new VerticalLayoutData(1, -1));
+    layout.add(createAddressInformationFieldSet(), new VerticalLayoutData(1, -1));
+
+    getTabPanel().add(layout, "General");
+
+  }
+
+
+
+
+
+  protected FieldSet createAddressInformationFieldSet() {
+
+    FieldSet fieldSet = new FieldSet();
+    fieldSet.setHeadingText("Address Information");
+    fieldSet.setCollapsible(true);
+
+    HtmlLayoutContainer layout = getSectionHtmlLayout(Section.ADDRESS_SECTION.toString());
+    layout.setLayoutData(new MarginData(DEFAULT_MARGIN));
+
+    addressSection = new ContactInformationAddressSection(layout);
+
+    fieldSet.add(layout);
+
+    return fieldSet;
+  }
+
+
+
+*/
+
+/*
+
+        // vLayout.setStyleName("gwtcx-Dashboards-View");  // overflow: auto;
 
   public void setId(String id) {
 
@@ -201,5 +225,10 @@ public class ContactInformationTabbedFormDesktopView extends
     // set Masthead Account Name label and the browser window's title
     setMastheadLabel(accountDto.getAccountName());
   }
+
+
+    // vLayout.add(generalLayout, new VerticalLayoutData(1, -1));
+    // vLayout.add(addressLayout, new VerticalLayoutData(1, -1));
+
 
 */
