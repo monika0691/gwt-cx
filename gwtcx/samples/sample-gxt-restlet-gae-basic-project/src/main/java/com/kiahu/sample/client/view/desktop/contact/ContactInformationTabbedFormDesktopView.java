@@ -20,6 +20,7 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.uihandlers.ContactInformationUiHandlers;
 import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormDesktopView;
 import com.gwtcx.extgwt.client.desktop.view.contact.ContactInformationGeneralInformationTab;
+import com.gwtcx.extgwt.client.desktop.view.contact.EntityTab;
 import com.gwtcx.shared.dto.ContactRepresentation;
 import com.kiahu.sample.client.presenter.contact.ContactInformationPresenter;
 import com.sencha.gxt.widget.core.client.TabPanel;
@@ -28,8 +29,6 @@ import com.sencha.gxt.widget.core.client.form.FormPanel;
 public class ContactInformationTabbedFormDesktopView extends
     AbstractTabbedFormDesktopView<ContactInformationUiHandlers> implements
   ContactInformationPresenter.MyView {
-
-  private ContactInformationGeneralInformationTab generalInformationTab;
 
   private ContactRepresentation contact;
 
@@ -45,10 +44,90 @@ public class ContactInformationTabbedFormDesktopView extends
     createTabs();
   }
 
+  private final static int TAB_LABEL = 0;
+
+  private String[][] tabs = {
+    {"General"},
+    {"Details"},
+    {"Administration"},
+    {"Notes"}
+  };
+
+  private int numberOfTabs = tabs.length;
+  @SuppressWarnings("unchecked")
+  private EntityTab<ContactRepresentation> [] entityTabs = new EntityTab[numberOfTabs];
+
+    protected void createTabs() {
+
+    Log.debug("createTabs()");
+
+    Log.debug("numberOfTabs: " + numberOfTabs);
+
+    for (int row = 0; row < numberOfTabs; row++) {
+
+      entityTabs[row] = getTab(tabs[row][TAB_LABEL]);
+    }
+  }
+
+  enum Tab
+  {
+     GENERAL("General"), DETAILS("Details"), ADMINISTRATION("Administration"), NOTES("Notes"), NOT_USED("notUsed");
+
+     private Tab(String stringValue) { this.stringValue = stringValue; }
+     public String toString() { return stringValue; }
+
+     private String stringValue;
+  }
+
+  public Tab getTabAsEnum(String tabName) {
+
+    Tab result = Tab.NOT_USED;
+
+    for (Tab tab : Tab.values()) {
+      if (tabName.contentEquals(tab.toString())) {
+        result = tab;
+      }
+    }
+
+    return result;
+  }
+
+
+  public EntityTab<ContactRepresentation> getTab(String tabName) {
+
+    EntityTab<ContactRepresentation> result = null;
+    Tab tab = getTabAsEnum(tabName);
+
+    Log.debug("getTab()");
+
+    switch (tab) {
+
+      case GENERAL: result = new ContactInformationGeneralInformationTab(getTabPanel()); break;
+
+      case DETAILS: result = new ContactInformationGeneralInformationTab(getTabPanel()); break;
+
+      case ADMINISTRATION: result = new ContactInformationGeneralInformationTab(getTabPanel()); break;
+
+      case NOTES: result = new ContactInformationGeneralInformationTab(getTabPanel()); break;
+
+      default:
+        result = null;
+        break;
+    }
+
+    return result;
+  }
+
+  /*
+
+  private ContactInformationGeneralInformationTab generalInformationTab;
+
   protected void createTabs() {
 
     generalInformationTab = new ContactInformationGeneralInformationTab(getTabPanel());
   }
+
+  */
 
   @Override
   public void setId(String id) {
@@ -75,13 +154,41 @@ public class ContactInformationTabbedFormDesktopView extends
 
     Log.debug("setFields()");
 
-    generalInformationTab.setFields(dto);
+    for (int row = 0; row < numberOfTabs; row++) {
+
+      entityTabs[row].setFields(dto);
+    }
 
     // set Masthead Contact Name label and the browser window's title
     // setMastheadLabel(dto.getFullName());
   }
 }
 
+/*
+
+  protected void createTabs() {
+
+    Log.debug("createTabs()");
+
+    Log.debug("tabs: " + tabs);
+
+    for (int row = 0; row < numberOfTabs; row++) {
+
+      Log.debug("createTabs()");
+
+      // The argument to create(Class) must be a class literal because the Production Mode compiler
+      // must be able to statically determine the requested type at compile-time. This can be tricky
+      // because using a Class variable may appear to work correctly in Development Mode.
+
+      // http://stackoverflow.com/questions/451658/gwt-dynamic-loading-using-gwt-create-with-string-literals-instead-of-class-lit
+
+      ContactInformationGeneralInformationTab tab = GWT.create(tabs[row][0]);
+      tab.setTabPanel(tabPanel);
+    }
+  }
+
+
+*/
 
 /*
 

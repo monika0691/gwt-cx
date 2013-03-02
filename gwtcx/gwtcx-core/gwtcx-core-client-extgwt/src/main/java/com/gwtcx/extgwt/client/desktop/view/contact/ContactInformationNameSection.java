@@ -59,11 +59,11 @@ public class ContactInformationNameSection extends EntitySection<ContactRepresen
     {I18nUtil.getConstant().familyNameLabel(), ".familyName", RegExTokens.ALPHANUMERIC_1_32, RegExTokens.FALSE, "Ferguson"},
     {I18nUtil.getConstant().parentCustomerLabel(), ".parentCustomer", RegExTokens.ALPHANUMERIC_0_32, RegExTokens.TRUE, "Kiahu Pty Limited"},
 
-    {I18nUtil.getConstant().businessPhoneLabel(), ".businessPhone", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, ""},
-    {I18nUtil.getConstant().homePhoneLabel(), ".homePhone", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, ""},
-    {I18nUtil.getConstant().mobilePhoneLabel(), ".mobilePhone", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, ""},
-    {I18nUtil.getConstant().faxLabel(), ".fax", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, ""},
-    {I18nUtil.getConstant().emailLabel(), ".email", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, ""}
+    {I18nUtil.getConstant().businessPhoneLabel(), ".businessPhone", RegExTokens.NUMERIC_0_10, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().homePhoneLabel(), ".homePhone", RegExTokens.NUMERIC_0_10, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().mobilePhoneLabel(), ".mobilePhone", RegExTokens.NUMERIC_0_10, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().faxLabel(), ".fax", RegExTokens.NUMERIC_0_10, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().emailLabel(), ".email", RegExTokens.EMAIL, RegExTokens.TRUE, ""}
   };
 
   private int rows = fields.length;

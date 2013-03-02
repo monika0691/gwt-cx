@@ -29,7 +29,10 @@ public class ContactDto extends EntityDto {
   {
      SALUTATION("salutation"), GIVEN_NAME("givenName"), MIDDLE_NAME("middleName"),
          FAMILY_NAME("familyName"), FULL_NAME("fullName"), CORRESPONDENCE("correspondence"),
-       JOB_TITLE("jobTitle"), OCCUPATION("occupation"), PARENT_CUSTOMER("parentCustomer"), CURRENCY("currency"), NOT_USED("notUsed");
+       JOB_TITLE("jobTitle"), OCCUPATION("occupation"), PARENT_CUSTOMER("parentCustomer"), CURRENCY("currency"),
+
+       BUSINESS_PHONE("businessPhone"), HOME_PHOME("homePhone"), MOBILE_PHONE("mobilePhone"), FAX("fax"), PAGER("pager"), EMAIL("email"),
+       NOT_USED("notUsed");
 
      private Field(String stringValue) { this.stringValue = stringValue; }
      public String toString() { return stringValue; }
@@ -103,6 +106,8 @@ public class ContactDto extends EntityDto {
 
     switch (field) {
 
+      // name
+
       case SALUTATION: result = getSalutation(); break;
 
       case GIVEN_NAME: result = getGivenName(); break;
@@ -123,6 +128,18 @@ public class ContactDto extends EntityDto {
 
       case CURRENCY: result = getCurrency(); break;
 
+      // electronic address
+
+      case BUSINESS_PHONE: result = getBusinessPhone(); break;
+
+      case HOME_PHOME: result = getHomePhone(); break;
+
+      case MOBILE_PHONE: result = getMobilePhone(); break;
+
+      case FAX: result = getFax(); break;
+
+      case EMAIL: result = getEmail(); break;
+
       default:
         result = "Unknown field";
         break;
@@ -136,6 +153,8 @@ public class ContactDto extends EntityDto {
     Field field = getFieldAsEnum(fieldName);
 
     switch (field) {
+
+      // name
 
       case SALUTATION: setSalutation(value); break;
 
@@ -156,6 +175,18 @@ public class ContactDto extends EntityDto {
       case PARENT_CUSTOMER: setParentCustomer(value); break;
 
       case CURRENCY: setCurrency(value); break;
+
+      // electronic address
+
+      case BUSINESS_PHONE: setBusinessPhone(value); break;
+
+      case HOME_PHOME: setHomePhone(value); break;
+
+      case MOBILE_PHONE: setMobilePhone(value); break;
+
+      case FAX: setFax(value); break;
+
+      case EMAIL: setEmail(value); break;
 
       default:
         break;

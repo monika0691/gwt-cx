@@ -55,7 +55,7 @@ public class ContactServerResource extends WadlServerResource implements
           setLocation("Level 34, 264-278 George Street Sydney NSW 2000").
           setAddressType("Mailing").
           setBusinessPhone("(02) 9253 8600").
-          setHomePhone("(02) 9253 8600").
+          setHomePhone("(02) 4957 8555").
           setMobilePhone("0414 414 515").
           setFax("").
           setPager("").
