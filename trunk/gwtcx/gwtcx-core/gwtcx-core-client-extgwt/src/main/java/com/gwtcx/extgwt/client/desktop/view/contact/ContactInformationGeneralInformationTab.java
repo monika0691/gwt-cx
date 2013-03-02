@@ -24,20 +24,40 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.form.FieldSet;
 
-public class ContactInformationGeneralInformationTab {
+public class ContactInformationGeneralInformationTab extends EntityTab<ContactRepresentation> {
 
-  public ContactInformationGeneralInformationTab(TabPanel tabPanel) {
+  private TabPanel tabPanel;
+
+  public ContactInformationGeneralInformationTab() {
 
     Log.debug("ContactInformationGeneralInformationTab()");
 
-    VerticalLayoutContainer layout = new VerticalLayoutContainer();
+    this.tabPanel = null;
+  }
 
-    layout.setSize(AbstractTabbedFormDesktopView.CONTEXT_AREA_WIDTH, AbstractTabbedFormDesktopView.CONTEXT_AREA_HEIGHT);
-    layout.setLayoutData(new MarginData(AbstractTabbedFormDesktopView.DEFAULT_MARGIN));
+  public ContactInformationGeneralInformationTab(TabPanel tabPanel) {
+    this();
 
-    createFieldSets(layout);
+    Log.debug("ContactInformationGeneralInformationTab(TabPanel tabPanel)");
 
-    tabPanel.add(layout, "General");
+    setTabPanel(tabPanel);
+  }
+
+  public void setTabPanel(TabPanel tabPanel) {
+
+    this.tabPanel = tabPanel;
+
+    if (this.tabPanel != null) {
+
+      VerticalLayoutContainer layout = new VerticalLayoutContainer();
+
+      layout.setSize(AbstractTabbedFormDesktopView.CONTEXT_AREA_WIDTH, AbstractTabbedFormDesktopView.CONTEXT_AREA_HEIGHT);
+      layout.setLayoutData(new MarginData(AbstractTabbedFormDesktopView.DEFAULT_MARGIN));
+
+      createFieldSets(layout);
+
+      this.tabPanel.add(layout, "General");
+    }
   }
 
   private final static int FIELD_SET_LABEL = 0;
