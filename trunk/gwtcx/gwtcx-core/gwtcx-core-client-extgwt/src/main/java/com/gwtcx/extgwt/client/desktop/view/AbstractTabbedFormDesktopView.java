@@ -95,9 +95,9 @@ public abstract class AbstractTabbedFormDesktopView<C extends UiHandlers> extend
 
   protected void bindCustomUiHandlers() { }
 
-  protected void initToolBar() { }
+  // protected void initToolBar() { }  // toolbar and statusbar are shared ...
 
-  protected void initStatusBar() { }
+  // protected void initStatusBar() { }
 
   @Override
   public Widget asWidget() {

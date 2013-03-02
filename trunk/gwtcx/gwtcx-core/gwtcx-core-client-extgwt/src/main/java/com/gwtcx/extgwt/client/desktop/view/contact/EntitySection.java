@@ -3,7 +3,8 @@ package com.gwtcx.extgwt.client.desktop.view.contact;
 import com.allen_sauer.gwt.log.client.Log;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 
-public abstract class EntitySection<T> {
+public class EntitySection<T> {
+  // public abstract class EntitySection<T> {
 
   private HtmlLayoutContainer panel;
 

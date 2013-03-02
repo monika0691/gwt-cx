@@ -17,9 +17,11 @@ package com.gwtcx.extgwt.client.desktop.view.contact;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.client.GWT;
 import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.shared.dto.AddressTypesDto;
+import com.gwtcx.shared.dto.ContactRepresentation;
 import com.gwtcx.shared.dto.CountriesDto;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
 import com.sencha.gxt.data.shared.LabelProvider;
@@ -32,9 +34,7 @@ import com.sencha.gxt.widget.core.client.form.ComboBox;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
-public class ContactInformationAddressSection {
-
-  protected HtmlLayoutContainer panel;
+public class ContactInformationAddressSection extends EntitySection<ContactRepresentation> {
 
   // See: com.gwtcx.shared.dto.ContactDto
 
@@ -60,8 +60,9 @@ public class ContactInformationAddressSection {
   }
 
   public ContactInformationAddressSection(final HtmlLayoutContainer panel) {
+    super(panel);
 
-    this.panel = panel;
+    Log.debug("ContactInformationAddressSection()");
 
     createFields();
   }
@@ -69,25 +70,25 @@ public class ContactInformationAddressSection {
   public void createFields() {
 
     addressName = new TextField();
-    panel.add(new FieldLabel(addressName,  I18nUtil.getConstant().addressNameLabel()), new HtmlData(".addressName"));
+    getPanel().add(new FieldLabel(addressName,  I18nUtil.getConstant().addressNameLabel()), new HtmlData(".addressName"));
 
     addressLine1 = new TextField();
-    panel.add(new FieldLabel(addressLine1, I18nUtil.getConstant().addressLine1Label()), new HtmlData(".addressLine1"));
+    getPanel().add(new FieldLabel(addressLine1, I18nUtil.getConstant().addressLine1Label()), new HtmlData(".addressLine1"));
 
     addressLine2 = new TextField();
-    panel.add(new FieldLabel(addressLine2, I18nUtil.getConstant().addressLine2Label()), new HtmlData(".addressLine2"));
+    getPanel().add(new FieldLabel(addressLine2, I18nUtil.getConstant().addressLine2Label()), new HtmlData(".addressLine2"));
 
     addressLine3 = new TextField();
-    panel.add(new FieldLabel(addressLine3, I18nUtil.getConstant().addressLine3Label()), new HtmlData(".addressLine3"));
+    getPanel().add(new FieldLabel(addressLine3, I18nUtil.getConstant().addressLine3Label()), new HtmlData(".addressLine3"));
 
     city = new TextField();
-    panel.add(new FieldLabel(city, I18nUtil.getConstant().cityLabel()), new HtmlData(".city"));
+    getPanel().add(new FieldLabel(city, I18nUtil.getConstant().cityLabel()), new HtmlData(".city"));
 
     state = new TextField();
-    panel.add(new FieldLabel(state, I18nUtil.getConstant().stateLabel()), new HtmlData(".state"));
+    getPanel().add(new FieldLabel(state, I18nUtil.getConstant().stateLabel()), new HtmlData(".state"));
 
     postalCode = new TextField();
-    panel.add(new FieldLabel(postalCode, I18nUtil.getConstant().postalCodeLabel()), new HtmlData(".postalCode"));
+    getPanel().add(new FieldLabel(postalCode, I18nUtil.getConstant().postalCodeLabel()), new HtmlData(".postalCode"));
 
 
 
@@ -100,7 +101,7 @@ public class ContactInformationAddressSection {
     country.setTriggerAction(TriggerAction.ALL);
     country.setValue(countryStore.get(0));
 
-    panel.add(new FieldLabel(country, I18nUtil.getConstant().countryLabel()), new HtmlData(".country"));
+    getPanel().add(new FieldLabel(country, I18nUtil.getConstant().countryLabel()), new HtmlData(".country"));
 
 
 
@@ -113,7 +114,17 @@ public class ContactInformationAddressSection {
     addressType.setTriggerAction(TriggerAction.ALL);
     addressType.setValue(addressTypeStore.get(1));
 
-    panel.add(new FieldLabel(addressType, I18nUtil.getConstant().addressTypeLabel()), new HtmlData(".addressType"));
+    getPanel().add(new FieldLabel(addressType, I18nUtil.getConstant().addressTypeLabel()), new HtmlData(".addressType"));
+
+  }
+
+  @Override
+  public void setFields(ContactRepresentation dto) {
+
+  }
+
+  @Override
+  public void getFields(ContactRepresentation dto) {
 
   }
 

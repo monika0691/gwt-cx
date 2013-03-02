@@ -39,6 +39,13 @@ public class ContactInformationNameSection extends EntitySection<ContactRepresen
   protected TextField parentCustomer;  // Kiahu
   // protected TextField currency;        // AUD
 
+  protected TextField businessPhone;
+  protected TextField homePhone;
+  protected TextField mobilePhone;
+  protected TextField fax;
+  // protected TextField pager;
+  protected TextField email;
+
   private final static int FIELD_LABEL = 0;
   private final static int HTML_DATA = 1;
   private final static int REGEX = 2;
@@ -50,7 +57,13 @@ public class ContactInformationNameSection extends EntitySection<ContactRepresen
     {I18nUtil.getConstant().givenNameLabel(), ".givenName", RegExTokens.ALPHANUMERIC_1_16, RegExTokens.FALSE, "Robert"},
     {I18nUtil.getConstant().middleNameLabel(), ".middleName", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, "James"},
     {I18nUtil.getConstant().familyNameLabel(), ".familyName", RegExTokens.ALPHANUMERIC_1_32, RegExTokens.FALSE, "Ferguson"},
-    {I18nUtil.getConstant().parentCustomerLabel(), ".parentCustomer", RegExTokens.ALPHANUMERIC_0_32, RegExTokens.TRUE, "Kiahu Pty Limited"}
+    {I18nUtil.getConstant().parentCustomerLabel(), ".parentCustomer", RegExTokens.ALPHANUMERIC_0_32, RegExTokens.TRUE, "Kiahu Pty Limited"},
+
+    {I18nUtil.getConstant().businessPhoneLabel(), ".businessPhone", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().homePhoneLabel(), ".homePhone", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().mobilePhoneLabel(), ".mobilePhone", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().faxLabel(), ".fax", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().emailLabel(), ".email", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, ""}
   };
 
   private int rows = fields.length;
