@@ -12,27 +12,27 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.desktop.view.contact;
+package com.gwtcx.extgwt.client.desktop.view;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
+import com.sencha.gxt.widget.core.client.TabPanel;
 
-public class EntitySection<T> {
+public class EntityTab<T> {
 
-  private HtmlLayoutContainer panel;
+  private TabPanel tabPanel;
 
-  @SuppressWarnings("unused")
-  private EntitySection() { }
+  public EntityTab() {
 
-  public EntitySection(final HtmlLayoutContainer panel) {
-
-    this.panel = panel;
+    this.tabPanel = null;
   }
 
-  public HtmlLayoutContainer getPanel() { return panel; }
+  public TabPanel getTabPanel() {
+    return tabPanel;
+  }
 
-  public void createFields() {
-    Log.warn("Don't forget to @Override createFields()");
+  public EntityTab<T> setTabPanel(TabPanel tabPanel) {
+    this.tabPanel = tabPanel;
+    return this;
   }
 
   public void setFields(T dto) {
