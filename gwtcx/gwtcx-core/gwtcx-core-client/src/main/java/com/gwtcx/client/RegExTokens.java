@@ -50,7 +50,10 @@ public class RegExTokens {
   public final static String ALPHANUMERIC_1_32 = "^[A-Za-z0-9 -]{1,32}$";  // also requires setAllowBlank(false)
   public final static String ALPHANUMERIC_1_64 = "^[A-Za-z0-9 -]{1,64}$";  // also requires setAllowBlank(false)
 
-  public final static String NUMERIC_0_10 = "^[0-9 ]{0,10}$";  //
+  public final static String NUMERIC_0_10 = "^[0-9]{0,10}$";  //
+
+  public final static String AU_TELEPHONE_8_14 =  "^[0-9() ]{8,14}$";    // (02) 9241 4858
+  public final static String AU_TELEPHONE_10_20 = "^[0-9() +]{10,20}$";  // +61 (0) 414 414 515
 
   public final static String EMAIL = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
   // public final static String EMAIL = "^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$";

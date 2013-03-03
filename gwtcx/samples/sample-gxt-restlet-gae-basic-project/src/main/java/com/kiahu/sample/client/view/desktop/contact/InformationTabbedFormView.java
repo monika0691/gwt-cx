@@ -19,25 +19,26 @@ import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.uihandlers.ContactInformationUiHandlers;
 import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormDesktopView;
-import com.gwtcx.extgwt.client.desktop.view.contact.ContactInformationGeneralInformationTab;
-import com.gwtcx.extgwt.client.desktop.view.contact.EntityTab;
+import com.gwtcx.extgwt.client.desktop.view.contact.InformationGeneralTab;
+import com.gwtcx.extgwt.client.desktop.view.contact.InformationNotesTab;
+import com.gwtcx.extgwt.client.desktop.view.EntityTab;
 import com.gwtcx.shared.dto.ContactRepresentation;
 import com.kiahu.sample.client.presenter.contact.ContactInformationPresenter;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.form.FormPanel;
 
-public class ContactInformationTabbedFormDesktopView extends
+public class InformationTabbedFormView extends
     AbstractTabbedFormDesktopView<ContactInformationUiHandlers> implements
   ContactInformationPresenter.MyView {
 
   private ContactRepresentation contact;
 
   @Inject
-  public ContactInformationTabbedFormDesktopView(final EventBus eventBus, final FormPanel form,
+  public InformationTabbedFormView(final EventBus eventBus, final FormPanel form,
       final TabPanel tabPanel) {
     super(eventBus, form, tabPanel);
 
-    Log.debug("ContactInformationTabbedFormDesktopView()");
+    Log.debug("InformationTabbedFormView()");
 
     contact = null;
 
@@ -92,7 +93,6 @@ public class ContactInformationTabbedFormDesktopView extends
     return result;
   }
 
-
   public EntityTab<ContactRepresentation> getTab(String tabName) {
 
     EntityTab<ContactRepresentation> result = null;
@@ -102,13 +102,13 @@ public class ContactInformationTabbedFormDesktopView extends
 
     switch (tab) {
 
-      case GENERAL: result = new ContactInformationGeneralInformationTab(getTabPanel()); break;
+      case GENERAL: result = new InformationGeneralTab(getTabPanel()); break;
 
-      case DETAILS: result = new ContactInformationGeneralInformationTab(getTabPanel()); break;
+      case DETAILS: result = new InformationGeneralTab(getTabPanel()); break;
 
-      case ADMINISTRATION: result = new ContactInformationGeneralInformationTab(getTabPanel()); break;
+      case ADMINISTRATION: result = new InformationGeneralTab(getTabPanel()); break;
 
-      case NOTES: result = new ContactInformationGeneralInformationTab(getTabPanel()); break;
+      case NOTES: result = new InformationNotesTab(getTabPanel()); break;
 
       default:
         result = null;

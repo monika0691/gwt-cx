@@ -16,6 +16,10 @@ package com.gwtcx.extgwt.client.desktop.view.contact;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.EntitySection;
+import com.gwtcx.extgwt.client.desktop.view.EntityTab;
+import com.gwtcx.extgwt.client.desktop.view.contact.section.AddressSection;
+import com.gwtcx.extgwt.client.desktop.view.contact.section.NameAndElectronicAddressSection;
 import com.gwtcx.shared.dto.ContactRepresentation;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
@@ -24,30 +28,27 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.form.FieldSet;
 
-public class ContactInformationGeneralInformationTab extends EntityTab<ContactRepresentation> {
+public class InformationGeneralTab extends EntityTab<ContactRepresentation> {
 
-  private TabPanel tabPanel;
+  public InformationGeneralTab() {
+    super();
 
-  public ContactInformationGeneralInformationTab() {
-
-    Log.debug("ContactInformationGeneralInformationTab()");
-
-    this.tabPanel = null;
+    Log.debug("InformationGeneralTab()");
   }
 
-  public ContactInformationGeneralInformationTab(TabPanel tabPanel) {
+  public InformationGeneralTab(TabPanel tabPanel) {
     this();
 
-    Log.debug("ContactInformationGeneralInformationTab(TabPanel tabPanel)");
+    Log.debug("InformationGeneralTab(TabPanel tabPanel)");
 
     setTabPanel(tabPanel);
   }
 
-  public void setTabPanel(TabPanel tabPanel) {
+  public EntityTab<ContactRepresentation> setTabPanel(TabPanel tabPanel) {
 
-    this.tabPanel = tabPanel;
+    super.setTabPanel(tabPanel);
 
-    if (this.tabPanel != null) {
+    if (getTabPanel() != null) {
 
       VerticalLayoutContainer layout = new VerticalLayoutContainer();
 
@@ -56,8 +57,10 @@ public class ContactInformationGeneralInformationTab extends EntityTab<ContactRe
 
       createFieldSets(layout);
 
-      this.tabPanel.add(layout, "General");
+      getTabPanel().add(layout, "General");
     }
+
+    return this;
   }
 
   private final static int FIELD_SET_LABEL = 0;
@@ -108,7 +111,6 @@ public class ContactInformationGeneralInformationTab extends EntityTab<ContactRe
      private String stringValue;
   }
 
-
   public Section getSectionAsEnum(String sectionName) {
 
     Section result = Section.NOT_USED;
@@ -133,9 +135,9 @@ public class ContactInformationGeneralInformationTab extends EntityTab<ContactRe
 
     switch (section) {
 
-      case GENERAL_INFORMATION: result = new ContactInformationNameSection(htmlLayout); break;
+      case GENERAL_INFORMATION: result = new NameAndElectronicAddressSection(htmlLayout); break;
 
-      case ADDRESS_INFORMATION: result = new ContactInformationAddressSection(htmlLayout); break;
+      case ADDRESS_INFORMATION: result = new AddressSection(htmlLayout); break;
 
       default:
         result = null;
@@ -164,6 +166,21 @@ public class ContactInformationGeneralInformationTab extends EntityTab<ContactRe
     }
 
     return result;
+  }
+
+  public void getFields(ContactRepresentation dto) {
+
+    Log.debug("getFields()");
+
+  }
+
+  public void setFields(ContactRepresentation dto) {
+
+    Log.debug("setFields()");
+
+    for (int row = 0; row < numberOfFieldSets; row++) {
+      entitySections[row].setFields(dto);
+    }
   }
 
   // Widgets that are implemented using <table> or <frame> elements do not automatically fill the space provided by the layout.
@@ -197,22 +214,8 @@ public class ContactInformationGeneralInformationTab extends EntityTab<ContactRe
       '<tr><td></td><td></td></tr>',
       '<tr><td></td><td></td></tr>',
       '</table>',
-  ].join("");
+    ].join("");
   }-*/;
-
-  public void getFields(ContactRepresentation dto) {
-
-  }
-
-  public void setFields(ContactRepresentation dto) {
-
-    Log.debug("setFields()");
-
-    for (int row = 0; row < numberOfFieldSets; row++) {
-      entitySections[row].setFields(dto);
-    }
-
-  }
 }
 
 /*

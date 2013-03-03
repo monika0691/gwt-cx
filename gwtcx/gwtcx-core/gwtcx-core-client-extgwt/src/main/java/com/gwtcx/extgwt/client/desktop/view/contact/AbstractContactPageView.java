@@ -34,7 +34,7 @@ import com.sencha.gxt.widget.core.client.container.Viewport;
 /**
  * AbstractContactPageView
  */
-public abstract class AbstractContactPageDesktopView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractContactPageView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   // public static final String CONTEXT_AREA_WIDTH = "100%";
   // public static final String CONTEXT_AREA_HEIGHT = "100%";
@@ -58,7 +58,7 @@ public abstract class AbstractContactPageDesktopView<C extends UiHandlers> exten
   @UiField public NavigationPane navigationPane;
 
   @Inject
-  public AbstractContactPageDesktopView(final EventBus eventBus, final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final EntityMasthead masthead) {
+  public AbstractContactPageView(final EventBus eventBus, final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final EntityMasthead masthead) {
     super();
 
     Log.debug("AbstractContactPageView()");

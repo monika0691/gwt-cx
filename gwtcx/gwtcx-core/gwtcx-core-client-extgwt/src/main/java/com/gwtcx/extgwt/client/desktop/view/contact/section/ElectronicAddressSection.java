@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.desktop.view.contact;
+package com.gwtcx.extgwt.client.desktop.view.contact.section;
 
 import com.gwtcx.client.util.I18nUtil;
 import com.sencha.gxt.widget.core.client.container.AbstractHtmlLayoutContainer.HtmlData;
@@ -20,7 +20,7 @@ import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
-public class ContactInformationElectronicAddressSection {
+public class ElectronicAddressSection {
 
   protected HtmlLayoutContainer panel;
 
@@ -33,7 +33,7 @@ public class ContactInformationElectronicAddressSection {
   // protected TextField pager;
   protected TextField email;
 
-  public ContactInformationElectronicAddressSection(final HtmlLayoutContainer panel) {
+  public ElectronicAddressSection(final HtmlLayoutContainer panel) {
 
     this.panel = panel;
 

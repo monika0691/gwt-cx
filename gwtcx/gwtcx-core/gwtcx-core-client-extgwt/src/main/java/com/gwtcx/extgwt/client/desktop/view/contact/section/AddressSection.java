@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.desktop.view.contact;
+package com.gwtcx.extgwt.client.desktop.view.contact.section;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +20,7 @@ import java.util.List;
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.client.GWT;
 import com.gwtcx.client.util.I18nUtil;
+import com.gwtcx.extgwt.client.desktop.view.EntitySection;
 import com.gwtcx.shared.dto.AddressTypesDto;
 import com.gwtcx.shared.dto.ContactRepresentation;
 import com.gwtcx.shared.dto.CountriesDto;
@@ -34,7 +35,7 @@ import com.sencha.gxt.widget.core.client.form.ComboBox;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
-public class ContactInformationAddressSection extends EntitySection<ContactRepresentation> {
+public class AddressSection extends EntitySection<ContactRepresentation> {
 
   // See: com.gwtcx.shared.dto.ContactDto
 
@@ -59,7 +60,7 @@ public class ContactInformationAddressSection extends EntitySection<ContactRepre
     LabelProvider<AddressTypesDto> name();
   }
 
-  public ContactInformationAddressSection(final HtmlLayoutContainer panel) {
+  public AddressSection(final HtmlLayoutContainer panel) {
     super(panel);
 
     Log.debug("ContactInformationAddressSection()");

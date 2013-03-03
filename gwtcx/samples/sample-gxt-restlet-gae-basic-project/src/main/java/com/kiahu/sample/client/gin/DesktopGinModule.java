@@ -41,8 +41,8 @@ import com.kiahu.sample.client.view.desktop.HighlightsDesktopView;
 import com.kiahu.sample.client.view.desktop.ImportsDesktopView;
 import com.kiahu.sample.client.view.desktop.MainPageDesktopView;
 import com.kiahu.sample.client.view.desktop.ReportsDesktopView;
-import com.kiahu.sample.client.view.desktop.contact.ContactInformationTabbedFormDesktopView;
-import com.kiahu.sample.client.view.desktop.contact.ContactPageDesktopView;
+import com.kiahu.sample.client.view.desktop.contact.InformationTabbedFormView;
+import com.kiahu.sample.client.view.desktop.contact.ContactPageView;
 
 public class DesktopGinModule extends AbstractPresenterModule {
 
@@ -59,7 +59,7 @@ public class DesktopGinModule extends AbstractPresenterModule {
 
     // Contact Page - contact.html
     bindPresenter(ContactPagePresenter.class, ContactPagePresenter.MyView.class,
-        ContactPageDesktopView.class, ContactPagePresenter.MyProxy.class);
+        ContactPageView.class, ContactPagePresenter.MyProxy.class);
 
     // Error Page
     bindPresenter(ErrorPagePresenter.class, ErrorPagePresenter.MyView.class,
@@ -82,7 +82,7 @@ public class DesktopGinModule extends AbstractPresenterModule {
        ReportsDesktopView.class, ReportsPresenter.MyProxy.class);
 
     bindPresenter(ContactInformationPresenter.class, ContactInformationPresenter.MyView.class,
-      ContactInformationTabbedFormDesktopView.class, ContactInformationPresenter.MyProxy.class);
+      InformationTabbedFormView.class, ContactInformationPresenter.MyProxy.class);
 
     // Settings
     bindPresenter(AdministrationPresenter.class, AdministrationPresenter.MyView.class,

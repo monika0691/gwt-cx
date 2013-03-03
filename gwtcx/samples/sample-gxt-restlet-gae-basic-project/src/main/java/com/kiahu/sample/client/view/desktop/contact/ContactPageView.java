@@ -25,7 +25,7 @@ import com.gwtcx.client.resources.ToolBarIcons;
 import com.gwtcx.client.uihandlers.ContactPageUiHandlers;
 import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
-import com.gwtcx.extgwt.client.desktop.view.contact.AbstractContactPageDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.contact.AbstractContactPageView;
 import com.gwtcx.extgwt.client.widgets.ContactDetailsNavigationPaneSection;
 import com.gwtcx.extgwt.client.widgets.EntityMasthead;
 import com.gwtcx.extgwt.client.widgets.NavigationPane;
@@ -40,17 +40,17 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
 
-public class ContactPageDesktopView extends AbstractContactPageDesktopView<ContactPageUiHandlers> implements
+public class ContactPageView extends AbstractContactPageView<ContactPageUiHandlers> implements
     ContactPagePresenter.MyView {
 
-  public interface ContactPageUiBinder extends UiBinder<Viewport, ContactPageDesktopView> { }
+  public interface ContactPageUiBinder extends UiBinder<Viewport, ContactPageView> { }
 
   private static ContactPageUiBinder uiBinder = GWT.create(ContactPageUiBinder.class);
 
   protected NavigationPaneSection detailsSection;
 
   @Inject
-  public ContactPageDesktopView(final EventBus eventBus, final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final EntityMasthead masthead) {
+  public ContactPageView(final EventBus eventBus, final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final EntityMasthead masthead) {
     super(eventBus, toolBar, masthead);
 
     Log.debug("ContactPageView()");
