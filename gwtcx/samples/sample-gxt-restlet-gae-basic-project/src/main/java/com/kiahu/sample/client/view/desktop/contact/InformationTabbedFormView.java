@@ -50,18 +50,18 @@ public class InformationTabbedFormView extends
   private final static int TAB_LABEL = 0;
 
   private String[][] tabs = {
-    {"Notes"},
     {"General"},
     {"Details"},
-    {"Administration"}
+    {"Administration"},
+    {"Notes"}
   };
 
   /*
 
-  {"General"},
-  {"Details"},
-  {"Administration"},
-  {"Notes"}
+    {"Notes"},
+    {"General"},
+    {"Details"},
+    {"Administration"}
 
   */
 

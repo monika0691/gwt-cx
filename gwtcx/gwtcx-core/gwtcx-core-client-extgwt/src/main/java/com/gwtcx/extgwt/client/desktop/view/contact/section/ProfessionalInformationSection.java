@@ -25,7 +25,7 @@ public class ProfessionalInformationSection extends EntitySection<ContactReprese
 
   // See: com.gwtcx.shared.dto.ContactDto
 
-  private String[][] fields = {
+  private String[][] textFieldTemplate = {
     {I18nUtil.getConstant().departmentLabel(), ".department", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, ""},
     {I18nUtil.getConstant().managerLabel(), ".manager", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, ""},
     {I18nUtil.getConstant().managerPhonetLabel(), ".managerPhone", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, ""},
@@ -39,9 +39,9 @@ public class ProfessionalInformationSection extends EntitySection<ContactReprese
 
     Log.debug("ContactInformationNameSection()");
 
-    setFields(fields);
+    setTextFieldTemplate(textFieldTemplate);
 
-    createFields();
+    createTextFields();
   }
 
   @Override
