@@ -32,7 +32,7 @@ public class EntitySection<T> {
 
   private HtmlLayoutContainer panel;
 
-  private String[][] fields = null;
+  private String[][] textFieldTemplate = null;
   private TextField [] textFields = null;
 
   @SuppressWarnings("unused")
@@ -45,16 +45,12 @@ public class EntitySection<T> {
     // createFields();
   }
 
-  // protected void createFields() {
-  //   Log.warn("Don't forget to @Override createFields()");
-  // }
-
-  protected void createFields() {
+  protected void createTextFields() {
 
     Log.debug("createFields()");
 
-    // you must call setFields(String[][] fields) in the constructor of your derived class
-    if (fields == null) { return; }
+    // you must call setTextFieldTemplate() in the constructor of your derived class
+    if (textFieldTemplate == null) { return; }
 
     textFields = new TextField[getNumberOfRows()];
 
@@ -63,13 +59,13 @@ public class EntitySection<T> {
     try {
       for (int row = 0; row < getNumberOfRows(); row++) {
 
-        Log.debug("FieldLabel: " + fields[row][FIELD_LABEL] + " HtmlData: " + fields[row][HTML_DATA]);
+        Log.debug("FieldLabel: " + textFieldTemplate[row][FIELD_LABEL] + " HtmlData: " + textFieldTemplate[row][HTML_DATA]);
 
         textFields[row] = new TextField();
-        getPanel().add(new FieldLabel(textFields[row], fields[row][FIELD_LABEL]), new HtmlData(fields[row][HTML_DATA]));
-        textFields[row].addValidator(new RegExValidator(fields[row][REGEX], "Regular Expression: " + fields[row][REGEX]));
+        getPanel().add(new FieldLabel(textFields[row], textFieldTemplate[row][FIELD_LABEL]), new HtmlData(textFieldTemplate[row][HTML_DATA]));
+        textFields[row].addValidator(new RegExValidator(textFieldTemplate[row][REGEX], "Regular Expression: " + textFieldTemplate[row][REGEX]));
 
-        if (fields[row][ALLOW_BLANKS].contentEquals(RegExTokens.TRUE)) {
+        if (textFieldTemplate[row][ALLOW_BLANKS].contentEquals(RegExTokens.TRUE)) {
           textFields[row].setAllowBlank(true);
 
           Log.debug("setAllowBlank(true)");
@@ -79,8 +75,8 @@ public class EntitySection<T> {
           Log.debug("setAllowBlank(false)");
         }
 
-        if (fields[row][EMPTY_TEXT].length() != 0) {
-          textFields[row].setEmptyText(fields[row][EMPTY_TEXT]);
+        if (textFieldTemplate[row][EMPTY_TEXT].length() != 0) {
+          textFields[row].setEmptyText(textFieldTemplate[row][EMPTY_TEXT]);
         }
       }
     } catch (Exception e) {
@@ -89,7 +85,7 @@ public class EntitySection<T> {
   }
 
   public int getNumberOfRows() {
-    return fields.length;
+    return textFieldTemplate.length;
   }
 
   public HtmlLayoutContainer getPanel() { return panel; }
@@ -99,12 +95,12 @@ public class EntitySection<T> {
     return this;
   }
 
-  protected String[][] getFields() {
-    return fields;
+  protected String[][] getTextFieldTemplate() {
+    return textFieldTemplate;
   }
 
-  protected EntitySection<T> setFields(String[][] fields) {
-    this.fields = fields;
+  protected EntitySection<T> setTextFieldTemplate(String[][] fields) {
+    this.textFieldTemplate = fields;
     return this;
   }
 

@@ -25,7 +25,7 @@ public class NameAndElectronicAddressSection extends EntitySection<ContactRepres
 
   // See: com.gwtcx.shared.dto.ContactDto
 
-  private String[][] fields = {
+  private String[][] textFieldTemplate = {
     {I18nUtil.getConstant().salutationLabel(), ".salutation", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, "Rob"},
     {I18nUtil.getConstant().givenNameLabel(), ".givenName", RegExTokens.ALPHANUMERIC_1_16, RegExTokens.FALSE, "Robert"},
     {I18nUtil.getConstant().middleNameLabel(), ".middleName", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, "James"},
@@ -44,9 +44,9 @@ public class NameAndElectronicAddressSection extends EntitySection<ContactRepres
 
     Log.debug("NameAndElectronicAddressSection()");
 
-    setFields(fields);
+    setTextFieldTemplate(textFieldTemplate);
 
-    createFields();
+    createTextFields();
   }
 
   @Override
@@ -60,7 +60,7 @@ public class NameAndElectronicAddressSection extends EntitySection<ContactRepres
 
       for (int row = 0; row < getNumberOfRows(); row++) {
 
-        field = getFields()[row][HTML_DATA];
+        field = getTextFieldTemplate()[row][HTML_DATA];
         fieldname = field.substring(1);  // remove the "." prefix
         value = dto.getFieldValue(fieldname);
 
