@@ -16,7 +16,6 @@ package com.gwtcx.extgwt.client.desktop.view.contact;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormDesktopView;
-import com.gwtcx.extgwt.client.desktop.view.EntityTab;
 import com.gwtcx.shared.dto.ContactRepresentation;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.container.AbstractHtmlLayoutContainer.HtmlData;
@@ -28,21 +27,80 @@ import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.FormPanel.LabelAlign;
 import com.sencha.gxt.widget.core.client.form.HtmlEditor;
 
-public class InformationNotesTab extends EntityTab<ContactRepresentation> {
-
-  public InformationNotesTab() {
-    super();
-
-    Log.debug("InformationNotesTab()");
-  }
+public class InformationNotesTab extends ContactTab {
 
   public InformationNotesTab(TabPanel tabPanel) {
-    this();
+    super(tabPanel);
 
     Log.debug("InformationNotesTab(TabPanel tabPanel)");
 
-    setTabPanel(tabPanel);
+    // setFieldSets(fieldSets);
+    // createFieldSets("Notes");
+
+    createEditor("Notes");
   }
+
+  protected void createEditor(String tabLabel) {
+
+    VerticalLayoutContainer layout = new VerticalLayoutContainer();
+
+    layout.setSize(AbstractTabbedFormDesktopView.CONTEXT_AREA_WIDTH, AbstractTabbedFormDesktopView.CONTEXT_AREA_HEIGHT);
+    layout.setLayoutData(new MarginData(AbstractTabbedFormDesktopView.DEFAULT_MARGIN));
+
+    createEditor(layout);
+
+    getTabPanel().add(layout, tabLabel);
+  }
+
+  protected void createEditor(VerticalLayoutContainer layoutContainer) {
+
+    HtmlLayoutContainer htmlLayout = new HtmlLayoutContainer(getNotesHtmlLayout());
+    htmlLayout.setLayoutData(new MarginData(AbstractTabbedFormDesktopView.DEFAULT_MARGIN));
+
+    HtmlEditor editor = new HtmlEditor();
+    // editor.setWidth(300);
+    // editor.setSize("400px", "300px");
+
+    FieldLabel label = new FieldLabel(editor, "Notes");
+    htmlLayout.add(label, new HtmlData(".editor"));
+
+    label.setLabelAlign(LabelAlign.TOP);
+
+    layoutContainer.add(htmlLayout, new VerticalLayoutData(1, -1));
+  }
+
+  public void getFields(ContactRepresentation dto) {
+
+    Log.debug("getFields()");
+  }
+
+  public void setFields(ContactRepresentation dto) {
+
+    Log.debug("setFields()");
+  }
+
+  // Widgets that are implemented using <table> or <frame> elements do not automatically fill the space provided by the layout.
+  // In order to fix this, you will need to explicitly set these widgets width and height to 100%.
+
+  private static native String getNotesHtmlLayout() /*-{
+    return [ '<table width=100% cellpadding=0 cellspacing=0>',
+        '<tr><td width=50%></td><td width=50%></td></tr>',
+        '<tr><td class=editor colspan=2></td></tr>',,
+        '</table>'
+    ].join("");
+  }-*/;
+}
+
+/*
+
+
+    // need to call after everything is constructed
+    List<FieldLabel> labels = FormPanelHelper.getFieldLabels(panel);
+    for (FieldLabel lbl : labels) {
+      lbl.setLabelAlign(LabelAlign.TOP);
+    }
+
+
 
   public EntityTab<ContactRepresentation> setTabPanel(TabPanel tabPanel) {
 
@@ -64,58 +122,6 @@ public class InformationNotesTab extends EntityTab<ContactRepresentation> {
 
     return this;
   }
-
-  protected void createEditor(VerticalLayoutContainer layoutContainer) {
-
-    HtmlLayoutContainer htmlLayout = new HtmlLayoutContainer(getNotesHtmlLayout());
-    htmlLayout.setLayoutData(new MarginData(AbstractTabbedFormDesktopView.DEFAULT_MARGIN));
-
-    HtmlEditor editor = new HtmlEditor();
-    // editor.setWidth(300);
-    // editor.setSize("400px", "300px");
-
-    FieldLabel label = new FieldLabel(editor, "Notes");
-    htmlLayout.add(label, new HtmlData(".editor"));
-
-    label.setLabelAlign(LabelAlign.TOP);
-
-    layoutContainer.add(htmlLayout, new VerticalLayoutData(1, -1));
-    // getTabPanel().add(htmlLayout, "Notes");
-  }
-
-  public void getFields(ContactRepresentation dto) {
-
-    Log.debug("getFields()");
-
-  }
-
-  public void setFields(ContactRepresentation dto) {
-
-    Log.debug("setFields()");
-
-  }
-
-  // Widgets that are implemented using <table> or <frame> elements do not automatically fill the space provided by the layout.
-  // In order to fix this, you will need to explicitly set these widgets width and height to 100%.
-
-  private static native String getNotesHtmlLayout() /*-{
-    return [ '<table width=100% cellpadding=0 cellspacing=0>',
-        '<tr><td width=50%></td><td width=50%></td></tr>',
-        '<tr><td class=editor colspan=2></td></tr>',,
-        '</table>'
-    ].join("");
-  }-*/;
-
-}
-
-/*
-
-
-    // need to call after everything is constructed
-    List<FieldLabel> labels = FormPanelHelper.getFieldLabels(panel);
-    for (FieldLabel lbl : labels) {
-      lbl.setLabelAlign(LabelAlign.TOP);
-    }
 
 
 */

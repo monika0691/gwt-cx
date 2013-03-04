@@ -12,25 +12,26 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.data;
+package com.gwtcx.extgwt.client.desktop.view.contact;
 
-import com.gwtcx.shared.dto.ContactRepresentation;
-import com.sencha.gxt.data.shared.ListStore;
-import com.sencha.gxt.data.shared.ModelKeyProvider;
+import com.allen_sauer.gwt.log.client.Log;
+import com.sencha.gxt.widget.core.client.TabPanel;
 
-/**
- * ContactsDtoListStore
- */
-public class ContactRepresentationListStore extends ListStore<ContactRepresentation> {
+public class InformationAdministrationTab extends ContactTab {
 
-  public static ModelKeyProvider<ContactRepresentation> KP = new ModelKeyProvider<ContactRepresentation>() {
-    @Override
-    public String getKey(ContactRepresentation item) {
-      return item.getId();
-    }
+  private String[][] fieldSets = {
+    {"Professional Information"}
   };
 
-  public ContactRepresentationListStore() {
-    super(KP);
+  // {"Personal Information"}
+  // {"Professional Information"}
+
+  public InformationAdministrationTab(TabPanel tabPanel) {
+    super(tabPanel);
+
+    Log.debug("InformationAdministrationTab(TabPanel tabPanel)");
+
+    setFieldSets(fieldSets);
+    createFieldSets("Administration");
   }
 }

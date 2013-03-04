@@ -22,7 +22,7 @@ import com.gwtcx.client.resources.ToolBarIcons;
 import com.gwtcx.client.uihandlers.ContactsUiHandlers;
 import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.extgwt.client.widgets.grid.ContactsContextAreaGrid;
-import com.gwtcx.shared.dto.ContactRepresentation;
+import com.gwtcx.shared.dto.ContactsDto;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.sencha.gxt.widget.core.client.event.RowDoubleClickEvent;
 import com.sencha.gxt.widget.core.client.event.RowDoubleClickEvent.RowDoubleClickHandler;
@@ -54,7 +54,8 @@ public abstract class AbstractContactsDesktopView<C extends UiHandlers> extends 
       @Override
       public void onRowDoubleClick(RowDoubleClickEvent event) {
 
-        ContactRepresentation dto = (ContactRepresentation) getGrid().getStore().get(event.getRowIndex());
+        // ContactRepresentation dto = (ContactRepresentation) getGrid().getStore().get(event.getRowIndex());
+        ContactsDto dto = (ContactsDto) getGrid().getStore().get(event.getRowIndex());
         assert dto != null;
 
         if (getUiHandlers() != null) {
@@ -70,7 +71,9 @@ public abstract class AbstractContactsDesktopView<C extends UiHandlers> extends 
     initStatusBar();
   }
 
-  public void setResultSet(List<ContactRepresentation> resultSet) {
+  // public void setResultSet(List<ContactRepresentation> resultSet) {
+  public void setResultSet(List<ContactsDto> resultSet) {
+
 
     Log.debug("setResultSet()");
 

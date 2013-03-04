@@ -77,6 +77,8 @@ public class NameAndElectronicAddressSection extends EntitySection<ContactRepres
   @Override
   public void getFields(ContactRepresentation dto) {
 
+    Log.debug("getFields()");
+
   }
 }
 

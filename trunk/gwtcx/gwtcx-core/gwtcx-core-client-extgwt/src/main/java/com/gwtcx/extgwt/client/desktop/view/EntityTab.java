@@ -19,11 +19,18 @@ import com.sencha.gxt.widget.core.client.TabPanel;
 
 public class EntityTab<T> {
 
+  public final static int FIELD_SET_LABEL = 0;
+
   private TabPanel tabPanel;
 
-  public EntityTab() {
+  private String[][] fieldSets = null;
 
-    this.tabPanel = null;
+  @SuppressWarnings("unused")
+  private EntityTab() { }
+
+  public EntityTab(TabPanel tabPanel) {
+
+    this.tabPanel = tabPanel;
   }
 
   public TabPanel getTabPanel() {
@@ -33,6 +40,19 @@ public class EntityTab<T> {
   public EntityTab<T> setTabPanel(TabPanel tabPanel) {
     this.tabPanel = tabPanel;
     return this;
+  }
+
+  public String[][] getFieldSets() {
+    return fieldSets;
+  }
+
+  public EntityTab<T> setFieldSets(String[][] fieldSets) {
+    this.fieldSets = fieldSets;
+    return this;
+  }
+
+  public int getNumberOfRows() {
+    return fieldSets.length;
   }
 
   public void setFields(T dto) {

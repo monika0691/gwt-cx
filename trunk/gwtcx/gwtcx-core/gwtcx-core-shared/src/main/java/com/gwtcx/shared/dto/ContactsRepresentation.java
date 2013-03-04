@@ -21,17 +21,17 @@ public class ContactsRepresentation implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  private List<ContactRepresentation> contacts;
+  private List<ContactsDto> contacts;
 
   public ContactsRepresentation() {
-    // this.contacts = new ArrayList<ContactRepresentation>();
+    // this.contacts = new ArrayList<ContactsDto>();
   }
 
-  public ContactsRepresentation(List<ContactRepresentation> contacts) {
+  public ContactsRepresentation(List<ContactsDto> contacts) {
     this.contacts = contacts;
   }
 
-  public List<ContactRepresentation> getContacts() {
+  public List<ContactsDto> getContacts() {
     return contacts;
   }
 
@@ -39,3 +39,4 @@ public class ContactsRepresentation implements Serializable {
   //   this.contacts = contacts;
   // }
 }
+

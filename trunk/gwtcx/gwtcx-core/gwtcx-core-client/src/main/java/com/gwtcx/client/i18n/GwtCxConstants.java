@@ -302,9 +302,29 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   // @DefaultStringValue("Email")
   // String emailLabel();
 
+  @DefaultStringValue("Department")
+  String departmentLabel();
+  @DefaultStringValue("Manager")
+  String managerLabel();
+  @DefaultStringValue("Manager Phone")
+  String managerPhonetLabel();
+  @DefaultStringValue("Role")
+  String roleLabel();
+  @DefaultStringValue("Assistent")
+  String assistentLabel();
+  @DefaultStringValue("Assistent Phone")
+  String assistentPhoneLabel();
 
-
-
+  @DefaultStringValue("Gender")
+  String genderLabel();
+  @DefaultStringValue("Marital Status")
+  String maritalStatusLabel();
+  @DefaultStringValue("Spouse/Partner Name")
+  String partnerNameLabel();
+  @DefaultStringValue("Birthday")
+  String birthdayLabel();
+  @DefaultStringValue("Anniversary")
+  String anniversaryLabel();
 
   //
   // Email entity tabs
