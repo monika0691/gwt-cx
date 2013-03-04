@@ -15,34 +15,27 @@
 package com.gwtcx.extgwt.client.desktop.view.contact;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormDesktopView;
-import com.gwtcx.extgwt.client.desktop.view.EntitySection;
-import com.gwtcx.extgwt.client.desktop.view.EntityTab;
-import com.gwtcx.extgwt.client.desktop.view.contact.section.AddressSection;
-import com.gwtcx.extgwt.client.desktop.view.contact.section.NameAndElectronicAddressSection;
-import com.gwtcx.shared.dto.ContactRepresentation;
 import com.sencha.gxt.widget.core.client.TabPanel;
-import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.MarginData;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
-import com.sencha.gxt.widget.core.client.form.FieldSet;
 
-public class InformationGeneralTab extends EntityTab<ContactRepresentation> {
+public class InformationGeneralTab extends ContactTab {
 
-  public InformationGeneralTab() {
-    super();
-
-    Log.debug("InformationGeneralTab()");
-  }
+  private String[][] fieldSets = {
+    {"General Information"},
+    {"Address Information"}
+  };
 
   public InformationGeneralTab(TabPanel tabPanel) {
-    this();
+    super(tabPanel);
 
     Log.debug("InformationGeneralTab(TabPanel tabPanel)");
 
-    setTabPanel(tabPanel);
+    setFieldSets(fieldSets);
+    createFieldSets("General");
   }
+}
+
+/*
+
 
   public EntityTab<ContactRepresentation> setTabPanel(TabPanel tabPanel) {
 
@@ -63,18 +56,7 @@ public class InformationGeneralTab extends EntityTab<ContactRepresentation> {
     return this;
   }
 
-  private final static int FIELD_SET_LABEL = 0;
 
-  private String[][] fieldSets = {
-    {"General Information"},
-    {"Address Information"}
-  };
-
-  // numberOfFieldSets == number of sections (for now)
-
-  private int numberOfFieldSets = fieldSets.length;
-  @SuppressWarnings("unchecked")
-  private EntitySection<ContactRepresentation> [] entitySections = new EntitySection[numberOfFieldSets];
 
   protected void createFieldSets(VerticalLayoutContainer layoutContainer) {
 
@@ -100,125 +82,6 @@ public class InformationGeneralTab extends EntityTab<ContactRepresentation> {
       layoutContainer.add(fieldSet, new VerticalLayoutData(1, -1));
     }
   }
-
-  enum Section
-  {
-     GENERAL_INFORMATION("General Information"), ADDRESS_INFORMATION("Address Information"), NOT_USED("notUsed");
-
-     private Section(String stringValue) { this.stringValue = stringValue; }
-     public String toString() { return stringValue; }
-
-     private String stringValue;
-  }
-
-  public Section getSectionAsEnum(String sectionName) {
-
-    Section result = Section.NOT_USED;
-
-    for (Section section : Section.values()) {
-      if (sectionName.contentEquals(section.toString())) {
-        result = section;
-      }
-    }
-
-    return result;
-  }
-
-  // numberOfFieldSets == number of sections (for now)
-
-  public EntitySection<ContactRepresentation> getFieldSetSection(String sectionName, HtmlLayoutContainer htmlLayout) {
-
-    EntitySection<ContactRepresentation> result = null;
-    Section section = getSectionAsEnum(sectionName);
-
-    Log.debug("getFieldSetSection()");
-
-    switch (section) {
-
-      case GENERAL_INFORMATION: result = new NameAndElectronicAddressSection(htmlLayout); break;
-
-      case ADDRESS_INFORMATION: result = new AddressSection(htmlLayout); break;
-
-      default:
-        result = null;
-        break;
-    }
-
-    return result;
-  }
-
-  public HtmlLayoutContainer getFieldSetHtmlLayout(String sectionName) {
-
-    HtmlLayoutContainer result = null;
-    Section section = getSectionAsEnum(sectionName);
-
-    Log.debug("getFieldSetHtmlLayout()");
-
-    switch (section) {
-
-      case GENERAL_INFORMATION: result = new HtmlLayoutContainer(getGeneralInformationHtmlLayout()); break;
-
-      case ADDRESS_INFORMATION: result = new HtmlLayoutContainer(getAddressInformationHtmlLayout()); break;
-
-      default:
-        result = new HtmlLayoutContainer(getDefaultFieldSetHtmlLayout());
-        break;
-    }
-
-    return result;
-  }
-
-  public void getFields(ContactRepresentation dto) {
-
-    Log.debug("getFields()");
-
-  }
-
-  public void setFields(ContactRepresentation dto) {
-
-    Log.debug("setFields()");
-
-    for (int row = 0; row < numberOfFieldSets; row++) {
-      entitySections[row].setFields(dto);
-    }
-  }
-
-  // Widgets that are implemented using <table> or <frame> elements do not automatically fill the space provided by the layout.
-  // In order to fix this, you will need to explicitly set these widgets width and height to 100%.
-
-  private static native String getGeneralInformationHtmlLayout() /*-{
-    return [ '<table width=100% cellpadding=0 cellspacing=0>',
-        '<tr><td class=salutation width=50%></td><td class=businessPhone width=50%></td></tr>',
-        '<tr><td class=givenName></td><td class=homePhone></td></tr>',
-        '<tr><td class=middleName></td><td class=mobilePhone></td></tr>',
-        '<tr><td class=familyName></td><td class=fax></td></tr>',
-         '<tr><td class=parentCustomer></td><td class=email></td></tr>',
-        '</table>'
-    ].join("");
-  }-*/;
-
-  private static native String getAddressInformationHtmlLayout() /*-{
-    return [ '<table width=100% cellpadding=0 cellspacing=0>',
-        '<tr><td class=addressName width=50%></td><td class=postalCode width=50%></td></tr>',
-        '<tr><td class=addressLine1></td><td class=country></td></tr>',
-        '<tr><td class=addressLine2></td><td class=addressType></td></tr>',
-        '<tr><td class=addressLine3></td><td></td></tr>',
-        '<tr><td class=city></td><td></td></tr>',
-        '<tr><td class=state></td><td></td></tr>',
-        '</table>',
-    ].join("");
-  }-*/;
-
-  private static native String getDefaultFieldSetHtmlLayout() /*-{
-  return [ '<table width=100% cellpadding=0 cellspacing=0>',
-      '<tr><td></td><td></td></tr>',
-      '<tr><td></td><td></td></tr>',
-      '</table>',
-    ].join("");
-  }-*/;
-}
-
-/*
 
     // vLayout.setStyleName("gwtcx-Dashboards-View");  // overflow: auto;
 

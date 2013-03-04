@@ -1,3 +1,17 @@
+/**
+ * (C) Copyright 2010-2013 Kiahu
+ *
+ * Licensed under the terms of the GNU General Public License version 3
+ * as published by the Free Software Foundation. You may obtain a copy of the
+ * License at: http://www.gnu.org/copyleft/gpl.html
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
 package com.gwtcx.extgwt.client.desktop.view.contact.section;
 
 import com.allen_sauer.gwt.log.client.Log;
@@ -6,46 +20,63 @@ import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.extgwt.client.desktop.view.EntitySection;
 import com.gwtcx.shared.dto.ContactRepresentation;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
-import com.sencha.gxt.widget.core.client.form.TextField;
 
 public class ProfessionalInformationSection extends EntitySection<ContactRepresentation> {
 
   // See: com.gwtcx.shared.dto.ContactDto
 
-  protected TextField department;
-  protected TextField role;
-  protected TextField manager;
-  protected TextField managerPhone;
-  protected TextField assistent;
-  protected TextField assistentPhone;
-
-  /*
-
   private String[][] fields = {
-    {I18nUtil.getConstant().salutationLabel(), ".salutation", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, "Rob"},
-    {I18nUtil.getConstant().givenNameLabel(), ".givenName", RegExTokens.ALPHANUMERIC_1_16, RegExTokens.FALSE, "Robert"},
-    {I18nUtil.getConstant().middleNameLabel(), ".middleName", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, "James"},
-    {I18nUtil.getConstant().familyNameLabel(), ".familyName", RegExTokens.ALPHANUMERIC_1_32, RegExTokens.FALSE, "Ferguson"},
-    {I18nUtil.getConstant().parentCustomerLabel(), ".parentCustomer", RegExTokens.ALPHANUMERIC_0_32, RegExTokens.TRUE, "Kiahu Pty Limited"},
-
-    {I18nUtil.getConstant().businessPhoneLabel(), ".businessPhone", RegExTokens.AU_TELEPHONE_10_20, RegExTokens.TRUE, ""},
-    {I18nUtil.getConstant().homePhoneLabel(), ".homePhone", RegExTokens.AU_TELEPHONE_10_20, RegExTokens.TRUE, ""},
-    {I18nUtil.getConstant().mobilePhoneLabel(), ".mobilePhone", RegExTokens.AU_TELEPHONE_10_20, RegExTokens.TRUE, ""},
-    {I18nUtil.getConstant().faxLabel(), ".fax", RegExTokens.AU_TELEPHONE_10_20, RegExTokens.TRUE, ""},
-    {I18nUtil.getConstant().emailLabel(), ".email", RegExTokens.EMAIL, RegExTokens.TRUE, ""}
+    {I18nUtil.getConstant().departmentLabel(), ".department", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().managerLabel(), ".manager", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().managerPhonetLabel(), ".managerPhone", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().roleLabel(), ".role", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().assistentLabel(), ".assistent", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().assistentPhoneLabel(), ".assistentPhone", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, ""}
   };
-
-  private int rows = fields.length;
-  private TextField [] textFields = new TextField[rows];
-
-  */
 
   public ProfessionalInformationSection(final HtmlLayoutContainer panel) {
     super(panel);
 
     Log.debug("ContactInformationNameSection()");
 
+    setFields(fields);
+
     createFields();
   }
 
+  @Override
+  public void setFields(ContactRepresentation dto) {
+
+    Log.debug("setFields()");
+
+    /*
+
+    String field, fieldname, value = null;
+
+    try {
+
+      for (int row = 0; row < getNumberOfRows(); row++) {
+
+        field = getFields()[row][HTML_DATA];
+        fieldname = field.substring(1);  // remove the "." prefix
+        value = dto.getFieldValue(fieldname);
+
+        Log.debug("field: " + field + " fieldname: " + fieldname + " value: " + value);
+
+        getTextFields()[row].setValue(value);
+        getTextFields()[row].setEmptyText("");
+      }
+    } catch (Exception e) {
+      Log.error("Unable to set fields: " + e);
+    }
+
+    */
+  }
+
+  @Override
+  public void getFields(ContactRepresentation dto) {
+
+    Log.debug("getFields()");
+
+  }
 }

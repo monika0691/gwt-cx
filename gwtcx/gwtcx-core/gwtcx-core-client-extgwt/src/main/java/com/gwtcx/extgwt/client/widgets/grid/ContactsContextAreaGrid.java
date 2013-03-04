@@ -28,9 +28,8 @@ import com.gwtcx.client.resources.GridIcons;
 import com.gwtcx.client.resources.ImageCell;
 import com.gwtcx.client.resources.NavigationPaneIcons;
 import com.gwtcx.client.util.I18nUtil;
-import com.gwtcx.extgwt.client.data.ContactRepresentationListStore;
-import com.gwtcx.shared.dto.ContactRepresentation;
-// import com.gwtcx.shared.dto.ContactsDto;
+import com.gwtcx.extgwt.client.data.ContactsDtoListStore;
+import com.gwtcx.shared.dto.ContactsDto;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
@@ -41,6 +40,126 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 /**
  * AccountsContextAreaGrid
  */
+public class ContactsContextAreaGrid extends Grid<ContactsDto> {
+
+  public static final int SMALL_ICON_COLUMN_WIDTH = 24;
+
+  public static final int FULL_NAME_COLUMN_WIDTH = 180;
+  public static final int PARENT_CUSTOMER_COLUMN_WIDTH = 160;
+  public static final int CITY_COLUMN_WIDTH = 100;
+  // public static final int LOCATION_COLUMN_WIDTH = 280;
+  public static final int PHONE_COLUMN_WIDTH = 90;
+  public static final int BUSINESS_PHONE_COLUMN_WIDTH = 90;
+  public static final int EMAIL_COLUMN_WIDTH = 180;
+
+  public interface ContactsProperties extends PropertyAccess<ContactsDto> {
+    @Path("id")
+    ModelKeyProvider<ContactsDto> key();
+
+    ValueProvider<ContactsDto, String> id();
+    ValueProvider<ContactsDto, String> fullName();
+    ValueProvider<ContactsDto, String> parentCustomer();
+    ValueProvider<ContactsDto, String> city();
+    ValueProvider<ContactsDto, String> location();
+    ValueProvider<ContactsDto, String> phone();
+    ValueProvider<ContactsDto, String> businessPhone();
+    ValueProvider<ContactsDto, String> email();
+  }
+
+  private static final ContactsProperties property = GWT.create(ContactsProperties.class);
+
+  private static final SafeHtml ROW_ICON = ImageCell.makeImage(GridIcons.INSTANCE.rowCollapsed());
+  private static final SafeHtml ENTITY_ICON = ImageCell.makeImage(NavigationPaneIcons.INSTANCE.contacts());
+
+  public static ColumnModel<ContactsDto> getColumnConfig() {
+
+    ColumnConfig<ContactsDto, String> rowIconColumnConfig = new ColumnConfig<ContactsDto, String>(property.id(),
+        SMALL_ICON_COLUMN_WIDTH, "");
+    rowIconColumnConfig.setCell(new ImageCell() {
+      @Override
+      protected void render(Context context, SafeHtml data, SafeHtmlBuilder sb) {
+
+        if (data == null) { return; }
+
+        SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("float:left;cursor:hand;cursor:pointer;");
+        SafeHtml rendered = template.cell("row-icon", imageStyle, ROW_ICON);
+
+        sb.append(rendered);
+      }
+    });
+    rowIconColumnConfig.setSortable(false);
+    rowIconColumnConfig.setResizable(false);
+    rowIconColumnConfig.setMenuDisabled(true);
+
+    ColumnConfig<ContactsDto, String> entityIconColumnConfig = new ColumnConfig<ContactsDto, String>(property.id(),
+        SMALL_ICON_COLUMN_WIDTH + 4, "");
+    entityIconColumnConfig.setCell(new ImageCell() {
+      @Override
+      protected void render(Context context, SafeHtml data, SafeHtmlBuilder sb) {
+
+        if (data == null) { return; }
+
+        SafeStyles imageStyle = SafeStylesUtils.fromTrustedString("float:left;cursor:hand;cursor:pointer;");
+        SafeHtml rendered = template.cell("entity-icon", imageStyle, ENTITY_ICON);
+
+        sb.append(rendered);
+      }
+    });
+    entityIconColumnConfig.setSortable(false);
+    entityIconColumnConfig.setResizable(false);
+    entityIconColumnConfig.setMenuDisabled(true);
+
+    ColumnConfig<ContactsDto, String> fullNameColumnConfig = new ColumnConfig<ContactsDto, String>(property.fullName(),
+        FULL_NAME_COLUMN_WIDTH, I18nUtil.getConstant().fullName());
+    ColumnConfig<ContactsDto, String> parentCustomerColumnConfig = new ColumnConfig<ContactsDto, String>(property.parentCustomer(),
+        PARENT_CUSTOMER_COLUMN_WIDTH, I18nUtil.getConstant().parentCustomer());
+    ColumnConfig<ContactsDto, String> cityColumnConfig = new ColumnConfig<ContactsDto, String>(property.city(),
+        CITY_COLUMN_WIDTH, I18nUtil.getConstant().city());
+    // ColumnConfig<ContactsDto, String> locationColumnConfig = new ColumnConfig<ContactsDto, String>(property.location(),
+    //     LOCATION_COLUMN_WIDTH, I18nUtil.getConstant().location());
+    ColumnConfig<ContactsDto, String> phoneColumnConfig = new ColumnConfig<ContactsDto, String>(property.phone(),
+        PHONE_COLUMN_WIDTH, I18nUtil.getConstant().phone());
+    ColumnConfig<ContactsDto, String> businessPhoneColumnConfig = new ColumnConfig<ContactsDto, String>(property.businessPhone(),
+        BUSINESS_PHONE_COLUMN_WIDTH, I18nUtil.getConstant().businessPhone());
+    ColumnConfig<ContactsDto, String> emailColumnConfig = new ColumnConfig<ContactsDto, String>(property.email(),
+        EMAIL_COLUMN_WIDTH, I18nUtil.getConstant().email());
+
+    List<ColumnConfig<ContactsDto, ?>> columnConfigList = new ArrayList<ColumnConfig<ContactsDto, ?>>();
+    columnConfigList.add(rowIconColumnConfig);
+    columnConfigList.add(entityIconColumnConfig);
+    columnConfigList.add(fullNameColumnConfig);
+    columnConfigList.add(parentCustomerColumnConfig);
+    columnConfigList.add(cityColumnConfig);
+    columnConfigList.add(phoneColumnConfig);
+    columnConfigList.add(businessPhoneColumnConfig);
+    columnConfigList.add(emailColumnConfig);
+
+    ColumnModel<ContactsDto> columnModel = new ColumnModel<ContactsDto>(columnConfigList);
+
+    return columnModel;
+  }
+
+  @Inject
+  public ContactsContextAreaGrid(ContactsDtoListStore store) {
+    super(store, getColumnConfig());
+
+    this.setBorders(false);
+    this.setColumnReordering(true);
+
+    // Auto expand the last column (e.g. the Email column)
+    this.getView().setAutoExpandColumn(this.getColumnModel().getColumn(this.getColumnModel().getColumnCount() - 1));
+    this.getView().setColumnLines(false);
+    this.getView().setStripeRows(true);
+  }
+
+  public void setResultSet(List<ContactsDto> resultSet) {
+
+    this.store.addAll(resultSet);
+  }
+}
+
+/*
+
 public class ContactsContextAreaGrid extends Grid<ContactRepresentation> {
 
   public static final int SMALL_ICON_COLUMN_WIDTH = 24;
@@ -158,3 +277,5 @@ public class ContactsContextAreaGrid extends Grid<ContactRepresentation> {
     this.store.addAll(resultSet);
   }
 }
+
+*/

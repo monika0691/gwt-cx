@@ -38,6 +38,7 @@ public class ContactServerResource extends WadlServerResource implements
     ContactRepresentation result = null;
 
     try {
+
       ContactRepresentation contact = new ContactRepresentation(id).
           setSalutation("Frank").
           setGivenName("Frank").
@@ -49,11 +50,6 @@ public class ContactServerResource extends WadlServerResource implements
           setOccupation("Director").
           setParentCustomer("Abacus Property Group").
           setCurrency("AUD").
-          setAddressName("Abacus House").
-          setAddressLine1("Level 34, 264-278 George Street").setAddressLine2("").setAddressLine3("").
-          setCity("Sydney").setPostalCode("2000").setCountry("Australia").
-          setLocation("Level 34, 264-278 George Street Sydney NSW 2000").
-          setAddressType("Mailing").
           setBusinessPhone("(02) 9253 8600").
           setHomePhone("(02) 4957 8555").
           setMobilePhone("0414 414 515").
@@ -72,3 +68,13 @@ public class ContactServerResource extends WadlServerResource implements
     return result;
   }
 }
+
+/*
+
+          setAddressName("Abacus House").
+          setAddressLine1("Level 34, 264-278 George Street").setAddressLine2("").setAddressLine3("").
+          setCity("Sydney").setPostalCode("2000").setCountry("Australia").
+          setLocation("Level 34, 264-278 George Street Sydney NSW 2000").
+          setAddressType("Mailing").
+
+*/

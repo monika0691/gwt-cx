@@ -76,56 +76,6 @@ public class ContactRepresentation extends ContactDto {
     return this;
   }
 
-  public ContactRepresentation setAddressName(String addressName) {
-    this.addressName = addressName;
-    return this;
-  }
-
-  public ContactRepresentation setAddressLine1(String addressLine1) {
-    this.addressLine1 = addressLine1;
-    return this;
-  }
-
-  public ContactRepresentation setAddressLine2(String addressLine2) {
-    this.addressLine2 = addressLine2;
-    return this;
-  }
-
-  public ContactRepresentation setAddressLine3(String addressLine3) {
-    this.addressLine3 = addressLine3;
-    return this;
-  }
-
-  public ContactRepresentation setCity(String city) {
-    this.city = city;
-    return this;
-  }
-
-  public ContactRepresentation setState(String state) {
-    this.state = state;
-    return this;
-  }
-
-  public ContactRepresentation setPostalCode(String postalCode) {
-    this.postalCode = postalCode;
-    return this;
-  }
-
-  public ContactRepresentation setCountry(String country) {
-    this.country = country;
-    return this;
-  }
-
-  public ContactRepresentation setLocation(String location) {
-    this.location = location;
-    return this;
-  }
-
-  public ContactRepresentation setAddressType(String addressType) {
-    this.addressType = addressType;
-    return this;
-  }
-
   public ContactRepresentation setBusinessPhone(String businessPhone) {
     this.businessPhone = businessPhone;
     return this;

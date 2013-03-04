@@ -21,6 +21,8 @@
 
 package com.gwtcx.shared.dto;
 
+import java.util.List;
+
 public class ContactDto extends EntityDto {
 
   private static final long serialVersionUID = 1L;
@@ -28,11 +30,10 @@ public class ContactDto extends EntityDto {
   enum Field
   {
      SALUTATION("salutation"), GIVEN_NAME("givenName"), MIDDLE_NAME("middleName"),
-         FAMILY_NAME("familyName"), FULL_NAME("fullName"), CORRESPONDENCE("correspondence"),
-       JOB_TITLE("jobTitle"), OCCUPATION("occupation"), PARENT_CUSTOMER("parentCustomer"), CURRENCY("currency"),
-
-       BUSINESS_PHONE("businessPhone"), HOME_PHOME("homePhone"), MOBILE_PHONE("mobilePhone"), FAX("fax"), PAGER("pager"), EMAIL("email"),
-       NOT_USED("notUsed");
+     FAMILY_NAME("familyName"), FULL_NAME("fullName"), CORRESPONDENCE("correspondence"),
+     JOB_TITLE("jobTitle"), OCCUPATION("occupation"), PARENT_CUSTOMER("parentCustomer"), CURRENCY("currency"),
+     BUSINESS_PHONE("businessPhone"), HOME_PHOME("homePhone"), MOBILE_PHONE("mobilePhone"), FAX("fax"), PAGER("pager"), EMAIL("email"),
+     NOT_USED("notUsed");
 
      private Field(String stringValue) { this.stringValue = stringValue; }
      public String toString() { return stringValue; }
@@ -53,23 +54,28 @@ public class ContactDto extends EntityDto {
   protected String parentCustomer;  // Kiahu
   protected String currency;        // AUD
 
-  protected String addressName;     // Stamford Residences
-  protected String addressLine1;    // 33A 171 Gloucester Street
-  protected String addressLine2;
-  protected String addressLine3;
-  protected String city;            // Sydney
-  protected String state;           // NSW
-  protected String postalCode;      // 2000
-  protected String country;         // Australia
-  protected String location;        // 33A 171 Gloucester Street Sydney NSW
-  protected String addressType;     // Home
-
   protected String businessPhone;   // +61 2 9241 4858
   protected String homePhone;       //
   protected String mobilePhone;     //
   protected String fax;             //
   protected String pager;           //
   protected String email;           //
+
+  protected String department;
+  protected String manager;
+  protected String managerPhone;
+  protected String role;
+  protected String assistent;
+  protected String assistentPhone;
+
+  protected String gender;
+  protected String maritalStatus;
+  protected String partnerName;
+  protected String birthday;
+  protected String anniversary;
+
+  // Address details
+  private List<AddressDto> addresses;
 
   public ContactDto() {
     super();
@@ -283,96 +289,6 @@ public class ContactDto extends EntityDto {
     return this;
   }
 
-  public String getAddressName() {
-    return addressName;
-  }
-
-  public ContactDto setAddressName(String addressName) {
-    this.addressName = addressName;
-    return this;
-  }
-
-  public String getAddressLine1() {
-    return addressLine1;
-  }
-
-  public ContactDto setAddressLine1(String addressLine1) {
-    this.addressLine1 = addressLine1;
-    return this;
-  }
-
-  public String getAddressLine2() {
-    return addressLine2;
-  }
-
-  public ContactDto setAddressLine2(String addressLine2) {
-    this.addressLine2 = addressLine2;
-    return this;
-  }
-
-  public String getAddressLine3() {
-    return addressLine3;
-  }
-
-  public ContactDto setAddressLine3(String addressLine3) {
-    this.addressLine3 = addressLine3;
-    return this;
-  }
-
-  public String getCity() {
-    return city;
-  }
-
-  public ContactDto setCity(String city) {
-    this.city = city;
-    return this;
-  }
-
-  public String getState() {
-    return state;
-  }
-
-  public ContactDto setState(String state) {
-    this.state = state;
-    return this;
-  }
-
-  public String getPostalCode() {
-    return postalCode;
-  }
-
-  public ContactDto setPostalCode(String postalCode) {
-    this.postalCode = postalCode;
-    return this;
-  }
-
-  public String getCountry() {
-    return country;
-  }
-
-  public ContactDto setCountry(String country) {
-    this.country = country;
-    return this;
-  }
-
-  public String getLocation() {
-    return location;
-  }
-
-  public ContactDto setLocation(String location) {
-    this.location = location;
-    return this;
-  }
-
-  public String getAddressType() {
-    return addressType;
-  }
-
-  public ContactDto setAddressType(String addressType) {
-    this.addressType = addressType;
-    return this;
-  }
-
   public String getBusinessPhone() {
     return businessPhone;
   }
@@ -424,6 +340,114 @@ public class ContactDto extends EntityDto {
 
   public ContactDto setEmail(String email) {
     this.email = email;
+    return this;
+  }
+
+  public String getDepartment() {
+    return department;
+  }
+
+  public ContactDto setDepartment(String department) {
+    this.department = department;
+    return this;
+  }
+
+  public String getManager() {
+    return manager;
+  }
+
+  public ContactDto setManager(String manager) {
+    this.manager = manager;
+    return this;
+  }
+
+  public String getManagerPhone() {
+    return managerPhone;
+  }
+
+  public ContactDto setManagerPhone(String managerPhone) {
+    this.managerPhone = managerPhone;
+    return this;
+  }
+
+  public String getRole() {
+    return role;
+  }
+
+  public ContactDto setRole(String role) {
+    this.role = role;
+    return this;
+  }
+
+  public String getAssistent() {
+    return assistent;
+  }
+
+  public ContactDto setAssistent(String assistent) {
+    this.assistent = assistent;
+    return this;
+  }
+
+  public String getAssistentPhone() {
+    return assistentPhone;
+  }
+
+  public ContactDto setAssistentPhone(String assistentPhone) {
+    this.assistentPhone = assistentPhone;
+    return this;
+  }
+
+  public String getGender() {
+    return gender;
+  }
+
+  public ContactDto setGender(String gender) {
+    this.gender = gender;
+    return this;
+  }
+
+  public String getMaritalStatus() {
+    return maritalStatus;
+  }
+
+  public ContactDto setMaritalStatus(String maritalStatus) {
+    this.maritalStatus = maritalStatus;
+    return this;
+  }
+
+  public String getPartnerName() {
+    return partnerName;
+  }
+
+  public ContactDto setPartnerName(String partnerName) {
+    this.partnerName = partnerName;
+    return this;
+  }
+
+  public String getBirthday() {
+    return birthday;
+  }
+
+  public ContactDto setBirthday(String birthday) {
+    this.birthday = birthday;
+    return this;
+  }
+
+  public String getAnniversary() {
+    return anniversary;
+  }
+
+  public ContactDto setAnniversary(String anniversary) {
+    this.anniversary = anniversary;
+    return this;
+  }
+
+  public List<AddressDto> getAddresses() {
+    return addresses;
+  }
+
+  public ContactDto setAddresses(List<AddressDto> addresses) {
+    this.addresses = addresses;
     return this;
   }
 }

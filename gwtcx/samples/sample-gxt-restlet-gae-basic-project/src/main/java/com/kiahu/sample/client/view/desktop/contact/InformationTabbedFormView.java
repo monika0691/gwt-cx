@@ -19,6 +19,8 @@ import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.uihandlers.ContactInformationUiHandlers;
 import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.contact.InformationAdministrationTab;
+import com.gwtcx.extgwt.client.desktop.view.contact.InformationDetailsTab;
 import com.gwtcx.extgwt.client.desktop.view.contact.InformationGeneralTab;
 import com.gwtcx.extgwt.client.desktop.view.contact.InformationNotesTab;
 import com.gwtcx.extgwt.client.desktop.view.EntityTab;
@@ -48,11 +50,20 @@ public class InformationTabbedFormView extends
   private final static int TAB_LABEL = 0;
 
   private String[][] tabs = {
+    {"Notes"},
     {"General"},
     {"Details"},
-    {"Administration"},
-    {"Notes"}
+    {"Administration"}
   };
+
+  /*
+
+  {"General"},
+  {"Details"},
+  {"Administration"},
+  {"Notes"}
+
+  */
 
   private int numberOfTabs = tabs.length;
   @SuppressWarnings("unchecked")
@@ -104,9 +115,9 @@ public class InformationTabbedFormView extends
 
       case GENERAL: result = new InformationGeneralTab(getTabPanel()); break;
 
-      case DETAILS: result = new InformationGeneralTab(getTabPanel()); break;
+      case DETAILS: result = new InformationDetailsTab(getTabPanel()); break;
 
-      case ADMINISTRATION: result = new InformationGeneralTab(getTabPanel()); break;
+      case ADMINISTRATION: result = new InformationAdministrationTab(getTabPanel()); break;
 
       case NOTES: result = new InformationNotesTab(getTabPanel()); break;
 

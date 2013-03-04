@@ -34,7 +34,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
-import com.gwtcx.shared.dto.ContactRepresentation;
+import com.gwtcx.shared.dto.ContactsDto;
 import com.gwtcx.shared.dto.ContactsRepresentation;
 import com.kiahu.sample.client.restlet.ContactsResourceProxy;
 import org.restlet.client.resource.Result;
@@ -53,7 +53,7 @@ public class ContactsPresenter extends
   }
 
   public interface MyView extends View, HasUiHandlers<ContactsUiHandlers> {
-    void setResultSet(List<ContactRepresentation> resultSet);
+    void setResultSet(List<ContactsDto> resultSet);
   }
 
   @Inject
