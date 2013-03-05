@@ -20,7 +20,7 @@ import com.sencha.gxt.widget.core.client.TabPanel;
 public class InformationAdministrationTab extends ContactTab {
 
   private String[][] fieldSets = {
-    {"Address Information"}
+    {"General Information"}
   };
 
   /*

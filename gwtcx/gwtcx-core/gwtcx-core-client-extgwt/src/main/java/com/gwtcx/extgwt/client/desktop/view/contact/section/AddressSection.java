@@ -18,21 +18,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.core.client.GWT;
 import com.gwtcx.client.RegExTokens;
 import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.extgwt.client.desktop.view.EntitySection;
+import com.gwtcx.extgwt.client.widgets.AddressTypeComboBox;
+import com.gwtcx.extgwt.client.widgets.CountryComboBox;
 import com.gwtcx.shared.dto.AddressTypesDto;
 import com.gwtcx.shared.dto.ContactRepresentation;
 import com.gwtcx.shared.dto.CountriesDto;
-import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
-import com.sencha.gxt.data.shared.LabelProvider;
-import com.sencha.gxt.data.shared.ListStore;
-import com.sencha.gxt.data.shared.ModelKeyProvider;
-import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.widget.core.client.container.AbstractHtmlLayoutContainer.HtmlData;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
-import com.sencha.gxt.widget.core.client.form.ComboBox;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
 
 public class AddressSection extends EntitySection<ContactRepresentation> {
@@ -50,19 +45,8 @@ public class AddressSection extends EntitySection<ContactRepresentation> {
     {I18nUtil.getConstant().postalCodeLabel(), ".postalCode", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, ""},
   };
 
-  protected ComboBox<CountriesDto> country;         // Australia
-  // protected String location;                     // 33A 171 Gloucester Street Sydney NSW
-  protected ComboBox<AddressTypesDto> addressType;  // Home
-
-  public interface CountryProperties extends PropertyAccess<CountriesDto> {
-    ModelKeyProvider<CountriesDto> id();
-    LabelProvider<CountriesDto> name();
-  }
-
-  public interface AddressTypeProperties extends PropertyAccess<AddressTypesDto> {
-    ModelKeyProvider<AddressTypesDto> id();
-    LabelProvider<AddressTypesDto> name();
-  }
+  protected CountryComboBox country;          // Australia
+  protected AddressTypeComboBox addressType;  // Mailing
 
   public AddressSection(final HtmlLayoutContainer panel) {
     super(panel);
@@ -73,32 +57,21 @@ public class AddressSection extends EntitySection<ContactRepresentation> {
 
     createTextFields();
 
-    createFields();
+    createComboBoxFields();
   }
 
-  public void createFields() {
+  public void createComboBoxFields() {
 
-    CountryProperties countryProperty = GWT.create(CountryProperties.class);
-    ListStore<CountriesDto> countryStore = new ListStore<CountriesDto>(countryProperty.id());
-    countryStore.addAll(getCountries());
+    CountryComboBox.getCountryStore().addAll(getCountries());
+    country = new CountryComboBox(CountryComboBox.getCountryStore(), CountryComboBox.getProperty().name());
+    country.setValue(CountryComboBox.getCountryStore().get(0));
 
-    country = new ComboBox<CountriesDto>(countryStore, countryProperty.name());
-    country.setAllowBlank(false);
-    country.setTriggerAction(TriggerAction.ALL);
-    country.setValue(countryStore.get(0));
+    AddressTypeComboBox.getAddressTypeStore().addAll(getAddressTypes());
+    addressType = new AddressTypeComboBox(AddressTypeComboBox.getAddressTypeStore(), AddressTypeComboBox.getProperty().name());
+    addressType.setValue(AddressTypeComboBox.getAddressTypeStore().get(0));
 
-    getPanel().add(new FieldLabel(country, I18nUtil.getConstant().countryLabel()), new HtmlData(".country"));
-
-    AddressTypeProperties addressTypeProperty = GWT.create(AddressTypeProperties.class);
-    ListStore<AddressTypesDto> addressTypeStore = new ListStore<AddressTypesDto>(addressTypeProperty.id());
-    addressTypeStore.addAll(getAddressTypes());
-
-    addressType = new ComboBox<AddressTypesDto>(addressTypeStore, addressTypeProperty.name());
-    addressType.setAllowBlank(false);
-    addressType.setTriggerAction(TriggerAction.ALL);
-    addressType.setValue(addressTypeStore.get(1));
-
-    getPanel().add(new FieldLabel(addressType, I18nUtil.getConstant().addressTypeLabel()), new HtmlData(".addressType"));
+    getPanel().add(new FieldLabel(country, CountryComboBox.getLabel()), new HtmlData(".country"));
+    getPanel().add(new FieldLabel(addressType, AddressTypeComboBox.getLabel()), new HtmlData(".addressType"));
   }
 
   @Override
@@ -136,6 +109,24 @@ public class AddressSection extends EntitySection<ContactRepresentation> {
 }
 
 /*
+
+    // CountryPropertyAccess countryPropertyAccess = GWT.create(CountryPropertyAccess.class);
+    // ListStore<CountriesDto> countryStore = new ListStore<CountriesDto>(countryPropertyAccess.id());
+    // countryStore.addAll(getCountries());
+
+    // country = new ComboBox<CountriesDto>(countryStore, countryPropertyAccess.name());
+    // country.setAllowBlank(false);
+    // country.setTriggerAction(TriggerAction.ALL);
+    // country.setValue(countryStore.get(0));
+
+    // AddressTypeProperties addressTypeProperty = GWT.create(AddressTypeProperties.class);
+    // ListStore<AddressTypesDto> addressTypeStore = new ListStore<AddressTypesDto>(addressTypeProperty.id());
+    // addressTypeStore.addAll(getAddressTypes());
+
+    // addressType = new ComboBox<AddressTypesDto>(addressTypeStore, addressTypeProperty.name());
+    // addressType.setAllowBlank(false);
+    // addressType.setTriggerAction(TriggerAction.ALL);
+    // addressType.setValue(addressTypeStore.get(1));
 
 
 public class AddressSection extends EntitySection<ContactRepresentation> {
