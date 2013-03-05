@@ -34,8 +34,6 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
 import com.gwtcx.shared.dto.ContactRepresentation;
-import com.gwtcx.shared.dto.CountriesDto;
-// import com.gwtcx.shared.dto.ContactsRepresentation;
 import com.kiahu.sample.client.presenter.MainPagePresenter;
 import com.kiahu.sample.client.restlet.ContactResourceProxy;
 import org.restlet.client.resource.Result;
