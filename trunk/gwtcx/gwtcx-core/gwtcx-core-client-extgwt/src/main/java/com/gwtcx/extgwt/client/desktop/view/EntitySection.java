@@ -32,8 +32,10 @@ public class EntitySection<T> {
 
   private HtmlLayoutContainer panel;
 
+  // FIELD_LABEL, HTML_DATA, REGEX, ALLOW_BLANKS, EMPTY_TEXT
   private String[][] textFieldTemplate = null;
-  private TextField [] textFields = null;
+
+  private TextField [] textFields = null;  // new TextField[getNumberOfRows()];
 
   @SuppressWarnings("unused")
   private EntitySection() { }
@@ -47,36 +49,39 @@ public class EntitySection<T> {
 
   protected void createTextFields() {
 
-    Log.debug("createFields()");
+    Log.debug("createTextFields()");
 
     // you must call setTextFieldTemplate() in the constructor of your derived class
-    if (textFieldTemplate == null) { return; }
+    if (getTextFieldTemplate() == null) { return; }
 
-    textFields = new TextField[getNumberOfRows()];
+    textFields = new TextField[getNumberOfTextFieldRows()];
 
-    Log.debug("NumberOfRows: " + getNumberOfRows());
+    Log.debug("NumberOfTextFieldRows: " + getNumberOfTextFieldRows());
 
     try {
-      for (int row = 0; row < getNumberOfRows(); row++) {
 
-        Log.debug("FieldLabel: " + textFieldTemplate[row][FIELD_LABEL] + " HtmlData: " + textFieldTemplate[row][HTML_DATA]);
+      for (int row = 0; row < getNumberOfTextFieldRows(); row++) {
 
-        textFields[row] = new TextField();
-        getPanel().add(new FieldLabel(textFields[row], textFieldTemplate[row][FIELD_LABEL]), new HtmlData(textFieldTemplate[row][HTML_DATA]));
-        textFields[row].addValidator(new RegExValidator(textFieldTemplate[row][REGEX], "Regular Expression: " + textFieldTemplate[row][REGEX]));
+        Log.debug("FieldLabel: " + getTextFieldTemplate()[row][FIELD_LABEL] + " HtmlData: " + getTextFieldTemplate()[row][HTML_DATA]);
 
-        if (textFieldTemplate[row][ALLOW_BLANKS].contentEquals(RegExTokens.TRUE)) {
-          textFields[row].setAllowBlank(true);
+        getTextFields()[row] = new TextField();
+        getPanel().add(new FieldLabel(getTextFields()[row], getTextFieldTemplate()[row][FIELD_LABEL]), new HtmlData(getTextFieldTemplate()[row][HTML_DATA]));
+        getTextFields()[row].addValidator(new RegExValidator(getTextFieldTemplate()[row][REGEX], "Regular Expression: " + getTextFieldTemplate()[row][REGEX]));
+
+        if (getTextFieldTemplate()[row][ALLOW_BLANKS].contentEquals(RegExTokens.TRUE)) {
+
+          getTextFields()[row].setAllowBlank(true);
 
           Log.debug("setAllowBlank(true)");
         } else {
-          textFields[row].setAllowBlank(false);
+
+          getTextFields()[row].setAllowBlank(false);
 
           Log.debug("setAllowBlank(false)");
         }
 
-        if (textFieldTemplate[row][EMPTY_TEXT].length() != 0) {
-          textFields[row].setEmptyText(textFieldTemplate[row][EMPTY_TEXT]);
+        if (getTextFieldTemplate()[row][EMPTY_TEXT].length() != 0) {
+          getTextFields()[row].setEmptyText(getTextFieldTemplate()[row][EMPTY_TEXT]);
         }
       }
     } catch (Exception e) {
@@ -84,7 +89,7 @@ public class EntitySection<T> {
     }
   }
 
-  public int getNumberOfRows() {
+  public int getNumberOfTextFieldRows() {
     return textFieldTemplate.length;
   }
 
@@ -130,13 +135,7 @@ private String[][] fields = {
   {I18nUtil.getConstant().givenNameLabel(), ".givenName", RegExTokens.ALPHANUMERIC_1_16, RegExTokens.FALSE, "Robert"},
   {I18nUtil.getConstant().middleNameLabel(), ".middleName", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, "James"},
   {I18nUtil.getConstant().familyNameLabel(), ".familyName", RegExTokens.ALPHANUMERIC_1_32, RegExTokens.FALSE, "Ferguson"},
-  {I18nUtil.getConstant().parentCustomerLabel(), ".parentCustomer", RegExTokens.ALPHANUMERIC_0_32, RegExTokens.TRUE, "Kiahu Pty Limited"},
-
-  {I18nUtil.getConstant().businessPhoneLabel(), ".businessPhone", RegExTokens.AU_TELEPHONE_10_20, RegExTokens.TRUE, ""},
-  {I18nUtil.getConstant().homePhoneLabel(), ".homePhone", RegExTokens.AU_TELEPHONE_10_20, RegExTokens.TRUE, ""},
-  {I18nUtil.getConstant().mobilePhoneLabel(), ".mobilePhone", RegExTokens.AU_TELEPHONE_10_20, RegExTokens.TRUE, ""},
-  {I18nUtil.getConstant().faxLabel(), ".fax", RegExTokens.AU_TELEPHONE_10_20, RegExTokens.TRUE, ""},
-  {I18nUtil.getConstant().emailLabel(), ".email", RegExTokens.EMAIL, RegExTokens.TRUE, ""}
+  {I18nUtil.getConstant().parentCustomerLabel(), ".parentCustomer", RegExTokens.ALPHANUMERIC_0_32, RegExTokens.TRUE, "Kiahu Pty Limited"}
 };
 
 */

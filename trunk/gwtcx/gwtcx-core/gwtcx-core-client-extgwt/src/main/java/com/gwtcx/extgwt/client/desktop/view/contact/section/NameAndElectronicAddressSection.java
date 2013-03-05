@@ -58,7 +58,7 @@ public class NameAndElectronicAddressSection extends EntitySection<ContactRepres
 
     try {
 
-      for (int row = 0; row < getNumberOfRows(); row++) {
+      for (int row = 0; row < getNumberOfTextFieldRows(); row++) {
 
         field = getTextFieldTemplate()[row][HTML_DATA];
         fieldname = field.substring(1);  // remove the "." prefix

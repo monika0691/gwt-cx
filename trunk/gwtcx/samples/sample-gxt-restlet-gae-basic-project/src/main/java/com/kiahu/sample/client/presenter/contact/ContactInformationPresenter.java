@@ -34,6 +34,7 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
 import com.gwtcx.shared.dto.ContactRepresentation;
+import com.gwtcx.shared.dto.CountriesDto;
 // import com.gwtcx.shared.dto.ContactsRepresentation;
 import com.kiahu.sample.client.presenter.MainPagePresenter;
 import com.kiahu.sample.client.restlet.ContactResourceProxy;
@@ -62,6 +63,9 @@ public class ContactInformationPresenter extends
 
   public interface MyView extends View, HasUiHandlers<ContactInformationUiHandlers> {
     void setResult(ContactRepresentation contact);
+    // void setResult(CountriesDto countries);
+    // void setResult(AddressTypesDto addresses);
+
     // void setId(String id);
   }
 
@@ -72,7 +76,6 @@ public class ContactInformationPresenter extends
 
     getView().setUiHandlers(this);
   }
-
 
   @Override
   protected void onBind() {
