@@ -27,7 +27,7 @@ import com.gwtcx.client.NameTokens;
 import com.gwtcx.client.uihandlers.MainPageUiHandlers;
 import com.gwtcx.extgwt.client.ExtGwtCx;
 import com.gwtcx.extgwt.client.data.NavigationPaneSectionModel;
-import com.gwtcx.extgwt.client.desktop.view.AbstractMainPageDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractMainPageView;
 import com.gwtcx.extgwt.client.widgets.ApplicationMenu;
 import com.gwtcx.extgwt.client.widgets.Masthead;
 import com.gwtcx.extgwt.client.widgets.NavigationPane;
@@ -49,7 +49,7 @@ import com.sencha.gxt.widget.core.client.menu.Item;
 import com.sencha.gxt.widget.core.client.menu.Menu;
 import com.sencha.gxt.widget.core.client.menu.MenuItem;
 
-public class MainPageDesktopView extends AbstractMainPageDesktopView<MainPageUiHandlers> implements
+public class MainPageDesktopView extends AbstractMainPageView<MainPageUiHandlers> implements
     MainPagePresenter.MyView {
 
   public interface MainPageUiBinder extends UiBinder<Viewport, MainPageDesktopView> { }

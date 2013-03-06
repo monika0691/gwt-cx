@@ -21,10 +21,10 @@ import com.gwtplatform.mvp.client.UiHandlers;
 /**
  * AbstractDataManagementView
  */
-public abstract class AbstractDataManagementDesktopView<C extends UiHandlers> extends AbstractSettingsDesktopView<C> {
+public abstract class AbstractDataManagementView<C extends UiHandlers> extends AbstractSettingsView<C> {
 
   @Inject
-  public AbstractDataManagementDesktopView(String filename) {
+  public AbstractDataManagementView(String filename) {
     super(filename);
 
     Log.debug("AbstractDataManagementView()");

@@ -17,10 +17,10 @@ package com.kiahu.sample.client.view.desktop;
 import com.bradrydzewski.gwt.calendar.client.Calendar;
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.CalendarUiHandlers;
-import com.gwtcx.extgwt.client.desktop.view.AbstractCalendarDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractCalendarView;
 import com.kiahu.sample.client.presenter.CalendarPresenter;
 
-public class CalendarDesktopView extends AbstractCalendarDesktopView<CalendarUiHandlers>
+public class CalendarDesktopView extends AbstractCalendarView<CalendarUiHandlers>
     implements CalendarPresenter.MyView {
 
   @Inject

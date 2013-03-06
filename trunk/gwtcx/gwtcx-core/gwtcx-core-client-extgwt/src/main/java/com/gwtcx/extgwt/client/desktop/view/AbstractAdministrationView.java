@@ -25,10 +25,10 @@ import com.gwtplatform.mvp.client.UiHandlers;
 /**
  * AbstractAdministrationView
  */
-public abstract class AbstractAdministrationDesktopView<C extends UiHandlers> extends AbstractSettingsDesktopView<C> {
+public abstract class AbstractAdministrationView<C extends UiHandlers> extends AbstractSettingsView<C> {
 
   @Inject
-  public AbstractAdministrationDesktopView(String filename) {
+  public AbstractAdministrationView(String filename) {
     super(filename);
 
     Log.debug("AbstractAdministrationView()");

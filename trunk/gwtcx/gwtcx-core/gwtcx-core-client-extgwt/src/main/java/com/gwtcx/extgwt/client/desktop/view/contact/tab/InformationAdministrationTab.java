@@ -39,6 +39,7 @@ public class InformationAdministrationTab extends AbstractContactTab {
     Log.debug("InformationAdministrationTab(TabPanel tabPanel)");
 
     setFieldSets(fieldSets);
+
     createFieldSets(I18nUtil.getConstant().administrationTab());
   }
 }

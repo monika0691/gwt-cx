@@ -63,7 +63,7 @@ import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 /**
  * AbstractSettingsView
  */
-public abstract class AbstractSettingsDesktopView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractSettingsView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   //
   // Settings View Navigation Pane sections
@@ -117,7 +117,7 @@ public abstract class AbstractSettingsDesktopView<C extends UiHandlers> extends 
   }
 
   @Inject
-  public AbstractSettingsDesktopView(final String filename) {
+  public AbstractSettingsView(final String filename) {
     super();
 
     Log.debug("AbstractPagingView()");

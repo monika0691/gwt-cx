@@ -16,10 +16,10 @@ package com.kiahu.sample.client.view.desktop;
 
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.AdministrationUiHandlers;
-import com.gwtcx.extgwt.client.desktop.view.AbstractAdministrationDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractAdministrationView;
 import com.kiahu.sample.client.presenter.AdministrationPresenter;
 
-public class AdministrationDesktopView extends AbstractAdministrationDesktopView<AdministrationUiHandlers>
+public class AdministrationDesktopView extends AbstractAdministrationView<AdministrationUiHandlers>
     implements AdministrationPresenter.MyView {
 
   @Inject

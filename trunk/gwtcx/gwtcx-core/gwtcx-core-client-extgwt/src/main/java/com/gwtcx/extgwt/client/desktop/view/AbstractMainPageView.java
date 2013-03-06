@@ -33,7 +33,7 @@ import com.sencha.gxt.widget.core.client.container.Viewport;
 /**
  * AbstractMainPageView
  */
-public abstract class AbstractMainPageDesktopView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractMainPageView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   protected final EventBus eventBus;
   protected Viewport viewport;
@@ -51,7 +51,7 @@ public abstract class AbstractMainPageDesktopView<C extends UiHandlers> extends 
   @UiField public NavigationPane navigationPane;
 
   @Inject
-  public AbstractMainPageDesktopView(final EventBus eventBus, final Masthead masthead, final ApplicationMenu applicationMenu) {
+  public AbstractMainPageView(final EventBus eventBus, final Masthead masthead, final ApplicationMenu applicationMenu) {
     super();
 
     Log.debug("AbstractMainPageView()");

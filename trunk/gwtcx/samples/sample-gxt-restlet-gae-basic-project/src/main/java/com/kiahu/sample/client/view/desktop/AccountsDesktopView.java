@@ -16,7 +16,7 @@ package com.kiahu.sample.client.view.desktop;
 
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.AccountsUiHandlers;
-import com.gwtcx.extgwt.client.desktop.view.AbstractAccountsDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractAccountsView;
 import com.gwtcx.extgwt.client.widgets.ToolBar;
 import com.gwtcx.extgwt.client.widgets.grid.AccountsContextAreaGrid;
 import com.kiahu.sample.client.presenter.AccountsPresenter;
@@ -24,7 +24,7 @@ import com.kiahu.sample.client.presenter.AccountsPresenter;
 /**
  * AccountsView
  */
-public class AccountsDesktopView extends AbstractAccountsDesktopView<AccountsUiHandlers> implements
+public class AccountsDesktopView extends AbstractAccountsView<AccountsUiHandlers> implements
     AccountsPresenter.MyView {
 
   @Inject

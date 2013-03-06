@@ -16,10 +16,10 @@ package com.kiahu.sample.client.view.desktop;
 
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.DataManagementUiHandlers;
-import com.gwtcx.extgwt.client.desktop.view.AbstractDataManagementDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractDataManagementView;
 import com.kiahu.sample.client.presenter.DataManagementPresenter;
 
-public class DataManagementDesktopView extends AbstractDataManagementDesktopView<DataManagementUiHandlers>
+public class DataManagementDesktopView extends AbstractDataManagementView<DataManagementUiHandlers>
     implements DataManagementPresenter.MyView {
 
   @Inject

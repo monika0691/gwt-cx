@@ -18,7 +18,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
 
-public class PlaceholderDesktopView extends ViewImpl {
+public class PlaceholderView extends ViewImpl {
 
   private final String html = "<div>\n"
     + "<table align=\"center\">\n"
@@ -40,7 +40,7 @@ public class PlaceholderDesktopView extends ViewImpl {
 
   private final HTMLPanel panel;
 
-  public PlaceholderDesktopView() {
+  public PlaceholderView() {
 
     panel = new HTMLPanel(getPanelHtml());
   }

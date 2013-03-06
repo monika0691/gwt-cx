@@ -15,13 +15,13 @@
 package com.kiahu.sample.client.view.desktop;
 
 import com.gwtcx.client.uihandlers.ReportsUiHandlers;
-import com.gwtcx.extgwt.client.desktop.view.PlaceholderDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.PlaceholderView;
 import com.kiahu.sample.client.presenter.ReportsPresenter;
 
 /**
  * ReportsView
  */
-public class ReportsDesktopView extends PlaceholderDesktopView implements ReportsPresenter.MyView {
+public class ReportsDesktopView extends PlaceholderView implements ReportsPresenter.MyView {
 
   private final String html = "<div>\n"
     + "<table align=\"center\">\n"

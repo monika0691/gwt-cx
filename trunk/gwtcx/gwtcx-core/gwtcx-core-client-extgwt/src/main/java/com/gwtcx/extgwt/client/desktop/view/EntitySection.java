@@ -89,10 +89,6 @@ public class EntitySection<T> {
     }
   }
 
-  public int getNumberOfTextFieldRows() {
-    return textFieldTemplate.length;
-  }
-
   public HtmlLayoutContainer getPanel() { return panel; }
 
   public EntitySection<T> setPanel(HtmlLayoutContainer panel) {
@@ -108,6 +104,11 @@ public class EntitySection<T> {
     this.textFieldTemplate = fields;
     return this;
   }
+
+  public int getNumberOfTextFieldRows() {
+    return textFieldTemplate.length;
+  }
+
 
   public TextField[] getTextFields() {
     return textFields;
