@@ -16,7 +16,7 @@ package com.kiahu.sample.client.view.desktop;
 
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.ContactsUiHandlers;
-import com.gwtcx.extgwt.client.desktop.view.AbstractContactsDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractContactsView;
 import com.gwtcx.extgwt.client.widgets.ToolBar;
 import com.gwtcx.extgwt.client.widgets.grid.ContactsContextAreaGrid;
 import com.kiahu.sample.client.presenter.ContactsPresenter;
@@ -24,7 +24,7 @@ import com.kiahu.sample.client.presenter.ContactsPresenter;
 /**
  * ContactsView
  */
-public class ContactsDesktopView extends AbstractContactsDesktopView<ContactsUiHandlers> implements
+public class ContactsDesktopView extends AbstractContactsView<ContactsUiHandlers> implements
     ContactsPresenter.MyView {
 
   @Inject

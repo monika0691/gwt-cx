@@ -24,7 +24,7 @@ import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 
-public abstract class AbstractErrorPageDesktopView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractErrorPageView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   public static final String OK_BUTTON_CONTAINER = "okButtonContainer";
 
@@ -50,7 +50,7 @@ public abstract class AbstractErrorPageDesktopView<C extends UiHandlers> extends
   private final HTMLPanel panel;
   private final TextButton okButton;
 
-  public AbstractErrorPageDesktopView() {
+  public AbstractErrorPageView() {
 
     panel = new HTMLPanel(getPanelHtml());
 

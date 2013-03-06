@@ -16,10 +16,10 @@ package com.kiahu.sample.client.view.desktop;
 
 import com.google.inject.Inject;
 import com.gwtcx.client.uihandlers.HighlightsUiHandlers;
-import com.gwtcx.extgwt.client.desktop.view.AbstractHighlightsDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractHighlightsView;
 import com.kiahu.sample.client.presenter.HighlightsPresenter;
 
-public class HighlightsDesktopView extends AbstractHighlightsDesktopView<HighlightsUiHandlers> implements
+public class HighlightsDesktopView extends AbstractHighlightsView<HighlightsUiHandlers> implements
     HighlightsPresenter.MyView {
 
   @Inject

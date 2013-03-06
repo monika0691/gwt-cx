@@ -80,6 +80,7 @@ public abstract class AbstractTabbedFormView<C extends UiHandlers> extends ViewW
   }
 
   // See: ContactPageView - setInSlot(Object slot, Widget content)
+  //      and AbstractContactTabbedFormView - resize()
 
   protected void resize() {
 
@@ -110,8 +111,9 @@ public abstract class AbstractTabbedFormView<C extends UiHandlers> extends ViewW
     return panel;
   }
 
-  public void setPanel(VerticalLayoutContainer panel) {
-    this.panel = panel;;
+  public AbstractTabbedFormView<C> setPanel(VerticalLayoutContainer panel) {
+    this.panel = panel;
+    return this;
   }
 
   public FormPanel getForm() {

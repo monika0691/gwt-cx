@@ -41,7 +41,7 @@ import com.sencha.gxt.widget.core.client.toolbar.LabelToolItem;
 /**
  * AbstractCalendarView
  */
-public abstract class AbstractCalendarDesktopView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractCalendarView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   public static final String CONTEXT_AREA_WIDTH = "100%";
   public static final String CONTEXT_AREA_HEIGHT = "100%";
@@ -69,7 +69,7 @@ public abstract class AbstractCalendarDesktopView<C extends UiHandlers> extends 
   protected LabelToolItem periodLabel;
 
   @Inject
-  public AbstractCalendarDesktopView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Calendar calendar) {
+  public AbstractCalendarView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Calendar calendar) {
     super();
 
     this.toolBar = toolBar;

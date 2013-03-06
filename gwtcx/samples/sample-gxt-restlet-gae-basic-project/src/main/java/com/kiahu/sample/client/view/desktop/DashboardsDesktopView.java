@@ -55,12 +55,12 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.Timer;
 import com.gwtcx.client.uihandlers.DashboardsUiHandlers;
-import com.gwtcx.extgwt.client.desktop.view.AbstractDashboardsDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractDashboardsView;
 import com.kiahu.sample.client.presenter.DashboardsPresenter;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 
-public class DashboardsDesktopView extends AbstractDashboardsDesktopView<DashboardsUiHandlers> implements
+public class DashboardsDesktopView extends AbstractDashboardsView<DashboardsUiHandlers> implements
     DashboardsPresenter.MyView {
 
   public static final String CONTEXT_AREA_WIDTH = "100%";

@@ -15,10 +15,10 @@
 package com.kiahu.sample.client.view.desktop;
 
 import com.gwtcx.client.uihandlers.ErrorPageUiHandlers;
-import com.gwtcx.extgwt.client.desktop.view.AbstractErrorPageDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractErrorPageView;
 import com.kiahu.sample.client.presenter.ErrorPagePresenter;
 
-public class ErrorPageDesktopView extends AbstractErrorPageDesktopView<ErrorPageUiHandlers> implements
+public class ErrorPageDesktopView extends AbstractErrorPageView<ErrorPageUiHandlers> implements
     ErrorPagePresenter.MyView {
 
   private final String html = "<div>\n"

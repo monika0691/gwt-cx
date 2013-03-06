@@ -28,7 +28,7 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 /**
  * AbstractPagingView
  */
-public abstract class AbstractPagingDesktopView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractPagingView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   public static final String CONTEXT_AREA_WIDTH = "100%";
   public static final String CONTEXT_AREA_HEIGHT = "100%";
@@ -41,7 +41,7 @@ public abstract class AbstractPagingDesktopView<C extends UiHandlers> extends Vi
   protected final Grid<?> grid;
 
   @Inject
-  public AbstractPagingDesktopView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Grid<?> grid) {
+  public AbstractPagingView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Grid<?> grid) {
     super();
 
     Log.debug("AbstractPagingView()");

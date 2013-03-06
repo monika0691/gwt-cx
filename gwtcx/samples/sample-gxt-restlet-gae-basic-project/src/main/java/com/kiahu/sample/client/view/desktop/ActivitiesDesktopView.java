@@ -15,13 +15,13 @@
 package com.kiahu.sample.client.view.desktop;
 
 import com.gwtcx.client.uihandlers.ActivitiesUiHandlers;
-import com.gwtcx.extgwt.client.desktop.view.PlaceholderDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.PlaceholderView;
 import com.kiahu.sample.client.presenter.ActivitiesPresenter;
 
 /**
  * ActivitiesView
  */
-public class ActivitiesDesktopView extends PlaceholderDesktopView implements ActivitiesPresenter.MyView {
+public class ActivitiesDesktopView extends PlaceholderView implements ActivitiesPresenter.MyView {
 
   // /*
 

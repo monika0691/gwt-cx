@@ -25,7 +25,7 @@ import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 
-public abstract class AbstractHighlightsDesktopView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractHighlightsView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   public static final String CONTEXT_AREA_WIDTH = "100%";
   public static final String CONTEXT_AREA_HEIGHT = "100%";
@@ -36,7 +36,7 @@ public abstract class AbstractHighlightsDesktopView<C extends UiHandlers> extend
   // private HTMLPane htmlPane;
 
   // @Inject
-  public AbstractHighlightsDesktopView() {
+  public AbstractHighlightsView() {
     super();
 
     Log.debug("HighlightsView()");

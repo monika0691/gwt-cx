@@ -22,18 +22,18 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 /**
  * AbstractDashboardsView
  */
-public abstract class AbstractDashboardsDesktopView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractDashboardsView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   protected VerticalLayoutContainer panel;
 
   // @Inject
-  public AbstractDashboardsDesktopView() {
+  public AbstractDashboardsView() {
     super();
 
     panel = new VerticalLayoutContainer();
     // panel.setStyleName(StyleTokens.contextArea);
-    panel.setWidth(AbstractPagingDesktopView.CONTEXT_AREA_WIDTH);
-    panel.setHeight(AbstractPagingDesktopView.CONTEXT_AREA_HEIGHT);
+    panel.setWidth(AbstractPagingView.CONTEXT_AREA_WIDTH);
+    panel.setHeight(AbstractPagingView.CONTEXT_AREA_HEIGHT);
 
     bindCustomUiHandlers();
   }

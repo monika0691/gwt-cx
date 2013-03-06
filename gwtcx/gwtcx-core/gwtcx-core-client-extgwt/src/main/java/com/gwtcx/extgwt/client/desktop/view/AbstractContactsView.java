@@ -34,10 +34,10 @@ import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
 /**
  * AbstractAccountsView
  */
-public abstract class AbstractContactsDesktopView<C extends UiHandlers> extends AbstractPagingDesktopView<C> {
+public abstract class AbstractContactsView<C extends UiHandlers> extends AbstractPagingView<C> {
 
   @Inject
-  public AbstractContactsDesktopView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Grid<?> grid) {
+  public AbstractContactsView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Grid<?> grid) {
     super(toolBar, grid);
 
     Log.debug("AbstractContactsView()");

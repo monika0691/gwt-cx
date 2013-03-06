@@ -28,7 +28,7 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 /**
  * AbstractFormView
  */
-public abstract class AbstractFormDesktopView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractFormView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   // public static final String ENTITY_CONTEXT_AREA_STYLE_NAME = "gwtcx-Entity-ContextArea";
 
@@ -44,7 +44,7 @@ public abstract class AbstractFormDesktopView<C extends UiHandlers> extends View
   protected final EventBus eventBus;
 
   @Inject
-  public AbstractFormDesktopView(final EventBus eventBus) {
+  public AbstractFormView(final EventBus eventBus) {
     super();
 
     Log.debug("AbstractFormView()");

@@ -30,12 +30,12 @@ import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
 /**
  * AbstractReportsView
  */
-public abstract class AbstractReportsDesktopView<C extends UiHandlers> extends AbstractPagingDesktopView<C> {
+public abstract class AbstractReportsView<C extends UiHandlers> extends AbstractPagingView<C> {
 
   // protected String recordId;
 
   @Inject
-  public AbstractReportsDesktopView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Grid<?> grid) {
+  public AbstractReportsView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Grid<?> grid) {
     super(toolBar, grid);
 
     // recordId = new String("-1");

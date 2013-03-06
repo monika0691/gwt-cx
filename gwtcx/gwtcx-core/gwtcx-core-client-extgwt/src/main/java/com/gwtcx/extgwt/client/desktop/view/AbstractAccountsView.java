@@ -33,12 +33,12 @@ import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
 /**
  * AbstractAccountsView
  */
-public abstract class AbstractAccountsDesktopView<C extends UiHandlers> extends AbstractPagingDesktopView<C> {
+public abstract class AbstractAccountsView<C extends UiHandlers> extends AbstractPagingView<C> {
 
   // protected String id;
 
   @Inject
-  public AbstractAccountsDesktopView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Grid<?> grid) {
+  public AbstractAccountsView(final com.gwtcx.extgwt.client.widgets.ToolBar toolBar, final Grid<?> grid) {
     super(toolBar, grid);
 
     // id = new String("-1");
