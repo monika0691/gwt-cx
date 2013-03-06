@@ -16,12 +16,14 @@ package com.gwtcx.extgwt.client.desktop.view;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.sencha.gxt.widget.core.client.TabPanel;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 
 public class EntityTab<T> {
 
   public final static int FIELD_SET_LABEL = 0;
 
   private TabPanel tabPanel;
+  private VerticalLayoutContainer layoutContainer;
 
   private String[][] fieldSets = null;
 
@@ -31,6 +33,7 @@ public class EntityTab<T> {
   public EntityTab(TabPanel tabPanel) {
 
     this.tabPanel = tabPanel;
+    this.layoutContainer = new VerticalLayoutContainer();  // setLayoutContainer(new VerticalLayoutContainer());
   }
 
   public TabPanel getTabPanel() {
@@ -39,6 +42,15 @@ public class EntityTab<T> {
 
   public EntityTab<T> setTabPanel(TabPanel tabPanel) {
     this.tabPanel = tabPanel;
+    return this;
+  }
+
+  public VerticalLayoutContainer getLayoutContainer() {
+    return layoutContainer;
+  }
+
+  public EntityTab<T> setLayoutContainer(VerticalLayoutContainer layoutContainer) {
+    this.layoutContainer = layoutContainer;
     return this;
   }
 

@@ -12,26 +12,33 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.desktop.view.contact;
+package com.gwtcx.extgwt.client.desktop.view.contact.tab;
 
 import com.allen_sauer.gwt.log.client.Log;
+import com.gwtcx.client.util.I18nUtil;
 import com.sencha.gxt.widget.core.client.TabPanel;
 
-public class InformationDetailsTab extends ContactTab {
+public class InformationAdministrationTab extends AbstractContactTab {
 
   private String[][] fieldSets = {
-    {"Professional Information"}
+    {"Contact Preferences"}
   };
 
-  // {"Personal Information"}
-  // {"Professional Information"}
+  /*
 
-  public InformationDetailsTab(TabPanel tabPanel) {
+    {"Contact Preferences"},
+    {"Service Preferences"},
+    {"Billing"},
+    {"Marketing"}
+
+  */
+
+  public InformationAdministrationTab(TabPanel tabPanel) {
     super(tabPanel);
 
-    Log.debug("InformationDetailsTab(TabPanel tabPanel)");
+    Log.debug("InformationAdministrationTab(TabPanel tabPanel)");
 
     setFieldSets(fieldSets);
-    createFieldSets("Details");
+    createFieldSets(I18nUtil.getConstant().administrationTab());
   }
 }

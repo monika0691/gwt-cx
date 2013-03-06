@@ -248,6 +248,9 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   @DefaultStringValue("Address Type")
   String addressTypeLabel();
 
+  @DefaultStringValue("Details")
+  String detailsTab();
+
   @DefaultStringValue("Administration")
   String administrationTab();
 
@@ -319,12 +322,21 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   String genderLabel();
   @DefaultStringValue("Marital Status")
   String maritalStatusLabel();
-  @DefaultStringValue("Spouse/Partner Name")
+  @DefaultStringValue("Spouse")
   String partnerNameLabel();
   @DefaultStringValue("Birthday")
   String birthdayLabel();
   @DefaultStringValue("Anniversary")
   String anniversaryLabel();
+
+  @DefaultStringValue("Allow")
+  String allowLabel();
+  @DefaultStringValue("Do not allow")
+  String doNotAllowLabel();
+
+
+
+
 
   //
   // Email entity tabs

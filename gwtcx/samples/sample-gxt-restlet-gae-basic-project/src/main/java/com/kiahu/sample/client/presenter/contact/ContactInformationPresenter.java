@@ -61,8 +61,9 @@ public class ContactInformationPresenter extends
 
   public interface MyView extends View, HasUiHandlers<ContactInformationUiHandlers> {
     void setResult(ContactRepresentation contact);
-    // void setResult(CountriesDto countries);
-    // void setResult(AddressTypesDto addresses);
+    // TODO: setCommonData()
+    // void setCountry(EntityTypeDto country);
+    // void setAddressType(EntityTypeDto addressType);
 
     // void setId(String id);
   }

@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.desktop.view.contact.section;
+package com.gwtcx.extgwt.client.desktop.view.contact.tab.section;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class AddressSection extends EntitySection<ContactRepresentation> {
     {I18nUtil.getConstant().addressLine3Label(), ".addressLine3", RegExTokens.ALPHANUMERIC_0_32, RegExTokens.TRUE, ""},
     {I18nUtil.getConstant().cityLabel(), ".city", RegExTokens.ALPHANUMERIC_0_32, RegExTokens.TRUE, ""},
     {I18nUtil.getConstant().stateLabel(), ".state", RegExTokens.ALPHANUMERIC_0_16, RegExTokens.TRUE, ""},
-    {I18nUtil.getConstant().postalCodeLabel(), ".postalCode", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, ""},
+    {I18nUtil.getConstant().postalCodeLabel(), ".postalCode", RegExTokens.ALPHANUMERIC_0_8, RegExTokens.TRUE, ""}
   };
 
   protected EntityTypeComboBox country;      // Australia

@@ -15,23 +15,38 @@
 package com.kiahu.sample.client.view.desktop.contact;
 
 import com.allen_sauer.gwt.log.client.Log;
+import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.uihandlers.ContactInformationUiHandlers;
-import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormDesktopView;
-import com.gwtcx.extgwt.client.desktop.view.contact.InformationAdministrationTab;
-import com.gwtcx.extgwt.client.desktop.view.contact.InformationDetailsTab;
-import com.gwtcx.extgwt.client.desktop.view.contact.InformationGeneralTab;
-import com.gwtcx.extgwt.client.desktop.view.contact.InformationNotesTab;
+import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormView;
 import com.gwtcx.extgwt.client.desktop.view.EntityTab;
+import com.gwtcx.extgwt.client.desktop.view.contact.tab.InformationAdministrationTab;
+import com.gwtcx.extgwt.client.desktop.view.contact.tab.InformationDetailsTab;
+import com.gwtcx.extgwt.client.desktop.view.contact.tab.InformationGeneralTab;
+import com.gwtcx.extgwt.client.desktop.view.contact.tab.InformationNotesTab;
 import com.gwtcx.shared.dto.ContactRepresentation;
 import com.kiahu.sample.client.presenter.contact.ContactInformationPresenter;
 import com.sencha.gxt.widget.core.client.TabPanel;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.FormPanel;
 
 public class InformationTabbedFormView extends
-    AbstractTabbedFormDesktopView<ContactInformationUiHandlers> implements
+    AbstractTabbedFormView<ContactInformationUiHandlers> implements
   ContactInformationPresenter.MyView {
+
+  private final static int TAB_LABEL = 0;
+
+  private String[][] tabs = {
+    {"General"},
+    {"Details"},
+    {"Administration"},
+    {"Notes"}
+  };
+
+  private int numberOfTabs = tabs.length;
+  @SuppressWarnings("unchecked")
+  private EntityTab<ContactRepresentation> [] entityTabs = new EntityTab[numberOfTabs];
 
   private ContactRepresentation contact;
 
@@ -47,29 +62,37 @@ public class InformationTabbedFormView extends
     createTabs();
   }
 
-  private final static int TAB_LABEL = 0;
+  // See: ContactPageView - setInSlot(Object slot, Widget content)
 
-  private String[][] tabs = {
-    {"General"},
-    {"Details"},
-    {"Administration"},
-    {"Notes"}
-  };
+  protected void resize() {
 
-  /*
+    int width = Window.getClientWidth();
+    int height = Window.getClientHeight();
 
-    {"Notes"},
-    {"General"},
-    {"Details"},
-    {"Administration"}
+    VerticalLayoutContainer layout = null;
 
-  */
+    Log.debug("resize() - width: " + width + " height: " + height);
 
-  private int numberOfTabs = tabs.length;
-  @SuppressWarnings("unchecked")
-  private EntityTab<ContactRepresentation> [] entityTabs = new EntityTab[numberOfTabs];
+    getPanel().setSize(width + "px", height + "px");
+    getForm().setSize(width + "px", height + "px");
+    getTabPanel().setWidth(width + "px");
 
-    protected void createTabs() {
+    for (int row = 0; row < numberOfTabs; row++) {
+
+      layout = entityTabs[row].getLayoutContainer();
+
+      if (layout != null && layout instanceof com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer) {
+
+        layout.setSize(width + "px", height + "px");
+
+        Log.debug("layout.setSize()");
+      }
+    }
+
+    getPanel().onResize();
+  }
+
+  protected void createTabs() {
 
     Log.debug("createTabs()");
 
@@ -128,17 +151,6 @@ public class InformationTabbedFormView extends
 
     return result;
   }
-
-  /*
-
-  private ContactInformationGeneralInformationTab generalInformationTab;
-
-  protected void createTabs() {
-
-    generalInformationTab = new ContactInformationGeneralInformationTab(getTabPanel());
-  }
-
-  */
 
   @Override
   public void setId(String id) {

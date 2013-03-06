@@ -12,40 +12,51 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.desktop.view.contact;
+package com.gwtcx.extgwt.client.desktop.view.contact.tab;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormDesktopView;
+import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormView;
 import com.gwtcx.extgwt.client.desktop.view.EntitySection;
 import com.gwtcx.extgwt.client.desktop.view.EntityTab;
-import com.gwtcx.extgwt.client.desktop.view.contact.section.AddressSection;
-import com.gwtcx.extgwt.client.desktop.view.contact.section.NameAndElectronicAddressSection;
-import com.gwtcx.extgwt.client.desktop.view.contact.section.ProfessionalInformationSection;
+import com.gwtcx.extgwt.client.desktop.view.contact.tab.section.AddressSection;
+import com.gwtcx.extgwt.client.desktop.view.contact.tab.section.ContactPreferencesSection;
+import com.gwtcx.extgwt.client.desktop.view.contact.tab.section.NameAndElectronicAddressSection;
+import com.gwtcx.extgwt.client.desktop.view.contact.tab.section.PersonalInformationSection;
+import com.gwtcx.extgwt.client.desktop.view.contact.tab.section.ProfessionalInformationSection;
 import com.gwtcx.shared.dto.ContactRepresentation;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.MarginData;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.form.FieldSet;
 
-public class ContactTab extends EntityTab<ContactRepresentation> {
+public abstract class AbstractContactTab extends EntityTab<ContactRepresentation> {
 
   private EntitySection<ContactRepresentation> [] entitySections = null;
 
-  public ContactTab(TabPanel tabPanel) {
+  public AbstractContactTab(TabPanel tabPanel) {
     super(tabPanel);
   }
+
+  /*
+
+  The values for HorizontalLayoutData and VerticalLayoutData have different meanings depending on which range they are in:
+
+  - If -1, then the item is measured, and given the space it has requested - useful for fields or labels
+  - If greater than 1, a pixel value is assigned - you've noticed this in using 100, which draws as 100px wide
+  - If greater than 0, and less than or equal to 1, then it will be assigned a percentage of the remaining size after the
+    first two items listed have been calculated. The value 1 is 100%, and .25 would be 25% of the remaining space.
+
+  */
 
   @SuppressWarnings("unchecked")
   protected void createFieldSets(String tabLabel) {
 
-    VerticalLayoutContainer layout = new VerticalLayoutContainer();
     FieldSet fieldSet = null;
     HtmlLayoutContainer htmlLayout = null;
 
-    layout.setSize(AbstractTabbedFormDesktopView.CONTEXT_AREA_WIDTH, AbstractTabbedFormDesktopView.CONTEXT_AREA_HEIGHT);
-    layout.setLayoutData(new MarginData(AbstractTabbedFormDesktopView.DEFAULT_MARGIN));
+    getLayoutContainer().setSize(AbstractTabbedFormView.CONTEXT_AREA_WIDTH, AbstractTabbedFormView.CONTEXT_AREA_HEIGHT);
+    getLayoutContainer().setLayoutData(new MarginData(AbstractTabbedFormView.DEFAULT_MARGIN));
 
     Log.debug("createFieldSets()");
 
@@ -65,23 +76,24 @@ public class ContactTab extends EntityTab<ContactRepresentation> {
       fieldSet.setCollapsible(true);
 
       htmlLayout = getFieldSetHtmlLayout(getFieldSets()[row][FIELD_SET_LABEL]);
-      htmlLayout.setLayoutData(new MarginData(AbstractTabbedFormDesktopView.DEFAULT_MARGIN));
+      htmlLayout.setLayoutData(new MarginData(AbstractTabbedFormView.DEFAULT_MARGIN));
 
       entitySections[row] = getFieldSetSection(getFieldSets()[row][FIELD_SET_LABEL], htmlLayout);
 
       fieldSet.add(htmlLayout);
-      layout.add(fieldSet, new VerticalLayoutData(1, -1));
+      getLayoutContainer().add(fieldSet, new VerticalLayoutData(1, -1));
     }
 
-    getTabPanel().add(layout, tabLabel);
+    getTabPanel().add(getLayoutContainer(), tabLabel);
   }
 
   enum Section
   {
      GENERAL_INFORMATION("General Information"),
      ADDRESS_INFORMATION("Address Information"),
-     // PERSONAL_INFORMATION("Personal Information"),
      PROFESSIONAL_INFORMATION("Professional Information"),
+     PERSONAL_INFORMATION("Personal Information"),
+     CONTACT_PREFERENCES("Contact Preferences"),
      NOT_USED("notUsed");
 
      private Section(String stringValue) { this.stringValue = stringValue; }
@@ -103,7 +115,7 @@ public class ContactTab extends EntityTab<ContactRepresentation> {
     return result;
   }
 
-  // numberOfFieldSets == number of sections (for now)
+  // TODO: numberOfFieldSets == number of sections
 
    public EntitySection<ContactRepresentation> getFieldSetSection(String sectionName, HtmlLayoutContainer htmlLayout) {
 
@@ -118,9 +130,11 @@ public class ContactTab extends EntityTab<ContactRepresentation> {
 
       case ADDRESS_INFORMATION: result = new AddressSection(htmlLayout); break;
 
-      // case PERSONAL_INFORMATION: result = new PersonalInformationSection(htmlLayout); break;
-
       case PROFESSIONAL_INFORMATION: result = new ProfessionalInformationSection(htmlLayout); break;
+
+      case PERSONAL_INFORMATION: result = new PersonalInformationSection(htmlLayout); break;
+
+      case CONTACT_PREFERENCES: result = new ContactPreferencesSection(htmlLayout); break;
 
       default:
         result = null;
@@ -145,6 +159,10 @@ public class ContactTab extends EntityTab<ContactRepresentation> {
 
       case PROFESSIONAL_INFORMATION: result = new HtmlLayoutContainer(getProfessionalInformationHtmlLayout()); break;
 
+      case PERSONAL_INFORMATION: result = new HtmlLayoutContainer(getPersonalInformationHtmlLayout()); break;
+
+      case CONTACT_PREFERENCES: result = new HtmlLayoutContainer(getContactPreferencesHtmlLayout()); break;
+
       default:
         result = new HtmlLayoutContainer(getDefaultFieldSetHtmlLayout());
         break;
@@ -156,7 +174,7 @@ public class ContactTab extends EntityTab<ContactRepresentation> {
   // Widgets that are implemented using <table> or <frame> elements do not automatically fill the space provided by the layout.
   // In order to fix this, you will need to explicitly set these widgets width and height to 100%.
 
-  private static native String getGeneralInformationHtmlLayout() /*-{
+  protected static native String getGeneralInformationHtmlLayout() /*-{
     return [ '<table width=100% cellpadding=0 cellspacing=0>',
         '<tr><td class=salutation width=50%></td><td class=businessPhone width=50%></td></tr>',
         '<tr><td class=givenName></td><td class=homePhone></td></tr>',
@@ -167,7 +185,7 @@ public class ContactTab extends EntityTab<ContactRepresentation> {
     ].join("");
   }-*/;
 
-  private static native String getAddressInformationHtmlLayout() /*-{
+  protected static native String getAddressInformationHtmlLayout() /*-{
     return [ '<table width=100% cellpadding=0 cellspacing=0>',
         '<tr><td class=addressName width=50%></td><td class=postalCode width=50%></td></tr>',
         '<tr><td class=addressLine1></td><td class=country></td></tr>',
@@ -179,16 +197,32 @@ public class ContactTab extends EntityTab<ContactRepresentation> {
     ].join("");
   }-*/;
 
-  private static native String getProfessionalInformationHtmlLayout() /*-{
+  protected static native String getProfessionalInformationHtmlLayout() /*-{
   return [ '<table width=100% cellpadding=0 cellspacing=0>',
       '<tr><td class=department width=50%></td><td class=role width=50%></td></tr>',
       '<tr><td class=manager></td><td class=assistent></td></tr>',
       '<tr><td class=managerPhone></td><td class=assistentPhone></td></tr>',
       '</table>',
-  ].join("");
-}-*/;
+    ].join("");
+  }-*/;
 
-  private static native String getDefaultFieldSetHtmlLayout() /*-{
+  protected static native String getPersonalInformationHtmlLayout() /*-{
+  return [ '<table width=100% cellpadding=0 cellspacing=0>',
+      '<tr><td class=gender width=50%></td><td class=birthday width=50%></td></tr>',
+      '<tr><td class=maritalStatus></td><td class=anniversary></td></tr>',
+      '<tr><td class=partnerName></td><td></td></tr>',
+      '</table>',
+    ].join("");
+  }-*/;
+
+  protected static native String getContactPreferencesHtmlLayout() /*-{
+  return [ '<table width=100% cellpadding=0 cellspacing=0>',
+      '<tr><td class=email width=50%></td><td width=50%></td></tr>',
+      '</table>',
+    ].join("");
+  }-*/;
+
+  protected static native String getDefaultFieldSetHtmlLayout() /*-{
   return [ '<table width=100% cellpadding=0 cellspacing=0>',
       '<tr><td></td><td></td></tr>',
       '<tr><td></td><td></td></tr>',
