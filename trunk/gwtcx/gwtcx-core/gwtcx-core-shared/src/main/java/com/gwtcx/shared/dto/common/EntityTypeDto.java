@@ -16,6 +16,9 @@ package com.gwtcx.shared.dto.common;
 
 import java.io.Serializable;
 
+// https://blogs.oracle.com/drm/entry/reference_data_management
+// HL7 Guidelines
+
 public class EntityTypeDto implements Serializable {
 
   public static final String TRUE = "TRUE";
@@ -25,6 +28,7 @@ public class EntityTypeDto implements Serializable {
 
   protected String id;
   protected String name;
+  protected String code;               // E.g. The four codes specified in ISO/IEC 5218 are: 0 = not known, 1 = male, 2 = female, 9 = not applicable.
   protected String description;
   protected String activeFlag = TRUE;  // if FALSE add to list when editing a form but not for New's
 
@@ -33,15 +37,21 @@ public class EntityTypeDto implements Serializable {
   }
 
   public EntityTypeDto(String id, String name) {
-    this.id = id;
+    this();
     this.name = name;
+  }
+
+  public EntityTypeDto(String id, String name, String code) {
+    this();
+    this.name = name;
+    this.code = code;
   }
 
   public String getId() {
     return id;
   }
 
-  // http://en.wikipedia.org/wiki/Covariant_return_type
+  // http://en.wikipedia.org/wiki/Method_chaining
   public EntityTypeDto setId(String id) {
     this.id = id;
     return this;
@@ -53,6 +63,16 @@ public class EntityTypeDto implements Serializable {
 
   public EntityTypeDto setName(String name) {
     this.name = name;
+    return this;
+  }
+
+
+  public String getCode() {
+    return code;
+  }
+
+  public EntityTypeDto setCode(String code) {
+    this.code = code;
     return this;
   }
 

@@ -12,10 +12,11 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.desktop.view.contact;
+package com.gwtcx.extgwt.client.desktop.view.contact.tab;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormDesktopView;
+import com.gwtcx.client.util.I18nUtil;
+import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormView;
 import com.gwtcx.shared.dto.ContactRepresentation;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.container.AbstractHtmlLayoutContainer.HtmlData;
@@ -27,25 +28,22 @@ import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.FormPanel.LabelAlign;
 import com.sencha.gxt.widget.core.client.form.HtmlEditor;
 
-public class InformationNotesTab extends ContactTab {
+public class InformationNotesTab extends AbstractContactTab {
 
   public InformationNotesTab(TabPanel tabPanel) {
     super(tabPanel);
 
     Log.debug("InformationNotesTab(TabPanel tabPanel)");
 
-    // setFieldSets(fieldSets);
-    // createFieldSets("Notes");
-
-    createEditor("Notes");
+    createEditor(I18nUtil.getConstant().notesTab());
   }
 
   protected void createEditor(String tabLabel) {
 
     VerticalLayoutContainer layout = new VerticalLayoutContainer();
 
-    layout.setSize(AbstractTabbedFormDesktopView.CONTEXT_AREA_WIDTH, AbstractTabbedFormDesktopView.CONTEXT_AREA_HEIGHT);
-    layout.setLayoutData(new MarginData(AbstractTabbedFormDesktopView.DEFAULT_MARGIN));
+    layout.setSize(AbstractTabbedFormView.CONTEXT_AREA_WIDTH, AbstractTabbedFormView.CONTEXT_AREA_HEIGHT);
+    layout.setLayoutData(new MarginData(AbstractTabbedFormView.DEFAULT_MARGIN));
 
     createEditor(layout);
 
@@ -55,7 +53,7 @@ public class InformationNotesTab extends ContactTab {
   protected void createEditor(VerticalLayoutContainer layoutContainer) {
 
     HtmlLayoutContainer htmlLayout = new HtmlLayoutContainer(getNotesHtmlLayout());
-    htmlLayout.setLayoutData(new MarginData(AbstractTabbedFormDesktopView.DEFAULT_MARGIN));
+    htmlLayout.setLayoutData(new MarginData(AbstractTabbedFormView.DEFAULT_MARGIN));
 
     HtmlEditor editor = new HtmlEditor();
     // editor.setWidth(300);

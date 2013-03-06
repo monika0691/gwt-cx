@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.desktop.view.contact.section;
+package com.gwtcx.extgwt.client.desktop.view.contact.tab.section;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.gwtcx.client.RegExTokens;

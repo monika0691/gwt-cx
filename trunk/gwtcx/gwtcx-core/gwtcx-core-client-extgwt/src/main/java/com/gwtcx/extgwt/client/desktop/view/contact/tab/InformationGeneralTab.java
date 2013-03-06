@@ -12,31 +12,26 @@
  * under the License.
  */
 
-package com.gwtcx.shared.dto;
+package com.gwtcx.extgwt.client.desktop.view.contact.tab;
 
-import java.io.Serializable;
+import com.allen_sauer.gwt.log.client.Log;
+import com.gwtcx.client.util.I18nUtil;
+import com.sencha.gxt.widget.core.client.TabPanel;
 
-public class EntityDto implements Serializable {
+public class InformationGeneralTab extends AbstractContactTab {
 
-  private static final long serialVersionUID = 1L;
+  private String[][] fieldSets = {
+    {"General Information"},
+    {"Address Information"}
+  };
 
-  protected String id;
+  public InformationGeneralTab(TabPanel tabPanel) {
+    super(tabPanel);
 
-  public EntityDto() {
-    this.id = "-1";
-  }
+    Log.debug("InformationGeneralTab(TabPanel tabPanel)");
 
-  public EntityDto(String id) {
-    this.id = id;
-  }
+    setFieldSets(fieldSets);
 
-  public String getId() {
-    return id;
-  }
-
-  // http://en.wikipedia.org/wiki/Method_chaining
-  public EntityDto setId(String id) {
-    this.id = id;
-    return this;
+    createFieldSets(I18nUtil.getConstant().generalTab());
   }
 }

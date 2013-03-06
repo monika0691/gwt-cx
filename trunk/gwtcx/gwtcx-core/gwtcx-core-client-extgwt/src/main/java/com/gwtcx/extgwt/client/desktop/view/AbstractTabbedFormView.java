@@ -31,7 +31,7 @@ import com.sencha.gxt.widget.core.client.form.FormPanel;
 /**
  * AbstractTabbedFormDesktopView
  */
-public abstract class AbstractTabbedFormDesktopView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
+public abstract class AbstractTabbedFormView<C extends UiHandlers> extends ViewWithUiHandlers<C> {
 
   // public static final String ENTITY_CONTEXT_AREA_STYLE_NAME = "gwtcx-Entity-ContextArea";
 
@@ -48,7 +48,7 @@ public abstract class AbstractTabbedFormDesktopView<C extends UiHandlers> extend
   protected VerticalLayoutContainer panel;
 
   @Inject
-  public AbstractTabbedFormDesktopView(final EventBus eventBus, final FormPanel form, final TabPanel tabPanel) {
+  public AbstractTabbedFormView(final EventBus eventBus, final FormPanel form, final TabPanel tabPanel) {
     super();
 
     Log.debug("AbstractTabbedFormView()");
@@ -78,6 +78,8 @@ public abstract class AbstractTabbedFormDesktopView<C extends UiHandlers> extend
 
     bindCustomUiHandlers();
   }
+
+  // See: ContactPageView - setInSlot(Object slot, Widget content)
 
   protected void resize() {
 
@@ -136,3 +138,25 @@ public abstract class AbstractTabbedFormDesktopView<C extends UiHandlers> extend
     */
   }
 }
+
+
+/*
+
+
+  protected void resize() {
+
+    int width = Window.getClientWidth();
+    int height = Window.getClientHeight();
+
+    Log.debug("resize() - width: " + width + " height: " + height);
+
+    getPanel().setSize(width + "px", height + "px");
+    getForm().setSize(width + "px", height + "px");
+    getTabPanel().setWidth(width + "px");
+
+    getPanel().onResize();
+  }
+
+
+ */
+

@@ -12,7 +12,7 @@
  * under the License.
  */
 
-package com.gwtcx.extgwt.client.desktop.view.contact.section;
+package com.gwtcx.extgwt.client.desktop.view.contact.tab.section;
 
 import com.gwtcx.client.util.I18nUtil;
 import com.sencha.gxt.widget.core.client.container.AbstractHtmlLayoutContainer.HtmlData;
