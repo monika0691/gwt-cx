@@ -15,32 +15,35 @@
 package com.gwtcx.extgwt.client.desktop.view.contact.tab.section;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.extgwt.client.desktop.view.EntitySection;
 import com.gwtcx.shared.dto.ContactRepresentation;
-import com.sencha.gxt.core.client.util.ToggleGroup;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.AbstractHtmlLayoutContainer.HtmlData;
-import com.sencha.gxt.widget.core.client.form.FieldLabel;
-import com.sencha.gxt.widget.core.client.form.Radio;
 
 public class ContactPreferencesSection extends EntitySection<ContactRepresentation> {
 
-  protected Radio emailAllow;
-  protected Radio emailDoNotAllow;
-  protected HorizontalPanel emailPanel;
-  protected ToggleGroup emailToggleGroup;
+  // FIELD_LABEL, HTML_DATA
+  private String[][] toggleGroupTemplate = {
+      {I18nUtil.getConstant().emailLabel(), ".email"},
+      {I18nUtil.getConstant().phoneLabel(), ".phone"},
+      {I18nUtil.getConstant().faxLabel(), ".fax"},
+      {I18nUtil.getConstant().mailLabel(), ".mail"},
+
+    };
 
   public ContactPreferencesSection(final HtmlLayoutContainer panel) {
     super(panel);
 
     Log.debug("PersonalInformationSection()");
 
-    createRadios();
+    setToggleGroupTemplate(toggleGroupTemplate);
+
+    createToggleGroups();
   }
 
-  public void createRadios() {
+  /*
+
+  public void createToggleGroups() {
 
     Log.debug("createRadios()");
 
@@ -67,6 +70,8 @@ public class ContactPreferencesSection extends EntitySection<ContactRepresentati
     }
   }
 
+  */
+
   @Override
   public void setFields(ContactRepresentation dto) {
 
@@ -79,6 +84,11 @@ public class ContactPreferencesSection extends EntitySection<ContactRepresentati
 }
 
 /*
+
+  protected Radio emailAllow;
+  protected Radio emailDoNotAllow;
+  protected HorizontalPanel emailPanel;
+  protected ToggleGroup emailToggleGroup;
 
         Radio radio = (Radio)group.getValue();
         Info.display("Color Changed", "You selected " + radio.getBoxLabel());

@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -371,7 +371,7 @@ public abstract class AbstractSettingsView<C extends UiHandlers> extends ViewWit
   }
 
   public SafeHtml getIcon(String data) {
-    return ImageCell.makeImage(PlaceholderIcons.INSTANCE.placeholder48());
+    return ImageCell.makeImage(PlaceholderIcons.INSTANCE.placeholder48x48());
   }
 }
 

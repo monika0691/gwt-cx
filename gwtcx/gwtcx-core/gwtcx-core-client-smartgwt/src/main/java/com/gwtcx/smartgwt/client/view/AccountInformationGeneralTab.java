@@ -80,7 +80,7 @@ public class AccountInformationGeneralTab extends EntityTab {
   protected TextItem email;
 
   public AccountInformationGeneralTab() {
-    super(I18nUtil.getConstant().generalTab());
+    super(I18nUtil.getConstant().generalTabLabel());
 
     //
     // Section 1 Column 1

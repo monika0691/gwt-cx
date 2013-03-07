@@ -15,6 +15,9 @@
 package com.gwtcx.extgwt.client.desktop.view.contact.tab;
 
 import com.allen_sauer.gwt.log.client.Log;
+import com.google.gwt.resources.client.ImageResource;
+import com.gwtcx.client.resources.ContactIcons;
+import com.gwtcx.client.resources.PlaceholderIcons;
 import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormView;
 import com.gwtcx.extgwt.client.desktop.view.EntitySection;
 import com.gwtcx.extgwt.client.desktop.view.EntityTab;
@@ -24,6 +27,7 @@ import com.gwtcx.extgwt.client.desktop.view.contact.tab.section.NameAndElectroni
 import com.gwtcx.extgwt.client.desktop.view.contact.tab.section.PersonalInformationSection;
 import com.gwtcx.extgwt.client.desktop.view.contact.tab.section.ProfessionalInformationSection;
 import com.gwtcx.shared.dto.ContactRepresentation;
+import com.sencha.gxt.widget.core.client.TabItemConfig;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.MarginData;
@@ -38,6 +42,42 @@ public abstract class AbstractContactTab extends EntityTab<ContactRepresentation
     super(tabPanel);
   }
 
+  protected void createFields(String label, String icon) {
+
+    createFieldSets();
+
+    if (icon.length() != 0) {
+
+      TabItemConfig config = new TabItemConfig(label);
+      config.setIcon(getTabIcon(icon));
+
+      getTabPanel().add(getLayoutContainer(), config);
+
+    } else {
+
+      getTabPanel().add(getLayoutContainer(), label);
+    }
+  }
+
+  protected ImageResource getTabIcon(String icon) {
+
+    ImageResource image = null;
+
+    if ("general".equalsIgnoreCase(icon)) {
+      image = ContactIcons.INSTANCE.generalTab();
+    } else if ("details".equalsIgnoreCase(icon)) {
+      image = ContactIcons.INSTANCE.administrationTab();
+    } else if ("administration".equalsIgnoreCase(icon)) {
+      image = ContactIcons.INSTANCE.detailsTab();
+    } else if ("notes".equalsIgnoreCase(icon)) {
+      image = ContactIcons.INSTANCE.detailsTab();
+    } else {
+      image = PlaceholderIcons.INSTANCE.placeholder16x16();
+    }
+
+    return image;
+  }
+
   /*
 
   The values for HorizontalLayoutData and VerticalLayoutData have different meanings depending on which range they are in:
@@ -50,7 +90,7 @@ public abstract class AbstractContactTab extends EntityTab<ContactRepresentation
   */
 
   @SuppressWarnings("unchecked")
-  protected void createFieldSets(String tabLabel) {
+  protected void createFieldSets() {
 
     FieldSet fieldSet = null;
     HtmlLayoutContainer htmlLayout = null;
@@ -83,8 +123,6 @@ public abstract class AbstractContactTab extends EntityTab<ContactRepresentation
       fieldSet.add(htmlLayout);
       getLayoutContainer().add(fieldSet, new VerticalLayoutData(1, -1));
     }
-
-    getTabPanel().add(getLayoutContainer(), tabLabel);
   }
 
   enum Section
@@ -218,6 +256,9 @@ public abstract class AbstractContactTab extends EntityTab<ContactRepresentation
   protected static native String getContactPreferencesHtmlLayout() /*-{
   return [ '<table width=100% cellpadding=0 cellspacing=0>',
       '<tr><td class=email width=50%></td><td width=50%></td></tr>',
+      '<tr><td class=phone></td><td></td></tr>',
+      '<tr><td class=fax></td><td></td></tr>',
+      '<tr><td class=mail></td><td></td></tr>',
       '</table>',
     ].join("");
   }-*/;

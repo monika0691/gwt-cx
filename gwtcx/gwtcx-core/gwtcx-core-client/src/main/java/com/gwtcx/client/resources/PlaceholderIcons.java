@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -28,15 +28,15 @@ public interface PlaceholderIcons extends ClientBundle {
   public static final PlaceholderIcons INSTANCE = GWT.create(PlaceholderIcons.class);
 
   @Source(urlPrefix + "placeholder_16.png")
-  ImageResource placeholder16();
+  ImageResource placeholder16x16();
 
   @Source(urlPrefix + "placeholder_24.png")
-  ImageResource placeholder24();
+  ImageResource placeholder24x24();
 
   @Source(urlPrefix + "placeholder_32.png")
-  ImageResource placeholder32();
+  ImageResource placeholder32x32();
 
   @Source(urlPrefix + "placeholder_48.png")
-  ImageResource placeholder48();
+  ImageResource placeholder48x48();
 
 }

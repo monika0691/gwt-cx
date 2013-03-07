@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+ * (C) Copyright 2010-2013 Kiahu
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -41,7 +41,7 @@ public class SettingsNavigationPaneSection extends NavigationPaneSection {
     } else if ("datamanagement".equalsIgnoreCase(data)) {
         return ImageCell.makeImage(NavigationPaneIcons.INSTANCE.dataManagement());
     } else {
-      return ImageCell.makeImage(PlaceholderIcons.INSTANCE.placeholder16());
+      return ImageCell.makeImage(PlaceholderIcons.INSTANCE.placeholder16x16());
     }
   }
 }

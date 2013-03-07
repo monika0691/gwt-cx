@@ -15,10 +15,14 @@
 package com.gwtcx.extgwt.client.desktop.view;
 
 import com.allen_sauer.gwt.log.client.Log;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.gwtcx.client.RegExTokens;
+import com.gwtcx.client.util.I18nUtil;
+import com.sencha.gxt.core.client.util.ToggleGroup;
 import com.sencha.gxt.widget.core.client.container.AbstractHtmlLayoutContainer.HtmlData;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
+import com.sencha.gxt.widget.core.client.form.Radio;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.form.validator.RegExValidator;
 
@@ -34,8 +38,11 @@ public class EntitySection<T> {
 
   // FIELD_LABEL, HTML_DATA, REGEX, ALLOW_BLANKS, EMPTY_TEXT
   private String[][] textFieldTemplate = null;
+  private TextField [] textFields = null;
 
-  private TextField [] textFields = null;  // new TextField[getNumberOfRows()];
+  // FIELD_LABEL, HTML_DATA
+  private String[][] toggleGroupTemplate = null;
+  private ToggleGroup [] toggleGroups = null;
 
   @SuppressWarnings("unused")
   private EntitySection() { }
@@ -43,8 +50,49 @@ public class EntitySection<T> {
   public EntitySection(final HtmlLayoutContainer panel) {
 
     this.panel = panel;
+  }
 
-    // createFields();
+  protected void createToggleGroups() {
+
+    Log.debug("createToggleGroups()");
+
+    // you must call setToggleGroupTemplate() in the constructor of your derived class
+    if (getToggleGroupTemplate() == null) { return; }
+
+    toggleGroups = new ToggleGroup[getNumberOfToggleGroupRows()];
+
+    Log.debug("NumberOfToggleGroupRows: " + getNumberOfToggleGroupRows());
+
+    try {
+
+      Radio allow;
+      Radio doNotAllow;
+      HorizontalPanel panel;
+
+      for (int row = 0; row < getNumberOfToggleGroupRows(); row++) {
+
+        Log.debug("Label: " + getToggleGroupTemplate()[row][FIELD_LABEL] + " HtmlData: " + getToggleGroupTemplate()[row][HTML_DATA]);
+
+        allow = new Radio();
+        allow.setBoxLabel(I18nUtil.getConstant().allowLabel());
+        doNotAllow = new Radio();
+        doNotAllow.setBoxLabel(I18nUtil.getConstant().doNotAllowLabel());
+
+        doNotAllow.setValue(true);
+
+        panel = new HorizontalPanel();
+        panel.add(allow);
+        panel.add(doNotAllow);
+
+        getToggleGroups()[row] = new ToggleGroup();
+        getToggleGroups()[row].add(allow);
+        getToggleGroups()[row].add(doNotAllow);
+
+        getPanel().add(new FieldLabel(panel, getToggleGroupTemplate()[row][FIELD_LABEL]), new HtmlData(getToggleGroupTemplate()[row][HTML_DATA]));
+      }
+    } catch (Exception e) {
+      Log.error("Unable to create ToggleGroups: " + e);
+    }
   }
 
   protected void createTextFields() {
@@ -62,7 +110,7 @@ public class EntitySection<T> {
 
       for (int row = 0; row < getNumberOfTextFieldRows(); row++) {
 
-        Log.debug("FieldLabel: " + getTextFieldTemplate()[row][FIELD_LABEL] + " HtmlData: " + getTextFieldTemplate()[row][HTML_DATA]);
+        Log.debug("Label: " + getTextFieldTemplate()[row][FIELD_LABEL] + " HtmlData: " + getTextFieldTemplate()[row][HTML_DATA]);
 
         getTextFields()[row] = new TextField();
         getPanel().add(new FieldLabel(getTextFields()[row], getTextFieldTemplate()[row][FIELD_LABEL]), new HtmlData(getTextFieldTemplate()[row][HTML_DATA]));
@@ -85,7 +133,7 @@ public class EntitySection<T> {
         }
       }
     } catch (Exception e) {
-      Log.error("Unable to create fields: " + e);
+      Log.error("Unable to create TextFields: " + e);
     }
   }
 
@@ -109,9 +157,25 @@ public class EntitySection<T> {
     return textFieldTemplate.length;
   }
 
+  public String[][] getToggleGroupTemplate() {
+    return toggleGroupTemplate;
+  }
+
+  public EntitySection<T> setToggleGroupTemplate(String[][] toggleGroupTemplate) {
+    this.toggleGroupTemplate = toggleGroupTemplate;
+    return this;
+  }
+
+  public int getNumberOfToggleGroupRows() {
+    return toggleGroupTemplate.length;
+  }
 
   public TextField[] getTextFields() {
     return textFields;
+  }
+
+  public ToggleGroup[] getToggleGroups() {
+    return toggleGroups;
   }
 
   public EntitySection<T> setTextFields(TextField[] textFields) {
