@@ -19,7 +19,7 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 
 /**
- * SalesIcons client bundle.
+ * NavigationPaneIcons client bundle.
  */
 public interface NavigationPaneIcons extends ClientBundle {
 

@@ -18,11 +18,11 @@ import com.allen_sauer.gwt.log.client.Log;
 import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.extgwt.client.desktop.view.AbstractTabbedFormView;
 import com.gwtcx.shared.dto.ContactRepresentation;
+import com.sencha.gxt.widget.core.client.TabItemConfig;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.container.AbstractHtmlLayoutContainer.HtmlData;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.MarginData;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.FormPanel.LabelAlign;
@@ -35,22 +35,31 @@ public class InformationNotesTab extends AbstractContactTab {
 
     Log.debug("InformationNotesTab(TabPanel tabPanel)");
 
-    createEditor(I18nUtil.getConstant().notesTab());
+    createFields(I18nUtil.getConstant().notesTabLabel(), ""); // "notes"
   }
 
-  protected void createEditor(String tabLabel) {
+  @Override
+  protected void createFields(String label, String icon) {
 
-    VerticalLayoutContainer layout = new VerticalLayoutContainer();
+    createEditor();
 
-    layout.setSize(AbstractTabbedFormView.CONTEXT_AREA_WIDTH, AbstractTabbedFormView.CONTEXT_AREA_HEIGHT);
-    layout.setLayoutData(new MarginData(AbstractTabbedFormView.DEFAULT_MARGIN));
+    if (icon.length() != 0) {
 
-    createEditor(layout);
+      TabItemConfig config = new TabItemConfig(label);
+      config.setIcon(getTabIcon(icon));
 
-    getTabPanel().add(layout, tabLabel);
+      getTabPanel().add(getLayoutContainer(), config);
+
+    } else {
+
+      getTabPanel().add(getLayoutContainer(), label);
+    }
   }
 
-  protected void createEditor(VerticalLayoutContainer layoutContainer) {
+  protected void createEditor() {
+
+    getLayoutContainer().setSize(AbstractTabbedFormView.CONTEXT_AREA_WIDTH, AbstractTabbedFormView.CONTEXT_AREA_HEIGHT);
+    getLayoutContainer().setLayoutData(new MarginData(AbstractTabbedFormView.DEFAULT_MARGIN));
 
     HtmlLayoutContainer htmlLayout = new HtmlLayoutContainer(getNotesHtmlLayout());
     htmlLayout.setLayoutData(new MarginData(AbstractTabbedFormView.DEFAULT_MARGIN));
@@ -64,7 +73,7 @@ public class InformationNotesTab extends AbstractContactTab {
 
     label.setLabelAlign(LabelAlign.TOP);
 
-    layoutContainer.add(htmlLayout, new VerticalLayoutData(1, -1));
+    getLayoutContainer().add(htmlLayout, new VerticalLayoutData(1, -1));
   }
 
   public void getFields(ContactRepresentation dto) {

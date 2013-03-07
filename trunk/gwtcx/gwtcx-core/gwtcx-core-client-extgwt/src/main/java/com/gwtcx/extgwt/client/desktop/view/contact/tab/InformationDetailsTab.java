@@ -32,6 +32,6 @@ public class InformationDetailsTab extends AbstractContactTab {
 
     setFieldSets(fieldSets);
 
-    createFieldSets(I18nUtil.getConstant().detailsTab());
+    createFields(I18nUtil.getConstant().detailsTabLabel(), "");  // "details"
   }
 }

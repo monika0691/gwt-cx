@@ -40,6 +40,6 @@ public class InformationAdministrationTab extends AbstractContactTab {
 
     setFieldSets(fieldSets);
 
-    createFieldSets(I18nUtil.getConstant().administrationTab());
+    createFields(I18nUtil.getConstant().administrationTabLabel(), "");  // "administration"
   }
 }

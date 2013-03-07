@@ -200,7 +200,7 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   String newAccount();
 
   @DefaultStringValue("General")
-  String generalTab();
+  String generalTabLabel();
 
   @DefaultStringValue("General Information")
   String generalInformationSectionItem();
@@ -249,13 +249,13 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   String addressTypeLabel();
 
   @DefaultStringValue("Details")
-  String detailsTab();
+  String detailsTabLabel();
 
   @DefaultStringValue("Administration")
-  String administrationTab();
+  String administrationTabLabel();
 
   @DefaultStringValue("Notes")
-  String notesTab();
+  String notesTabLabel();
 
   //
   // Contact entity sections (tabs)
@@ -304,6 +304,10 @@ public interface GwtCxConstants extends com.google.gwt.i18n.client.Constants {
   String pagerLabel();
   // @DefaultStringValue("Email")
   // String emailLabel();
+  @DefaultStringValue("Phone")
+  String phoneLabel();
+  @DefaultStringValue("Mail")
+  String mailLabel();
 
   @DefaultStringValue("Department")
   String departmentLabel();
