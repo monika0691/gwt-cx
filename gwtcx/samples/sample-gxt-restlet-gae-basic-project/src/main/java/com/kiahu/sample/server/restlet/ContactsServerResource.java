@@ -21,7 +21,6 @@ import org.restlet.ext.wadl.WadlServerResource;
 import org.restlet.resource.Get;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.gwtcx.shared.dto.ContactRepresentation;
 import com.gwtcx.shared.dto.ContactsDto;
 import com.gwtcx.shared.dto.ContactsRepresentation;
 import com.kiahu.sample.shared.restlet.ContactsResource;
