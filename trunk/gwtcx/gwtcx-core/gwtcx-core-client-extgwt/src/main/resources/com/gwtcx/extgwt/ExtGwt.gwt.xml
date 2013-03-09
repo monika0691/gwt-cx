@@ -22,12 +22,19 @@
   <inherits name="com.gwtcx.GwtCx" />
   <inherits name="com.gwtcx.GwtCalendar" />
 
-  <!-- Inherit Ext GWT modules -->
-  <!-- No longer required as of GWT 2.5
-  <inherits name="com.sencha.gwt.uibinder.UiBinder" />
-  -->
+  <!-- Inherit Ext GWT (GXT) modules -->
   <inherits name="com.sencha.gxt.ui.GXT" />
+  <!--
+    "com.sencha.gxt.ui.GXT" inherits the default theme "com.sencha.gxt.theme.blue.Blue" which
+    inherits "com.sencha.gxt.theme.base.Base" which declares all the theme specific "replace-with" appearances.
+    http://www.sencha.com/blog/ext-gwt-3-appearance-design/
+  -->
   <!-- <inherits name="com.sencha.gxt.chart.Chart" /> -->
+  <!-- <inherits name="com.sencha.gwt.uibinder.UiBinder" />  No longer required as of GWT 2.5 -->
+
+  <replace-with class="com.gwtcx.extgwt.client.field.StringCellDefaultAppearance">
+    <when-type-is class="com.gwtcx.extgwt.client.field.StringCell.StringCellAppearance" />
+  </replace-with>
 
   <entry-point class="com.gwtcx.extgwt.client.entrypoint.ExtGwtEntryPoint" />
 

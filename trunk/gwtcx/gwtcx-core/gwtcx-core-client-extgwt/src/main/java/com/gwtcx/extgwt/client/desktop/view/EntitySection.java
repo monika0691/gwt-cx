@@ -52,6 +52,48 @@ public class EntitySection<T> {
     this.panel = panel;
   }
 
+  protected void createTextFields() {
+
+    Log.debug("createTextFields()");
+
+    // you must call setTextFieldTemplate() in the constructor of your derived class
+    if (getTextFieldTemplate() == null) { return; }
+
+    textFields = new TextField[getNumberOfTextFieldRows()];
+
+    Log.debug("NumberOfTextFieldRows: " + getNumberOfTextFieldRows());
+
+    try {
+
+      for (int row = 0; row < getNumberOfTextFieldRows(); row++) {
+
+        Log.debug("Label: " + getTextFieldTemplate()[row][FIELD_LABEL] + " HtmlData: " + getTextFieldTemplate()[row][HTML_DATA]);
+
+        getTextFields()[row] = new TextField();
+        getPanel().add(new FieldLabel(getTextFields()[row], getTextFieldTemplate()[row][FIELD_LABEL]), new HtmlData(getTextFieldTemplate()[row][HTML_DATA]));
+        getTextFields()[row].addValidator(new RegExValidator(getTextFieldTemplate()[row][REGEX], "Regular Expression: " + getTextFieldTemplate()[row][REGEX]));
+
+        if (getTextFieldTemplate()[row][ALLOW_BLANKS].contentEquals(RegExTokens.TRUE)) {
+
+          getTextFields()[row].setAllowBlank(true);
+
+          Log.debug("setAllowBlank(true)");
+        } else {
+
+          getTextFields()[row].setAllowBlank(false);
+
+          Log.debug("setAllowBlank(false)");
+        }
+
+        if (getTextFieldTemplate()[row][EMPTY_TEXT].length() != 0) {
+          getTextFields()[row].setEmptyText(getTextFieldTemplate()[row][EMPTY_TEXT]);
+        }
+      }
+    } catch (Exception e) {
+      Log.error("Unable to create TextFields: " + e);
+    }
+  }
+
   protected void createToggleGroups() {
 
     Log.debug("createToggleGroups()");
@@ -92,48 +134,6 @@ public class EntitySection<T> {
       }
     } catch (Exception e) {
       Log.error("Unable to create ToggleGroups: " + e);
-    }
-  }
-
-  protected void createTextFields() {
-
-    Log.debug("createTextFields()");
-
-    // you must call setTextFieldTemplate() in the constructor of your derived class
-    if (getTextFieldTemplate() == null) { return; }
-
-    textFields = new TextField[getNumberOfTextFieldRows()];
-
-    Log.debug("NumberOfTextFieldRows: " + getNumberOfTextFieldRows());
-
-    try {
-
-      for (int row = 0; row < getNumberOfTextFieldRows(); row++) {
-
-        Log.debug("Label: " + getTextFieldTemplate()[row][FIELD_LABEL] + " HtmlData: " + getTextFieldTemplate()[row][HTML_DATA]);
-
-        getTextFields()[row] = new TextField();
-        getPanel().add(new FieldLabel(getTextFields()[row], getTextFieldTemplate()[row][FIELD_LABEL]), new HtmlData(getTextFieldTemplate()[row][HTML_DATA]));
-        getTextFields()[row].addValidator(new RegExValidator(getTextFieldTemplate()[row][REGEX], "Regular Expression: " + getTextFieldTemplate()[row][REGEX]));
-
-        if (getTextFieldTemplate()[row][ALLOW_BLANKS].contentEquals(RegExTokens.TRUE)) {
-
-          getTextFields()[row].setAllowBlank(true);
-
-          Log.debug("setAllowBlank(true)");
-        } else {
-
-          getTextFields()[row].setAllowBlank(false);
-
-          Log.debug("setAllowBlank(false)");
-        }
-
-        if (getTextFieldTemplate()[row][EMPTY_TEXT].length() != 0) {
-          getTextFields()[row].setEmptyText(getTextFieldTemplate()[row][EMPTY_TEXT]);
-        }
-      }
-    } catch (Exception e) {
-      Log.error("Unable to create TextFields: " + e);
     }
   }
 

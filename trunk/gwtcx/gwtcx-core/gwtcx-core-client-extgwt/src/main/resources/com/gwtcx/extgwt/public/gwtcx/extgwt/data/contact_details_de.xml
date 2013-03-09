@@ -7,39 +7,39 @@
     <name>Information</name>
     <displayName>Informationen</displayName>
   </record>
-  
+
   <record>
     <icon>moreaddresses</icon>
     <name>More Addresses</name>
     <displayName>Mehr Adressen</displayName>
   </record>
-  
+
   <record>
     <icon>activities</icon>
     <name>Activities</name>
-    <displayName>Tätigkeiten</displayName>
+    <displayName>Aktivitaten</displayName>
   </record>
-  
+
   <record>
     <icon>history</icon>
     <name>History</name>
     <displayName>Geschichte</displayName>
   </record>
- 
+
   <!--
- 
+
   <record>
     <icon>contacts</icon>
     <name>Contacts</name>
     <displayName>Kontakte</displayName>
   </record>
-  
+
   -->
-  
+
   <record>
     <icon>relationships</icon>
     <name>Relationships</name>
-    <displayName>Verhältnisse</displayName>
+    <displayName>Verhï¿½ltnisse</displayName>
   </record>
 
 </records>

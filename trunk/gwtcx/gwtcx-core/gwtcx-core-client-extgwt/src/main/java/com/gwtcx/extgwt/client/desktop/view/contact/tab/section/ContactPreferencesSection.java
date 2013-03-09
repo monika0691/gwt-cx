@@ -24,12 +24,11 @@ public class ContactPreferencesSection extends EntitySection<ContactRepresentati
 
   // FIELD_LABEL, HTML_DATA
   private String[][] toggleGroupTemplate = {
-      {I18nUtil.getConstant().emailLabel(), ".email"},
-      {I18nUtil.getConstant().phoneLabel(), ".phone"},
-      {I18nUtil.getConstant().faxLabel(), ".fax"},
-      {I18nUtil.getConstant().mailLabel(), ".mail"},
-
-    };
+    {I18nUtil.getConstant().emailLabel(), ".email"},
+    {I18nUtil.getConstant().phoneLabel(), ".phone"},
+    {I18nUtil.getConstant().faxLabel(), ".fax"},
+    {I18nUtil.getConstant().mailLabel(), ".mail"}
+  };
 
   public ContactPreferencesSection(final HtmlLayoutContainer panel) {
     super(panel);
@@ -41,9 +40,19 @@ public class ContactPreferencesSection extends EntitySection<ContactRepresentati
     createToggleGroups();
   }
 
-  /*
+  @Override
+  public void setFields(ContactRepresentation dto) {
 
-  public void createToggleGroups() {
+  }
+
+  @Override
+  public void getFields(ContactRepresentation dto) {
+
+  }
+}
+
+/*
+
 
     Log.debug("createRadios()");
 
@@ -68,22 +77,14 @@ public class ContactPreferencesSection extends EntitySection<ContactRepresentati
     if (radio != null) {
       Log.debug("Email:" + radio.getBoxLabel());
     }
-  }
 
-  */
 
-  @Override
-  public void setFields(ContactRepresentation dto) {
 
-  }
 
-  @Override
-  public void getFields(ContactRepresentation dto) {
 
-  }
-}
 
-/*
+
+
 
   protected Radio emailAllow;
   protected Radio emailDoNotAllow;

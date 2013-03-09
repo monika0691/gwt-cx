@@ -14,15 +14,16 @@
 
 package com.kiahu.sample.client.presenter.contact;
 
+import org.restlet.client.resource.Result;
+
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.NameTokens;
-import com.gwtcx.client.entrypoint.GwtCxEntryPoint;
 import com.gwtcx.client.event.NavigationPaneUpdateEvent;
 import com.gwtcx.client.uihandlers.ContactInformationUiHandlers;
+import com.gwtcx.shared.dto.ContactRepresentation;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
@@ -32,11 +33,8 @@ import com.gwtplatform.mvp.client.proxy.Place;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
-
-import com.gwtcx.shared.dto.ContactRepresentation;
 import com.kiahu.sample.client.presenter.MainPagePresenter;
 import com.kiahu.sample.client.restlet.ContactResourceProxy;
-import org.restlet.client.resource.Result;
 
 public class ContactInformationPresenter extends
     Presenter<ContactInformationPresenter.MyView, ContactInformationPresenter.MyProxy> implements

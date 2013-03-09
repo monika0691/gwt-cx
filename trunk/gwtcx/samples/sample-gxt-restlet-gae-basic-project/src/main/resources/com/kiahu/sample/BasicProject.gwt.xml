@@ -59,7 +59,7 @@
   <!-- <set-configuration-property name="UiBinder.useLazyWidgetBuilders" value="true" /> -->
 
   <!-- <set-property name="gxt.user.agent" value="safari3,safari4,safari5,chrome,air,gecko1_8,gecko1_9"/> -->
-  <set-property name="gxt.user.agent" value="gecko1_8"/>
+  <set-property name="gxt.user.agent" value="gecko1_8" />
 
   <!-- If your goal is to reduce the number of permutations, there is another trick you can do,
        just squish all the js into one giant permutation:
