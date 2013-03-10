@@ -18,12 +18,15 @@ import com.allen_sauer.gwt.log.client.Log;
 import com.gwtcx.client.RegExTokens;
 import com.gwtcx.client.util.I18nUtil;
 import com.gwtcx.extgwt.client.desktop.view.EntitySection;
-import com.gwtcx.extgwt.client.field.LookUpField;
-// import com.gwtcx.extgwt.client.field.MyDateField;
+import com.gwtcx.extgwt.client.field.LookupField;
 import com.gwtcx.shared.dto.ContactRepresentation;
 import com.sencha.gxt.widget.core.client.container.AbstractHtmlLayoutContainer.HtmlData;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
+import com.sencha.gxt.widget.core.client.info.Info;
+
+import com.sencha.gxt.widget.core.client.event.TriggerClickEvent;
+import com.sencha.gxt.widget.core.client.event.TriggerClickEvent.TriggerClickHandler;
 
 public class NameAndElectronicAddressSection extends EntitySection<ContactRepresentation> {
 
@@ -43,8 +46,7 @@ public class NameAndElectronicAddressSection extends EntitySection<ContactRepres
     {I18nUtil.getConstant().emailLabel(), ".email", RegExTokens.EMAIL, RegExTokens.TRUE, ""}
   };
 
-  LookUpField parentCustomer;
-  // MyDateField parentCustomer;
+  LookupField parentCustomer;
 
   public NameAndElectronicAddressSection(final HtmlLayoutContainer panel) {
     super(panel);
@@ -55,13 +57,19 @@ public class NameAndElectronicAddressSection extends EntitySection<ContactRepres
 
     createTextFields();
 
-    createLookUpFields();
+    createLookupFields();
   }
 
-  public void createLookUpFields() {
+  public void createLookupFields() {
 
-    LookUpField parentCustomer = new LookUpField();
-    // parentCustomer = new MyDateField();
+    LookupField parentCustomer = new LookupField();
+    parentCustomer.addTriggerClickHandler(new TriggerClickHandler() {
+      @Override
+      public void onTriggerClick(final TriggerClickEvent event) {
+
+        Info.display("LookupField", "You clicked the lookup button.");
+      }
+    });
 
     getPanel().add(new FieldLabel(parentCustomer, I18nUtil.getConstant().parentCustomerLabel()), new HtmlData(".parentCustomer"));
   }
@@ -100,6 +108,41 @@ public class NameAndElectronicAddressSection extends EntitySection<ContactRepres
 }
 
 /*
+
+
+  public static final int DEFAULT_MAX_RESULTS = 50;
+
+  public static final String ID = "id";
+  public static final String ACTIVITY = "activity";
+  public static final String NEW = "new";
+  public static final String EDIT = "edit";
+  public static final String PARAMETER_SEPERATOR = "&";
+  public static final String NAME = "_blank";
+  public static final String FEATURES = "width=880, height=540, location=no";
+
+  public static void openHostFile(String filename, String queryString, String id, String features) {
+
+    StringBuilder url = new StringBuilder();
+    url.append(filename).append("?");
+
+    String arg0Name = URL.encodeQueryString(ID);
+    url.append(arg0Name);
+    url.append("=");
+    String arg0Value = URL.encodeQueryString(id);
+    url.append(GwtCxEntryPoint.encodeBase64(arg0Value));
+    Log.debug("Window.open() arg0Value: " + arg0Value + " Base64: " + GwtCxEntryPoint.encodeBase64(arg0Value));
+    url.append(PARAMETER_SEPERATOR);
+
+    String arg1Name = URL.encodeQueryString(ACTIVITY);
+    url.append(arg1Name);
+    url.append("=");
+    String arg1Value = URL.encodeQueryString(queryString);
+    url.append(GwtCxEntryPoint.encodeBase64(arg1Value));
+    Log.debug("Window.open() arg1Value: " + arg1Value + " Base64: " + GwtCxEntryPoint.encodeBase64(arg1Value));
+
+    Window.open(GwtCxEntryPoint.getRelativeURL(url.toString()), NAME, features);
+  }
+
 
 
     // String field = null;
