@@ -31,6 +31,8 @@ public class NameTokens {
   public static final String taskPage = "TaskPage";
   public static final String emailPage = "EmailPage";
 
+  public static final String lookupPage = "LookupPage";
+
   // Sales nested presenters and views
   public static final String activities = "Activities";
   public static final String calendar = "Calendar";

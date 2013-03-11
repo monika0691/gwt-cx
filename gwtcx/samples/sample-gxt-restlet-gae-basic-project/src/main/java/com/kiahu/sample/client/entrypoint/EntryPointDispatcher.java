@@ -23,30 +23,68 @@ import com.gwtcx.client.NameTokens;
 
 public class EntryPointDispatcher implements EntryPoint {
 
+  public static final String HOST_FILE_PAGES_VAR = "Pages";
+  public static final String PAGE_VAR = "page";
+
+  enum Page
+  {
+     MAIN_PAGE(NameTokens.mainPage),
+     ACCOUNT_PAGE(NameTokens.accountPage),
+     CONTACT_PAGE(NameTokens.contactPage),
+     LOOKUP_PAGE(NameTokens.lookupPage),
+     NOT_FOUND("notFound");
+
+     private Page(String stringValue) { this.stringValue = stringValue; }
+     public String toString() { return stringValue; }
+
+     private String stringValue;
+  }
+
+  public Page getPageAsEnum(String pageName) {
+
+    Page result = Page.NOT_FOUND;
+
+    Log.debug("Page name: " + pageName);
+
+    for (Page section : Page.values()) {
+      if (pageName.contentEquals(section.toString())) {
+        result = section;
+      }
+    }
+
+    return result;
+  }
+
   public void onModuleLoad() {
 
-    Log.debug("EntryPointDispatcher - onModuleLoad()");
+    Log.debug("onModuleLoad()");
 
     try {
 
-      // get the Host Page name
-      Dictionary dictionary = Dictionary.getDictionary("Pages");
-      String page = dictionary.get("page");
+      MultiPageEntryPoint entrypoint = null;
 
-      Log.debug("Page name token: " + page);
+      // get the Page name from the application's host file
+      Dictionary dictionary = Dictionary.getDictionary(HOST_FILE_PAGES_VAR);
+      Page page = getPageAsEnum(dictionary.get(PAGE_VAR));
 
-      if (page.equals(NameTokens.mainPage)) {
-        MultiPageEntryPoint entrypoint = (MultiPageEntryPoint) GWT.create(MainPageEntryPoint.class);
-        entrypoint.onModuleLoad();
+      switch (page) {
+
+        case MAIN_PAGE: entrypoint = (MultiPageEntryPoint) GWT.create(MainPageEntryPoint.class); break;
+
+        case ACCOUNT_PAGE: entrypoint = (MultiPageEntryPoint) GWT.create(AccountPageEntryPoint.class); break;
+
+        case CONTACT_PAGE: entrypoint = (MultiPageEntryPoint) GWT.create(ContactPageEntryPoint.class); break;
+
+        default:
+          break;
       }
-      else if (page.equals(NameTokens.accountPage)) {
-        MultiPageEntryPoint entrypoint = (MultiPageEntryPoint) GWT.create(AccountPageEntryPoint.class);
+
+      if (entrypoint != null) {
         entrypoint.onModuleLoad();
+      } else {
+        Log.error("Did you forget to update the host file's Pages var?");
       }
-      else if (page.equals(NameTokens.contactPage)) {
-        MultiPageEntryPoint entrypoint = (MultiPageEntryPoint) GWT.create(ContactPageEntryPoint.class);
-        entrypoint.onModuleLoad();
-      }
+
     } catch (Exception e) {
       Log.error("e: " + e);
       e.printStackTrace();
@@ -54,4 +92,5 @@ public class EntryPointDispatcher implements EntryPoint {
       Window.alert(e.getLocalizedMessage());
     }
   }
+
 }
