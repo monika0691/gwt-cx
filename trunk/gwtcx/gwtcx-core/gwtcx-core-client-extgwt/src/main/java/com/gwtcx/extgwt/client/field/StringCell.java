@@ -36,7 +36,7 @@ public class StringCell extends TriggerFieldCell<String> {
 
   public StringCell(StringCellAppearance appearance) {
     super(appearance);
-    setPropertyEditor(new LookUpFieldPropertyEditor());
+    setPropertyEditor(new LookupFieldPropertyEditor());
   }
 
   @Override
