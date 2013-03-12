@@ -36,6 +36,11 @@ import com.sencha.gxt.widget.core.client.form.FieldSet;
 
 public abstract class AbstractContactTab extends EntityTab<ContactRepresentation> {
 
+  public static final String generalTabIcon = "general";
+  public static final String detailsTabIcon = "details";
+  public static final String administrationTabIcon = "administration";
+  public static final String notesTabIcon = "notes";
+
   private EntitySection<ContactRepresentation> [] entitySections = null;
 
   public AbstractContactTab(TabPanel tabPanel) {
@@ -63,13 +68,13 @@ public abstract class AbstractContactTab extends EntityTab<ContactRepresentation
 
     ImageResource image = null;
 
-    if ("general".equalsIgnoreCase(icon)) {
+    if (generalTabIcon.equalsIgnoreCase(icon)) {
       image = ContactIcons.INSTANCE.generalTab();
-    } else if ("details".equalsIgnoreCase(icon)) {
+    } else if (detailsTabIcon.equalsIgnoreCase(icon)) {
       image = ContactIcons.INSTANCE.administrationTab();
-    } else if ("administration".equalsIgnoreCase(icon)) {
+    } else if (administrationTabIcon.equalsIgnoreCase(icon)) {
       image = ContactIcons.INSTANCE.detailsTab();
-    } else if ("notes".equalsIgnoreCase(icon)) {
+    } else if (notesTabIcon.equalsIgnoreCase(icon)) {
       image = ContactIcons.INSTANCE.detailsTab();
     } else {
       image = PlaceholderIcons.INSTANCE.placeholder16x16();
@@ -101,7 +106,7 @@ public abstract class AbstractContactTab extends EntityTab<ContactRepresentation
     Log.debug("createFieldSets()");
 
     if (getFieldSets() == null) {
-      Log.error("You must call setFields(String[][] fields) in the constructor of your derived class");
+      Log.error("You must call setFieldSets(String[][] fields) in the constructor of your derived class");
       return;
     }
 
@@ -125,7 +130,7 @@ public abstract class AbstractContactTab extends EntityTab<ContactRepresentation
     }
   }
 
-  enum Section
+  public enum Section
   {
      GENERAL_INFORMATION("General Information"),
      ADDRESS_INFORMATION("Address Information"),
@@ -175,7 +180,6 @@ public abstract class AbstractContactTab extends EntityTab<ContactRepresentation
       case CONTACT_PREFERENCES: result = new ContactPreferencesSection(htmlLayout); break;
 
       default:
-        result = null;
         break;
     }
 
@@ -270,6 +274,17 @@ public abstract class AbstractContactTab extends EntityTab<ContactRepresentation
       '</table>',
     ].join("");
   }-*/;
+
+
+  public EntitySection<ContactRepresentation>[] getEntitySections() {
+    return entitySections;
+  }
+
+  public AbstractContactTab setEntitySections(
+      EntitySection<ContactRepresentation>[] entitySections) {
+    this.entitySections = entitySections;
+    return this;
+  }
 
   public void getFields(ContactRepresentation dto) {
 

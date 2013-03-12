@@ -35,7 +35,7 @@ public class InformationNotesTab extends AbstractContactTab {
 
     Log.debug("InformationNotesTab(TabPanel tabPanel)");
 
-    createFields(I18nUtil.getConstant().notesTabLabel(), ""); // "notes"
+    createFields(I18nUtil.getConstant().notesTabLabel(), "");  // notesTabIcon
   }
 
   @Override
