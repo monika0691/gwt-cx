@@ -22,11 +22,8 @@ import com.gwtcx.extgwt.client.field.LookupField;
 import com.gwtcx.shared.dto.ContactRepresentation;
 import com.sencha.gxt.widget.core.client.container.AbstractHtmlLayoutContainer.HtmlData;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
-import com.sencha.gxt.widget.core.client.form.FieldLabel;
-import com.sencha.gxt.widget.core.client.info.Info;
-
-import com.sencha.gxt.widget.core.client.event.TriggerClickEvent;
 import com.sencha.gxt.widget.core.client.event.TriggerClickEvent.TriggerClickHandler;
+import com.sencha.gxt.widget.core.client.form.FieldLabel;
 
 public class NameAndElectronicAddressSection extends EntitySection<ContactRepresentation> {
 
@@ -46,7 +43,7 @@ public class NameAndElectronicAddressSection extends EntitySection<ContactRepres
     {I18nUtil.getConstant().emailLabel(), ".email", RegExTokens.EMAIL, RegExTokens.TRUE, ""}
   };
 
-  LookupField parentCustomer;
+  protected LookupField parentCustomer;
 
   public NameAndElectronicAddressSection(final HtmlLayoutContainer panel) {
     super(panel);
@@ -62,16 +59,17 @@ public class NameAndElectronicAddressSection extends EntitySection<ContactRepres
 
   public void createLookupFields() {
 
-    LookupField parentCustomer = new LookupField();
-    parentCustomer.addTriggerClickHandler(new TriggerClickHandler() {
-      @Override
-      public void onTriggerClick(final TriggerClickEvent event) {
+    Log.debug("createLookupFields()");
 
-        Info.display("LookupField", "You clicked the lookup button.");
-      }
-    });
-
+    parentCustomer = new LookupField();
     getPanel().add(new FieldLabel(parentCustomer, I18nUtil.getConstant().parentCustomerLabel()), new HtmlData(".parentCustomer"));
+  }
+
+  public void addParentCustomerTriggerClickHandler(TriggerClickHandler handler) {
+
+    Log.debug("addParentCustomerTriggerClickHandler()");
+
+    parentCustomer.addTriggerClickHandler(handler);
   }
 
   @Override
@@ -110,38 +108,13 @@ public class NameAndElectronicAddressSection extends EntitySection<ContactRepres
 /*
 
 
-  public static final int DEFAULT_MAX_RESULTS = 50;
+    parentCustomer.addTriggerClickHandler(new TriggerClickHandler() {
+      @Override
+      public void onTriggerClick(final TriggerClickEvent event) {
 
-  public static final String ID = "id";
-  public static final String ACTIVITY = "activity";
-  public static final String NEW = "new";
-  public static final String EDIT = "edit";
-  public static final String PARAMETER_SEPERATOR = "&";
-  public static final String NAME = "_blank";
-  public static final String FEATURES = "width=880, height=540, location=no";
-
-  public static void openHostFile(String filename, String queryString, String id, String features) {
-
-    StringBuilder url = new StringBuilder();
-    url.append(filename).append("?");
-
-    String arg0Name = URL.encodeQueryString(ID);
-    url.append(arg0Name);
-    url.append("=");
-    String arg0Value = URL.encodeQueryString(id);
-    url.append(GwtCxEntryPoint.encodeBase64(arg0Value));
-    Log.debug("Window.open() arg0Value: " + arg0Value + " Base64: " + GwtCxEntryPoint.encodeBase64(arg0Value));
-    url.append(PARAMETER_SEPERATOR);
-
-    String arg1Name = URL.encodeQueryString(ACTIVITY);
-    url.append(arg1Name);
-    url.append("=");
-    String arg1Value = URL.encodeQueryString(queryString);
-    url.append(GwtCxEntryPoint.encodeBase64(arg1Value));
-    Log.debug("Window.open() arg1Value: " + arg1Value + " Base64: " + GwtCxEntryPoint.encodeBase64(arg1Value));
-
-    Window.open(GwtCxEntryPoint.getRelativeURL(url.toString()), NAME, features);
-  }
+        Info.display("LookupField", "You clicked the lookup button.");
+      }
+    });
 
 
 

@@ -18,6 +18,7 @@ import org.restlet.client.resource.Result;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtcx.client.NameTokens;
@@ -35,6 +36,7 @@ import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 import com.kiahu.sample.client.presenter.MainPagePresenter;
 import com.kiahu.sample.client.restlet.ContactResourceProxy;
+import com.sencha.gxt.widget.core.client.info.Info;
 
 public class ContactInformationPresenter extends
     Presenter<ContactInformationPresenter.MyView, ContactInformationPresenter.MyProxy> implements
@@ -62,8 +64,9 @@ public class ContactInformationPresenter extends
     // TODO: setCommonData()
     // void setCountry(EntityTypeDto country);
     // void setAddressType(EntityTypeDto addressType);
-
     // void setId(String id);
+
+    void setParentCustomer(String parentCustomer);
   }
 
   @Inject
@@ -147,13 +150,64 @@ public class ContactInformationPresenter extends
         Log.debug("onFailure() - " + caught.getLocalizedMessage());
       }
     });
-
   }
 
+  native JavaScriptObject openWindow(String url) /*-{
+    return $wnd.open(url, 'blank');
+  }-*/;
+
+  @Override
+  public void onParentCustomerButtonClicked() {
+
+    Info.display("LookupField", "You clicked the lookup button.");
+
+    getView().setParentCustomer("Kiahu Pty Limited");
+  }
 }
 
 
 /*
+
+  public static final int DEFAULT_MAX_RESULTS = 50;
+
+  public static final String ID = "id";
+  public static final String ACTIVITY = "activity";
+  public static final String NEW = "new";
+  public static final String EDIT = "edit";
+  public static final String PARAMETER_SEPERATOR = "&";
+  public static final String NAME = "_blank";
+  public static final String FEATURES = "width=880, height=540, location=no";
+
+  public static void openHostFile(String filename, String queryString, String id, String features) {
+
+    StringBuilder url = new StringBuilder();
+    url.append(filename).append("?");
+
+    String arg0Name = URL.encodeQueryString(ID);
+    url.append(arg0Name);
+    url.append("=");
+    String arg0Value = URL.encodeQueryString(id);
+    url.append(GwtCxEntryPoint.encodeBase64(arg0Value));
+    Log.debug("Window.open() arg0Value: " + arg0Value + " Base64: " + GwtCxEntryPoint.encodeBase64(arg0Value));
+    url.append(PARAMETER_SEPERATOR);
+
+    String arg1Name = URL.encodeQueryString(ACTIVITY);
+    url.append(arg1Name);
+    url.append("=");
+    String arg1Value = URL.encodeQueryString(queryString);
+    url.append(GwtCxEntryPoint.encodeBase64(arg1Value));
+    Log.debug("Window.open() arg1Value: " + arg1Value + " Base64: " + GwtCxEntryPoint.encodeBase64(arg1Value));
+
+    Window.open(GwtCxEntryPoint.getRelativeURL(url.toString()), NAME, features);
+  }
+
+
+
+
+
+
+
+
 
 
   // Remotely retrieve the contacts list in GWT serialization format

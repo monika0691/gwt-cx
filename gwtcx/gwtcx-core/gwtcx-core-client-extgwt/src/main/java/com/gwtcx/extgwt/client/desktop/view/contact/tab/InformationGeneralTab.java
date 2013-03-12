@@ -16,6 +16,8 @@ package com.gwtcx.extgwt.client.desktop.view.contact.tab;
 
 import com.allen_sauer.gwt.log.client.Log;
 import com.gwtcx.client.util.I18nUtil;
+import com.gwtcx.extgwt.client.desktop.view.EntitySection;
+import com.gwtcx.shared.dto.ContactRepresentation;
 import com.sencha.gxt.widget.core.client.TabPanel;
 
 public class InformationGeneralTab extends AbstractContactTab {
@@ -32,6 +34,36 @@ public class InformationGeneralTab extends AbstractContactTab {
 
     setFieldSets(fieldSets);
 
-    createFields(I18nUtil.getConstant().generalTabLabel(), "general");
+    createFields(I18nUtil.getConstant().generalTabLabel(), generalTabIcon);
+  }
+
+  // TODO: don't use fixed array indices
+
+  public EntitySection<ContactRepresentation> getEntitySection(Section section) {
+
+    EntitySection<ContactRepresentation> result = null;
+
+    if (getFieldSets() == null) {
+      Log.error("You must call setFieldSets(String[][] fields) in the constructor of your derived class");
+      return result;
+    }
+
+    Log.debug("getEntitySection()");
+
+    switch (section) {
+
+      case GENERAL_INFORMATION:
+
+        Log.debug("case GENERAL_INFORMATION:");
+
+        result = getEntitySections()[0]; break;
+
+      case ADDRESS_INFORMATION: result = getEntitySections()[1];; break;
+
+      default:
+        break;
+    }
+
+    return result;
   }
 }

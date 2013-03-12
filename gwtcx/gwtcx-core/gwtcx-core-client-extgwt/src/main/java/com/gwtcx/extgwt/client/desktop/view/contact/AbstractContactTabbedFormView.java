@@ -62,8 +62,10 @@ public class AbstractContactTabbedFormView<C extends UiHandlers> extends
     getForm().setSize(width + "px", height + "px");
     getTabPanel().setWidth(width + "px");
 
-    // you must call setTabTemplate() in the constructor of your derived class
-    if (getTabTemplate() == null) { return; }
+    if (getTabTemplate() == null) {
+      Log.error("You must call setTabTemplate() in the constructor of your derived class");
+      return;
+    }
 
     for (int row = 0; row < getNumberOfTabs(); row++) {
 
@@ -85,8 +87,10 @@ public class AbstractContactTabbedFormView<C extends UiHandlers> extends
 
     Log.debug("createTabs()");
 
-    // you must call setTabTemplate() in the constructor of your derived class
-    if (getTabTemplate() == null) { return; }
+    if (getTabTemplate() == null) {
+      Log.error("You must call setTabTemplate() in the constructor of your derived class");
+      return;
+    }
 
     entityTabs = new EntityTab[getNumberOfTabs()];
 
@@ -98,7 +102,7 @@ public class AbstractContactTabbedFormView<C extends UiHandlers> extends
     }
   }
 
-  enum Tab
+  public enum Tab
   {
      GENERAL("General"), DETAILS("Details"), ADMINISTRATION("Administration"), NOTES("Notes"), NOT_USED("notUsed");
 
@@ -116,6 +120,40 @@ public class AbstractContactTabbedFormView<C extends UiHandlers> extends
       if (tabName.contentEquals(tab.toString())) {
         result = tab;
       }
+    }
+
+    return result;
+  }
+
+  // TODO: don't use fixed array indices
+
+  public EntityTab<ContactRepresentation> getEntityTab(Tab tab) {
+
+    EntityTab<ContactRepresentation> result = null;
+
+    Log.debug("getEntityTab()");
+
+    if (getTabTemplate() == null) {
+      Log.error("You must call setTabTemplate() in the constructor of your derived class");
+      return result;
+    }
+
+    switch (tab) {
+
+      case GENERAL:
+
+        Log.debug("case GENERAL:");
+
+        result = entityTabs[0]; break;
+
+      case DETAILS: result = entityTabs[1]; break;
+
+      case ADMINISTRATION: result = entityTabs[2]; break;
+
+      case NOTES: result = entityTabs[3]; break;
+
+      default:
+        break;
     }
 
     return result;
@@ -139,7 +177,6 @@ public class AbstractContactTabbedFormView<C extends UiHandlers> extends
       case NOTES: result = new InformationNotesTab(getTabPanel()); break;
 
       default:
-        result = null;
         break;
     }
 
@@ -152,6 +189,9 @@ public class AbstractContactTabbedFormView<C extends UiHandlers> extends
 
   protected AbstractContactTabbedFormView<C> setTabTemplate(String[][] fields) {
     this.tabTemplate = fields;
+
+    Log.debug("setTabTemplate(String[][] fields)");
+
     return this;
   }
 

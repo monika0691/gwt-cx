@@ -15,7 +15,6 @@
 package com.gwtcx.extgwt.client.desktop.view;
 
 import com.allen_sauer.gwt.log.client.Log;
-import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
@@ -66,6 +65,8 @@ public abstract class AbstractTabbedFormView<C extends UiHandlers> extends ViewW
     getPanel().add(getForm(), new VerticalLayoutData(1, -1));
     getForm().setWidget(getTabPanel());
 
+    /*
+
     Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
       @Override
       public void execute() {
@@ -76,8 +77,19 @@ public abstract class AbstractTabbedFormView<C extends UiHandlers> extends ViewW
       }
     });
 
-    bindCustomUiHandlers();
+    */
+
+    // bindCustomUiHandlers();
   }
+
+  protected void bindCustomUiHandlers() {
+
+    Log.warn("Don't forget to @Override bindCustomUiHandlers()");
+  }
+
+  // protected void initToolBar() { }  // toolbar and statusbar are shared ...
+
+  // protected void initStatusBar() { }
 
   // See: ContactPageView - setInSlot(Object slot, Widget content)
   //      and AbstractContactTabbedFormView - resize()
@@ -95,12 +107,6 @@ public abstract class AbstractTabbedFormView<C extends UiHandlers> extends ViewW
 
     getPanel().onResize();
   }
-
-  protected void bindCustomUiHandlers() { }
-
-  // protected void initToolBar() { }  // toolbar and statusbar are shared ...
-
-  // protected void initStatusBar() { }
 
   @Override
   public Widget asWidget() {

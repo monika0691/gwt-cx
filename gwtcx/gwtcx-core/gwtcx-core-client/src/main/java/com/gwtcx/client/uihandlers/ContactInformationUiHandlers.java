@@ -20,4 +20,5 @@ import com.gwtplatform.mvp.client.UiHandlers;
 public interface ContactInformationUiHandlers extends UiHandlers {
   // void onSaveButtonClicked(AccountDto dto);
   // void onSaveAndCloseButtonClicked(AccountDto dto);
+  void onParentCustomerButtonClicked();
 }
