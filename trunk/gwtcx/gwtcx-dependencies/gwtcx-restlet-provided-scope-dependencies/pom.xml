@@ -7,13 +7,13 @@
   <modelVersion>4.0.0</modelVersion>
  
   <groupId>com.gwtcx</groupId>
-  <artifactId>gwtcx-restlet-provided-scope-dependencies</artifactId>
+  <artifactId>gwtcx-restlet-gwt-provided-scope-dependencies</artifactId>
   <version>1.0.0-dp1</version>
   <packaging>pom</packaging>
   
-  <name>GWTCX Restlet provided scope dependencies POM</name>
+  <name>GWTCX Restlet/GWT provided scope dependencies POM</name>
   <description>
-    Aggregate POM used to simplify Restlet dependency retrieval.
+    Aggregate POM used to simplify Restlet/GWT dependency retrieval.
   
     Related dependencies are grouped together into a POM then added as a dependency to a project as needed. 
     This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted. Therefore, the scope element must be provided in the project's POM (and omitted here).
