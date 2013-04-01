@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.gwtcx</groupId>
+  <artifactId>gwtcx-mgwt-dependencies</artifactId>
+  <version>1.0.0-dp1</version>
+  <packaging>pom</packaging>
+  
+  <name>GWTCX mgwt dependencies POM</name>
+  <description>
+    Aggregate POM used to simplify mgwt dependency retrieval.
+  
+    Related dependencies are grouped together into a POM then added as a dependency to a project as needed. 
+    This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted.
+  
+    See: http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
+  </description>
+  
+  <repositories>
+    <repository>
+    <id>sonatype snapshots</id>
+    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
+  </repositories>
+  
+  <properties>
+  	<gwt.version>2.5.0</gwt.version>
+    <mgwt.version>1.1.2</mgwt.version>
+  </properties>
+ 
+  <dependencies>
+  
+    <!-- Google Web Toolkit dependencies -->
+    <dependency>
+      <groupId>com.gwtcx</groupId>
+      <artifactId>gwtcx-gwt-dependencies</artifactId>
+      <version>${project.version}</version>
+      <type>pom</type>
+    </dependency>    
+	
+	<!-- mgwt dependencies -->
+    <dependency>
+      <groupId>com.googlecode.mgwt</groupId>
+      <artifactId>mgwt</artifactId>
+      <version>${mgwt.version}</version>
+    </dependency>
+
+    <!-- GWT Customer Experience dependencies -->
+	<!--
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>gwtcx-core-client-mgwt</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+	-->
+	  
+  </dependencies>
+	
+</project>
