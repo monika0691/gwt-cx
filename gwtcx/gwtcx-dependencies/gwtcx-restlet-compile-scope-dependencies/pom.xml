@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.gwtcx</groupId>
+  <artifactId>gwtcx-restlet-compile-scope-dependencies</artifactId>
+  <version>1.0.0-dp1</version>
+  <packaging>pom</packaging>
+  
+  <name>GWTCX Restlet compile scope dependencies POM</name>
+  <description>
+    Aggregate POM used to simplify Restlet dependency retrieval.
+  
+    Related dependencies are grouped together into a POM then added as a dependency to a project as needed. 
+    This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted. 
+	
+    See: http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
+	
+	Note: The default for the type field is "jar".  The default for the scope field is "compile".
+  </description>
+  
+  <repositories>
+    <repository>
+      <id>maven-restlet</id>
+      <name>Public online Restlet repository</name>
+      <url>http://maven.restlet.org</url>
+    </repository>
+  </repositories>
+	
+  <properties>
+    <restlet.version>2.1.1</restlet.version>
+  </properties>
+ 
+  <dependencies>
+  
+	<dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.servlet</artifactId>
+      <version>${restlet.version}</version>
+	  <!-- <type>jar</type> --> <!-- The default for the type field is "jar". -->
+	  <!-- <scope>compile</scope> --> <!-- The default for the scope field is "compile". -->
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.wadl</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.gwt</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.jackson</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.xstream</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+
+
+
+    <!--
+	
+    <dependency>
+      <groupId>org.restlet.gwt</groupId>
+      <artifactId>org.restlet.ext.json</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.gwt</groupId>
+      <artifactId>org.restlet.ext.xml</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.atom</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.fileupload</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.freemarker</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.gwt</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.jackson</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.net</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.servlet</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.wadl</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.xml</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    -->
+
+    <!--
+    <dependency>
+      <groupId>org.restlet.jee</groupId>
+      <artifactId>org.restlet.ext.json</artifactId>
+      <version>${restlet.version}</version>
+    </dependency>
+    -->
+	
+  </dependencies>
+	
+</project>
