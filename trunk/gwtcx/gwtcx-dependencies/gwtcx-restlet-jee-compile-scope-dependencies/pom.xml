@@ -13,7 +13,7 @@
   
   <name>GWTCX Restlet/JEE compile scope dependencies POM</name>
   <description>
-    Aggregate POM used to simplify Restlet/JEE dependency retrieval.
+    Aggregate POM used to simplify Restlet/JEE  dependency retrieval.
   
     Related dependencies are grouped together into a POM then added as a dependency to a project as needed. 
     This approach works for "compile" scoped dependencies, however, it fails for "provided" scoped dependencies because transitive dependencies are omitted. 
